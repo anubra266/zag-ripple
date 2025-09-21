@@ -3,8 +3,8 @@ import { normalizeProps, useMachine } from "zag-ripple";
 import { accordionControls, accordionData } from "@zag-js/shared"
 import { track, effect } from "ripple";
 import { Toolbar } from "./lib/toolbar.ripple";
-import { StateVisualizer } from "./lib/state-visualizer.ripple";
-import { createControls } from "./lib/create-controls.ripple";
+import { StateVisualizer } from "../lib/state-visualizer.ripple";
+import { createControls } from "../lib/create-controls.ripple";
 
 export component Accordion() {
   const controls = createControls(accordionControls)
