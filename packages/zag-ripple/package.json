@@ -25,11 +25,11 @@
     "url": "https://github.com/anubra266i/zag-ripple/issues"
   },
   "dependencies": {
-    "@zag-js/anatomy": "latest",
     "@zag-js/core": "^1.3.3",
-    "@zag-js/dom-query": "latest",
     "@zag-js/types": "latest",
-    "@zag-js/utils": "latest",
+    "@zag-js/utils": "latest"
+  },
+  "devDependencies": {
     "typescript": "~5.6.2"
   }
 }
