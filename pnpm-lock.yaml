@@ -40,7 +40,7 @@ importers:
         version: 3.9.0
       '@kgroat/ripple-router':
         specifier: ^0.0.2
-        version: 0.0.2(ripple@0.2.59)
+        version: 0.0.2(ripple@0.2.60)
       '@vercel/analytics':
         specifier: ^1.5.0
         version: 1.5.0(react@18.3.1)
@@ -267,8 +267,8 @@ importers:
         specifier: ^1.24.2
         version: 1.24.2
       ripple:
-        specifier: ^0.2.59
-        version: 0.2.59
+        specifier: ^0.2.60
+        version: 0.2.60
       zag-ripple:
         specifier: workspace:*
         version: link:../packages/zag-ripple
@@ -1210,6 +1210,9 @@ packages:
   ripple@0.2.59:
     resolution: {integrity: sha512-Q6+sWtVgb3PIbgfUQGg0WgU6x1YAcyV8z3wTELGUB3kLA6NH5IDFF39CuNvDexyklGkfJPbYebZnqoBbv8liZw==}
 
+  ripple@0.2.60:
+    resolution: {integrity: sha512-UCxvrthshml9LdMuPAbJZxPX9/fMEX73W53j4ZxfcZy3hNv+a1FZClPXWvTqW2paMVCu713UYMMXtkUn70r50A==}
+
   rollup@4.52.0:
     resolution: {integrity: sha512-+IuescNkTJQgX7AkIDtITipZdIGcWF0pnVvZTWStiazUmcGA2ag8dfg0urest2XlXUi9kuhfQ+qmdc5Stc3z7g==}
     engines: {node: '>=18.0.0', npm: '>=8.0.0'}
@@ -1543,9 +1546,9 @@ snapshots:
       '@jridgewell/resolve-uri': 3.1.2
       '@jridgewell/sourcemap-codec': 1.5.0
 
-  '@kgroat/ripple-router@0.0.2(ripple@0.2.59)':
+  '@kgroat/ripple-router@0.0.2(ripple@0.2.60)':
     dependencies:
-      ripple: 0.2.59
+      ripple: 0.2.60
 
   '@rollup/rollup-android-arm-eabi@4.52.0':
     optional: true
@@ -2424,6 +2427,17 @@ snapshots:
   resolve-from@4.0.0: {}
 
   ripple@0.2.59:
+    dependencies:
+      '@jridgewell/sourcemap-codec': 1.5.5
+      acorn: 8.15.0
+      acorn-typescript: 1.4.13(acorn@8.15.0)
+      esrap: 2.1.0
+      is-reference: 3.0.3
+      magic-string: 0.30.19
+      muggle-string: 0.4.1
+      zimmerframe: 1.1.4
+
+  ripple@0.2.60:
     dependencies:
       '@jridgewell/sourcemap-codec': 1.5.5
       acorn: 8.15.0

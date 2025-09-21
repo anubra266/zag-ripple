@@ -1,14 +1,12 @@
 import { track } from "ripple"
 import { deepGet } from "@zag-js/shared"
 
-// Because of ripple bug
-import { object_keys } from "./utils"
 
 export component Controls({ store }) {
     const { config, context, setContext } = store
 
     <div class="controls-container" >
-        for (const key of object_keys(config)) {
+        for (const key of Object.keys(config)) {
             const { type, label = key, options, placeholder, min, max } = (config[key] ?? {})
             const value = track(() => deepGet(@context, key))
             if (type === "boolean") {
