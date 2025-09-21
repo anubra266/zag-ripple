@@ -98,6 +98,7 @@
 		"@zag-js/types": "^1.24.2",
 		"@zag-js/utils": "^1.24.2",
 		"ripple": "^0.2.59",
+		"ripple-router": "^0.3.0",
 		"zag-ripple": "workspace:*"
 	}
 }

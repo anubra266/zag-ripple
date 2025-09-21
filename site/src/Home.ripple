@@ -1,3 +1,4 @@
+import { Link } from "ripple-router";
 import { routesData } from "@zag-js/shared"
 const sortedRoutes = routesData.sort((a, b) => a.label.localeCompare(b.label));
 
@@ -7,7 +8,7 @@ export component Home() {
         <ul>
             for (const route of sortedRoutes) {
                 <li>
-                    <a href={route.path}>{route.label}</a>
+                    <Link to={route.path}>{route.label}</Link>
                 </li>
             }
         </ul>

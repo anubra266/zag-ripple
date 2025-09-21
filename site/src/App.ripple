@@ -1,4 +1,6 @@
-import { Routes } from "./Routes.ripple";
+import { Router, Route, Link } from "ripple-router";
+import { Home } from "./Home.ripple";
+import { Accordion } from "./components/Accordion.ripple";
 import { routesData } from "@zag-js/shared";
 import { dataAttr } from "@zag-js/dom-query";
 
@@ -9,9 +11,14 @@ export component App() {
     <aside class="nav">
       <header>{"Zagjs"}</header>
       for (const route of sortedRoutes) {
-        <a href={route.path} data-active={dataAttr(route.path === window.location.pathname)}>{route.label}</a>
+        <Link to={route.path}>
+          {route.label}
+        </Link>
       }
     </aside>
-    <Routes />
+    <Router>
+      <Route path="/" $element={Home} />
+      <Route path="/accordion" $element={Accordion} />
+    </Router>
   </div>
 }
