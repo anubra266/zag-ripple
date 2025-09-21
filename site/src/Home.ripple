@@ -10,7 +10,7 @@ export component Home() {
         <ul>
             for (const route of sortedRoutes) {
                 <li>
-                    <Link href={route.path} data-active={dataAttr(route.path === window.location.pathname)}>{route.label}</Link>
+                    <Link href={route.path}>{route.label}</Link>
                 </li>
             }
         </ul>
