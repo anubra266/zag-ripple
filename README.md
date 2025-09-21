@@ -52,7 +52,7 @@ pnpm add zag-ripple
 
 ## Usage
 
-Check components in [Repo](https://github.com/anubra266/zag-ripple/tree/main/site/src/components)
+Check components in [Repo](https://github.com/anubra266/zag-ripple/tree/main/site/src/components).
 
 ## Sponsors ✨
 
