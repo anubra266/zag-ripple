@@ -1,0 +1,11 @@
+import { Accordion } from "./Accordion.ripple";
+import { Home } from "./Home.ripple";
+
+export component Routes() {
+    const path = window.location.pathname
+    if (path === "/") {
+        <Home />
+    } else if (path === "/accordion") {
+        <Accordion />
+}  
+}

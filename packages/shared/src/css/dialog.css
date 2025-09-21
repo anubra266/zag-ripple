@@ -1,0 +1,72 @@
+[data-scope="dialog"][data-part="backdrop"] {
+  background-color: rgba(0, 0, 0, 0.44);
+  position: fixed;
+  inset: 0px;
+  z-index: var(--layer-index);
+}
+
+[data-scope="dialog"][data-part="positioner"] {
+  height: 100vh;
+  width: 100vw;
+  position: fixed;
+  inset: 0px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: var(--layer-index);
+}
+
+[data-scope="dialog"][data-part="title"] {
+  margin: 0px;
+  font-weight: 500;
+  color: rgb(26, 21, 35);
+  font-size: 17px;
+}
+
+[data-scope="dialog"][data-part="description"] {
+  margin: 10px 0px 20px;
+  color: rgb(111, 110, 119);
+  font-size: 15px;
+  line-height: 1.5;
+}
+
+[data-scope="dialog"][data-part="content"] {
+  background-color: white;
+  border-radius: 6px;
+  box-shadow:
+    rgb(14 18 22 / 35%) 0px 10px 38px -10px,
+    rgb(14 18 22 / 20%) 0px 10px 20px -15px;
+  width: 100%;
+  max-width: 450px;
+  max-height: 85vh;
+  padding: 24px;
+  position: relative;
+  z-index: var(--layer-index);
+  transition: transform 0.2s ease-in-out;
+
+  &[data-has-nested] {
+    transform: scale(calc(1 - var(--nested-layer-count) * 0.05));
+  }
+
+  &[data-state="open"] {
+    animation: scaleFadeIn 0.2s ease-in-out;
+  }
+
+  &[data-state="closed"] {
+    animation: scaleFadeOut 0.25s ease-in-out;
+  }
+}
+
+[data-scope="dialog"][data-part="close-trigger"] {
+  font-family: inherit;
+  height: 25px;
+  width: 25px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: rgb(87, 70, 175);
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  border-radius: 100%;
+}

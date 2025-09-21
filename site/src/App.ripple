@@ -1,0 +1,17 @@
+import { Routes } from "./Routes.ripple";
+import { routesData } from "@zag-js/shared";
+import { dataAttr } from "@zag-js/dom-query";
+
+const sortedRoutes = routesData.sort((a, b) => a.label.localeCompare(b.label));
+
+export component App() {
+  <div class="page">
+    <aside class="nav">
+      <header>{"Zagjs"}</header>
+      for (const route of sortedRoutes) {
+        <a href={route.path} data-active={dataAttr(route.path === window.location.pathname)}>{route.label}</a>
+      }
+    </aside>
+    <Routes />
+  </div>
+}

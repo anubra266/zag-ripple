@@ -1,0 +1,6 @@
+import { createNormalizer } from "@zag-js/types"
+
+ 
+
+// Simple prop normalizer for RippleJS - just pass through
+export const normalizeProps = createNormalizer((props) => props)

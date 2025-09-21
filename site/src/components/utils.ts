@@ -1,0 +1,1 @@
+export const object_keys = (obj: any) => Object.keys(obj)

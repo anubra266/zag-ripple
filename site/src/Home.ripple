@@ -1,0 +1,15 @@
+import { routesData } from "@zag-js/shared"
+const sortedRoutes = routesData.sort((a, b) => a.label.localeCompare(b.label));
+
+export component Home() {
+    <div class="index-nav">
+        <h2>{"Ripple UI Machines"}</h2>
+        <ul>
+            for (const route of sortedRoutes) {
+                <li>
+                    <a href={route.path}>{route.label}</a>
+                </li>
+            }
+        </ul>
+    </div>
+}

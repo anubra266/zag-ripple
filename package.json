@@ -1,0 +1,13 @@
+{
+  "name": "zag-ripple",
+  "version": "0.0.0",
+  "description": "RippleJS Adapter for Zag JS",
+  "scripts": {
+    "test": "echo \"No test specified\"",
+    "site": "pnpm --filter=./site"
+  },
+  "keywords": [],
+  "author": "anubra266",
+  "license": "ISC",
+  "packageManager": "pnpm@9.15.0"
+}

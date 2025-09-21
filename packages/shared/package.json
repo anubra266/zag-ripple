@@ -1,0 +1,9 @@
+{
+  "name": "@zag-js/shared",
+  "version": "0.0.4",
+  "main": "src/index.ts",
+  "private": true,
+  "dependencies": {
+    "@zag-js/tour": "^1.24.2"
+  }
+}

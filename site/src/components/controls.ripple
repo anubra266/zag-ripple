@@ -1,0 +1,90 @@
+import { track } from "ripple"
+import { deepGet } from "@zag-js/shared"
+
+// Because of ripple bug
+import { object_keys } from "./utils"
+
+export component Controls({ store }) {
+    const { config, context, setContext } = store
+
+    <div class="controls-container" >
+        for (const key of object_keys(config)) {
+            const { type, label = key, options, placeholder, min, max } = (config[key] ?? {})
+            const value = track(() => deepGet(@context, key))
+            if (type === "boolean") {
+                <div class="checkbox">
+                    <input
+                        data-testid={key}
+                        id={label}
+                        type="checkbox"
+                        checked={@value}
+                        oninput={(e) => {
+                            setContext(key, e.currentTarget.checked)
+                        }}
+                    />
+                    <label for={label}>{label}</label>
+                </div>
+            }
+            else if (type === "string") {
+                <div class="text">
+                    <input
+                        data-testid={key}
+                        id={label}
+                        type="text"
+                        {placeholder}
+                        {value}
+                        onkeydown={(event) => {
+                            if (event.key === "Enter") {
+                                setContext(key, event.currentTarget.value)
+                            }
+                        }}
+                    />
+                    <label for={label}>{label}</label>
+                </div>
+            }
+            else if (type === "select") {
+                <div class="text">
+                    <label for={label} style="margin-right:10px;">
+                        {label}
+                    </label>
+                    <select
+                        data-testid={key}
+                        id={label}
+                        {value}
+                        onchange={(event) => {
+                            setContext(key, event.currentTarget.value)
+                        }}
+                    >
+                        <option>{"-----"}</option>
+                        for (const item of options) {
+                            <option value={item}>
+                                {item}
+                            </option>
+                        }
+                    </select>
+                </div>
+            }
+            else if (type === "number") {
+                <div class="text">
+                    <label for={label} style="margin-right:10px;">
+                        {label}
+                    </label>
+                    <input
+                        data-testid={key}
+                        id={label}
+                        type="number"
+                        {min}
+                        {max}
+                        {value}
+                        onkeydown={(e) => {
+                            if (e.key === "Enter") {
+                                const val = parseFloat(e.target.value)
+                                setContext(key, isNaN(val) ? 0 : val)
+                            }
+                        }}
+                    />
+                </div>
+            }
+        }
+    </div>
+}

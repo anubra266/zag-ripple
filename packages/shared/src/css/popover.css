@@ -1,0 +1,74 @@
+.popover [data-part="root"] {
+  display: flex;
+  align-items: flex-start;
+  gap: 24px;
+}
+
+[data-scope="popover"][data-part="content"] {
+  --arrow-background: white;
+  --arrow-size: 10px;
+  background: white;
+  padding: 20px;
+  border-radius: 4px;
+  position: relative;
+  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.2));
+  width: 260px;
+  transform-origin: var(--transform-origin);
+  z-index: var(--layer-index);
+
+  &[data-fullscreen] {
+    position: fixed;
+    padding: 20px;
+    width: 100%;
+    bottom: 0px;
+  }
+
+  &[data-state="open"] {
+    animation: scaleFadeIn 0.15s ease-in-out;
+  }
+
+  &[data-state="closed"] {
+    animation: scaleFadeOut 0.1s ease-in-out;
+  }
+}
+
+[data-scope="popover"][data-part="positioner"][data-fullscreen] {
+  display: contents;
+}
+
+[data-scope="popover"][data-part="title"] {
+  font-size: 15px;
+  line-height: 19px;
+  font-weight: bold;
+}
+
+[data-scope="popover"] [data-part="body"] {
+  padding-top: 12px;
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  gap: 12px;
+  position: relative;
+  font-size: 14px;
+}
+
+[data-scope="popover"][data-part="close-trigger"] {
+  position: absolute;
+  right: 0px;
+  top: -20px;
+}
+
+[data-scope="popover"][data-part="arrow"] {
+  --arrow-background: white;
+  --arrow-shadow-color: #ebebeb;
+  box-shadow: var(--box-shadow);
+}
+
+[data-scope="popover"][data-part="indicator"] {
+  display: inline-flex;
+  margin-inline-start: 4px;
+}
+
+[data-scope="popover"][data-part="indicator"][data-state="open"] {
+  rotate: 90deg;
+}

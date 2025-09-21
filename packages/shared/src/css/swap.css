@@ -1,0 +1,16 @@
+.swap button {
+  width: 120px;
+  display: grid;
+  grid-template-areas: "stack";
+  > * {
+    grid-area: stack;
+  }
+}
+
+[data-scope="swap"][data-state="open"] {
+  animation: scaleFadeIn 0.2s ease-out;
+}
+
+[data-scope="swap"][data-state="closed"] {
+  animation: scaleFadeOut 0.1s ease-in;
+}

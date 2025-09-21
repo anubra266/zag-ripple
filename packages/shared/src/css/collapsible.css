@@ -1,0 +1,24 @@
+[data-scope="collapsible"][data-part="content"] {
+  overflow: hidden;
+  max-width: 400px;
+
+  &[data-state="open"] {
+    animation: expandHeight 200ms ease;
+  }
+
+  &[data-state="closed"] {
+    animation: collapseHeight 200ms ease;
+  }
+}
+
+[data-scope="collapsible"][data-part="trigger"] {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+[data-scope="collapsible"][data-part="indicator"] {
+  &[data-state="open"] {
+    transform: rotate(180deg);
+  }
+}

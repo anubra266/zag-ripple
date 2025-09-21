@@ -1,0 +1,14 @@
+[data-scope="presence"] {
+  background-color: red;
+  padding: 24px;
+  width: 240px;
+  transform-origin: left top;
+
+  &[data-state="open"] {
+    animation: scaleFadeIn 0.15s ease-out;
+  }
+
+  &[data-state="closed"] {
+    animation: scaleFadeOut 0.1s ease-in;
+  }
+}
