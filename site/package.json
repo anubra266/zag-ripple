@@ -22,6 +22,7 @@
 	},
 	"dependencies": {
 		"@internationalized/date": "3.9.0",
+		"@kgroat/ripple-router": "^0.0.2",
 		"@vercel/analytics": "^1.5.0",
 		"@zag-js/accordion": "^1.24.2",
 		"@zag-js/anatomy": "^1.24.2",
@@ -98,7 +99,6 @@
 		"@zag-js/types": "^1.24.2",
 		"@zag-js/utils": "^1.24.2",
 		"ripple": "^0.2.59",
-		"ripple-router": "^0.3.0",
 		"zag-ripple": "workspace:*"
 	}
 }

@@ -1,0 +1,34 @@
+import { Link } from '@kgroat/ripple-router';
+
+export component NotFound(props: { $route: string }) {
+  <div class="not-found">
+    <h1>{"404 - Page Not Found"}</h1>
+    <p>{"The route "}<code>{props.$route}</code>{" does not exist"}</p>
+    <p><Link class="link" href="/">{"Go Home"}</Link></p>
+    
+    <style>
+    .not-found {
+      padding: 2rem;
+      text-align: center;
+    }
+    
+    code {
+      background-color: rgba(0, 0, 0, 0.1);
+      padding: 0.2rem 0.4rem;
+      border-radius: 4px;
+      font-family: monospace;
+    }
+    
+    .link {
+      color: #007acc;
+      text-decoration: none;
+      font-weight: 500;
+    }
+    
+    .link:hover {
+      text-decoration: underline;
+    }
+    </style>
+  </div>
+}
+

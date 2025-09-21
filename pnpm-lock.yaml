@@ -38,6 +38,9 @@ importers:
       '@internationalized/date':
         specifier: 3.9.0
         version: 3.9.0
+      '@kgroat/ripple-router':
+        specifier: ^0.0.2
+        version: 0.0.2(ripple@0.2.59)
       '@vercel/analytics':
         specifier: ^1.5.0
         version: 1.5.0(react@18.3.1)
@@ -266,9 +269,6 @@ importers:
       ripple:
         specifier: ^0.2.59
         version: 0.2.59
-      ripple-router:
-        specifier: ^0.3.0
-        version: 0.3.0
       zag-ripple:
         specifier: workspace:*
         version: link:../packages/zag-ripple
@@ -543,6 +543,11 @@ packages:
 
   '@jridgewell/trace-mapping@0.3.25':
     resolution: {integrity: sha512-vNk6aEwybGtawWmy/PzwnGDOjCkLWSD2wqvjGGAgOAwCGWySYXfYoxt00IJkTF+8Lb57DwOb3Aa0o9CApepiYQ==}
+
+  '@kgroat/ripple-router@0.0.2':
+    resolution: {integrity: sha512-Ok2o33wBNmeB0nwVzF+rUB0B0hpoFZ61Sgz+AM4wNl2/fckQw2C4aHSW/LTsnuV6IQT5aMOsKJgtNkm94SWmVw==}
+    peerDependencies:
+      ripple: ^0.2.36
 
   '@rollup/rollup-android-arm-eabi@4.52.0':
     resolution: {integrity: sha512-VxDYCDqOaR7NXzAtvRx7G1u54d2kEHopb28YH/pKzY6y0qmogP3gG7CSiWsq9WvDFxOQMpNEyjVAHZFXfH3o/A==}
@@ -1202,10 +1207,6 @@ packages:
     resolution: {integrity: sha512-pb/MYmXstAkysRFx8piNI1tGFNQIFA3vkE3Gq4EuA1dF6gHp/+vgZqsCGJapvy8N3Q+4o7FwvquPJcnZ7RYy4g==}
     engines: {node: '>=4'}
 
-  ripple-router@0.3.0:
-    resolution: {integrity: sha512-7wEMy5fnrAR1hTEs2ApfaoL3fTxNufdY2oRRSD5sGgumJYc5AgTk4P/8jaPvh1d8DdpSU4w14OxOpkzDVtDkEw==}
-    engines: {node: '>=20.0.0'}
-
   ripple@0.2.59:
     resolution: {integrity: sha512-Q6+sWtVgb3PIbgfUQGg0WgU6x1YAcyV8z3wTELGUB3kLA6NH5IDFF39CuNvDexyklGkfJPbYebZnqoBbv8liZw==}
 
@@ -1541,6 +1542,10 @@ snapshots:
     dependencies:
       '@jridgewell/resolve-uri': 3.1.2
       '@jridgewell/sourcemap-codec': 1.5.0
+
+  '@kgroat/ripple-router@0.0.2(ripple@0.2.59)':
+    dependencies:
+      ripple: 0.2.59
 
   '@rollup/rollup-android-arm-eabi@4.52.0':
     optional: true
@@ -2417,10 +2422,6 @@ snapshots:
       loose-envify: 1.4.0
 
   resolve-from@4.0.0: {}
-
-  ripple-router@0.3.0:
-    dependencies:
-      ripple: 0.2.59
 
   ripple@0.2.59:
     dependencies:

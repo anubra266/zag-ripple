@@ -1,5 +1,7 @@
-import { Link } from "ripple-router";
+import { Link } from "@kgroat/ripple-router";
 import { routesData } from "@zag-js/shared"
+import { dataAttr } from "@zag-js/dom-query";
+
 const sortedRoutes = routesData.sort((a, b) => a.label.localeCompare(b.label));
 
 export component Home() {
@@ -8,7 +10,7 @@ export component Home() {
         <ul>
             for (const route of sortedRoutes) {
                 <li>
-                    <Link to={route.path}>{route.label}</Link>
+                    <Link href={route.path} data-active={dataAttr(route.path === window.location.pathname)}>{route.label}</Link>
                 </li>
             }
         </ul>

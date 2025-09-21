@@ -1,8 +1,8 @@
-import { Router, Route, Link } from "ripple-router";
+import { Router, Link } from "@kgroat/ripple-router";
 import { Home } from "./Home.ripple";
 import { Accordion } from "./components/Accordion.ripple";
+import { NotFound } from "./components/NotFound.ripple";
 import { routesData } from "@zag-js/shared";
-import { dataAttr } from "@zag-js/dom-query";
 
 const sortedRoutes = routesData.sort((a, b) => a.label.localeCompare(b.label));
 
@@ -11,14 +11,21 @@ export component App() {
     <aside class="nav">
       <header>{"Zagjs"}</header>
       for (const route of sortedRoutes) {
-        <Link to={route.path}>
+        <Link href={route.path}>
           {route.label}
         </Link>
       }
     </aside>
-    <Router>
-      <Route path="/" $element={Home} />
-      <Route path="/accordion" $element={Accordion} />
-    </Router>
+    <Router
+      $routes={{
+        "/": {
+          component: Home,
+        },
+        "/accordion": {
+          component: Accordion,
+        },
+      }}
+      $notFound={NotFound}
+    />
   </div>
 }
