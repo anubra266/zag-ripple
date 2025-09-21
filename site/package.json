@@ -9,19 +9,21 @@
 	"scripts": {
 		"start": "vite",
 		"dev": "vite",
-		"build": "vite build",
+		"build": "NODE_ENV=production vite build",
 		"serve": "vite preview",
+		"deploy": "npm run build && gh-pages -d site-build",
 		"format": "prettier --write .",
 		"format:check": "prettier --check ."
 	},
 	"license": "MIT",
 	"devDependencies": {
+		"gh-pages": "^6.1.1",
 		"typescript": "^5.9.2",
 		"vite": "^7.1.4",
 		"vite-plugin-ripple": "^0.2.29"
 	},
 	"dependencies": {
-    	"@internationalized/date": "3.9.0",
+		"@internationalized/date": "3.9.0",
 		"@zag-js/accordion": "^1.24.2",
 		"@zag-js/anatomy": "^1.24.2",
 		"@zag-js/anatomy-icons": "^1.24.2",

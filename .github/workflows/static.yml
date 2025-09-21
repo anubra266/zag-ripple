@@ -19,7 +19,7 @@ permissions:
 concurrency:
   group: "pages"
   cancel-in-progress: true
-  
+
 env:
   BUILD_PATH: "site"
 
@@ -29,22 +29,33 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v1
-      - name: Install
-        uses: ./.github/composite-actions/install
+        uses: actions/checkout@v4
+
       - name: Setup Node
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
+        with:
+          node-version: "18"
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: 9.15.0
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
       - name: Setup Pages
         id: pages
-        uses: actions/configure-pages@v2
+        uses: actions/configure-pages@v3
+
       - name: Build with Vite
         run: |
-          pnpm --filter site build
-        working-directory: ${{ env.BUILD_PATH }}
+          cd site
+          NODE_ENV=production pnpm build
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3.0.1
         with:
-          path: ${{ env.BUILD_PATH }}/site-build
+          path: ./site/site-build
 
   deploy:
     environment:
