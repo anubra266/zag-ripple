@@ -1,17 +1,13 @@
 import * as accordion from "@zag-js/accordion";
 import { normalizeProps, useMachine } from "zag-ripple";
 import { accordionControls, accordionData } from "@zag-js/shared"
-import { track, effect } from "ripple";
-import { Toolbar } from "./lib/toolbar.ripple";
+import { track } from "ripple";
+import { Toolbar } from "../lib/toolbar.ripple";
 import { StateVisualizer } from "../lib/state-visualizer.ripple";
 import { createControls } from "../lib/create-controls.ripple";
 
 export component Accordion() {
   const controls = createControls(accordionControls)
-
-  // effect(() => {
-  //   console.log({props: controls.mergeProps({ id: "accordion" })()}.props)
-  // })
 
   const service = track(() => useMachine(accordion.machine, controls.mergeProps({ id: "accordion" })));
   const api = track(() => accordion.connect(@service, normalizeProps));
