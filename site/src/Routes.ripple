@@ -1,4 +1,4 @@
-import { Accordion } from "./Accordion.ripple";
+import { Accordion } from "./components/Accordion.ripple";
 import { Home } from "./Home.ripple";
 
 export component Routes() {
