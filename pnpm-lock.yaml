@@ -26,7 +26,7 @@ importers:
         specifier: ^1.24.2
         version: 1.24.2
       ripple:
-        specifier: ^0.2.59
+        specifier: '>=0.2.0'
         version: 0.2.59
     devDependencies:
       typescript:
