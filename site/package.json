@@ -22,6 +22,7 @@
 	},
 	"dependencies": {
 		"@internationalized/date": "3.9.0",
+		"@vercel/analytics": "^1.5.0",
 		"@zag-js/accordion": "^1.24.2",
 		"@zag-js/anatomy": "^1.24.2",
 		"@zag-js/anatomy-icons": "^1.24.2",
@@ -73,9 +74,10 @@
 		"@zag-js/rating-group": "^1.24.2",
 		"@zag-js/rect-utils": "^1.24.2",
 		"@zag-js/remove-scroll": "^1.24.2",
-		"@zag-js/scroll-snap": "^1.24.2",
 		"@zag-js/scroll-area": "^1.24.2",
+		"@zag-js/scroll-snap": "^1.24.2",
 		"@zag-js/select": "^1.24.2",
+		"@zag-js/shared": "workspace:*",
 		"@zag-js/signature-pad": "^1.24.2",
 		"@zag-js/slider": "^1.24.2",
 		"@zag-js/solid": "^1.24.2",
@@ -95,8 +97,7 @@
 		"@zag-js/tree-view": "^1.24.2",
 		"@zag-js/types": "^1.24.2",
 		"@zag-js/utils": "^1.24.2",
-		"zag-ripple": "workspace:*",
-		"@zag-js/shared": "workspace:*",
-		"ripple": "^0.2.59"
+		"ripple": "^0.2.59",
+		"zag-ripple": "workspace:*"
 	}
 }
