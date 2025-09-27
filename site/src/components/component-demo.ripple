@@ -1,0 +1,15 @@
+import * as demos from './demos/index.ripple';
+import * as data from '../zag-shared/shared/src/data';
+
+const dataMap = {
+	'accordion': data.accordionData,
+};
+
+export component ComponentDemo({ id }) {
+	const Demo = demos[id];
+        if (Demo) {
+            <div class="demo p-6 rounded-lg border border-border/50 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+                <Demo data={dataMap[id]} />
+            </div>
+        }
+}

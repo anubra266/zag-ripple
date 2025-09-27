@@ -1,0 +1,48 @@
+import { Button } from "./ui/button.ripple";
+import { Search, Github } from "lucide-ripple";
+import { ThemeToggle } from "./theme-toggle.ripple";
+
+// TODO
+component Link({children, class: className}){
+	<a class={className}> <children /></a>
+}
+
+export component Navigation() {
+	<nav class="sticky top-0 z-50 border-b border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+      <div class="container mx-auto px-4">
+        <div class="flex h-16 items-center justify-between">
+          <Link href="/" class="flex items-center space-x-2">
+            <div class="h-8 w-8 rounded-lg bg-primary flex items-center justify-center">
+              <span class="text-primary-foreground font-bold text-lg">
+                {"ZR"}
+              </span>
+            </div>
+            <span class="font-bold text-xl">{"ZagRipple"}</span>
+          </Link>
+
+          <div class="hidden md:flex items-center space-x-2">
+            <div class="relative mr-2">
+              <Search class="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-muted-foreground" />
+              <input
+                type="text"
+                placeholder="Search components..."
+                class="pl-10 pr-4 py-2 bg-muted/50 border border-border rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-ring w-64"
+              />
+              <kbd class="absolute right-3 top-1/2 transform -translate-y-1/2 text-xs text-muted-foreground bg-muted px-1.5 py-0.5 rounded">
+                {"⌘K"}
+              </kbd>
+            </div>
+            <ThemeToggle />
+            <Button variant="ghost" size="sm">
+              <Link
+                href="https://github.com/anubra266/zag-ripple"
+                target="_blank"
+              >
+                <Github class="h-4 w-4" />
+              </Link>
+            </Button>
+          </div>
+        </div>
+      </div>
+    </nav>
+}

@@ -1,0 +1,5 @@
+export component Kbd({ children }:any) {
+    <kbd class="font-mono font-bold inline-block px-2 py-1 bg-muted text-xs rounded border-1 border-b-2 text-pink-600 shadow-xs">
+        <children />
+    </kbd>
+}

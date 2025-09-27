@@ -1,0 +1,4 @@
+[submodule "zag-shared"]
+	path = site/src/zag-shared
+	url = https://github.com/chakra-ui/zag.git
+	branch = main

@@ -1,0 +1,28 @@
+import * as accordion from '@zag-js/accordion';
+import { normalizeProps, useMachine } from 'zag-ripple';
+import { track } from 'ripple';
+
+export component Accordion({ data }) {
+	let service = track(() => useMachine(accordion.machine, {
+		id: 'accordion-1',
+		defaultValue: data[0].id,
+	}));
+	let api = track(() => accordion.connect(@service, normalizeProps));
+
+	<div {...@api.getRootProps()}>
+        for (const item of data) {
+            <div key={item.id} {...@api.getItemProps({ value: item.id })}>
+                <h3>
+                    <button {...@api.getItemTriggerProps({ value: item.id })}>
+                        {item.label}
+                        <span {...@api.getItemIndicatorProps({ value: item.id })} />
+                    </button>
+                </h3>
+                <p {...@api.getItemContentProps({ value: item.id })}>
+                    {'This is the content for '}
+                    {item.label}
+                </p>
+            </div>
+        }
+    </div>
+}

@@ -2,7 +2,7 @@
 
   <h1>
     <br/>
-    💦
+    <img src="https://cdn.jsdelivr.net/gh/anubra266/zag-ripple/site/public/favicon.svg" alt="logo" />
     <br />
     zag-ripple
     <br />

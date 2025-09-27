@@ -1,0 +1,45 @@
+import { Card } from './/ui/card.ripple';
+import { getAccessibilityDoc } from "@zag-js/docs"
+import { Keyboard } from "lucide-ripple";
+import { Kbd } from './ui/kbd.ripple';
+
+export component KeyboardInteractions({id}:any) {
+  const data = getAccessibilityDoc(id)
+
+  try {
+  <Card class="p-6 bg-muted/50">
+    <div class="flex items-center gap-2 mb-4">
+      <Keyboard class="h-4 w-4 text-primary" />
+      <h3 class="text-lg font-semibold">{'Keyboard Interactions'}</h3>
+    </div>
+    <div class="overflow-x-auto">
+      <table class="w-full text-sm">
+        <thead>
+          <tr class="border-b border-border">
+            <th class="text-left py-2 font-semibold">{"Key"}</th>
+            <th class="text-left py-2 font-semibold">
+              {'Description'}
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          for(const item of data.keyboard) {
+            <tr class='not-last:border-b border-border/50'>
+              <td class="py-2 flex gap-2 items-center">
+                for(const key of item.keys) {
+                  <Kbd>
+                    {key}
+                  </Kbd>
+                }
+              </td>
+              <td class="py-2">{item.description}</td>
+            </tr>
+          }
+        </tbody>
+      </table>
+      </div>
+    </Card>
+  } catch  {
+    
+  }
+}

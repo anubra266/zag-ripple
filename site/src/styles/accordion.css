@@ -1,0 +1,29 @@
+.demo {
+	[data-scope='accordion'][data-part='root'] {
+		@apply w-full space-y-2;
+	}
+
+    [data-scope='accordion'][data-part='item'] {
+		@apply border border-border rounded-md;
+	}
+
+	[data-scope='accordion'] h3 {
+		@apply m-0;
+	}
+
+    [data-scope='accordion'][data-part='item-trigger'] {
+		@apply p-3 hover:underline bg-muted/50 border-b border-border flex items-center justify-between w-full text-sm font-medium
+	}
+
+    [data-scope='accordion'][data-part='item-indicator'] {
+		@apply w-4 h-4 border border-border rounded
+	}
+
+	[data-scope='accordion'][data-part='item-indicator'][data-state='open'] {
+		@apply rotate-45;
+	}
+
+	[data-scope='accordion'][data-part='item-content'] {
+		@apply p-3 text-sm text-muted-foreground
+	}
+}

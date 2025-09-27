@@ -1,0 +1,71 @@
+import { Button } from "./ui/button.ripple";
+import { ArrowRight, Sparkles, Zap, CodeXml, Check } from "lucide-ripple";
+import { useCopy } from "../lib/use-copy.ripple";
+
+export component HeroSection() {
+    let [copy, copied] = useCopy()
+  
+    <section class="relative min-h-[90vh] flex items-center justify-center">
+
+      <div class="relative container mx-auto px-4 text-center">
+        {/* Announcement Badge */}
+        <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 text-primary text-sm mb-8">
+          <Sparkles class="h-4 w-4" />
+          <span>{"Built with Zag.js • Headless • Accessible"}</span>
+        </div>
+
+        {/* Main Heading */}
+        <h1 class="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 text-balance">
+          <span class="text-primary">{"ZagRipple"}</span>
+          <br />
+          {"Component Library"}
+        </h1>
+
+        {/* Subtitle */}
+        <p class="text-xl md:text-2xl text-muted-foreground mb-8 max-w-3xl mx-auto text-balance">
+          {`Beautiful, accessible, and performant UI components for Ripple JS.
+          Built with Zag.js for maximum flexibility and developer experience.`}
+        </p>
+
+        {/* CTA Buttons */}
+        <div class="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12">
+          <Button
+            size="lg"
+            class="glow-cyan-strong text-lg px-8 py-6"
+            href="/components"
+          >
+              {"Browse Components"}
+              <ArrowRight class="ml-2 h-5 w-5" />
+          </Button>
+          {/* Installation Command */}
+          <div class="inline-flex items-center gap-3 px-6 py-3 bg-muted/50 border border-border rounded-lg font-mono text-sm">
+            <span class="text-muted-foreground">{"$"}</span>
+            <span>{"npm install zag-ripple"}</span>
+            <Button variant="ghost" size="sm" class="h-6 w-6 p-0" onClick={() => copy("npm install zag-ripple")}>
+              if (@copied) {
+                <Check class="h-3 w-3" />
+              } else {    
+                <CodeXml class="h-3 w-3" />
+              }
+            </Button>
+          </div>
+        </div>
+
+        {/* Feature Icons */}
+        <div class="flex justify-center items-center gap-8 mt-40 text-muted-foreground">
+          <div class="flex items-center gap-2">
+            <Zap class="h-5 w-5 text-primary" />
+            <span class="text-sm">{"Lightning Fast"}</span>
+          </div>
+          <div class="flex items-center gap-2">
+            <Sparkles class="h-5 w-5 text-primary" />
+            <span class="text-sm">{"Fully Accessible"}</span>
+          </div>
+          <div class="flex items-center gap-2">
+            <CodeXml class="h-5 w-5 text-primary" />
+            <span class="text-sm">{"Developer First"}</span>
+          </div>
+        </div>
+      </div>
+    </section>
+}

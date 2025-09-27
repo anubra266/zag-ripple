@@ -1,10 +1,7 @@
 import { mount } from 'ripple';
-import { App } from './App.ripple';
-import "@zag-js/shared/src/style.css"
-import { inject } from "@vercel/analytics"
+import { Layout } from './Layout.ripple';
+import './styles/index.css';
 
-inject()
-
-mount(App, {
+mount(Layout, {
 	target: document.getElementById('root'),
 });

@@ -1,0 +1,59 @@
+<svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="rippleGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#6366f1;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#8b5cf6;stop-opacity:0.8" />
+      <stop offset="100%" style="stop-color:#06b6d4;stop-opacity:0.6" />
+    </linearGradient>
+    
+    <linearGradient id="zagGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#f59e0b;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#ef4444;stop-opacity:1" />
+    </linearGradient>
+    
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
+      <feMerge> 
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/> 
+      </feMerge>
+    </filter>
+  </defs>
+  
+  <!-- Background circle for contrast -->
+  <circle cx="60" cy="60" r="58" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="0.5"/>
+  
+  <!-- Ripple circles (concentric) -->
+  <circle cx="60" cy="60" r="45" fill="none" stroke="url(#rippleGradient)" stroke-width="1.5" opacity="0.3"/>
+  <circle cx="60" cy="60" r="35" fill="none" stroke="url(#rippleGradient)" stroke-width="2" opacity="0.5"/>
+  <circle cx="60" cy="60" r="25" fill="none" stroke="url(#rippleGradient)" stroke-width="2.5" opacity="0.7"/>
+  
+  <!-- Central zag shape (angular/lightning-like) -->
+  <path 
+    d="M 45 35 L 65 35 L 55 55 L 70 55 L 45 85 L 55 65 L 40 65 Z" 
+    fill="url(#zagGradient)" 
+    filter="url(#glow)"
+    opacity="0.9"
+  />
+  
+  <!-- Additional ripple elements for dynamic feel -->
+  <path 
+    d="M 20 60 Q 30 50, 40 60 T 60 60" 
+    fill="none" 
+    stroke="url(#rippleGradient)" 
+    stroke-width="2" 
+    opacity="0.4"
+  />
+  <path 
+    d="M 60 60 Q 70 50, 80 60 T 100 60" 
+    fill="none" 
+    stroke="url(#rippleGradient)" 
+    stroke-width="2" 
+    opacity="0.4"
+  />
+  
+  <!-- Small accent dots -->
+  <circle cx="75" cy="45" r="2" fill="url(#rippleGradient)" opacity="0.6"/>
+  <circle cx="45" cy="75" r="2" fill="url(#rippleGradient)" opacity="0.6"/>
+  <circle cx="85" cy="75" r="1.5" fill="url(#zagGradient)" opacity="0.8"/>
+</svg>
