@@ -8,12 +8,6 @@ importers:
 
   .: {}
 
-  packages/shared:
-    dependencies:
-      '@zag-js/tour':
-        specifier: ^1.24.2
-        version: 1.24.2
-
   packages/zag-ripple:
     dependencies:
       '@zag-js/core':
