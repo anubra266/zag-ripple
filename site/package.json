@@ -7,8 +7,8 @@
 		"node": ">=20.0.0"
 	},
 	"scripts": {
-		"start": "npm run prebuild && vite",
-		"dev": "npm run prebuild && vite",
+		"start": "vite",
+		"dev": "vite",
 		"build": "vite build",
 		"serve": "vite preview",
 		"format": "prettier --write .",

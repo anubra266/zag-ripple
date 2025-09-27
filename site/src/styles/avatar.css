@@ -1,0 +1,26 @@
+[data-scope='avatar'][data-part='root'] {
+	@apply relative inline-block mx-auto;
+	width: 80px;
+	height: 80px;
+	border-radius: 9999px;
+}
+
+[data-scope='avatar'][data-part='image'] {
+	@apply object-cover rounded-full;
+	width: 80px;
+	height: 80px;
+}
+
+[data-scope='avatar'][data-part='fallback'] {
+	@apply flex items-center justify-center rounded-full bg-muted-foreground text-background font-semibold text-sm leading-none;
+	width: 80px;
+	height: 80px;
+}
+
+[data-scope='avatar'][data-part='fallback'][data-state='visible'] {
+	@apply flex;
+}
+
+[data-scope='avatar'][data-part='fallback'][data-state='hidden'] {
+	@apply hidden;
+}

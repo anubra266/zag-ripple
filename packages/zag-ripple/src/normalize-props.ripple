@@ -34,16 +34,9 @@ export function toStyleString(style: Record<string, number | string>) {
   return string
 }
 
-const preserveKeys = new Set<string>(
-  "viewBox,className,preserveAspectRatio,fillRule,clipPath,clipRule,strokeWidth,strokeLinecap,strokeLinejoin,strokeDasharray,strokeDashoffset,strokeMiterlimit".split(
-    ",",
-  ),
-)
-
 function toRippleProp(key: string) {
   if (key in propMap) return propMap[key]
-  if (preserveKeys.has(key)) return key
-  return key.toLowerCase()
+  return key
 }
 
 function toRipplePropValue(key: string, value: Dict[string]) {

@@ -1,0 +1,47 @@
+import * as carousel from '@zag-js/carousel';
+import { normalizeProps, useMachine } from 'zag-ripple';
+import { track, effect } from 'ripple';
+import { ChevronLeft, ChevronRight } from 'lucide-ripple';
+
+const items = [
+  "https://tinyurl.com/dd44dvue",
+  "https://tinyurl.com/2s3pzdvd",
+  "https://tinyurl.com/bdffcbjr",
+  "https://tinyurl.com/4hpw7nmf",
+  "https://tinyurl.com/7ksvxfjh",
+]
+export component Carousel() {
+	let service = track(() => useMachine(carousel.machine, {
+		id: 'carousel',
+        slideCount: items.length,
+	}));
+	let api = track(() => carousel.connect(@service, normalizeProps));
+
+    effect(() => {
+        console.log(@service.context.get('page'));
+    });
+
+    <div {...@api.getRootProps()}>
+        <div {...@api.getItemGroupProps()}>
+            for(const image of items; index index) {
+                <div {...@api.getItemProps({ index })}>
+                    <img src={image} alt={`Slide Image ${index}`} />
+                </div>
+            }
+        </div>
+
+        <div {...@api.getControlProps()}>
+        <button {...@api.getPrevTriggerProps()}>
+            <ChevronLeft />
+        </button>
+        <div {...@api.getIndicatorGroupProps()}>
+            for(const _ of @api.pageSnapPoints; index index) {
+                <button {...@api.getIndicatorProps({ index })} />
+            }
+        </div>
+        <button {...@api.getNextTriggerProps()}>
+            <ChevronRight />
+        </button>
+        </div>
+    </div>
+}

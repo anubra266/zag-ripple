@@ -254,11 +254,27 @@ export function useMachine(
 
   let status = MachineStatus.NotStarted
 
-   // Initialize machine immediately - RippleJS components run imperatively
-   status = MachineStatus.Started
-   debug("initializing...")
-   const initialState = machine.initialState({ prop })
-   state.set(initialState)
+  effect(() => {
+    queueMicrotask(() => {
+      const started = status === MachineStatus.Started
+      status = MachineStatus.Started
+      debug(started ? "rehydrating..." : "initializing...")
+      state.invoke(state.initial, INIT_STATE)
+    })
+
+    return () => {
+      debug("unmounting...")
+      status = MachineStatus.Stopped
+      effects.forEach((fn) => fn?.())
+      effects = new Map()
+      transitionRef.current = null
+      queueMicrotask(() => {
+        action(machine.exit)
+      })
+    }
+  })
+
+  
 
   machine.watch?.(getParams())
 

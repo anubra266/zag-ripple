@@ -1,0 +1,68 @@
+[data-scope='carousel'][data-part='root'] {
+	@apply flex flex-col items-start gap-4 w-full max-w-md mx-auto;
+}
+
+[data-scope='carousel'][data-part='item-group'] {
+	@apply self-stretch rounded-lg;
+	/* Hide scrollbar */
+	scrollbar-width: none;
+	-webkit-scrollbar-width: none;
+	-ms-overflow-style: none;
+}
+
+[data-scope='carousel'][data-part='item-group']::-webkit-scrollbar {
+	display: none;
+}
+
+[data-scope='carousel'][data-part='item'] {
+	@apply flex justify-center items-center border border-border overflow-hidden;
+}
+
+[data-scope='carousel'][data-part='item'] img {
+	@apply m-0 object-cover w-full h-72;
+}
+
+[data-scope='carousel'][data-part='control'] {
+	@apply flex gap-2 self-stretch items-center;
+}
+
+[data-scope='carousel'][data-part='prev-trigger'],
+[data-scope='carousel'][data-part='next-trigger'] {
+	@apply flex items-center justify-center w-10 h-10 rounded-full bg-background border-2 border-muted-foreground/30 hover:bg-muted hover:border-muted-foreground/50 transition-colors;
+}
+
+[data-scope='carousel'][data-part='prev-trigger'][disabled],
+[data-scope='carousel'][data-part='next-trigger'][disabled] {
+	@apply opacity-50 cursor-not-allowed border-muted-foreground/15;
+}
+
+[data-scope='carousel'][data-part='prev-trigger'][disabled]:hover,
+[data-scope='carousel'][data-part='next-trigger'][disabled]:hover {
+	@apply bg-background border-muted-foreground/15;
+}
+
+[data-scope='carousel'][data-part='prev-trigger'] svg,
+[data-scope='carousel'][data-part='next-trigger'] svg {
+	@apply w-4 h-4 text-foreground;
+}
+
+[data-scope='carousel'][data-part='prev-trigger'][disabled] svg,
+[data-scope='carousel'][data-part='next-trigger'][disabled] svg {
+	@apply text-muted-foreground;
+}
+
+[data-scope='carousel'][data-part='indicator-group'] {
+	@apply flex justify-center items-center gap-2 flex-1 mx-2;
+}
+
+[data-scope='carousel'][data-part='indicator'] {
+	@apply flex justify-center items-center w-2 h-2 rounded-full bg-muted-foreground/40 cursor-pointer transition-colors duration-200 border-0;
+}
+
+[data-scope='carousel'][data-part='indicator'][data-current] {
+	@apply bg-primary;
+}
+
+[data-scope='carousel'][data-part='indicator']:hover:not([data-current]) {
+	@apply bg-muted-foreground/60;
+}

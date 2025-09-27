@@ -77,7 +77,7 @@ export component Component({ params }: any) {
             <div class="space-y-6 mb-8">
                 const Demo = demos[toCamelCase(componentId)];
                 if (Demo) {
-                    <div class="demo p-6 rounded-lg border border-border/50 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+                    <div class="demo flex p-6 rounded-lg border border-border/50 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
                         <Demo />
                     </div>
                 }
