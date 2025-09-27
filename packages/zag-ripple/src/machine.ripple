@@ -108,6 +108,40 @@ export function useMachine(
 
   const refs = createRefs(machine.refs?.({ prop, context: ctx }) ?? {})
 
+  const send = (event) => {
+    
+    if (status !== MachineStatus.Started) return
+
+    previousEventRef.current = eventRef.current
+    eventRef.current = event
+
+    let currentState = state.get()
+
+    const transitions = 
+      machine.states[currentState]?.on?.[event.type] ?? 
+      machine.on?.[event.type]
+
+    const transition = choose(transitions)
+    if (!transition) return
+
+    // save current transition
+    transitionRef.current = transition
+    const target = transition.target ?? currentState
+
+    debug("transition", event.type, transition.target || currentState, `(${transition.actions})`)
+
+    const changed = target !== currentState
+    if (changed) {
+      state.set(target)
+    } else if (transition.reenter && !changed) {
+      // reenter will re-invoke the current state
+      state.invoke?.(currentState, currentState)
+    } else {
+      // call transition actions
+      action(transition.actions ?? [])
+    }
+  }
+  
   const getParams = () => ({
     state: getState(),
     context: ctx,
@@ -225,40 +259,6 @@ export function useMachine(
    debug("initializing...")
    const initialState = machine.initialState({ prop })
    state.set(initialState)
-
-   const send = (event) => {
-    console.log("send", event)
-     if (status !== MachineStatus.Started) return
-
-     previousEventRef.current = eventRef.current
-     eventRef.current = event
-
-     let currentState = state.get()
-
-     const transitions = 
-       machine.states[currentState]?.on?.[event.type] ?? 
-       machine.on?.[event.type]
-
-     const transition = choose(transitions)
-     if (!transition) return
-
-     // save current transition
-     transitionRef.current = transition
-     const target = transition.target ?? currentState
-
-     debug("transition", event.type, transition.target || currentState, `(${transition.actions})`)
-
-     const changed = target !== currentState
-     if (changed) {
-       state.set(target)
-     } else if (transition.reenter && !changed) {
-       // reenter will re-invoke the current state
-       state.invoke?.(currentState, currentState)
-     } else {
-       // call transition actions
-       action(transition.actions ?? [])
-     }
-   }
 
   machine.watch?.(getParams())
 

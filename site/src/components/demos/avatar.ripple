@@ -1,0 +1,14 @@
+import * as avatar from '@zag-js/avatar';
+import { normalizeProps, useMachine } from 'zag-ripple';
+import { track } from 'ripple';
+
+export component Avatar() {
+	let service = track(() => useMachine(avatar.machine, {
+		id: 'avatar',
+	}));
+	let api = track(() => avatar.connect(@service, normalizeProps));
+
+    <div {...@api.getRootProps()}>
+      
+    </div>
+}
