@@ -8,7 +8,7 @@ export component ApiTable({id}:any) {
 
     <section class="mb-12">
         <h2 class="text-2xl font-bold mb-4">{"API"}</h2>
-        <Card class="p-6 bg-muted/50">
+        <Card class="p-6 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
             <div class="overflow-x-auto">
                 <table class="w-full text-sm">
                 <thead>

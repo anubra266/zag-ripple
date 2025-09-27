@@ -227,6 +227,7 @@ export function useMachine(
    state.set(initialState)
 
    const send = (event) => {
+    console.log("send", event)
      if (status !== MachineStatus.Started) return
 
      previousEventRef.current = eventRef.current

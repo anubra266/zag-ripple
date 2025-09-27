@@ -1,0 +1,12 @@
+import { Code as CodeBlock } from './/code.ripple';
+import { Card } from './ui/card.ripple';
+import { getComponentCode } from '../lib/get-component-code';
+
+export component Usage({ id }: { id: string }) {
+	const code = getComponentCode(id);
+
+	<section class='mb-12'>
+		<h2 class='text-2xl font-bold mb-4'>{'Usage'}</h2>
+		<Card class='p-6 bg-muted/50'><CodeBlock code={code} language='jsx' /></Card>
+	</section>
+}

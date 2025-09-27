@@ -1,0 +1,127 @@
+import { Button } from './ui/button.ripple';
+import { Play, ExternalLink } from 'lucide-ripple';
+import sdk from '@stackblitz/sdk';
+import { components } from '../lib/components';
+import { getComponentCode } from '../lib/get-component-code';
+import { toPascalCase } from '../lib/get-component-code';
+import { getComponentStyles } from '../lib/get-component-styles';
+import * as data from '../zag-shared/shared/src/data';
+
+export component OpenInStackblitz({ id }: { id: string }) {
+	<Button onClick={() => openInStackblitz(id)} variant='outline' size='sm' class='h-9 text-xs bg-orange-50 hover:bg-orange-100 border-orange-200 text-orange-700 dark:bg-orange-950 dark:hover:bg-orange-900 dark:border-orange-800 dark:text-orange-300'>
+		<Play class='h-3 w-3 mr-1.5' />
+		{'Open in StackBlitz'}
+		<ExternalLink class='h-3 w-3 ml-1.5' />
+	</Button>
+}
+
+function openInStackblitz(id: string) {
+	const component = components.find((component) => component.id === id);
+	sdk.openProject({
+		title: 'Zag Ripple - ' + component.label,
+		description: component.description,
+		template: 'node',
+		files: {
+            [`src/${toPascalCase(id)}.ripple`]: getComponentCode(id),
+            "src/index.ts": getIndexTS(id),
+            'src/styles.css': getComponentStyles(id),
+            'index.html': indexHtml(component.label),
+            'package.json': packageJson(id),
+            'ripple.d.ts': `declare module '*.ripple';`,
+            'vite.config.js': viteConfig,
+            'tsconfig.json': JSON.stringify(tsConfig),
+		},
+	}, 
+    {
+		openFile: `src/index.ts,src/${toPascalCase(id)}.ripple`,
+		showSidebar: false,
+		newWindow: true,
+	});
+}
+
+const getIndexTS = (id: string) => `import { mount } from 'ripple';
+import { ${toPascalCase(id)} } from './${toPascalCase(id)}.ripple';
+import './styles.css';
+
+mount(${toPascalCase(id)}, {
+	target: document.getElementById('root'),
+});`
+
+const indexHtml = (label: string) => { 
+    
+    return`<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<meta name="theme-color" content="#000000" />
+		<title>Zag Ripple - ${label}</title>
+	</head>
+	<body>
+		<noscript>You need to enable JavaScript to run this app.</noscript>
+		<div id="root"></div>
+
+		<script src="/src/index.ts" type="module"></script>
+	</body>
+</html>
+`}
+
+const packageJson = (id: string) => JSON.stringify({
+	"name": `zag-ripple-${id}-demo`,
+	"version": "0.0.0",
+	"description": "",
+	"type": "module",
+	"engines": {
+		"node": ">=20.0.0"
+	},
+	"scripts": {
+		"start": "vite",
+		"dev": "vite",
+		"build": "vite build",
+		"serve": "vite preview",
+		"format": "prettier --write .",
+		"format:check": "prettier --check ."
+	},
+	"license": "MIT",
+	"devDependencies": {
+		"prettier": "latest",
+		"prettier-plugin-ripple": "latest",
+		"typescript": "^5.9.2",
+		"vite": "^7.1.4",
+		"vite-plugin-ripple": "latest"
+	},
+	"dependencies": {
+		[`@zag-js/${id}`]: "latest",
+		"ripple": "latest",
+		"zag-ripple": "latest",
+	}
+})
+
+
+const tsConfig = {
+	"compilerOptions": {
+		"target": "ESNext",
+		"module": "ESNext",
+		"lib": ["ES2022", "DOM", "DOM.Iterable"],
+		"allowSyntheticDefaultImports": true,
+		"esModuleInterop": true,
+		"moduleResolution": "bundler",
+		"jsx": "preserve",
+		"jsxImportSource": "ripple",
+		"noEmit": true,
+		"isolatedModules": true
+	}
+}
+
+const viteConfig = `import { defineConfig } from 'vite';
+import { ripple } from 'vite-plugin-ripple';
+
+export default defineConfig({
+	plugins: [ripple()],
+	server: {
+		port: 3000,
+	},
+	build: {
+		target: 'esnext',
+	},
+});`

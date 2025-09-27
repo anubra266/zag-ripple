@@ -16,6 +16,7 @@
   "homepage": "https://github.com/anubra266/zag-ripple#readme",
   "license": "MIT",
   "main": "src/index.ripple",
+  "types": "src/index.d.ts",
   "repository": "https://github.com/anubra266/zag-ripple/tree/main/packages/zag-ripple",
   "sideEffects": false,
   "publishConfig": {

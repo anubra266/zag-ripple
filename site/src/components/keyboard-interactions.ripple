@@ -7,7 +7,7 @@ export component KeyboardInteractions({id}:any) {
   const data = getAccessibilityDoc(id)
 
   try {
-  <Card class="p-6 bg-muted/50">
+  <Card class="p-6 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
     <div class="flex items-center gap-2 mb-4">
       <Keyboard class="h-4 w-4 text-primary" />
       <h3 class="text-lg font-semibold">{'Keyboard Interactions'}</h3>

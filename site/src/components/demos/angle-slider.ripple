@@ -1,0 +1,28 @@
+import * as angleSlider from '@zag-js/angle-slider';
+import { normalizeProps, useMachine } from 'zag-ripple';
+import { track, effect } from 'ripple';
+
+export component AngleSlider() {
+	let service = track(() => useMachine(angleSlider.machine, {
+		id: 'angle-slider',
+	}));
+	let api = track(() => angleSlider.connect(@service, normalizeProps));
+
+    effect(() => {
+        console.log("api", @service.state);
+    });
+
+    <div {...@api.getRootProps()}>
+        <label {...@api.getLabelProps()}>{'Wind direction'}</label>
+        <div {...@api.getControlProps()}>
+            <div {...@api.getThumbProps()} />
+            <div {...@api.getMarkerGroupProps()}>
+                for (const value of [0, 45, 90, 135, 180, 225, 270, 315]) {
+                    <div {...@api.getMarkerProps({ value })}></div>
+                }
+            </div>
+        </div>
+        <div {...@api.getValueTextProps()}>{@api.value}{"°"}</div>
+        <input {...@api.getHiddenInputProps()} />
+    </div>
+}

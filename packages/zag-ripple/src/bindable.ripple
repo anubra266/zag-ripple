@@ -53,8 +53,8 @@ export function createBindable(props) {
   }
 }
 
-createBindable.cleanup = (_fn: VoidFunction) => {
-  effect(() => fn, [])
+createBindable.cleanup = (fn: VoidFunction) => {
+  effect(() => fn(), [])
 }
 
 createBindable.ref = (defaultValue: any) => {

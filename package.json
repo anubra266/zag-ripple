@@ -4,7 +4,8 @@
   "description": "RippleJS Adapter for Zag JS",
   "scripts": {
     "test": "echo \"No test specified\"",
-    "site": "pnpm --filter=./site"
+    "site": "pnpm --filter=./site",
+    "zag:sync": "git submodule update --remote --merge site/src/zag-shared"
   },
   "keywords": [],
   "author": "anubra266",

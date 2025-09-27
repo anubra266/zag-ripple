@@ -5,7 +5,7 @@ import { getDataAttrDoc } from "@zag-js/docs"
 import { Kbd } from './ui/kbd.ripple';
 
 export component DataAttributes({id}:any) {
-    <Card class="p-6 bg-muted/50">
+    <Card class="p-6 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
         <h3 class="text-lg font-semibold mb-4">{'Data Attributes'}</h3>
         <div class="space-y-6">
        try {

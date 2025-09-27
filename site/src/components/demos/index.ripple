@@ -1,1 +1,2 @@
 export { Accordion as accordion } from "./accordion.ripple";
+export { AngleSlider as angleSlider } from "./angle-slider.ripple";
