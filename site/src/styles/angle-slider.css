@@ -1,5 +1,5 @@
 [data-scope='angle-slider'][data-part='root'] {
-	@apply flex flex-col items-center gap-4;
+	@apply flex flex-col items-center gap-4 mx-auto;
 }
 
 [data-scope='angle-slider'][data-part='control'] {
@@ -12,7 +12,7 @@
 }
 
 [data-scope='angle-slider'][data-part='thumb'] {
-	@apply absolute pointer-events-none;
+	@apply absolute pointer-events-none outline-none;
 	top: 0;
 	right: 0;
 	bottom: 0;
