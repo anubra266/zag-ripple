@@ -109,7 +109,6 @@ export function useMachine(
   const refs = createRefs(machine.refs?.({ prop, context: ctx }) ?? {})
 
   const send = (event) => {
-    
     if (status !== MachineStatus.Started) return
 
     previousEventRef.current = eventRef.current

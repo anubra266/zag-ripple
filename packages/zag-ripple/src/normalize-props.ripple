@@ -8,9 +8,15 @@ const propMap: Record<string, string> = {
   defaultChecked: "checked",
   defaultValue: "value",
   htmlFor: "for",
-  onBlur: "onFocusOut",
   onChange: "onInput",
-  onFocus: "onFocusIn",
+  // TODO
+  // onFocus: "onFocusIn",
+  // onBlur: "onFocusOut",
+  // TODO remove when ripple fix is merged
+  onFocus: "onFocusin",
+  onBlur: "onFocusout",
+  onKeyDown: "onKeydown",
+  onPointerDown: "onPointerdown",
 }
 
 export function toStyleString(style: Record<string, number | string>) {
