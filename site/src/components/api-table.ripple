@@ -24,7 +24,7 @@ export component ApiTable({id}:any) {
                             <tr
                                 class='not-last:border-b border-border/50'
                             >
-                                <td class="py-2 font-mono min-w-40 text-primary">{name}</td>
+                                <td class="py-2 font-mono min-w-50 text-primary">{name}</td>
                                 <td class="py-2 pr-4">{prop.description}</td>
                                 <td class="py-2 font-mono text-green-600 dark:text-green-400d">
                                 {prop.type}

@@ -1,0 +1,55 @@
+/* Trigger Button */
+[data-scope='dialog'][data-part='trigger'] {
+	@apply px-4 py-2 bg-primary text-primary-foreground rounded-md hover:bg-primary/90 transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 focus:ring-offset-background font-medium mx-auto block;
+}
+
+/* Backdrop */
+[data-scope='dialog'][data-part='backdrop'] {
+	@apply fixed inset-0 z-50 bg-black/50 data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0;
+}
+
+/* Positioner */
+[data-scope='dialog'][data-part='positioner'] {
+	@apply fixed inset-0 z-50 flex items-center justify-center p-4;
+}
+
+/* Content */
+[data-scope='dialog'][data-part='content'] {
+	@apply bg-background data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 fixed top-[50%] left-[50%] z-50 grid w-full max-w-lg translate-x-[-50%] translate-y-[-50%] gap-4 rounded-lg border p-6 shadow-lg duration-200;
+}
+
+[data-scope='dialog'][data-part='content'][data-has-nested] {
+	transform: scale(calc(1 - var(--nested-layer-count) * 0.05));
+}
+
+/* Typography */
+[data-scope='dialog'][data-part='title'] {
+	@apply text-lg font-semibold leading-none tracking-tight;
+}
+
+[data-scope='dialog'][data-part='description'] {
+	@apply text-sm text-muted-foreground;
+}
+
+/* Close Button */
+[data-scope='dialog'][data-part='close-trigger'] {
+	@apply absolute right-4 top-4 rounded-sm opacity-70 ring-offset-background transition-opacity hover:opacity-100 focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:pointer-events-none;
+}
+
+[data-scope='dialog'][data-part='close-trigger'] svg {
+	@apply h-4 w-4;
+}
+
+/* Form Elements Inside Dialog */
+[data-scope='dialog'][data-part='content'] input {
+	@apply w-full px-3 py-2 bg-background border border-border rounded-md text-sm placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 focus:ring-offset-background mb-4;
+}
+
+[data-scope='dialog'][data-part='content'] button:not([data-part]) {
+	@apply px-4 py-2 bg-primary text-primary-foreground rounded-md hover:bg-primary/90 transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 focus:ring-offset-background font-medium;
+}
+
+/* Form Container */
+[data-scope='dialog'][data-part='content'] > div:not([data-part]) {
+	@apply flex flex-col gap-4;
+}

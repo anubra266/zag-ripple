@@ -1,7 +1,7 @@
 import * as demos from './demos/index.ripple';
 
 function toCamelCase(str: string): string {
-    return str.replace(/-([a-z])/g, (match, letter) => letter.toUpperCase())
+    return str.replace(/-([a-z])/g, (_, letter) => letter.toUpperCase())
 }
 
 export component ComponentDemo({ id }:any) {

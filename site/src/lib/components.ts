@@ -63,13 +63,13 @@ export const components = [
       icon: "calendar",
       description: "Select dates using an interactive calendar interface.",
     },
-    // {
-    //   label: "Dialog",
-    //   id: "dialog",
-    //   icon: "dialog",
-    //   description:
-    //     "Modal windows that capture focus and require user interaction.",
-    // },
+    {
+      label: "Dialog",
+      id: "dialog",
+      icon: "dialog",
+      description:
+        "Modal windows that capture focus and require user interaction.",
+    },
     // {
     //   label: "Editable",
     //   id: "editable",
