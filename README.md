@@ -2,7 +2,7 @@
 
   <h1>
     <br/>
-    <img src="https://cdn.jsdelivr.net/gh/anubra266/zag-ripple/site/src/assets/favicon.svg" alt="logo" />
+    <img src="https://cdn.jsdelivr.net/gh/anubra266/zag-ripple/site/src/assets/favicon.svg" height="150px" alt="logo" />
     <br />
     zag-ripple
     <br />
