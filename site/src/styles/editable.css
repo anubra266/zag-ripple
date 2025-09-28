@@ -29,19 +29,17 @@
 [data-scope='editable'][data-part='edit-trigger'],
 [data-scope='editable'][data-part='submit-trigger'],
 [data-scope='editable'][data-part='cancel-trigger'] {
-	@apply  px-3 py-1.5 rounded-md transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 focus:ring-offset-background text-sm font-medium;
+	@apply px-3 py-1.5 rounded-md transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 focus:ring-offset-background text-sm font-medium;
 }
-
 
 [data-scope='editable'][data-part='edit-trigger'] {
 	@apply bg-secondary text-secondary-foreground hover:bg-secondary/80;
 }
 
-
 [data-scope='editable'][data-part='cancel-trigger'] {
-    @apply bg-background border border-border text-foreground hover:bg-muted;
+	@apply bg-background border border-border text-foreground hover:bg-muted;
 }
 
 [data-scope='editable'][data-part='submit-trigger'] {
-    @apply bg-primary text-primary-foreground hover:bg-primary/90;
+	@apply bg-primary text-primary-foreground hover:bg-primary/90;
 }
