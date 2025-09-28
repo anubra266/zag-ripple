@@ -28,17 +28,17 @@
 
 [data-scope='carousel'][data-part='prev-trigger'],
 [data-scope='carousel'][data-part='next-trigger'] {
-	@apply flex items-center justify-center w-10 h-10 rounded-full bg-background border-2 border-muted-foreground/30 hover:bg-muted hover:border-muted-foreground/50 transition-colors;
+	@apply flex items-center justify-center w-10 h-10 rounded-full bg-background border-2 border-border hover:bg-muted hover:border-border transition-colors;
 }
 
 [data-scope='carousel'][data-part='prev-trigger'][disabled],
 [data-scope='carousel'][data-part='next-trigger'][disabled] {
-	@apply opacity-50 cursor-not-allowed border-muted-foreground/15;
+	@apply opacity-50 cursor-not-allowed border-border/30;
 }
 
 [data-scope='carousel'][data-part='prev-trigger'][disabled]:hover,
 [data-scope='carousel'][data-part='next-trigger'][disabled]:hover {
-	@apply bg-background border-muted-foreground/15;
+	@apply bg-background border-border/30;
 }
 
 [data-scope='carousel'][data-part='prev-trigger'] svg,

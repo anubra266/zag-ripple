@@ -1,0 +1,21 @@
+import * as collapsible from '@zag-js/collapsible';
+import { normalizeProps, useMachine } from 'zag-ripple';
+import { Check, ClipboardCopy } from 'lucide-ripple';
+import { track } from 'ripple';
+
+export component Collapsible() {
+	let service = track(() => useMachine(collapsible.machine, {
+		id: 'collapsible',
+	}));
+	let api = track(() => collapsible.connect(@service, normalizeProps));
+
+    <div {...@api.getRootProps()}>
+        <button {...@api.getTriggerProps()}>{"Ripple JS Info"}</button>
+        <div {...@api.getContentProps()}>
+            <p>
+                {`Ripple was designed to be a JS/TS-first framework, rather than HTML-first. Ripple modules have their own .ripple extension, and these modules fully support TypeScript. By introducing a new extension, it allows Ripple to invent its own superset language, which plays really nicely with TypeScript and JSX, but with a few interesting touches. In my experience, this has led to better DX not only for humans, but also for LLMs. `}
+                <a href="https://www.ripplejs.com/">{`Check out Docs`}</a>
+            </p>
+        </div>
+    </div>
+}

@@ -3,11 +3,11 @@
 }
 
 [data-scope='checkbox'][data-part='control'] {
-	@apply flex items-center justify-center w-5 h-5 bg-background border-2 border-muted-foreground/50 rounded transition-colors;
+	@apply flex items-center justify-center w-5 h-5 bg-background border-2 border-border rounded transition-colors;
 }
 
 [data-scope='checkbox'][data-part='control'][data-hover] {
-	@apply bg-muted border-muted-foreground/70;
+	@apply bg-muted border-border;
 }
 
 [data-scope='checkbox'][data-part='control'][data-focus] {

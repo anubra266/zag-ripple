@@ -59,7 +59,7 @@
 	--accent-foreground: oklch(0.98 0 0);
 	--destructive: oklch(0.65 0.2 25);
 	--destructive-foreground: oklch(0.95 0 0);
-	--border: oklch(0.2 0 0); /* Subtle borders */
+	--border: oklch(100% 0 0/.1); /* Subtle borders */
 	--input: oklch(0.15 0 0);
 	--ring: oklch(0.7 0.2 260); /* Cool blue focus rings */
 	--chart-1: oklch(0.7 0.2 260);

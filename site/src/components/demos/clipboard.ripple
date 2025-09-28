@@ -1,0 +1,27 @@
+import * as clipboard from '@zag-js/clipboard';
+import { normalizeProps, useMachine } from 'zag-ripple';
+import { Check, ClipboardCopy } from 'lucide-ripple';
+import { track } from 'ripple';
+
+export component Clipboard() {
+	let service = track(() => useMachine(clipboard.machine, {
+		id: 'clipboard',
+        value: 'https://www.ripplejs.com/',
+	}));
+	let api = track(() => clipboard.connect(@service, normalizeProps));
+
+    <div {...@api.getRootProps()}>
+        <label {...@api.getLabelProps()}>{"Copy this link"}</label>
+        <div {...@api.getControlProps()}>
+            <input {...@api.getInputProps()} />
+            <button {...@api.getTriggerProps()}>
+                if(@api.copied) {
+                    <Check />
+                }
+                else {
+                    <ClipboardCopy />
+                }
+            </button>
+        </div>
+    </div>
+}

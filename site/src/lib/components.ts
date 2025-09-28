@@ -33,18 +33,18 @@ export const components = [
       icon: "checkbox",
       description: "Binary input control for selecting multiple options.",
     },
-    // {
-    //   label: "Clipboard",
-    //   id: "clipboard",
-    //   icon: "clipboard",
-    //   description: "Copy text or data to the user's clipboard.",
-    // },
-    // {
-    //   label: "Collapsible",
-    //   id: "collapsible",
-    //   icon: "collapsible",
-    //   description: "Show and hide content sections with smooth animations.",
-    // },
+    {
+      label: "Clipboard",
+      id: "clipboard",
+      icon: "clipboard",
+      description: "Copy text or data to the user's clipboard.",
+    },
+    {
+      label: "Collapsible",
+      id: "collapsible",
+      icon: "collapsible",
+      description: "Show and hide content sections with smooth animations.",
+    },
     // {
     //   label: "ColorPicker",
     //   id: "color-picker",
