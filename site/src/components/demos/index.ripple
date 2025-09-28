@@ -2,3 +2,4 @@ export { Accordion as accordion } from "./accordion.ripple";
 export { AngleSlider as angleSlider } from "./angle-slider.ripple";
 export { Avatar as avatar } from "./avatar.ripple";
 export { Carousel as carousel } from "./carousel.ripple";
+export { Checkbox as checkbox } from "./checkbox.ripple";

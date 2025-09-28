@@ -1,0 +1,44 @@
+[data-scope='checkbox'][data-part='root'] {
+	@apply flex flex-row-reverse items-center gap-3 relative select-none w-fit cursor-pointer mx-auto;
+}
+
+[data-scope='checkbox'][data-part='control'] {
+	@apply flex items-center justify-center w-5 h-5 bg-background border-2 border-muted-foreground/50 rounded transition-colors;
+}
+
+[data-scope='checkbox'][data-part='control'][data-hover] {
+	@apply bg-muted border-muted-foreground/70;
+}
+
+[data-scope='checkbox'][data-part='control'][data-focus] {
+	@apply ring-2 ring-ring ring-offset-2 ring-offset-background;
+}
+
+[data-scope='checkbox'][data-part='control'][data-state='checked'] {
+	@apply bg-primary border-primary text-primary-foreground;
+}
+
+[data-scope='checkbox'][data-part='control'][data-state='indeterminate'] {
+	@apply bg-primary border-primary text-primary-foreground;
+}
+
+[data-scope='checkbox'][data-part='control'][data-disabled] {
+	@apply opacity-50 cursor-not-allowed;
+}
+
+[data-scope='checkbox'][data-part='control'] svg {
+	@apply w-4 h-4;
+}
+
+[data-scope='checkbox'][data-part='label'] {
+	@apply text-base font-normal text-foreground select-none cursor-pointer;
+}
+
+[data-scope='checkbox'][data-part='label'][data-disabled] {
+	@apply opacity-50 cursor-not-allowed;
+}
+
+/* Peer-based focus styling for better accessibility */
+[data-scope='checkbox'] input[data-peer]:focus + [data-part='control'] {
+	@apply ring-2 ring-ring ring-offset-2 ring-offset-background;
+}
