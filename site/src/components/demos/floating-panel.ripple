@@ -1,0 +1,73 @@
+import * as floatingPanel from '@zag-js/floating-panel';
+import { normalizeProps, useMachine, Portal } from 'zag-ripple';
+import { track, effect } from 'ripple';
+import { X, Minus, Maximize2, ArrowDownLeft } from 'lucide-ripple';
+
+export component FloatingPanel() {
+  let service = useMachine(floatingPanel.machine, {
+    id: 'floating-panel',
+  });
+  let api = track(() => floatingPanel.connect(@service, normalizeProps));
+
+  effect(() => {
+    console.log('api', @api.open)
+  })
+
+
+  <button {...@api.getTriggerProps()}>{"Open Panel"}</button>
+  if (@api.open) {
+    <Portal>
+      <div {...@api.getPositionerProps()}>
+        <div {...@api.getContentProps()}>
+          <div {...@api.getDragTriggerProps()}>
+            <div {...@api.getHeaderProps()}>
+              <p {...@api.getTitleProps()}>{"Settings"}</p>
+              <div {...@api.getControlProps()}>
+                <button
+                  {...@api.getStageTriggerProps({ stage: "minimized" })}
+                >
+                  <Minus />
+                </button>
+                <button
+                  {...@api.getStageTriggerProps({ stage: "maximized" })}
+                >
+                  <Maximize2 />
+                </button>
+                <button {...@api.getStageTriggerProps({ stage: "default" })}>
+                  <ArrowDownLeft />
+                </button>
+                <button {...@api.getCloseTriggerProps()}>
+                  <X />
+                </button>
+              </div>
+            </div>
+          </div>
+          <div {...@api.getBodyProps()}>
+            <label>
+              <span>{"Theme"}</span>
+              <select defaultValue="system">
+                <option value="light">{"Light"}</option>
+                <option value="dark">{"Dark"}</option>
+                <option value="system">{"System"}</option>
+              </select>
+            </label>
+
+            <label>
+              <span>{"Auto-save"}</span>
+              <input type="checkbox" checked={true} />
+            </label>
+          </div>
+
+          <div {...@api.getResizeTriggerProps({ axis: "n" })} />
+          <div {...@api.getResizeTriggerProps({ axis: "e" })} />
+          <div {...@api.getResizeTriggerProps({ axis: "w" })} />
+          <div {...@api.getResizeTriggerProps({ axis: "s" })} />
+          <div {...@api.getResizeTriggerProps({ axis: "ne" })} />
+          <div {...@api.getResizeTriggerProps({ axis: "se" })} />
+          <div {...@api.getResizeTriggerProps({ axis: "sw" })} />
+          <div {...@api.getResizeTriggerProps({ axis: "nw" })} />
+        </div>
+      </div>
+    </Portal>
+  }
+}

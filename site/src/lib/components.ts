@@ -83,12 +83,12 @@ export const components = [
       description:
         "Drag and drop or click to upload files with progress tracking.",
     },
-    // {
-    //   label: "Floating Panel",
-    //   id: "floating-panel",
-    //   icon: "panel",
-    //   description: "Repositionable panel that floats above other content.",
-    // },
+    {
+      label: "Floating Panel",
+      id: "floating-panel",
+      icon: "panel",
+      description: "Repositionable panel that floats above other content.",
+    },
     // {
     //   label: "Hover Card",
     //   id: "hover-card",

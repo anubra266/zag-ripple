@@ -1,9 +1,16 @@
 import { Portal as RipplePortal } from 'ripple';
 
-export component Portal({ disabled, getRootNode, container, ...rest }:any) {
-    if(!disabled) {
+export component Portal({ disabled, getRootNode, container, children }:any) {
+    const isServer = typeof window === "undefined"
+    
+    if(isServer || disabled){
+        <children />
+    }
+    else {
         const doc = getRootNode?.()?.ownerDocument ?? document
         const target = container ?? doc.body
-        <RipplePortal {...rest} {target} />
+        <RipplePortal {target}>
+            <children />
+        </RipplePortal>
     }
 }

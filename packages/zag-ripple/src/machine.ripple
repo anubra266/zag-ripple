@@ -39,7 +39,7 @@ export function useMachine(
   machine,
   _userProps,
 ) {
-  let [id, ids, getRootNode,rest ]= trackSplit(access(_userProps), ['id', 'ids', 'getRootNode'])
+  let [id, ids, getRootNode, rest]= trackSplit(access(_userProps), ['id', 'ids', 'getRootNode'])
   let scope = track(() => {
     return createScope({ id: @id, ids: @ids, getRootNode: @getRootNode })
   })
@@ -47,11 +47,12 @@ export function useMachine(
     if (machine.debug) console.log(...args)
   }
 
-  let props = track(() => 
-    machine.props?.({ props: compact(access(@rest)), scope: @scope }) ?? access(@rest)
-  )
+  let props = track(() => {
+    const p = { ...@rest, id: @id, ids: @ids, getRootNode: @getRootNode }
+    return machine.props?.({ props: compact(p), scope: @scope }) ?? p
+  })
   
-  const prop = useProp(() => ({...@props, id: @id, ids: @ids, getRootNode: @getRootNode }))
+  const prop = useProp(() => @props)
 
   const context = machine.context?.({
     prop,

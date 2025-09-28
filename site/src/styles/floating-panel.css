@@ -1,0 +1,115 @@
+/* Trigger Button */
+[data-scope='floating-panel'][data-part='trigger'] {
+	@apply px-4 py-2 bg-primary text-primary-foreground rounded-md hover:bg-primary/90 transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 focus:ring-offset-background font-medium mx-auto block;
+}
+
+/* Positioner */
+[data-scope='floating-panel'][data-part='positioner'] {
+	@apply fixed inset-0 z-50 pointer-events-none w-(--width) h-(--height);
+}
+
+/* Content Panel */
+[data-scope='floating-panel'][data-part='content'] {
+	@apply bg-background border border-border rounded-lg shadow-xl flex flex-col pointer-events-auto outline-none;
+}
+
+[data-scope='floating-panel'][data-part='content'][data-topmost] {
+	@apply z-[999999];
+}
+
+[data-scope='floating-panel'][data-part='content'][data-behind] {
+	@apply opacity-40;
+}
+
+/* Drag Trigger (Header Container) */
+[data-scope='floating-panel'][data-part='drag-trigger'] {
+	@apply cursor-move;
+}
+
+/* Header */
+[data-scope='floating-panel'][data-part='header'] {
+	@apply flex justify-between items-center px-4 py-2 bg-muted/50 border-b border-border;
+}
+
+[data-scope='floating-panel'][data-part='title'] {
+	@apply text-sm font-semibold text-foreground;
+}
+
+[data-scope='floating-panel'][data-part='control'] {
+	@apply flex items-center gap-1;
+}
+
+[data-scope='floating-panel'][data-part='control'] button {
+	@apply w-6 h-6 flex items-center justify-center text-muted-foreground hover:text-foreground hover:bg-muted rounded-sm transition-colors;
+}
+
+[data-scope='floating-panel'][data-part='control'] svg {
+	@apply w-3 h-3;
+}
+
+/* Body */
+[data-scope='floating-panel'][data-part='body'] {
+	@apply relative flex-1 overflow-auto p-4 bg-background;
+}
+
+[data-scope='floating-panel'][data-part='body'] label {
+	@apply flex flex-col gap-2 mb-4;
+}
+
+[data-scope='floating-panel'][data-part='body'] label span {
+	@apply text-sm font-medium text-foreground;
+}
+
+[data-scope='floating-panel'][data-part='body'] select,
+[data-scope='floating-panel'][data-part='body'] input[type='text'],
+[data-scope='floating-panel'][data-part='body'] input[type='number'] {
+	@apply px-3 py-2 bg-background border border-border rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 focus:ring-offset-background;
+}
+
+[data-scope='floating-panel'][data-part='body'] input[type='checkbox'] {
+	@apply w-4 h-4 text-primary bg-background border border-border rounded focus:ring-2 focus:ring-ring focus:ring-offset-2 focus:ring-offset-background;
+}
+
+[data-scope='floating-panel'][data-part='body'] label:has(input[type='checkbox']) {
+	@apply flex-row items-center gap-2;
+}
+
+/* Resize Triggers */
+[data-scope='floating-panel'][data-part='resize-trigger'] {
+	@apply absolute bg-primary/20 hover:bg-primary/40 transition-colors;
+}
+
+/* North/South resize handles */
+[data-scope='floating-panel'][data-part='resize-trigger'][data-axis='n'] {
+	@apply top-0 left-2 right-2 h-1 cursor-n-resize;
+}
+
+[data-scope='floating-panel'][data-part='resize-trigger'][data-axis='s'] {
+	@apply bottom-0 left-2 right-2 h-1 cursor-s-resize;
+}
+
+/* East/West resize handles */
+[data-scope='floating-panel'][data-part='resize-trigger'][data-axis='e'] {
+	@apply top-2 bottom-2 right-0 w-1 cursor-e-resize;
+}
+
+[data-scope='floating-panel'][data-part='resize-trigger'][data-axis='w'] {
+	@apply top-2 bottom-2 left-0 w-1 cursor-w-resize;
+}
+
+/* Corner resize handles */
+[data-scope='floating-panel'][data-part='resize-trigger'][data-axis='ne'] {
+	@apply top-0 right-0 w-3 h-3 cursor-ne-resize;
+}
+
+[data-scope='floating-panel'][data-part='resize-trigger'][data-axis='nw'] {
+	@apply top-0 left-0 w-3 h-3 cursor-nw-resize;
+}
+
+[data-scope='floating-panel'][data-part='resize-trigger'][data-axis='se'] {
+	@apply bottom-0 right-0 w-3 h-3 cursor-se-resize;
+}
+
+[data-scope='floating-panel'][data-part='resize-trigger'][data-axis='sw'] {
+	@apply bottom-0 left-0 w-3 h-3 cursor-sw-resize;
+}
