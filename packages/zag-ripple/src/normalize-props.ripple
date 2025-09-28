@@ -9,16 +9,8 @@ const propMap: Record<string, string> = {
   defaultValue: "value",
   htmlFor: "for",
   onChange: "onInput",
-  // TODO
-  // onFocus: "onFocusIn",
-  // onBlur: "onFocusOut",
-  // TODO remove when ripple fix is merged
-  onFocus: "onFocusin",
-  onBlur: "onFocusout",
-  onKeyDown: "onKeydown",
-  onPointerDown: "onPointerdown",
-  onPointerMove: "onPointermove",
-  onPointerLeave: "onPointerleave",
+  onFocus: "onFocusIn",
+  onBlur: "onFocusOut",
 }
 
 export function toStyleString(style: Record<string, number | string>) {

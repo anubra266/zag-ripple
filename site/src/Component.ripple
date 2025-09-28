@@ -83,7 +83,7 @@ export component Component({ params }: any) {
                     <Button
                     variant="outline"
                     size="sm"
-                    class="h-9 text-xs bg-blue-50 hover:bg-blue-100 border-blue-200 text-blue-700 dark:bg-blue-950 dark:hover:bg-blue-900 dark:border-blue-800 dark:text-blue-300"
+                    class="h-9 text-xs bg-blue-50 hover:bg-blue-100 border-blue-200 text-blue-700 hover:text-blue-700 dark:bg-blue-950 dark:hover:bg-blue-900 dark:border-blue-800 dark:text-blue-300"
                     >
                         <FileText class="h-3 w-3 mr-1.5" />
                         {"Zag.js Docs"}
@@ -99,7 +99,7 @@ export component Component({ params }: any) {
                     <Button
                     variant="outline"
                     size="sm"
-                    class="h-9 text-xs bg-gray-50 hover:bg-gray-100 border-gray-200 text-gray-700 dark:bg-gray-950 dark:hover:bg-gray-900 dark:border-gray-800 dark:text-gray-300"
+                    class="h-9 text-xs bg-gray-50 hover:bg-gray-100 border-gray-200 text-gray-700 hover:text-gray-700 dark:bg-gray-950 dark:hover:bg-gray-900 dark:border-gray-800 dark:text-gray-300"
                     >
                         <Code class="h-3 w-3 mr-1.5" />
                         {"View Source"}
