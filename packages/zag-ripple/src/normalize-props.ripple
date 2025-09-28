@@ -17,6 +17,8 @@ const propMap: Record<string, string> = {
   onBlur: "onFocusout",
   onKeyDown: "onKeydown",
   onPointerDown: "onPointerdown",
+  onPointerMove: "onPointermove",
+  onPointerLeave: "onPointerleave",
 }
 
 export function toStyleString(style: Record<string, number | string>) {

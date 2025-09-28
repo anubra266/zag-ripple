@@ -11,8 +11,8 @@ import type {
   Service,
 } from "@zag-js/core"
 import { createScope, INIT_STATE, MachineStatus } from "@zag-js/core"
-import { compact, ensure, isFunction, isString, toArray, warn } from "@zag-js/utils"
-import { track, effect, flushSync } from "ripple"
+import {  ensure, isFunction, isPlainObject, isString, toArray, warn } from "@zag-js/utils"
+import { track, trackSplit, untrack, effect, flushSync } from "ripple"
 import { createBindable } from "./bindable.ripple"
 import { createRefs } from "./refs.ripple"
 import { createTrack } from "./track.ripple"
@@ -22,24 +22,36 @@ function access(userProps) {
   return userProps
 }
 
+function compact(obj) {
+  if (!isPlainObject(obj) || obj === undefined) return obj
+  const keys = Reflect.ownKeys(obj).filter((key) => typeof key === "string")
+  const filtered = {}
+  for (const key of keys) {
+    const value = (obj)[key]
+    if (@value !== undefined) {
+      filtered[key as keyof T] = compact(@value)
+    }
+  }
+  return filtered as T
+}
+
 export function useMachine(
   machine,
-  userProps = {},
+  _userProps,
 ) {
+  let [id, ids, getRootNode,rest ]= trackSplit(access(_userProps), ['id', 'ids', 'getRootNode'])
   let scope = track(() => {
-    const { id, ids, getRootNode } = access(userProps)
-    return createScope({ id, ids, getRootNode })
+    return createScope({ id: @id, ids: @ids, getRootNode: @getRootNode })
   })
-
   const debug = (...args: any[]) => {
     if (machine.debug) console.log(...args)
   }
 
   let props = track(() => 
-    machine.props?.({ props: compact(access(userProps)), scope: @scope }) ?? access(userProps)
+    machine.props?.({ props: compact(access(@rest)), scope: @scope }) ?? access(@rest)
   )
   
-  const prop = useProp(() => @props)
+  const prop = useProp(() => ({...@props, id: @id, ids: @ids, getRootNode: @getRootNode }))
 
   const context = machine.context?.({
     prop,
@@ -273,7 +285,6 @@ export function useMachine(
     }
   })
 
-  
 
   machine.watch?.(getParams())
 
@@ -298,7 +309,8 @@ export function useMachine(
 
 function useProp(value) {
   return function get(key) {
-    return value()[key]
+    const v = value()[key]
+    return @v
   }
 }
 
