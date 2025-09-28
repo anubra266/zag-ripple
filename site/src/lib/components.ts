@@ -57,12 +57,12 @@ export const components = [
       icon: "combobox",
       description: "Text input with searchable dropdown options.",
     },
-    // {
-    //   label: "Date Picker",
-    //   id: "date-picker",
-    //   icon: "calendar",
-    //   description: "Select dates using an interactive calendar interface.",
-    // },
+    {
+      label: "Date Picker",
+      id: "date-picker",
+      icon: "calendar",
+      description: "Select dates using an interactive calendar interface.",
+    },
     // {
     //   label: "Dialog",
     //   id: "dialog",

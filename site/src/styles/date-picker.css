@@ -1,0 +1,120 @@
+/* Control (Input + Trigger) */
+[data-scope='date-picker'][data-part='control'] {
+	@apply inline-flex w-full max-w-xs mx-auto rounded-md;
+}
+
+[data-scope='date-picker'][data-part='control']:focus-within {
+	@apply ring-2 ring-ring ring-offset-2 ring-offset-background;
+}
+
+[data-scope='date-picker'][data-part='input'] {
+	@apply flex-1 px-3 py-2 bg-background border border-border rounded-l-md text-sm placeholder:text-muted-foreground focus:outline-none;
+}
+
+[data-scope='date-picker'][data-part='trigger'] {
+	@apply flex items-center justify-center px-3 py-2 bg-background border border-l-0 border-border rounded-r-md hover:bg-muted transition-colors focus:outline-none;
+}
+
+[data-scope='date-picker'][data-part='trigger'] svg {
+	@apply w-4 h-4 text-muted-foreground;
+}
+
+[data-scope='date-picker'][data-part='trigger']:hover svg {
+	@apply text-foreground;
+}
+
+/* Content Panel */
+[data-scope='date-picker'][data-part='content'] {
+	@apply bg-popover border border-border rounded-lg shadow-lg p-4 min-w-80;
+}
+
+/* View Controls */
+[data-scope='date-picker'][data-part='view-control'] {
+	@apply flex justify-between items-center mb-4;
+}
+
+[data-scope='date-picker'][data-part='prev-trigger'],
+[data-scope='date-picker'][data-part='next-trigger'] {
+	@apply flex items-center justify-center w-8 h-8 rounded-md hover:bg-muted transition-colors;
+}
+
+[data-scope='date-picker'][data-part='prev-trigger'] svg,
+[data-scope='date-picker'][data-part='next-trigger'] svg {
+	@apply w-4 h-4 text-muted-foreground;
+}
+
+[data-scope='date-picker'][data-part='view-trigger'] {
+	@apply px-3 py-1 text-sm font-medium hover:bg-muted rounded-md transition-colors;
+}
+
+/* Table Layout */
+[data-scope='date-picker'][data-part='table'] {
+	@apply w-full border-collapse;
+	min-width: 240px;
+}
+
+[data-scope='date-picker'][data-part='table'] th {
+	@apply text-center text-xs font-medium text-muted-foreground p-2;
+}
+
+[data-scope='date-picker'][data-part='table'] td {
+	@apply text-center p-0;
+}
+
+/* Date Cell Triggers */
+[data-scope='date-picker'][data-part='table-cell-trigger'] {
+	@apply flex items-center justify-center w-8 h-8 text-sm rounded-md select-none cursor-pointer transition-colors;
+	min-width: 32px;
+	min-height: 32px;
+}
+
+[data-scope='date-picker'][data-part='table-cell-trigger']:hover {
+	@apply bg-accent/10;
+}
+
+[data-scope='date-picker'][data-part='table-cell-trigger'][data-focus] {
+	@apply bg-accent text-accent-foreground;
+}
+
+[data-scope='date-picker'][data-part='table-cell-trigger'][data-selected] {
+	@apply bg-primary text-primary-foreground;
+}
+
+[data-scope='date-picker'][data-part='table-cell-trigger'][data-today] {
+	@apply not-data-selected:text-primary font-semibold;
+}
+
+[data-scope='date-picker'][data-part='table-cell-trigger'][data-today][data-selected] {
+	@apply bg-primary text-primary-foreground;
+}
+
+[data-scope='date-picker'][data-part='table-cell-trigger'][data-in-range]:not([data-selected]) {
+	@apply bg-primary/20;
+}
+
+[data-scope='date-picker'][data-part='table-cell-trigger'][data-outside-range] {
+	@apply text-muted-foreground opacity-50;
+}
+
+[data-scope='date-picker'][data-part='table-cell-trigger'][data-unavailable] {
+	@apply line-through opacity-40 cursor-not-allowed;
+}
+
+[data-scope='date-picker'][data-part='table-cell-trigger'][data-disabled] {
+	@apply opacity-40 cursor-not-allowed;
+}
+
+/* Month and Year View Triggers */
+[data-scope='date-picker'][data-part='table-cell-trigger'][data-view='month'],
+[data-scope='date-picker'][data-part='table-cell-trigger'][data-view='year'] {
+	@apply w-16 h-10;
+}
+
+/* Multi-view Container */
+[data-scope='date-picker'][data-part='content'] > div:last-child {
+	@apply flex gap-4;
+}
+
+[data-scope='date-picker'][data-part='content'] > div:last-child > div {
+	@apply flex-1;
+}
