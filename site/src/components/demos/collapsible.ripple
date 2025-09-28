@@ -3,9 +3,9 @@ import { normalizeProps, useMachine } from 'zag-ripple';
 import { track } from 'ripple';
 
 export component Collapsible() {
-	let service = track(() => useMachine(collapsible.machine, {
+	let service = useMachine(collapsible.machine, {
 		id: 'collapsible',
-	}));
+	});
 	let api = track(() => collapsible.connect(@service, normalizeProps));
 
     <div {...@api.getRootProps()}>

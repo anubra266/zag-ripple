@@ -51,12 +51,12 @@ export const components = [
       icon: "color",
       description: "Select colors using various input methods and formats.",
     },
-    // {
-    //   label: "Combobox",
-    //   id: "combobox",
-    //   icon: "combobox",
-    //   description: "Text input with searchable dropdown options.",
-    // },
+    {
+      label: "Combobox",
+      id: "combobox",
+      icon: "combobox",
+      description: "Text input with searchable dropdown options.",
+    },
     // {
     //   label: "Date Picker",
     //   id: "date-picker",

@@ -3,9 +3,9 @@ import { normalizeProps, useMachine } from 'zag-ripple';
 import { track } from 'ripple';
 
 export component Checkbox() {
-	let service = track(() => useMachine(checkbox.machine, {
+	let service = useMachine(checkbox.machine, {
 		id: 'checkbox',
-	}));
+	});
 	let api = track(() => checkbox.connect(@service, normalizeProps));
 
     <label {...@api.getRootProps()}>

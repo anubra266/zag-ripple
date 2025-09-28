@@ -6,3 +6,4 @@ export { Checkbox as checkbox } from "./checkbox.ripple";
 export { Clipboard as clipboard } from "./clipboard.ripple";
 export { Collapsible as collapsible } from "./collapsible.ripple";
 export { ColorPicker as colorPicker } from "./color-picker.ripple";
+export { Combobox as combobox } from "./combobox.ripple";

@@ -44,7 +44,7 @@ export component ThemeToggle() {
         applyTheme(newTheme)
     }
 
-    <Button variant="ghost" size="sm" class="w-9 h-9 p-0 transition-colors hover:bg-accent hover:text-white" onClick={toggleTheme} >
+    <Button variant="ghost" size="sm" class="w-9 h-9 p-0 transition-colors hover:bg-accent hover:text-accent-foreground" onClick={toggleTheme} >
         if (@theme === "light") {
             <Sun class="w-4 h-4 transition-transform hover:scale-110" />
         } else {

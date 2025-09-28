@@ -1,0 +1,65 @@
+import * as combobox from '@zag-js/combobox';
+import { createFilter } from "@zag-js/i18n-utils"
+import { normalizeProps, useMachine, Portal, mergeProps } from 'zag-ripple';
+import { track } from 'ripple';
+import { components } from '../lib/components';
+import { Search, Github } from "lucide-ripple";
+
+// TODO utiity cmd+k zag hotkeys will also handle cmd/ctrl+k
+export component SearchDocs() {
+    let options = track(components)
+
+    const filter = createFilter({ sensitivity: "base" })
+
+    const collection = track(() => combobox.collection({
+        items: @options,
+        itemToValue: (item) => item.id,
+        itemToString: (item) => item.label,
+    }))
+
+	let service = useMachine(combobox.machine, {
+		id: 'search-combobox',
+        collection,
+        onInputValueChange({ inputValue }) {
+            const filtered = components.filter((item) =>
+                filter.contains(item.label, inputValue),
+            )
+            @options = filtered.length > 0 ? filtered : components
+        },
+        placeholder: "Search components...",
+        selectionBehavior: 'clear',
+        inputBehavior: 'autohighlight',
+        openOnClick: true,
+        // TODO
+        onSelect({ itemValue}) {
+            // navigateToComponent(itemValue)
+        },
+	});
+	let api = track(() => combobox.connect(service, normalizeProps));
+
+    <div {...@api.getRootProps()}>
+        <div class=" relative mr-4" {...@api.getControlProps()}>
+			<Search class="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-muted-foreground" />
+            <input
+                {...@api.getInputProps()}
+                class="pl-10! pr-4! py-2 bg-muted/50 rounded-lg w-64"
+            />
+            <kbd class="absolute right-3 top-1/2 transform -translate-y-1/2 text-xs text-muted-foreground bg-muted px-1.5 py-0.5 rounded">
+                {"⌘K"}
+			</kbd>
+        </div>
+    </div>
+    <Portal>
+        <div {...@api.getPositionerProps()}>
+            if(@options.length > 0) {
+                <ul {...@api.getContentProps()}>
+                    for(let item of @options) {
+                        <li {...@api.getItemProps({ item })}>
+                            {item.label}
+                        </li>
+                    }
+                </ul>
+            }
+        </div>
+    </Portal>
+}

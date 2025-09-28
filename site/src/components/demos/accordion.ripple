@@ -9,10 +9,10 @@ const data = [
 ]
 
 export component Accordion() {
-	let service = track(() => useMachine(accordion.machine, {
+	let service = useMachine(accordion.machine, {
 		id: 'accordion-1',
 		defaultValue: 'contact',
-	}));
+	});
 	let api = track(() => accordion.connect(@service, normalizeProps));
 
     <div {...@api.getRootProps()}>

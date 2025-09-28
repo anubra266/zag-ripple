@@ -92,6 +92,7 @@ const packageJson = (id: string) => JSON.stringify({
 	},
 	"dependencies": {
 		[`@zag-js/${id}`]: "latest",
+		"@zag-js/i18n-utils": "latest",
 		"lucide-ripple": "latest",
 		"ripple": "latest",
 		"zag-ripple": "latest",

@@ -4,10 +4,10 @@ import { Check, ClipboardCopy } from 'lucide-ripple';
 import { track } from 'ripple';
 
 export component Clipboard() {
-	let service = track(() => useMachine(clipboard.machine, {
+	let service = useMachine(clipboard.machine, {
 		id: 'clipboard',
         value: 'https://www.ripplejs.com/',
-	}));
+	});
 	let api = track(() => clipboard.connect(@service, normalizeProps));
 
     <div {...@api.getRootProps()}>

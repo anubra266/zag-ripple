@@ -4,11 +4,11 @@ import { Pipette } from 'lucide-ripple';
 import { track } from 'ripple';
 
 export component ColorPicker() {
-	let service = track(() => useMachine(colorPicker.machine, {
+	let service = useMachine(colorPicker.machine, {
 		id: 'color-picker',
         defaultValue: colorPicker.parse("#38a169").toFormat("hsla"),
         format: "hsla",
-	}));
+	});
 	let api = track(() => colorPicker.connect(@service, normalizeProps));
 
     <div {...@api.getRootProps()}>

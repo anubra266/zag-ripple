@@ -1,6 +1,7 @@
 import { Button } from "./ui/button.ripple";
-import { Search, Github } from "lucide-ripple";
+import { Github } from "lucide-ripple";
 import { ThemeToggle } from "./theme-toggle.ripple";
+import { SearchDocs } from "./search-docs.ripple";
 
 // TODO
 component Link({children, class: className}){
@@ -16,25 +17,11 @@ export component Navigation() {
 			<span class='font-bold text-xl'>{'ZagRipple'}</span>
 		</Link>
 
-		<div class="hidden md:flex items-center space-x-2">
-            <div class="relative mr-2">
-			// TODO add search combobox
-			<Search class="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-muted-foreground" />
-			<input
-                type="text"
-                placeholder="Search components..."
-                class="pl-10 pr-4 py-2 bg-muted/50 border border-border rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-ring w-64"
-			/>
-			<kbd class="absolute right-3 top-1/2 transform -translate-y-1/2 text-xs text-muted-foreground bg-muted px-1.5 py-0.5 rounded">
-                {"⌘K"}
-			</kbd>
-            </div>
+		<div class="hidden md:flex items-center gap-1">
+			<SearchDocs />
             <ThemeToggle />
             <Button variant="ghost" size="sm">
-			<Link
-                href="https://github.com/anubra266/zag-ripple"
-                target="_blank"
-			>
+			<Link href="https://github.com/anubra266/zag-ripple" target="_blank">
                 <Github class="h-4 w-4" />
 			</Link>
             </Button>

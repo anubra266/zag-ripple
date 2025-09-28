@@ -1,0 +1,92 @@
+import * as combobox from '@zag-js/combobox';
+import { createFilter } from "@zag-js/i18n-utils"
+import { normalizeProps, useMachine, Portal, mergeProps } from 'zag-ripple';
+import { track } from 'ripple';
+import { ChevronsUpDown } from 'lucide-ripple';
+
+export component Combobox() {
+    let options = track(comboboxData)
+
+    const filter = createFilter({ sensitivity: "base" })
+  
+    const collection = track(() => combobox.collection({
+        items: @options,
+        itemToValue: (item) => item.code,
+        itemToString: (item) => item.label,
+    }))
+
+	let service = useMachine(combobox.machine, {
+		id: 'combobox',
+        collection,
+        onInputValueChange({ inputValue }) {
+            const filtered = comboboxData.filter((item) =>
+                filter.contains(item.label, inputValue),
+            )
+            @options = filtered.length > 0 ? filtered : comboboxData
+        },
+        placeholder: "Type or select country",
+	});
+	let api = track(() => combobox.connect(service, normalizeProps));
+
+
+    <div {...@api.getRootProps()}>
+        <label {...@api.getLabelProps()}>{"Nationality"}</label>
+        <div {...@api.getControlProps()}>
+            <input {...@api.getInputProps()} />
+            const triggerProps = mergeProps(@api.getTriggerProps(), {
+                onClick() {
+                    @options = comboboxData
+                },
+            })
+            <button {...triggerProps}>
+                <ChevronsUpDown />
+            </button>
+        </div>
+    </div>
+    <Portal>
+        <div {...@api.getPositionerProps()}>
+            if(@options.length > 0) {
+                <ul {...@api.getContentProps()}>
+                    for(let item of @options) {
+                        <li {...@api.getItemProps({ item })}>
+                            {item.label}
+                        </li>
+                    }
+                </ul>
+            }
+        </div>
+    </Portal>
+}
+
+
+const comboboxData = [
+  { label: "Zambia", code: "ZA" },
+  { label: "Benin", code: "BN" },
+  { label: "Canada", code: "CA" },
+  { label: "United States", code: "US" },
+  { label: "Japan", code: "JP" },
+  { label: "Nigeria", code: "NG" },
+  { label: "Albania", code: "AL" },
+  { label: "Algeria", code: "DZ" },
+  { label: "American Samoa", code: "AS" },
+  { label: "Andorra", code: "AD" },
+  { label: "Angola", code: "AO" },
+  { label: "Anguilla", code: "AI" },
+  { label: "Antarctica", code: "AQ" },
+  { label: "Australia", code: "AU" },
+  { label: "Austria", code: "AT" },
+  { label: "Azerbaijan", code: "AZ" },
+  { label: "Bahamas", code: "BS" },
+  { label: "Bahrain", code: "BH" },
+  { label: "Madagascar", code: "MG" },
+  { label: "Malawi", code: "MW" },
+  { label: "Malaysia", code: "MY" },
+  { label: "Maldives", code: "MV" },
+  { label: "Mali", code: "ML" },
+  { label: "Malta", code: "MT" },
+  { label: "Togo", code: "TG" },
+  { label: "Tokelau", code: "TK" },
+  { label: "Tonga", code: "TO" },
+  { label: "Trinidad and Tobago", code: "TT" },
+  { label: "Tunisia", code: "TN" },
+]

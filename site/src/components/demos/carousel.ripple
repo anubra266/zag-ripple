@@ -1,6 +1,6 @@
 import * as carousel from '@zag-js/carousel';
 import { normalizeProps, useMachine } from 'zag-ripple';
-import { track, effect } from 'ripple';
+import { track } from 'ripple';
 import { ChevronLeft, ChevronRight } from 'lucide-ripple';
 
 const items = [
@@ -11,15 +11,11 @@ const items = [
   "https://tinyurl.com/7ksvxfjh",
 ]
 export component Carousel() {
-	let service = track(() => useMachine(carousel.machine, {
+	let service = useMachine(carousel.machine, {
 		id: 'carousel',
         slideCount: items.length,
-	}));
+	});
 	let api = track(() => carousel.connect(@service, normalizeProps));
-
-    effect(() => {
-        console.log(@service.context.get('page'));
-    });
 
     <div {...@api.getRootProps()}>
         <div {...@api.getItemGroupProps()}>

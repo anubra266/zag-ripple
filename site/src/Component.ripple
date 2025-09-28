@@ -6,6 +6,7 @@ import { ContextTable } from './components/context-table.ripple';
 import { ApiTable } from './components/api-table.ripple';
 import { KeyboardInteractions } from './components/keyboard-interactions.ripple';
 import { DataAttributes } from './components/data-attributes.ripple';
+import { ComponentDemo } from './components/component-demo.ripple';
 import { Button } from './components/ui/button.ripple';
 import { Card } from './components/ui/card.ripple';
 import { components } from './lib/components';
@@ -23,11 +24,6 @@ import {
 import { useCopy } from "./lib/use-copy.ripple";
 import apiJson from "@zag-js/docs"
 import * as demos from './components/demos/index.ripple';
-
-// Helper function to convert kebab-case to camelCase
-function toCamelCase(str: string): string {
-    return str.replace(/-([a-z])/g, (match, letter) => letter.toUpperCase())
-}
 
 // TODO
 component Link({children, ...rest}){
@@ -75,12 +71,6 @@ export component Component({ params }: any) {
 
             {/* Component Demo */}
             <div class="space-y-6 mb-8">
-                const Demo = demos[toCamelCase(componentId)];
-                if (Demo) {
-                    <div class="flex items-center p-6 rounded-lg border border-border/50 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-                        <Demo />
-                    </div>
-                }
 
                 {/* Demo Badges */}
                 <div class="flex flex-wrap gap-3 justify-center">
@@ -133,7 +123,9 @@ export component Component({ params }: any) {
                         <ExternalLink class="h-3 w-3 ml-1.5" />
                     </Button>
                 </Link>
+
                 </div>
+                <ComponentDemo id={componentId} />
             </div>
             </div>
 

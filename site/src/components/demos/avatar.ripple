@@ -6,9 +6,9 @@ const name = 'John Doe';
 const src = 'https://avatar.iran.liara.run/public/10';
 
 export component Avatar() {
-	let service = track(() => useMachine(avatar.machine, {
+	let service = useMachine(avatar.machine, {
 		id: 'avatar',
-	}));
+	});
 	let api = track(() => avatar.connect(@service, normalizeProps));
 
     const initial = name

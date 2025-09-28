@@ -3,9 +3,9 @@ import { normalizeProps, useMachine } from 'zag-ripple';
 import { track } from 'ripple';
 
 export component AngleSlider() {
-	let service = track(() => useMachine(angleSlider.machine, {
+	let service = useMachine(angleSlider.machine, {
 		id: 'angle-slider',
-	}));
+	});
 	let api = track(() => angleSlider.connect(@service, normalizeProps));
 
     <div {...@api.getRootProps()}>
