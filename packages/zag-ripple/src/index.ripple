@@ -1,3 +1,4 @@
 export { mergeProps } from "@zag-js/core"
 export * from "./normalize-props.ripple"
 export * from "./machine.ripple"
+export * from "./portal.ripple"

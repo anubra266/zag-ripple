@@ -1,0 +1,9 @@
+import { Portal as RipplePortal } from 'ripple';
+
+export component Portal({ disabled, getRootNode, container, ...rest }:any) {
+    if(!disabled) {
+        const doc = getRootNode?.()?.ownerDocument ?? document
+        const target = container ?? doc.body
+        <RipplePortal {...rest} {target} />
+    }
+}

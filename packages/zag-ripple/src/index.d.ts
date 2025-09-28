@@ -1,4 +1,5 @@
 import type { Machine, Scope } from "@zag-js/core";
+import { Component } from "ripple";
 
 export { mergeProps } from "@zag-js/core";
 
@@ -46,3 +47,17 @@ export declare function useMachine<
     machine: Machine<TContext>,
     options?: MachineOptions | (() => MachineOptions)
 ): MachineApi<TContext, TState>;
+
+
+
+
+export interface PortalProps {
+    disabled?: boolean | undefined
+    container?: HTMLElement | undefined
+    getRootNode?: (() => ShadowRoot | Document | Node) | undefined
+    children: Component
+}
+
+export declare const Portal: Component<PortalProps>;
+// export declare function Portal(props: PortalProps): Component;
+
