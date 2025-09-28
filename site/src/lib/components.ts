@@ -70,12 +70,12 @@ export const components = [
       description:
         "Modal windows that capture focus and require user interaction.",
     },
-    // {
-    //   label: "Editable",
-    //   id: "editable",
-    //   icon: "edit",
-    //   description: "Inline text editing with preview and edit modes.",
-    // },
+    {
+      label: "Editable",
+      id: "editable",
+      icon: "edit",
+      description: "Inline text editing with preview and edit modes.",
+    },
     // {
     //   label: "File Upload",
     //   id: "file-upload",

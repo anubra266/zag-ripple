@@ -1,0 +1,32 @@
+import * as editable from '@zag-js/editable';
+import { normalizeProps, useMachine } from 'zag-ripple';
+import { track } from 'ripple';
+
+export component Editable() {
+	let service = useMachine(editable.machine, {
+		id: 'editable',
+		placeholder: 'Enter your text...',
+        submitMode: 'enter',
+	});
+	let api = track(() => editable.connect(@service, normalizeProps));
+
+    <div {...@api.getRootProps()}>
+        <div {...@api.getAreaProps()}>
+            <input {...@api.getInputProps()} />
+            <span data-testid="preview" {...@api.getPreviewProps()}>
+              {@api.valueText}
+            </span>
+            // TODO: do we need to support this? zag currently sends `api.valueText` as `children`
+            {/* <span data-testid="preview" {...api.getPreviewProps()} /> */}
+        </div>
+
+        <div {...@api.getControlProps()}>
+            if (@api.editing) {
+                <button {...@api.getSubmitTriggerProps()}>{"Save"}</button>
+                <button {...@api.getCancelTriggerProps()}>{"Cancel"}</button>
+            } else {
+                <button {...@api.getEditTriggerProps()}>{"Edit"}</button>
+            }
+        </div>
+    </div>
+}

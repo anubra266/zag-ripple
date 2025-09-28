@@ -9,3 +9,4 @@ export { ColorPicker as colorPicker } from "./color-picker.ripple";
 export { Combobox as combobox } from "./combobox.ripple";
 export { DatePicker as datePicker } from "./date-picker.ripple";
 export { Dialog as dialog } from "./dialog.ripple";
+export { Editable as editable } from "./editable.ripple";
