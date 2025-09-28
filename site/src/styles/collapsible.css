@@ -1,5 +1,6 @@
 [data-scope='collapsible'][data-part='root'] {
 	@apply w-full max-w-md mx-auto;
+    height: 270px;
 }
 
 [data-scope='collapsible'][data-part='trigger'] {

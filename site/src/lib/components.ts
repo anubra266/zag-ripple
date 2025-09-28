@@ -45,12 +45,12 @@ export const components = [
       icon: "collapsible",
       description: "Show and hide content sections with smooth animations.",
     },
-    // {
-    //   label: "ColorPicker",
-    //   id: "color-picker",
-    //   icon: "color",
-    //   description: "Select colors using various input methods and formats.",
-    // },
+    {
+      label: "ColorPicker",
+      id: "color-picker",
+      icon: "color",
+      description: "Select colors using various input methods and formats.",
+    },
     // {
     //   label: "Combobox",
     //   id: "combobox",

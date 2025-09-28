@@ -166,5 +166,6 @@ html.dark .shiki span {
 }
 
 [data-code] pre {
-	@apply text-sm bg-transparent/30! backdrop-blur supports-[backdrop-filter]:bg-transparent/30!
+	@apply text-sm bg-transparent/30! backdrop-blur supports-[backdrop-filter]:bg-transparent/30! overflow-auto;
+	@apply max-h-96;
 }

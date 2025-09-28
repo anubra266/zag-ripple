@@ -1,0 +1,132 @@
+[data-scope='color-picker'][data-part='root'] {
+	@apply flex flex-col gap-3 w-full max-w-sm mx-auto;
+}
+
+[data-scope='color-picker'][data-part='label'] {
+	@apply text-sm font-medium text-foreground;
+}
+
+[data-scope='color-picker'][data-part='control'] {
+	@apply flex gap-2 items-center;
+}
+
+[data-scope='color-picker'][data-part='trigger'] {
+	@apply relative size-9 rounded-md border border-border overflow-hidden cursor-pointer hover:ring-2 hover:ring-ring hover:ring-offset-2 hover:ring-offset-background transition-all;
+}
+
+[data-scope='color-picker'][data-part='swatch'] {
+	@apply w-full h-full;
+}
+
+[data-scope='color-picker'][data-part='transparency-grid'] {
+	@apply rounded-md;
+}
+
+[data-scope='color-picker'][data-part='channel-input'] {
+	@apply flex-1 px-3 py-2 text-sm bg-background border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 focus:ring-offset-background;
+}
+
+/* Content Panel */
+[data-scope='color-picker'][data-part='content'] {
+	@apply w-80 p-6 bg-popover border border-border rounded-lg shadow-lg;
+}
+
+[data-scope='color-picker'][data-part='content'] > div {
+	@apply flex flex-col gap-4;
+}
+
+/* Color Area */
+[data-scope='color-picker'][data-part='area'] {
+	@apply relative h-48 border border-border rounded-md overflow-hidden;
+}
+
+[data-scope='color-picker'][data-part='area-background'] {
+	@apply w-full h-full rounded-md;
+}
+
+[data-scope='color-picker'][data-part='area-thumb'] {
+	@apply absolute w-4 h-4 border-2 border-white rounded-full transform -translate-x-1/2 -translate-y-1/2;
+	box-shadow:
+		0 0 0 1px rgba(0, 0, 0, 0.3),
+		inset 0 0 0 1px rgba(0, 0, 0, 0.3);
+}
+
+/* Channel Sliders */
+[data-scope='color-picker'][data-part='area'] + div {
+	@apply flex gap-3;
+}
+
+[data-scope='color-picker'][data-part='area'] + div > div:first-child {
+	@apply flex flex-col gap-2 flex-1;
+}
+
+[data-scope='color-picker'][data-part='channel-slider'] {
+	@apply relative h-5 rounded-md overflow-hidden;
+}
+
+[data-scope='color-picker'][data-part='channel-slider-track'] {
+	@apply w-full h-full rounded-md;
+}
+
+[data-scope='color-picker'][data-part='channel-slider-thumb'] {
+	@apply absolute w-4 h-4 border-2 border-white rounded-full transform -translate-x-1/2 -translate-y-1/2 top-1/2;
+	box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.3);
+}
+
+/* Eye Dropper Button */
+[data-scope='color-picker'] [data-part='eye-dropper-trigger'] {
+	@apply flex items-center justify-center w-10 h-10 bg-background border border-border rounded-md hover:bg-muted transition-colors;
+}
+
+[data-scope='color-picker'] [data-part='eye-dropper-trigger'] svg {
+	@apply w-4 h-4 text-muted-foreground;
+}
+
+/* Channel Input Groups */
+[data-scope='color-picker'][data-part='content'] > div > div:has(input[data-part='channel-input']) {
+	@apply grid grid-cols-4 gap-2;
+}
+
+[data-scope='color-picker'][data-part='content']
+	> div
+	> div:has(input[data-part='channel-input'])
+	> div {
+	@apply flex flex-col gap-1;
+}
+
+[data-scope='color-picker'][data-part='content']
+	> div
+	> div:has(input[data-part='channel-input'])
+	span {
+	@apply text-xs font-medium text-muted-foreground text-center;
+}
+
+[data-scope='color-picker'][data-part='content']
+	> div
+	> div:has(input[data-part='channel-input'])
+	input {
+	@apply w-full px-2 py-1 text-xs;
+}
+
+/* Separator */
+[data-scope='color-picker'][data-part='content'] hr {
+	@apply border-0 border-t border-border;
+}
+
+
+/* Swatch Group */
+[data-scope='color-picker'][data-part='swatch-group'] {
+	@apply flex items-center flex-wrap gap-2;
+}
+
+[data-scope='color-picker'][data-part='swatch-group'] p {
+	@apply text-sm font-medium text-foreground m-0;
+}
+
+[data-scope='color-picker'][data-part='swatch-trigger'] {
+	@apply relative w-6 h-6 border border-border rounded-md overflow-hidden cursor-pointer hover:ring-2 hover:ring-ring hover:ring-offset-1 hover:ring-offset-background transition-all;
+}
+
+[data-scope='color-picker'][data-part='swatch-trigger'] > div {
+	@apply relative w-full h-full;
+}
