@@ -13,11 +13,9 @@ export component Editable() {
     <div {...@api.getRootProps()}>
         <div {...@api.getAreaProps()}>
             <input {...@api.getInputProps()} />
-            <span data-testid="preview" {...@api.getPreviewProps()}>
+            <span {...@api.getPreviewProps()}>
               {@api.valueText}
             </span>
-            // TODO: do we need to support this? zag currently sends `api.valueText` as `children`
-            {/* <span data-testid="preview" {...api.getPreviewProps()} /> */}
         </div>
 
         <div {...@api.getControlProps()}>

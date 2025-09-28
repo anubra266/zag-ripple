@@ -1,0 +1,36 @@
+import * as fileUpload from '@zag-js/file-upload';
+import { normalizeProps, useMachine } from 'zag-ripple';
+import { track } from 'ripple';
+import { X } from 'lucide-ripple';
+
+export component FileUpload() {
+  let service = useMachine(fileUpload.machine, {
+    id: 'file-upload',
+    accept: 'image/*',
+  });
+  let api = track(() => fileUpload.connect(@service, normalizeProps));
+
+  <div {...@api.getRootProps()}>
+    <div {...@api.getDropzoneProps()}>
+      <input {...@api.getHiddenInputProps()} />
+      <span>{"Drag your files here"}</span>
+      <button {...@api.getTriggerProps()}>{"Open File Upload"}</button>
+    </div>
+
+    <div>
+      for (const file of @api.acceptedFiles) {
+        <div {...@api.getItemProps({ file })}>
+          <span {...@api.getItemNameProps({ file })}>
+            {file.name}
+          </span>
+          <span {...@api.getItemSizeTextProps({ file })}>
+            {@api.getFileSize(file)}
+          </span>
+          <button {...@api.getItemDeleteTriggerProps({ file })}>
+            <X />
+          </button>
+        </div>
+      }
+    </div>
+  </div>
+}

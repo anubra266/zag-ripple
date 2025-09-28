@@ -76,13 +76,13 @@ export const components = [
       icon: "edit",
       description: "Inline text editing with preview and edit modes.",
     },
-    // {
-    //   label: "File Upload",
-    //   id: "file-upload",
-    //   icon: "upload",
-    //   description:
-    //     "Drag and drop or click to upload files with progress tracking.",
-    // },
+    {
+      label: "File Upload",
+      id: "file-upload",
+      icon: "upload",
+      description:
+        "Drag and drop or click to upload files with progress tracking.",
+    },
     // {
     //   label: "Floating Panel",
     //   id: "floating-panel",

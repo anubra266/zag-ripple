@@ -1,0 +1,62 @@
+[data-scope='file-upload'][data-part='root'] {
+	@apply flex flex-col gap-4 w-full max-w-lg mx-auto;
+}
+
+[data-scope='file-upload'][data-part='dropzone'] {
+	@apply flex flex-col items-center justify-center gap-4 p-8 border-2 border-dashed border-border rounded-lg bg-background/50 transition-colors cursor-pointer hover:bg-muted/50;
+	min-height: 200px;
+}
+
+[data-scope='file-upload'][data-part='dropzone'][data-dragging] {
+	@apply border-primary bg-primary/10;
+}
+
+[data-scope='file-upload'][data-part='dropzone'][data-invalid] {
+	@apply border-destructive bg-destructive/10;
+}
+
+[data-scope='file-upload'][data-part='dropzone'] span {
+	@apply text-sm text-muted-foreground text-center;
+}
+
+[data-scope='file-upload'][data-part='trigger'] {
+	@apply px-4 py-2 bg-primary text-primary-foreground rounded-md hover:bg-primary/90 transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 focus:ring-offset-background font-medium text-sm;
+}
+
+[data-scope='file-upload'][data-part='hidden-input'] {
+	@apply sr-only;
+}
+
+/* File Items List */
+[data-scope='file-upload'][data-part='root'] > div:last-child {
+	@apply space-y-2;
+}
+
+[data-scope='file-upload'][data-part='item'] {
+	@apply flex items-center gap-3 p-3 bg-muted/30 border border-border rounded-md;
+}
+
+[data-scope='file-upload'][data-part='item-name'] {
+	@apply flex-1 text-sm font-medium text-foreground truncate;
+}
+
+[data-scope='file-upload'][data-part='item-size-text'] {
+	@apply text-xs text-muted-foreground font-mono;
+}
+
+[data-scope='file-upload'][data-part='item-delete-trigger'] {
+	@apply flex items-center justify-center w-8 h-8 text-muted-foreground hover:text-destructive hover:bg-destructive/10 rounded-md transition-colors;
+}
+
+[data-scope='file-upload'][data-part='item-delete-trigger'] svg {
+	@apply w-4 h-4;
+}
+
+/* Enhanced States */
+[data-scope='file-upload'][data-part='dropzone'][data-dragging] span {
+	@apply text-primary font-medium;
+}
+
+[data-scope='file-upload'][data-part='dropzone'][data-invalid] span {
+	@apply text-destructive;
+}

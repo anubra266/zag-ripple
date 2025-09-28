@@ -17,7 +17,7 @@ export component Accordion() {
 
     <div {...@api.getRootProps()}>
         for (const item of data) {
-            <div key={item.id} {...@api.getItemProps({ value: item.id })}>
+            <div {...@api.getItemProps({ value: item.id })}>
                 <h3>
                     <button {...@api.getItemTriggerProps({ value: item.id })}>
                         {item.label}
