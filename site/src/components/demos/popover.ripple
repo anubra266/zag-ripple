@@ -1,0 +1,36 @@
+import * as popover from '@zag-js/popover';
+import { normalizeProps, useMachine, Portal } from 'zag-ripple';
+import { track } from 'ripple';
+import { X } from 'lucide-ripple';
+
+export component Popover() {
+	let service = useMachine(popover.machine, {
+		id: 'popover',
+		portalled: true,
+	});
+	let api = track(() => popover.connect(@service, normalizeProps));
+
+	<button {...@api.getTriggerProps()}>{"Click me"}</button>
+	<Portal>
+		<div {...@api.getPositionerProps()}>
+			<div {...@api.getContentProps()}>
+				<div {...@api.getArrowProps()}>
+					<div {...@api.getArrowTipProps()} />
+				</div>
+
+				<div>
+					<div {...@api.getTitleProps()}>
+						<b>{"Quick Settings"}</b>
+					</div>
+					<div {...@api.getDescriptionProps()}>
+						{"Adjust your preferences and account settings from this convenient panel."}
+					</div>
+					<button>{"Update Profile"}</button>
+				</div>
+				<button {...@api.getCloseTriggerProps()}>
+					<X />
+				</button>
+			</div>
+		</div>
+	</Portal>
+}

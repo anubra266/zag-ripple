@@ -145,12 +145,12 @@ export const components = [
     icon: "pin",
     description: "Multiple character input fields for PIN or code entry.",
   },
-  // {
-  //   label: "Popover",
-  //   id: "popover",
-  //   icon: "popover",
-  //   description: "Floating content anchored to trigger elements.",
-  // },
+  {
+    label: "Popover",
+    id: "popover",
+    icon: "popover",
+    description: "Floating content anchored to trigger elements.",
+  },
   // {
   //   label: "Presence",
   //   id: "presence",

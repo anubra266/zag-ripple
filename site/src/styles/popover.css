@@ -1,0 +1,45 @@
+[data-scope='popover'][data-part='trigger'] {
+	@apply px-4 py-2 bg-primary text-primary-foreground rounded-md hover:bg-primary/90 transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 focus:ring-offset-background font-medium mx-auto block;
+}
+
+[data-scope='popover'][data-part='content'] {
+	@apply bg-popover rounded-lg drop-shadow-md drop-shadow-border p-4 w-80 z-50 data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 duration-200;
+	transform-origin: var(--transform-origin);
+}
+
+[data-scope='popover'][data-part='arrow'] {
+	--arrow-background: var(--popover);
+	--arrow-size: 8px;
+}
+
+[data-scope='popover'][data-part='arrow-tip'] {
+	@apply rounded-xs;
+}
+
+[data-scope='popover'][data-part='content'] > div:nth-child(2) {
+	@apply space-y-3;
+}
+
+[data-scope='popover'][data-part='title'] {
+	@apply text-sm font-semibold text-foreground leading-none;
+}
+
+[data-scope='popover'][data-part='title'] b {
+	@apply font-semibold;
+}
+
+[data-scope='popover'][data-part='description'] {
+	@apply text-sm text-muted-foreground leading-relaxed;
+}
+
+[data-scope='popover'][data-part='content'] > div:nth-child(2) > button {
+	@apply px-3 py-1.5 bg-primary text-primary-foreground rounded-md hover:bg-primary/90 transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 focus:ring-offset-background font-medium text-sm;
+}
+
+[data-scope='popover'][data-part='close-trigger'] {
+	@apply absolute right-2 top-2 w-6 h-6 flex items-center justify-center rounded-md hover:bg-muted transition-colors text-muted-foreground hover:text-foreground focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 focus:ring-offset-background;
+}
+
+[data-scope='popover'][data-part='close-trigger'] svg {
+	@apply w-4 h-4;
+}
