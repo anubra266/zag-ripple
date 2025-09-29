@@ -24,7 +24,7 @@ function openInStackblitz(id: string) {
 		files: {
             [`src/${toPascalCase(id)}.ripple`]: getComponentCode(id),
             "src/index.ts": getIndexTS(id),
-            'src/styles.css': getComponentStyles(id),
+            'src/styles.css': getComponentStyles(component.package ?? id),
             'index.html': indexHtml(component.label),
             'package.json': packageJson(id),
             'ripple.d.ts': `declare module '*.ripple';`,

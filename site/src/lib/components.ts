@@ -112,19 +112,21 @@ export const components = [
     id: "context-menu",
     icon: "context",
     description: "Right-click menu with contextual actions.",
+    package: "menu",
   },
   {
     label: "Nested Menu",
     id: "nested-menu",
     icon: "nested",
     description: "Multi-level menu with hierarchical navigation.",
+    package: "menu",
   },
-  // {
-  //   label: "Number Input",
-  //   id: "number-input",
-  //   icon: "number",
-  //   description: "Input field for numeric values with increment controls.",
-  // },
+  {
+    label: "Number Input",
+    id: "number-input",
+    icon: "number",
+    description: "Input field for numeric values with increment controls.",
+  },
   // {
   //   label: "Pagination",
   //   id: "pagination",
