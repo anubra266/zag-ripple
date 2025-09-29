@@ -151,12 +151,12 @@ export const components = [
     icon: "popover",
     description: "Floating content anchored to trigger elements.",
   },
-  // {
-  //   label: "Presence",
-  //   id: "presence",
-  //   icon: "presence",
-  //   description: "Animate elements entering and leaving the DOM.",
-  // },
+  {
+    label: "Presence",
+    id: "presence",
+    icon: "presence",
+    description: "Animate elements entering and leaving the DOM.",
+  },
   // {
   //   label: "Progress - Linear",
   //   id: "linear-progress",

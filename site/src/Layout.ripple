@@ -9,7 +9,7 @@ export component Layout() {
 	<div class="fixed inset-0 grid-pattern opacity-50 -z-10" />
 	// <Page />
 	// <Components />
-	<Component params={{ id: 'popover' }} />
+	<Component params={{ id: 'presence' }} />
 
 	// <Router>
 	// 	<Route path='/' $element={Page} />

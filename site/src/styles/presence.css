@@ -1,0 +1,42 @@
+[data-scope='presence'][data-part='root'] {
+	@apply flex flex-col gap-2 mx-auto h-40 max-w-md w-full;
+}
+
+[data-scope='presence'] button {
+	@apply px-4 py-2 w-full bg-primary text-primary-foreground rounded-md hover:bg-primary/90 transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 focus:ring-offset-background font-medium;
+}
+
+[data-scope='presence'][data-part='content'] {
+	@apply bg-primary text-primary-foreground p-6 rounded-lg shadow-lg w-full text-center;
+	transform-origin: center;
+}
+
+[data-scope='presence'][data-state='open'] {
+	animation: fadeIn 0.3s forwards;
+}
+
+[data-scope='presence'][data-state='closed'] {
+	animation: fadeOut 0.2s forwards;
+}
+
+@keyframes fadeIn {
+	from {
+		opacity: 0;
+		transform: scale(0.9);
+	}
+	to {
+		opacity: 1;
+		transform: scale(1);
+	}
+}
+
+@keyframes fadeOut {
+	from {
+		opacity: 1;
+		transform: scale(1);
+	}
+	to {
+		opacity: 0;
+		transform: scale(0.9);
+	}
+}

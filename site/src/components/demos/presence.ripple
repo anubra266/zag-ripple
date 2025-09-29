@@ -1,0 +1,30 @@
+import * as presence from '@zag-js/presence';
+import { normalizeProps, useMachine } from 'zag-ripple';
+import { track } from 'ripple';
+
+export component Presence() {
+    let present = track(false)
+
+    let service = useMachine(presence.machine, {
+        present,
+    })
+    let api = track(() => presence.connect(@service, normalizeProps))
+
+    const divRef = (node) => {
+        @api.setNode(node)
+    };
+
+    <div data-scope="presence" data-part="root">
+        <button onclick={() => (@present = !@present)}>{"Toggle"}</button>
+        if (@api.present) {
+            <div 
+                {ref divRef} 
+                data-scope="presence" 
+                data-part="content" 
+                data-state={@present ? "open" : "closed"}
+            >
+                    {"Content"}
+            </div>
+        }
+    </div>
+}
