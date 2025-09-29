@@ -107,12 +107,12 @@ export const components = [
     icon: "menu",
     description: "Navigate through grouped actions and commands.",
   },
-  // {
-  //   label: "Context Menu",
-  //   id: "context-menu",
-  //   icon: "context",
-  //   description: "Right-click menu with contextual actions.",
-  // },
+  {
+    label: "Context Menu",
+    id: "context-menu",
+    icon: "context",
+    description: "Right-click menu with contextual actions.",
+  },
   // {
   //   label: "Nested Menu",
   //   id: "nested-menu",
