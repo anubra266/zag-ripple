@@ -216,12 +216,12 @@ export const components = [
     icon: "select",
     description: "Choose single or multiple options from a dropdown list.",
   },
-  // {
-  //   label: "Signature Pad",
-  //   id: "signature-pad",
-  //   icon: "signature",
-  //   description: "Capture digital signatures with touch or mouse input.",
-  // },
+  {
+    label: "Signature Pad",
+    id: "signature-pad",
+    icon: "signature",
+    description: "Capture digital signatures with touch or mouse input.",
+  },
   // {
   //   label: "Slider",
   //   id: "slider",

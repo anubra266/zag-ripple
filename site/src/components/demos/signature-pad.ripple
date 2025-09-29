@@ -1,0 +1,32 @@
+import * as signaturePad from '@zag-js/signature-pad';
+import { normalizeProps, useMachine } from 'zag-ripple';
+import { track } from 'ripple';
+import { RotateCcw } from 'lucide-ripple';
+
+export component SignaturePad() {
+	let service = useMachine(signaturePad.machine, {
+		id: 'signature-pad',
+	});
+	let api = track(() => signaturePad.connect(@service, normalizeProps));
+
+	<div {...@api.getRootProps()}>
+		<label {...@api.getLabelProps()}>{"Sign here"}</label>
+
+		<div {...@api.getControlProps()}>
+			<svg {...@api.getSegmentProps()}>
+				for (const path of @api.paths; index i) {
+					<path {...@api.getSegmentPathProps({ path })} />
+				}
+				if (@api.currentPath) {
+					<path {...@api.getSegmentPathProps({ path: @api.currentPath })} />
+				}
+			</svg>
+
+			<button {...@api.getClearTriggerProps()}>
+				<RotateCcw />
+			</button>
+
+			<div {...@api.getGuideProps()} />
+		</div>
+	</div>
+}

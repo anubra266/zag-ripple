@@ -1,0 +1,39 @@
+[data-scope='signature-pad'][data-part='root'] {
+	@apply flex flex-col gap-3 w-full max-w-md mx-auto;
+}
+
+[data-scope='signature-pad'][data-part='label'] {
+	@apply text-sm font-medium text-foreground;
+}
+
+[data-scope='signature-pad'][data-part='control'] {
+	@apply relative border border-border rounded-lg bg-background overflow-hidden h-44;
+}
+
+[data-scope='signature-pad'][data-part='segment'] {
+	@apply w-full h-full bg-background;
+}
+
+[data-scope='signature-pad'][data-part='segment'] path {
+	@apply fill-none stroke-current;
+	stroke-width: 2;
+	stroke-linecap: round;
+	stroke-linejoin: round;
+	color: hsl(var(--foreground));
+}
+
+[data-scope='signature-pad'][data-part='clear-trigger'] {
+	@apply absolute top-2 right-2 w-8 h-8 flex items-center justify-center bg-background/80 border border-border rounded-md hover:bg-muted transition-colors text-muted-foreground hover:text-foreground focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 focus:ring-offset-background;
+}
+
+[data-scope='signature-pad'][data-part='clear-trigger'] svg {
+	@apply w-4 h-4;
+}
+
+[data-scope='signature-pad'][data-part='guide'] {
+	@apply absolute bottom-8 left-8 right-8 border-b border-dashed border-muted-foreground/30 pointer-events-none;
+}
+
+[data-scope='signature-pad'][data-part='control']:focus-within {
+	@apply ring-2 ring-ring ring-offset-2 ring-offset-background;
+}
