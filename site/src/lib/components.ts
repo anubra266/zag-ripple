@@ -252,17 +252,17 @@ export const components = [
     icon: "tabs",
     description: "Organize content into multiple panels with tab navigation.",
   },
-  // {
-  //   label: "Tags Input",
-  //   id: "tags-input",
-  //   icon: "tags",
-  //   description: "Input field for adding and managing multiple tags.",
-  // },
+  {
+    label: "Tags Input",
+    id: "tags-input",
+    icon: "tags",
+    description: "Input field for adding and managing multiple tags.",
+  },
   // {
   //   label: "Timer",
   //   id: "timer",
   //   icon: "timer",
-  //   description: "Countdown timer with customizable duration and callbacks.",
+  //   description: "Record elapsed time since zero or given time",
   // },
   // {
   //   label: "Toast",

@@ -1,0 +1,30 @@
+import * as tagsInput from '@zag-js/tags-input';
+import { normalizeProps, useMachine } from 'zag-ripple';
+import { track } from 'ripple';
+import { X } from 'lucide-ripple';
+
+export component TagsInput() {
+	let service = useMachine(tagsInput.machine, {
+		id: 'tags-input',
+		defaultValue: ["Ripple JS", "Svelte"],
+	});
+	let api = track(() => tagsInput.connect(@service, normalizeProps));
+
+	<div {...@api.getRootProps()}>
+		<label {...@api.getLabelProps()}>{"Enter frameworks:"}</label>
+		<div {...@api.getControlProps()}>
+			for (const value of @api.value; index index) {
+				<span {...@api.getItemProps({ index, value })}>
+					<div {...@api.getItemPreviewProps({ index, value })}>
+						<span>{value}</span>
+						<button {...@api.getItemDeleteTriggerProps({ index, value })}>
+							<X />
+						</button>
+					</div>
+					<input {...@api.getItemInputProps({ index, value })} />
+				</span>
+			}
+			<input placeholder="Add tag..." {...@api.getInputProps()} />
+		</div>
+	</div>
+}
