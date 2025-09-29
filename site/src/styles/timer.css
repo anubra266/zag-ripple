@@ -1,0 +1,47 @@
+[data-scope='timer'][data-part='root'] {
+	@apply flex flex-col items-center gap-6 w-full max-w-md mx-auto;
+}
+
+[data-scope='timer'][data-part='area'] {
+	@apply flex items-center justify-center gap-2 p-6 bg-muted/30 border border-border rounded-xl;
+}
+
+[data-scope='timer'][data-part='item'] {
+	@apply flex flex-col items-center justify-center w-16 h-16 bg-background border border-border rounded-lg shadow-sm;
+}
+
+[data-scope='timer'][data-part='item'][data-type='days'] {
+	@apply text-2xl font-bold text-primary;
+}
+
+[data-scope='timer'][data-part='item'][data-type='hours'] {
+	@apply text-2xl font-bold text-foreground;
+}
+
+[data-scope='timer'][data-part='item'][data-type='minutes'] {
+	@apply text-2xl font-bold text-foreground;
+}
+
+[data-scope='timer'][data-part='item'][data-type='seconds'] {
+	@apply text-2xl font-bold text-destructive;
+}
+
+[data-scope='timer'][data-part='separator'] {
+	@apply text-2xl font-bold text-muted-foreground;
+}
+
+[data-scope='timer'][data-part='control'] {
+	@apply flex gap-3;
+}
+
+[data-scope='timer'][data-part='action-trigger'] {
+	@apply px-4 py-2 bg-secondary text-secondary-foreground rounded-md hover:bg-secondary/80 transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 focus:ring-offset-background font-medium text-sm;
+}
+
+[data-scope='timer'][data-part='action-trigger'][data-action='pause'] {
+	@apply bg-destructive text-destructive-foreground hover:bg-destructive/90;
+}
+
+[data-scope='timer'][data-part='action-trigger'][data-action='resume'] {
+	@apply bg-primary text-primary-foreground hover:bg-primary/90;
+}

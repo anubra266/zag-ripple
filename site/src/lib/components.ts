@@ -258,12 +258,12 @@ export const components = [
     icon: "tags",
     description: "Input field for adding and managing multiple tags.",
   },
-  // {
-  //   label: "Timer",
-  //   id: "timer",
-  //   icon: "timer",
-  //   description: "Record elapsed time since zero or given time",
-  // },
+  {
+    label: "Timer",
+    id: "timer",
+    icon: "timer",
+    description: "Record elapsed time since zero or given time",
+  },
   // {
   //   label: "Toast",
   //   id: "toast",
