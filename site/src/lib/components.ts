@@ -190,12 +190,12 @@ export const components = [
     description: "Select a range of values with dual handle sliders.",
     package: "slider",
   },
-  // {
-  //   label: "Rating Group",
-  //   id: "rating-group",
-  //   icon: "star",
-  //   description: "Star rating input for collecting user feedback.",
-  // },
+  {
+    label: "Rating Group",
+    id: "rating-group",
+    icon: "star",
+    description: "Star rating input for collecting user feedback.",
+  },
   // {
   //   label: "Scroll Area",
   //   id: "scroll-area",

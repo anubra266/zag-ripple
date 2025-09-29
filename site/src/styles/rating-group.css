@@ -1,0 +1,44 @@
+[data-scope='rating-group'][data-part='root'] {
+	@apply flex flex-col gap-3 w-full max-w-xs mx-auto;
+}
+
+[data-scope='rating-group'][data-part='root'][dir='rtl'] [data-half] [data-part='star'] {
+	transform: scale(-1, 1);
+}
+
+[data-scope='rating-group'][data-part='label'] {
+	@apply text-sm font-medium text-foreground;
+}
+
+[data-scope='rating-group'][data-part='control'] {
+	@apply inline-flex;
+}
+
+[data-scope='rating-group'][data-part='item'] {
+	@apply cursor-pointer transition-transform hover:scale-110;
+	@apply size-8 p-0.5;
+}
+
+[data-scope='rating-group'][data-part='item']:focus {
+	@apply outline-none ring-2 ring-ring ring-offset-2 ring-offset-background rounded-sm;
+}
+
+[data-scope='rating-group'][data-part='item'][data-disabled] {
+	@apply cursor-not-allowed;
+}
+
+[data-scope='rating-group'][data-part='item'] [data-part='star'] {
+	color: #bdbdbd;
+}
+
+[data-scope='rating-group'][data-part='item'][data-highlighted] [data-part='star'] {
+	@apply text-yellow-400;
+}
+
+[data-scope='rating-group'][data-part='item'][data-highlighted][data-disabled] [data-part='star'] {
+	color: #a1a1a1;
+}
+
+[data-scope='rating-group'][data-part='hidden-input'] {
+	@apply sr-only;
+}

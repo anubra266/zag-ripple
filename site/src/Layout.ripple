@@ -9,7 +9,7 @@ export component Layout() {
 	<div class="fixed inset-0 grid-pattern opacity-50 -z-10" />
 	// <Page />
 	// <Components />
-	<Component params={{ id: 'range-slider' }} />
+	<Component params={{ id: 'rating-group' }} />
 
 	// <Router>
 	// 	<Route path='/' $element={Page} />
