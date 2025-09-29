@@ -1,0 +1,82 @@
+[data-scope='scroll-area'][data-part='root'] {
+	@apply relative w-full max-w-md mx-auto;
+	height: 12rem;
+}
+
+[data-scope='scroll-area'][data-part='viewport'] {
+	@apply h-full rounded-md border border-border overflow-auto;
+	overscroll-behavior: contain;
+	/* Hide default scrollbar */
+	scrollbar-width: none;
+}
+
+[data-scope='scroll-area'][data-part='viewport']::-webkit-scrollbar {
+	display: none;
+}
+
+[data-scope='scroll-area'][data-part='viewport']:focus-visible {
+	@apply ring-2 ring-ring ring-offset-2 ring-offset-background;
+}
+
+[data-scope='scroll-area'][data-part='content'] {
+	@apply flex flex-col gap-4 py-3 pl-4 pr-6;
+}
+
+[data-scope='scroll-area'][data-part='content'] > div {
+	@apply py-1.5 px-3 bg-muted/30 rounded-md text-sm text-foreground;
+}
+
+[data-scope='scroll-area'][data-part='scrollbar'] {
+	@apply relative bg-muted rounded-md opacity-0 transition-opacity;
+	margin: 0.5rem;
+	transition: opacity 150ms 300ms;
+}
+
+[data-scope='scroll-area'][data-part='scrollbar'][data-hover],
+[data-scope='scroll-area'][data-part='scrollbar'][data-scrolling] {
+	@apply opacity-100;
+	transition-duration: 75ms;
+	transition-delay: 0ms;
+}
+
+[data-scope='scroll-area'][data-part='scrollbar'][data-orientation='vertical'] {
+	@apply w-2;
+}
+
+[data-scope='scroll-area'][data-part='scrollbar'][data-orientation='vertical']::before {
+	@apply absolute w-5 h-full left-1/2 transform -translate-x-1/2;
+	content: '';
+}
+
+[data-scope='scroll-area'][data-part='scrollbar'][data-orientation='vertical']:not(
+		[data-overflow-y]
+	) {
+	@apply hidden;
+}
+
+[data-scope='scroll-area'][data-part='scrollbar'][data-orientation='horizontal'] {
+	@apply h-2;
+}
+
+[data-scope='scroll-area'][data-part='scrollbar'][data-orientation='horizontal']::before {
+	@apply absolute h-5 w-full top-1/2 transform -translate-y-1/2;
+	content: '';
+}
+
+[data-scope='scroll-area'][data-part='scrollbar'][data-orientation='horizontal']:not(
+		[data-overflow-x]
+	) {
+	@apply hidden;
+}
+
+[data-scope='scroll-area'][data-part='thumb'] {
+	@apply rounded-full bg-border;
+}
+
+[data-scope='scroll-area'][data-part='thumb'][data-orientation='vertical'] {
+	@apply w-full;
+}
+
+[data-scope='scroll-area'][data-part='thumb'][data-orientation='horizontal'] {
+	@apply h-full;
+}

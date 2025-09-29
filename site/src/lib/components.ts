@@ -196,13 +196,13 @@ export const components = [
     icon: "star",
     description: "Star rating input for collecting user feedback.",
   },
-  // {
-  //   label: "Scroll Area",
-  //   id: "scroll-area",
-  //   beta: true,
-  //   icon: "scroll",
-  //   description: "Custom scrollable areas with styled scrollbars.",
-  // },
+  {
+    label: "Scroll Area",
+    id: "scroll-area",
+    beta: true,
+    icon: "scroll",
+    description: "Custom scrollable areas with styled scrollbars.",
+  },
   // {
   //   label: "Segmented Control",
   //   id: "segmented-control",

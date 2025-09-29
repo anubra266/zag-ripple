@@ -1,0 +1,25 @@
+import * as scrollArea from '@zag-js/scroll-area';
+import { normalizeProps, useMachine } from 'zag-ripple';
+import { track } from 'ripple';
+
+export component ScrollArea() {
+	let service = useMachine(scrollArea.machine, {
+		id: 'scroll-area',
+	});
+	let api = track(() => scrollArea.connect(@service, normalizeProps));
+
+	<div {...@api.getRootProps()}>
+		<div {...@api.getViewportProps()}>
+			<div {...@api.getContentProps()}>
+				for (const index of Array.from({length: 50}, (_, i) => i)) {
+					<div>
+						{"Item "}{index + 1}
+					</div>
+				}
+			</div>
+		</div>
+		<div {...@api.getScrollbarProps()}>
+			<div {...@api.getThumbProps()} />
+		</div>
+	</div>
+}
