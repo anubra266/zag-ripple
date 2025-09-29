@@ -1,3 +1,5 @@
+// TODO: use tailwind and remove the zag git submodule
+
 const styles = import.meta.glob('./*.css', {
     query: '?raw',
     import: 'default',

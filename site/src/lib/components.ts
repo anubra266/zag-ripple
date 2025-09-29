@@ -171,12 +171,12 @@ export const components = [
     description: "Circular progress indicator for loading states.",
     package: "progress",
   },
-  // {
-  //   label: "QR Code",
-  //   id: "qr-code",
-  //   icon: "qr",
-  //   description: "Generate and display QR codes with customizable options.",
-  // },
+  {
+    label: "QR Code",
+    id: "qr-code",
+    icon: "qr",
+    description: "Generate and display QR codes with customizable options.",
+  },
   // {
   //   label: "Radio Group",
   //   id: "radio-group",

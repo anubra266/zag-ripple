@@ -1,0 +1,24 @@
+import * as qrCode from '@zag-js/qr-code';
+import { normalizeProps, useMachine } from 'zag-ripple';
+import { track } from 'ripple';
+
+export component QrCode() {
+	let service = useMachine(qrCode.machine, {
+		id: 'qr-code',
+		value: 'https://www.ripplejs.com',
+		encoding: { ecc: "H" },
+	});
+	let api = track(() => qrCode.connect(@service, normalizeProps));
+
+	<div {...@api.getRootProps()}>
+		<svg {...@api.getFrameProps()}>
+			<path {...@api.getPatternProps()} />
+		</svg>
+		<div {...@api.getOverlayProps()}>
+			<img
+				src="https://www.ripplejs.com/favicon.svg"
+				alt=""
+			/>
+		</div>
+	</div>
+}

@@ -1,0 +1,21 @@
+[data-scope='qr-code'][data-part='root'] {
+	@apply flex justify-center mx-auto;
+}
+
+[data-scope='qr-code'][data-part='frame'] {
+	@apply bg-background border border-border rounded-lg p-2;
+	width: 120px;
+	height: 120px;
+}
+
+[data-scope='qr-code'][data-part='pattern'] {
+	@apply fill-foreground;
+}
+
+[data-scope='qr-code'][data-part='overlay'] {
+	@apply absolute size-6 bg-background border-4 border-background rounded left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2;
+}
+
+[data-scope='qr-code'][data-part='overlay'] img {
+	@apply w-full h-full object-cover rounded;
+}
