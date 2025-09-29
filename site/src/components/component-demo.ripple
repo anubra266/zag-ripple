@@ -7,7 +7,7 @@ function toCamelCase(str: string): string {
 export component ComponentDemo({ id }:any) {
     const Demo = demos[toCamelCase(id)];
     if (Demo) {
-        <div class="flex items-center p-6 rounded-lg border border-border/50 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+        <div class="flex items-center flex-wrap p-6 rounded-lg border border-border/50 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
             <Demo />
         </div>
     }

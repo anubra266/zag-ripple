@@ -139,12 +139,12 @@ export const components = [
     icon: "password",
     description: "Secure text input with visibility toggle functionality.",
   },
-  // {
-  //   label: "Pin Input",
-  //   id: "pin-input",
-  //   icon: "pin",
-  //   description: "Multiple character input fields for PIN or code entry.",
-  // },
+  {
+    label: "Pin Input",
+    id: "pin-input",
+    icon: "pin",
+    description: "Multiple character input fields for PIN or code entry.",
+  },
   // {
   //   label: "Popover",
   //   id: "popover",

@@ -1,0 +1,23 @@
+import * as pinInput from '@zag-js/pin-input';
+import { normalizeProps, useMachine } from 'zag-ripple';
+import { track } from 'ripple';
+
+export component PinInput() {
+	let service = useMachine(pinInput.machine, {
+		id: 'pin-input',
+		placeholder: "○",
+        count: 4,
+	});
+	let api = track(() => pinInput.connect(@service, normalizeProps));
+
+	<div {...@api.getRootProps()}>
+        <label {...@api.getLabelProps()}>{"Enter code:"}</label>
+        <div {...@api.getControlProps()}>
+            for (const index of @api.items) {
+                <input {...@api.getInputProps({ index })} />
+            }
+        </div>
+        <div {...@api.getHiddenInputProps()} />
+        <button onClick={() => @api.clearValue()}>{"Clear"}</button>
+	</div>
+}

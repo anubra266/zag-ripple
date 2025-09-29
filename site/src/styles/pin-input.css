@@ -1,0 +1,31 @@
+[data-scope='pin-input'][data-part='root'] {
+	@apply flex flex-col gap-4 mx-auto;
+}
+
+[data-scope='pin-input'][data-part='label'] {
+	@apply text-sm font-medium text-foreground;
+}
+
+[data-scope='pin-input'][data-part='control'] {
+	@apply flex gap-3 justify-center;
+}
+
+[data-scope='pin-input'][data-part='input'] {
+	@apply w-12 h-12 text-center text-lg font-medium bg-background border border-border rounded-md text-foreground focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 focus:ring-offset-background transition-colors;
+}
+
+[data-scope='pin-input'][data-part='input']:focus {
+	@apply border-primary;
+}
+
+[data-scope='pin-input'][data-part='input'][data-complete] {
+	@apply border-primary bg-primary/5;
+}
+
+[data-scope='pin-input'][data-part='hidden-input'] {
+	@apply sr-only;
+}
+
+[data-scope='pin-input'][data-part='root'] > button {
+	@apply px-4 py-2 bg-secondary hover:bg-secondary/80 text-secondary-foreground rounded-md hover:bg-secondary/80 transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 focus:ring-offset-background font-medium text-sm;
+}

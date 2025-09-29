@@ -20,3 +20,4 @@ export { NestedMenu as nestedMenu } from "./nested-menu.ripple";
 export { NumberInput as numberInput } from "./number-input.ripple";
 export { Pagination as pagination } from "./pagination.ripple";
 export { PasswordInput as passwordInput } from "./password-input.ripple";
+export { PinInput as pinInput } from "./pin-input.ripple";
