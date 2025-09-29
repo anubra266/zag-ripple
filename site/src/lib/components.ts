@@ -133,12 +133,12 @@ export const components = [
     icon: "pagination",
     description: "Navigate through pages of content with page indicators.",
   },
-  // {
-  //   label: "Password Input",
-  //   id: "password-input",
-  //   icon: "password",
-  //   description: "Secure text input with visibility toggle functionality.",
-  // },
+  {
+    label: "Password Input",
+    id: "password-input",
+    icon: "password",
+    description: "Secure text input with visibility toggle functionality.",
+  },
   // {
   //   label: "Pin Input",
   //   id: "pin-input",
