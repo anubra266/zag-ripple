@@ -228,12 +228,12 @@ export const components = [
     icon: "slider",
     description: "Select numeric values from a continuous range.",
   },
-  // {
-  //   label: "Splitter",
-  //   id: "splitter",
-  //   icon: "split",
-  //   description: "Resizable panels with draggable dividers.",
-  // },
+  {
+    label: "Splitter",
+    id: "splitter",
+    icon: "split",
+    description: "Resizable panels with draggable dividers.",
+  },
   // {
   //   label: "Steps",
   //   id: "steps",

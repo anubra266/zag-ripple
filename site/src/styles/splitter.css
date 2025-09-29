@@ -1,0 +1,43 @@
+[data-scope='splitter'][data-part='root'] {
+	@apply flex w-full max-w-lg h-64! mx-auto border border-border rounded-lg overflow-hidden;
+}
+
+[data-scope='splitter'][data-part='root'][data-orientation='horizontal'] {
+	@apply flex-row;
+}
+
+[data-scope='splitter'][data-part='root'][data-orientation='vertical'] {
+	@apply flex-col;
+}
+
+[data-scope='splitter'][data-part='panel'] {
+	@apply flex items-center justify-center bg-muted/30 text-foreground;
+}
+
+[data-scope='splitter'][data-part='panel'] p {
+	@apply text-2xl font-bold text-muted-foreground;
+}
+
+[data-scope='splitter'][data-part='resize-trigger'] {
+	@apply relative bg-border hover:bg-primary transition-colors cursor-col-resize flex-shrink-0;
+}
+
+[data-scope='splitter'][data-part='resize-trigger'][data-orientation='horizontal'] {
+	@apply w-1 cursor-col-resize;
+}
+
+[data-scope='splitter'][data-part='resize-trigger'][data-orientation='vertical'] {
+	@apply h-1 cursor-row-resize;
+}
+
+[data-scope='splitter'][data-part='resize-trigger']:hover {
+	@apply bg-primary;
+}
+
+[data-scope='splitter'][data-part='resize-trigger']:focus {
+	@apply ring-2 ring-ring ring-offset-0 bg-primary;
+}
+
+[data-scope='splitter'][data-part='resize-trigger']:active {
+	@apply bg-primary;
+}
