@@ -1,0 +1,33 @@
+import * as progress from '@zag-js/progress';
+import { normalizeProps, useMachine } from 'zag-ripple';
+import { track } from 'ripple';
+
+export component LinearProgress() {
+	let service = useMachine(progress.machine, {
+		id: 'linear-progress',
+		defaultValue: 60,
+	});
+	let api = track(() => progress.connect(@service, normalizeProps));
+
+	<div>
+		<div {...@api.getRootProps()}>
+			<div {...@api.getLabelProps()}>{"Upload progress"}</div>
+			<div {...@api.getTrackProps()}>
+				<div {...@api.getRangeProps()} />
+			</div>
+			<div {...@api.getValueTextProps()}>{@api.valueAsString}</div>
+		</div>
+
+		<div>
+			<button onclick={() => @api.setValue((@api.value ?? 0) - 20)}>
+				{"Decrease"}
+			</button>
+
+			<button onclick={() => @api.setValue((@api.value ?? 0) + 20)}>
+				{"Increase"}
+			</button>
+
+			<button onclick={() => @api.setValue(null)}>{"Indeterminate"}</button>
+		</div>
+	</div>
+}

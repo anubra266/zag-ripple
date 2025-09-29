@@ -3,6 +3,7 @@
 @import './avatar.css';
 @import './carousel.css';
 @import './checkbox.css';
+@import './circular-progress.css';
 @import './clipboard.css';
 @import './collapsible.css';
 @import './color-picker.css';
@@ -14,6 +15,7 @@
 @import './file-upload.css';
 @import './floating-panel.css';
 @import './hover-card.css';
+@import './linear-progress.css';
 @import './listbox.css';
 @import './menu.css';
 @import './nested-menu.css';

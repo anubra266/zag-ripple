@@ -157,18 +157,20 @@ export const components = [
     icon: "presence",
     description: "Animate elements entering and leaving the DOM.",
   },
-  // {
-  //   label: "Progress - Linear",
-  //   id: "linear-progress",
-  //   icon: "progress",
-  //   description: "Visual indicator of task completion progress.",
-  // },
-  // {
-  //   label: "Progress - Circular",
-  //   id: "circular-progress",
-  //   icon: "circle",
-  //   description: "Circular progress indicator for loading states.",
-  // },
+  {
+    label: "Progress - Linear",
+    id: "linear-progress",
+    icon: "progress",
+    description: "Visual indicator of task completion progress.",
+    package: "progress",
+  },
+  {
+    label: "Progress - Circular",
+    id: "circular-progress",
+    icon: "circle",
+    description: "Circular progress indicator for loading states.",
+    package: "progress",
+  },
   // {
   //   label: "QR Code",
   //   id: "qr-code",

@@ -1,0 +1,62 @@
+[data-scope='progress'][data-part='root'] {
+	@apply flex flex-col gap-2 w-full max-w-md mx-auto items-center;
+}
+
+[data-scope='progress'][data-part='label'] {
+	@apply text-sm font-medium text-foreground;
+}
+
+[data-scope='progress'][data-part='circle'] {
+	--size: 120px;
+	--thickness: 12px;
+}
+
+[data-scope='progress'][data-part='circle'][data-state='indeterminate'] {
+	animation: circle 2s linear infinite;
+}
+
+[data-scope='progress'][data-part='circle-track'] {
+	@apply stroke-muted;
+}
+
+[data-scope='progress'][data-part='circle-range'] {
+	@apply stroke-primary;
+	transition-property: stroke-dasharray, stroke-dashoffset, stroke;
+	transition-duration: 0.6s;
+}
+
+[data-scope='progress'][data-part='circle-range'][data-state='indeterminate'] {
+	animation: circle_range 1.5s ease-in-out infinite;
+}
+
+[data-scope='progress'][data-part='value-text'] {
+	@apply text-sm font-medium text-muted-foreground;
+}
+
+[data-scope='progress'][data-part='root'] + div {
+	@apply flex gap-2 justify-center mt-4;
+}
+
+[data-scope='progress'][data-part='root'] + div > button {
+	@apply inline-flex items-center justify-center cursor-pointer font-medium px-4 py-1 bg-muted/50 border hover:bg-muted transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 focus:ring-offset-background text-sm rounded-md;
+}
+
+@keyframes circle {
+	from {
+		transform: rotate(0deg);
+	}
+	to {
+		transform: rotate(360deg);
+	}
+}
+
+@keyframes circle_range {
+	0% {
+		stroke-dasharray: 1, 400;
+		stroke-dashoffset: 0;
+	}
+	100% {
+		stroke-dasharray: 400, 400;
+		stroke-dashoffset: -260;
+	}
+}
