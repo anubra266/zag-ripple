@@ -246,12 +246,12 @@ export const components = [
     icon: "switch",
     description: "Binary toggle control for on/off states.",
   },
-  // {
-  //   label: "Tabs",
-  //   id: "tabs",
-  //   icon: "tabs",
-  //   description: "Organize content into multiple panels with tab navigation.",
-  // },
+  {
+    label: "Tabs",
+    id: "tabs",
+    icon: "tabs",
+    description: "Organize content into multiple panels with tab navigation.",
+  },
   // {
   //   label: "Tags Input",
   //   id: "tags-input",

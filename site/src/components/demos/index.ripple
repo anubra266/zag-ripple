@@ -37,3 +37,4 @@ export { Slider as slider } from "./slider.ripple";
 export { Splitter as splitter } from "./splitter.ripple";
 export { Steps as steps } from "./steps.ripple";
 export { Switch as switch } from "./switch.ripple";
+export { Tabs as tabs } from "./tabs.ripple";
