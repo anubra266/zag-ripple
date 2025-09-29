@@ -18,3 +18,4 @@ export { Listbox as listbox } from "./listbox.ripple";
 export { Menu as menu } from "./menu.ripple";
 export { NestedMenu as nestedMenu } from "./nested-menu.ripple";
 export { NumberInput as numberInput } from "./number-input.ripple";
+export { Pagination as pagination } from "./pagination.ripple";

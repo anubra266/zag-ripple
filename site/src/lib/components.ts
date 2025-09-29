@@ -127,12 +127,12 @@ export const components = [
     icon: "number",
     description: "Input field for numeric values with increment controls.",
   },
-  // {
-  //   label: "Pagination",
-  //   id: "pagination",
-  //   icon: "pagination",
-  //   description: "Navigate through pages of content with page indicators.",
-  // },
+  {
+    label: "Pagination",
+    id: "pagination",
+    icon: "pagination",
+    description: "Navigate through pages of content with page indicators.",
+  },
   // {
   //   label: "Password Input",
   //   id: "password-input",
