@@ -4,7 +4,7 @@ import { track } from 'ripple';
 
 export component Switch() {
 	let service = useMachine(toggle.machine, {
-		id: 'switcher',
+		id: 'switch',
 	});
 	let api = track(() => toggle.connect(@service, normalizeProps));
 
