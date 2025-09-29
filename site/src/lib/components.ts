@@ -234,12 +234,12 @@ export const components = [
     icon: "split",
     description: "Resizable panels with draggable dividers.",
   },
-  // {
-  //   label: "Steps",
-  //   id: "steps",
-  //   icon: "steps",
-  //   description: "Guide users through multi-step processes.",
-  // },
+  {
+    label: "Steps",
+    id: "steps",
+    icon: "steps",
+    description: "Guide users through multi-step processes.",
+  },
   // {
   //   label: "Switch",
   //   id: "switcher",

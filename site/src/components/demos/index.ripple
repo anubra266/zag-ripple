@@ -35,3 +35,4 @@ export { Select as select } from "./select.ripple";
 export { SignaturePad as signaturePad } from "./signature-pad.ripple";
 export { Slider as slider } from "./slider.ripple";
 export { Splitter as splitter } from "./splitter.ripple";
+export { Steps as steps } from "./steps.ripple";

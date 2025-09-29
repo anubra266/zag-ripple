@@ -1,0 +1,74 @@
+import * as steps from '@zag-js/steps';
+import { normalizeProps, useMachine } from 'zag-ripple';
+import { track } from 'ripple';
+
+export component Steps() {
+	let service = useMachine(steps.machine, {
+		id: 'steps',
+		count: stepsData.length,
+        orientation: 'horizontal',
+	});
+	let api = track(() => steps.connect(@service, normalizeProps));
+
+	<div {...@api.getRootProps()}>
+		<div {...@api.getListProps()}>
+			<div {...@api.getItemProps({ index: 0 })}>
+				<button {...@api.getTriggerProps({ index: 0 })}>
+					<div {...@api.getIndicatorProps({ index: 0 })}>{"1"}</div>
+					<span>{stepsData[0].title}</span>
+				</button>
+				<div {...@api.getSeparatorProps({ index: 0 })} />
+			</div>
+			<div {...@api.getItemProps({ index: 1 })}>
+				<button {...@api.getTriggerProps({ index: 1 })}>
+					<div {...@api.getIndicatorProps({ index: 1 })}>{"2"}</div>
+					<span>{stepsData[1].title}</span>
+				</button>
+				<div {...@api.getSeparatorProps({ index: 1 })} />
+			</div>
+			<div {...@api.getItemProps({ index: 2 })}>
+				<button {...@api.getTriggerProps({ index: 2 })}>
+					<div {...@api.getIndicatorProps({ index: 2 })}>{"3"}</div>
+					<span>{stepsData[2].title}</span>
+				</button>
+				<div {...@api.getSeparatorProps({ index: 2 })} />
+			</div>
+			<div {...@api.getItemProps({ index: 3 })}>
+				<button {...@api.getTriggerProps({ index: 3 })}>
+					<div {...@api.getIndicatorProps({ index: 3 })}>{"4"}</div>
+					<span>{stepsData[3].title}</span>
+				</button>
+				<div {...@api.getSeparatorProps({ index: 3 })} />
+			</div>
+		</div>
+
+		<div {...@api.getContentProps({ index: 0 })}>
+			{stepsData[0].title}
+		</div>
+		<div {...@api.getContentProps({ index: 1 })}>
+			{stepsData[1].title}
+		</div>
+		<div {...@api.getContentProps({ index: 2 })}>
+			{stepsData[2].title}
+		</div>
+		<div {...@api.getContentProps({ index: 3 })}>
+			{stepsData[3].title}
+		</div>
+
+		<div {...@api.getContentProps({ index: stepsData.length })}>
+			{"Complete - Thank you 🎉"}
+		</div>
+
+		<div>
+			<button {...@api.getPrevTriggerProps()}>{"Back"}</button>
+			<button {...@api.getNextTriggerProps()}>{"Next"}</button>
+		</div>
+	</div>
+}
+
+const stepsData = [
+	{ title: "Account" },
+	{ title: "Profile" },
+	{ title: "Preferences" },
+	{ title: "Review" },
+];
