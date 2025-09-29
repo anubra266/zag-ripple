@@ -1,0 +1,63 @@
+import * as hoverCard from '@zag-js/hover-card';
+import { normalizeProps, useMachine, Portal } from 'zag-ripple';
+import { track } from 'ripple';
+
+export component HoverCard() {
+	let service = useMachine(hoverCard.machine, {
+		id: 'hover-card',
+	});
+	let api = track(() => hoverCard.connect(@service, normalizeProps));
+
+    <a
+        href="https://x.com/ripple__js"
+        target="_blank"
+        rel="noreferrer noopener"
+        {...@api.getTriggerProps()}
+    >
+        <img alt={"Ripple JS"} src="https://www.ripplejs.com/favicon.svg" />
+    </a>
+
+    if (@api.open) {
+        <Portal>
+            <div {...@api.getPositionerProps()}>
+                <div {...@api.getContentProps()}>
+                    <div {...@api.getArrowProps()}>
+                            <div {...@api.getArrowTipProps()} />
+                    </div> 
+                    <div>
+                        <img
+                            alt={"Ripple JS"}
+                            src="https://www.ripplejs.com/favicon.svg"
+                        />
+
+                        <div>
+                            <div>
+                                <p>{"Ripple JS"}</p>
+                                <p>{" @ripple__js"}</p>
+                            </div>
+                            <p>
+                                <span>{"A framework that plays really nicely with TypeScript and JSX. "}</span>
+                                {"Learn more at "}
+                                <a
+                                    href="https://www.ripplejs.com"
+                                    target="_blank"
+                                    rel="noreferrer noopener"
+                                >
+                                    {"ripplejs.com"}
+                                </a>
+                            </p>
+                            <div>
+                                <div>
+                                    <p>{"2"}</p> <p>{"Following"}</p>
+                                </div>
+                                <div>
+                                    <p>{"4,000"}</p> <p>{"Followers"}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </Portal>
+    }
+}

@@ -1,0 +1,94 @@
+[data-scope='hover-card'][data-part='trigger'] {
+	@apply inline-block rounded-lg overflow-hidden hover:ring-2 hover:ring-ring hover:ring-offset-2 hover:ring-offset-background transition-all mx-auto;
+}
+
+[data-scope='hover-card'][data-part='trigger'] img {
+	@apply w-12 h-12 object-cover;
+}
+
+[data-scope='hover-card'][data-part='content'] {
+	@apply bg-popover rounded-lg drop-shadow-md drop-shadow-border p-0 w-80 data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 duration-200 ;
+}
+
+[data-scope='hover-card'][data-part='arrow'] {
+	--arrow-background: var(--popover);
+	--arrow-size: 8px;
+}
+
+[data-scope='hover-card'][data-part='arrow-tip'] {
+	@apply rounded-xs;
+}
+
+/* Card Content */
+[data-scope='hover-card'][data-part='content'] > div:last-child {
+	@apply flex gap-4 p-4;
+}
+
+[data-scope='hover-card'][data-part='content'] > div:last-child > img {
+	@apply w-12 h-12 rounded-full object-cover flex-shrink-0;
+}
+
+[data-scope='hover-card'][data-part='content'] > div:last-child > div {
+	@apply flex flex-col gap-3 flex-1 min-w-0;
+}
+
+/* Header section (name and handle) */
+[data-scope='hover-card'][data-part='content'] > div:last-child > div > div:first-child {
+	@apply space-y-1;
+}
+
+[data-scope='hover-card'][data-part='content']
+	> div:last-child
+	> div
+	> div:first-child
+	> p:first-child {
+	@apply text-sm font-semibold text-foreground leading-none;
+}
+
+[data-scope='hover-card'][data-part='content']
+	> div:last-child
+	> div
+	> div:first-child
+	> p:last-child {
+	@apply text-sm text-muted-foreground leading-none;
+}
+
+/* Description paragraph */
+[data-scope='hover-card'][data-part='content'] > div:last-child > div > p {
+	@apply text-sm text-muted-foreground leading-relaxed;
+}
+
+[data-scope='hover-card'][data-part='content'] > div:last-child > div > p span {
+	@apply inline;
+}
+
+[data-scope='hover-card'][data-part='content'] > div:last-child > div > p a {
+	@apply text-primary hover:underline font-medium;
+}
+
+/* Stats section */
+[data-scope='hover-card'][data-part='content'] > div:last-child > div > div:last-child {
+	@apply flex gap-4 text-sm;
+}
+
+[data-scope='hover-card'][data-part='content'] > div:last-child > div > div:last-child > div {
+	@apply flex gap-1 items-baseline;
+}
+
+[data-scope='hover-card'][data-part='content']
+	> div:last-child
+	> div
+	> div:last-child
+	> div
+	> p:first-child {
+	@apply font-semibold text-foreground;
+}
+
+[data-scope='hover-card'][data-part='content']
+	> div:last-child
+	> div
+	> div:last-child
+	> div
+	> p:last-child {
+	@apply text-muted-foreground;
+}

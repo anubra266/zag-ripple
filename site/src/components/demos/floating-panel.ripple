@@ -1,6 +1,6 @@
 import * as floatingPanel from '@zag-js/floating-panel';
 import { normalizeProps, useMachine, Portal } from 'zag-ripple';
-import { track, effect } from 'ripple';
+import { track } from 'ripple';
 import { X, Minus, Maximize2, ArrowDownLeft } from 'lucide-ripple';
 
 export component FloatingPanel() {
@@ -8,11 +8,6 @@ export component FloatingPanel() {
     id: 'floating-panel',
   });
   let api = track(() => floatingPanel.connect(@service, normalizeProps));
-
-  effect(() => {
-    console.log('api', @api.open)
-  })
-
 
   <button {...@api.getTriggerProps()}>{"Open Panel"}</button>
   if (@api.open) {
