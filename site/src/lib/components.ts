@@ -101,12 +101,12 @@ export const components = [
     icon: "list",
     description: "Select single or multiple items from a list of options.",
   },
-  // {
-  //   label: "Menu",
-  //   id: "menu",
-  //   icon: "menu",
-  //   description: "Navigate through grouped actions and commands.",
-  // },
+  {
+    label: "Menu",
+    id: "menu",
+    icon: "menu",
+    description: "Navigate through grouped actions and commands.",
+  },
   // {
   //   label: "Context Menu",
   //   id: "context-menu",
