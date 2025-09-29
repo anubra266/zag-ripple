@@ -113,12 +113,12 @@ export const components = [
     icon: "context",
     description: "Right-click menu with contextual actions.",
   },
-  // {
-  //   label: "Nested Menu",
-  //   id: "nested-menu",
-  //   icon: "nested",
-  //   description: "Multi-level menu with hierarchical navigation.",
-  // },
+  {
+    label: "Nested Menu",
+    id: "nested-menu",
+    icon: "nested",
+    description: "Multi-level menu with hierarchical navigation.",
+  },
   // {
   //   label: "Number Input",
   //   id: "number-input",

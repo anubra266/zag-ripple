@@ -1,0 +1,75 @@
+import * as menu from '@zag-js/menu';
+import { normalizeProps, useMachine, Portal } from 'zag-ripple';
+import { track } from 'ripple';
+import { ChevronDown, ChevronRight } from 'lucide-ripple';
+
+export component NestedMenu() {
+	// Level 1 - File Menu
+	let fileMenuService = useMachine(menu.machine, {
+		id: "1",
+		"aria-label": "File",
+	});
+	let fileMenu = track(() => menu.connect(@fileMenuService, normalizeProps));
+
+	// Level 2 - Share Menu
+	let shareMenuService = useMachine(menu.machine, {
+		id: "2",
+		"aria-label": "Share",
+	});
+	let shareMenu = track(() => menu.connect(@shareMenuService, normalizeProps));
+
+    setTimeout(() => {
+        @fileMenu.setChild(@shareMenuService);
+        @shareMenu.setParent(@fileMenuService);
+    });
+
+	// Share menu trigger
+	const shareMenuTriggerProps = track(() => @fileMenu.getTriggerItemProps(@shareMenu));
+
+	<button {...@fileMenu.getTriggerProps()}>
+		{"Click me"}
+		<span {...@fileMenu.getIndicatorProps()}><ChevronDown /></span>
+	</button>
+
+	<Portal>
+		<div {...@fileMenu.getPositionerProps()}>
+			<ul {...@fileMenu.getContentProps()}>
+				for (const item of data) {
+					<li {...@fileMenu.getItemProps({ value: item.value })}>
+						{item.label}
+					</li>
+				}
+				<li {...@shareMenuTriggerProps}>
+					{"Share"}
+					<span {...@shareMenu.getIndicatorProps()}><ChevronRight /></span>
+				</li>
+			</ul>
+		</div>
+	</Portal>
+
+	<Portal>
+		<div {...@shareMenu.getPositionerProps()}>
+			<ul {...@shareMenu.getContentProps()}>
+				for (const item of shareMenuData) {
+					<li {...@shareMenu.getItemProps({ value: item.value })}>
+						{item.label}
+					</li>
+				}
+			</ul>
+		</div>
+	</Portal>
+}
+
+const data = [
+	{ value: "new", label: "New File" },
+	{ value: "open", label: "Open File" },
+	{ value: "save", label: "Save" },
+	{ value: "export", label: "Export" },
+];
+
+const shareMenuData = [
+	{ value: "email", label: "Email" },
+	{ value: "copy-link", label: "Copy Link" },
+	{ value: "social", label: "Social Media" },
+	{ value: "print", label: "Print" },
+];

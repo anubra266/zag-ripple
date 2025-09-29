@@ -1,0 +1,55 @@
+/* Inherit base menu styles and extend for nested behavior */
+[data-scope='menu'][data-part='trigger'] {
+	@apply inline-flex items-center gap-2 px-4 py-2 bg-background border border-border rounded-md hover:bg-muted transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 focus:ring-offset-background font-medium text-sm mx-auto;
+}
+
+[data-scope='menu'][data-part='indicator'] {
+	@apply flex items-center;
+}
+
+[data-scope='menu'][data-part='indicator'] svg {
+	@apply w-4 h-4 text-muted-foreground transition-transform;
+}
+
+[data-scope='menu'][data-part='trigger'][data-state='open'] [data-part='indicator'] svg {
+	@apply rotate-180;
+}
+
+[data-scope='menu'][data-part='content'] {
+	@apply bg-popover border border-border rounded-lg shadow-lg focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 focus:ring-offset-background p-1 min-w-48 z-50 data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 duration-200;
+	list-style: none;
+	margin: 0;
+}
+
+[data-scope='menu'][data-part='item'] {
+	@apply flex items-center justify-between px-3 py-2 text-sm cursor-default select-none rounded-md transition-colors text-foreground;
+}
+
+[data-scope='menu'][data-part='item']:hover {
+	@apply bg-primary text-primary-foreground;
+}
+
+[data-scope='menu'][data-part='item'][data-highlighted] {
+	@apply bg-primary text-primary-foreground;
+}
+
+[data-scope='menu'][data-part='item'][data-disabled] {
+	@apply text-muted-foreground opacity-50 cursor-not-allowed;
+}
+
+/* Trigger Item (for nested menus) */
+[data-scope='menu'][data-part='trigger-item'] {
+	@apply flex items-center justify-between px-3 py-2 text-sm cursor-default select-none rounded-md transition-colors text-foreground;
+}
+
+[data-scope='menu'][data-part='trigger-item']:hover {
+	@apply bg-primary text-primary-foreground;
+}
+
+[data-scope='menu'][data-part='trigger-item'][data-highlighted] {
+	@apply bg-primary text-primary-foreground;
+}
+
+[data-scope='menu'][data-part='trigger-item'] [data-part='indicator'] svg {
+	@apply w-3 h-3 text-current;
+}
