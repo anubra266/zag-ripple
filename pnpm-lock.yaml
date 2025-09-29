@@ -184,13 +184,13 @@ importers:
         version: 7.1.0
       lucide-ripple:
         specifier: ^0.0.4
-        version: 0.0.4(ripple@0.2.89)
+        version: 0.0.4(ripple@0.2.91)
       ripple:
-        specifier: ^0.2.89
-        version: 0.2.89
+        specifier: ^0.2.91
+        version: 0.2.91
       ripple-router:
         specifier: ^0.4.4
-        version: 0.4.4(ripple@0.2.89)
+        version: 0.4.4(ripple@0.2.91)
       tailwind-merge:
         specifier: ^2.5.5
         version: 2.6.0
@@ -1031,8 +1031,8 @@ packages:
   ripple@0.2.85:
     resolution: {integrity: sha512-awWaaQyIY1+THMQu5U9/ns7HNv6iLA4KaQBXtBg7G57E7nyLDTiUt4YnyewaWqnVnffGCOfe2gEIa5+k1Lmj6g==}
 
-  ripple@0.2.89:
-    resolution: {integrity: sha512-S1lec/LiUZ+TiR2fC6tFHvgh22T40SsgDyhMm6QLbrLWtYYnysNulr7WvPI1WTfYQXRPUyUGqUdMpUBdqdDiZg==}
+  ripple@0.2.91:
+    resolution: {integrity: sha512-Gv6scWy7q4DoTWMVoUT4s0Xxxmoz62RhC2px1UwGGLQj3ZmnFAbJ3KwBJNCIWLD0V51J+6SkCKr7IGQwfMm8LA==}
 
   rollup@4.52.2:
     resolution: {integrity: sha512-I25/2QgoROE1vYV+NQ1En9T9UFB9Cmfm2CJ83zZOlaDpvz29wGQSZXWKw7MiNXau7wYgB/T9fVIdIuEQ+KbiiA==}
@@ -2004,9 +2004,9 @@ snapshots:
       lightningcss-win32-arm64-msvc: 1.30.1
       lightningcss-win32-x64-msvc: 1.30.1
 
-  lucide-ripple@0.0.4(ripple@0.2.89):
+  lucide-ripple@0.0.4(ripple@0.2.91):
     dependencies:
-      ripple: 0.2.89
+      ripple: 0.2.91
 
   magic-string@0.30.19:
     dependencies:
@@ -2053,9 +2053,9 @@ snapshots:
 
   react@19.1.1: {}
 
-  ripple-router@0.4.4(ripple@0.2.89):
+  ripple-router@0.4.4(ripple@0.2.91):
     dependencies:
-      ripple: 0.2.89
+      ripple: 0.2.91
 
   ripple@0.2.85:
     dependencies:
@@ -2068,7 +2068,7 @@ snapshots:
       muggle-string: 0.4.1
       zimmerframe: 1.1.4
 
-  ripple@0.2.89:
+  ripple@0.2.91:
     dependencies:
       '@jridgewell/sourcemap-codec': 1.5.5
       acorn: 8.15.0

@@ -210,12 +210,12 @@ export const components = [
     description: "Switch between multiple exclusive options in segments.",
     package: "radio-group",
   },
-  // {
-  //   label: "Select",
-  //   id: "select",
-  //   icon: "select",
-  //   description: "Choose single or multiple options from a dropdown list.",
-  // },
+  {
+    label: "Select",
+    id: "select",
+    icon: "select",
+    description: "Choose single or multiple options from a dropdown list.",
+  },
   // {
   //   label: "Signature Pad",
   //   id: "signature-pad",

@@ -31,3 +31,4 @@ export { RangeSlider as rangeSlider } from "./range-slider.ripple";
 export { RatingGroup as ratingGroup } from "./rating-group.ripple";
 export { ScrollArea as scrollArea } from "./scroll-area.ripple";
 export { SegmentedControl as segmentedControl } from "./segmented-control.ripple";
+export { Select as select } from "./select.ripple";

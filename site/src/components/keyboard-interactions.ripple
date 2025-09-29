@@ -32,7 +32,7 @@ export component KeyboardInteractions({id}:any) {
                     </Kbd>
                   }
                 </td>
-                <td class="py-2">{item.description}</td>
+                <td class="py-2">{html item.description}</td>
               </tr>
             }
           </tbody>
