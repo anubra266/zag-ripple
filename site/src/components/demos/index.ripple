@@ -27,3 +27,4 @@ export { Popover as popover } from "./popover.ripple";
 export { Presence as presence } from "./presence.ripple";
 export { QrCode as qrCode } from "./qr-code.ripple";
 export { RadioGroup as radioGroup } from "./radio-group.ripple";
+export { RangeSlider as rangeSlider } from "./range-slider.ripple";

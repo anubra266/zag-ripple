@@ -183,12 +183,13 @@ export const components = [
     icon: "radio",
     description: "Single selection from a group of mutually exclusive options.",
   },
-  // {
-  //   label: "Range Slider",
-  //   id: "range-slider",
-  //   icon: "range",
-  //   description: "Select a range of values with dual handle sliders.",
-  // },
+  {
+    label: "Range Slider",
+    id: "range-slider",
+    icon: "range",
+    description: "Select a range of values with dual handle sliders.",
+    package: "slider",
+  },
   // {
   //   label: "Rating Group",
   //   id: "rating-group",
