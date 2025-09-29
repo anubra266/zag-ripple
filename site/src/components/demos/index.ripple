@@ -13,3 +13,4 @@ export { Editable as editable } from "./editable.ripple";
 export { FileUpload as fileUpload } from "./file-upload.ripple";
 export { FloatingPanel as floatingPanel } from "./floating-panel.ripple";
 export { HoverCard as hoverCard } from "./hover-card.ripple";
+export { Listbox as listbox } from "./listbox.ripple";

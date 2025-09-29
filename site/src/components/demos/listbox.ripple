@@ -1,0 +1,93 @@
+import * as listbox from '@zag-js/listbox';
+import { normalizeProps, useMachine } from 'zag-ripple';
+import { track } from 'ripple';
+
+export component Listbox() {
+	const collection = listbox.collection({
+		items: people,
+		itemToValue: (item) => item.id.toString(),
+		itemToString: (item) => item.name,
+        groupBy: (item) => (item.favorite ? "Favorites" : "Others"),
+        groupSort: ["Favorites", "Others"],
+	});
+
+	let service = useMachine(listbox.machine, {
+		id: 'listbox',
+		collection,
+	});
+	let api = track(() => listbox.connect(@service, normalizeProps));
+
+    const groups = collection.group();
+
+	<div {...@api.getRootProps()}>
+		<ul {...@api.getContentProps()}>
+            for (const [group, items] of groups) {
+			<div {...@api.getItemGroupProps({ id: group })}>
+				<p {...@api.getItemGroupLabelProps({ htmlFor: group })}>{group}</p>
+				for (const item of items) {
+					<div {...@api.getItemProps({ item })}>
+						<img src={item.image_url} alt={item.name} />
+						{item.name}
+					</div>
+				}
+			</div>
+            }
+		</ul>
+	</div>
+}
+
+interface Item {
+	id: number;
+	image_url: string;
+	name: string;
+	username: string;
+	favorite?: boolean;
+}
+
+const people: Item[] = [
+	{
+		id: 1,
+		image_url: "https://avatar.iran.liara.run/public/10",
+		name: "Maya Patel",
+		username: "@maya_p",
+		favorite: true,
+	},
+	{
+		id: 2,
+		image_url: "https://avatar.iran.liara.run/public/11",
+		name: "Alex Rodriguez",
+		username: "@alex_r",
+		favorite: true,
+	},
+	{
+		id: 3,
+		image_url: "https://avatar.iran.liara.run/public/12",
+		name: "Jamie Chen",
+		username: "@jamie_c",
+		favorite: true,
+	},
+	{
+		id: 4,
+		image_url: "https://avatar.iran.liara.run/public/13",
+		name: "Taylor Swift",
+		username: "@taylor_s",
+	},
+	{
+		id: 5,
+		image_url: "https://avatar.iran.liara.run/public/14",
+		name: "Jordan Lee",
+		username: "@jordan_l",
+	},
+	{
+		id: 6,
+		image_url: "https://avatar.iran.liara.run/public/15",
+		name: "Morgan Davis",
+		username: "@morgan_d",
+	},
+	{
+		id: 7,
+		image_url: "https://avatar.iran.liara.run/public/16",
+		name: "Casey Wilson",
+		username: "@casey_w",
+	},
+];

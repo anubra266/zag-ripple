@@ -95,12 +95,12 @@ export const components = [
     icon: "card",
     description: "Preview content that appears when hovering over triggers.",
   },
-  // {
-  //   label: "Listbox",
-  //   id: "listbox",
-  //   icon: "list",
-  //   description: "Select single or multiple items from a list of options.",
-  // },
+  {
+    label: "Listbox",
+    id: "listbox",
+    icon: "list",
+    description: "Select single or multiple items from a list of options.",
+  },
   // {
   //   label: "Menu",
   //   id: "menu",
