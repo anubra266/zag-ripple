@@ -240,12 +240,12 @@ export const components = [
     icon: "steps",
     description: "Guide users through multi-step processes.",
   },
-  // {
-  //   label: "Switch",
-  //   id: "switcher",
-  //   icon: "switch",
-  //   description: "Binary toggle control for on/off states.",
-  // },
+  {
+    label: "Switch",
+    id: "switch",
+    icon: "switch",
+    description: "Binary toggle control for on/off states.",
+  },
   // {
   //   label: "Tabs",
   //   id: "tabs",

@@ -1,0 +1,18 @@
+import * as toggle from '@zag-js/switch';
+import { normalizeProps, useMachine } from 'zag-ripple';
+import { track } from 'ripple';
+
+export component Switch() {
+	let service = useMachine(toggle.machine, {
+		id: 'switcher',
+	});
+	let api = track(() => toggle.connect(@service, normalizeProps));
+
+	<label {...@api.getRootProps()}>
+		<input {...@api.getHiddenInputProps()} />
+		<span {...@api.getControlProps()}>
+			<span {...@api.getThumbProps()} />
+		</span>
+		<span {...@api.getLabelProps()}>{@api.checked ? "On" : "Off"}</span>
+	</label>
+}
