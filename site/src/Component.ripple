@@ -146,9 +146,9 @@ export component Component({ params }: any) {
 
                 <div class="space-y-6">
                      {/* Data Attributes */}
-                    <DataAttributes id={componentId} />
+                    <DataAttributes id={component.package || componentId} />
                      {/* Keyboard Interactions */}
-                    <KeyboardInteractions id={componentId} />
+                    <KeyboardInteractions id={component.package || componentId} />
                 </div>
             </section>
 

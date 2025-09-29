@@ -1,0 +1,29 @@
+[data-scope='radio-group'][data-part='root'] {
+	@apply relative flex w-fit mx-auto p-1 bg-muted rounded-lg data-[orientation=horizontal]:flex-row data-[orientation=vertical]:flex-col;
+}
+
+[data-scope='radio-group'][data-part='indicator'] {
+	@apply absolute bg-background border border-border rounded-md shadow-sm transition-all duration-200 ease-out;
+	width: var(--width);
+	height: var(--height);
+}
+
+[data-scope='radio-group'][data-part='item'] {
+	@apply relative z-10 flex items-center justify-center px-4 py-2 text-sm font-medium cursor-pointer transition-colors data-[orientation=vertical]:w-full;
+}
+
+[data-scope='radio-group'][data-part='item-text'] {
+	@apply select-none;
+}
+
+[data-scope='radio-group'][data-part='item'][data-state='checked'] {
+	@apply text-foreground;
+}
+
+[data-scope='radio-group'][data-part='item']:not([data-state='checked']) {
+	@apply text-muted-foreground hover:text-foreground;
+}
+
+[data-scope='radio-group'][data-part='item-hidden-input'] {
+	@apply sr-only;
+}

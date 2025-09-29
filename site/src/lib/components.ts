@@ -203,12 +203,13 @@ export const components = [
     icon: "scroll",
     description: "Custom scrollable areas with styled scrollbars.",
   },
-  // {
-  //   label: "Segmented Control",
-  //   id: "segmented-control",
-  //   icon: "segment",
-  //   description: "Switch between multiple exclusive options in segments.",
-  // },
+  {
+    label: "Segmented Control",
+    id: "segmented-control",
+    icon: "segment",
+    description: "Switch between multiple exclusive options in segments.",
+    package: "radio-group",
+  },
   // {
   //   label: "Select",
   //   id: "select",
