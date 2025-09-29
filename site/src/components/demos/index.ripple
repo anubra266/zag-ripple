@@ -26,3 +26,4 @@ export { PinInput as pinInput } from "./pin-input.ripple";
 export { Popover as popover } from "./popover.ripple";
 export { Presence as presence } from "./presence.ripple";
 export { QrCode as qrCode } from "./qr-code.ripple";
+export { RadioGroup as radioGroup } from "./radio-group.ripple";

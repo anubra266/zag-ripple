@@ -177,12 +177,12 @@ export const components = [
     icon: "qr",
     description: "Generate and display QR codes with customizable options.",
   },
-  // {
-  //   label: "Radio Group",
-  //   id: "radio-group",
-  //   icon: "radio",
-  //   description: "Single selection from a group of mutually exclusive options.",
-  // },
+  {
+    label: "Radio Group",
+    id: "radio-group",
+    icon: "radio",
+    description: "Single selection from a group of mutually exclusive options.",
+  },
   // {
   //   label: "Range Slider",
   //   id: "range-slider",

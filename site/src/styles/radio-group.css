@@ -1,0 +1,52 @@
+[data-scope='radio-group'][data-part='root'] {
+	@apply flex flex-col gap-3 w-full max-w-xs mx-auto;
+}
+
+[data-scope='radio-group'][data-part='label'] {
+	@apply text-lg font-semibold text-foreground mb-2;
+}
+
+[data-scope='radio-group'][data-part='root'] > div {
+	@apply space-y-3;
+}
+
+[data-scope='radio-group'][data-part='item'] {
+	@apply flex flex-row-reverse items-center gap-4 cursor-pointer w-fit;
+}
+
+[data-scope='radio-group'][data-part='item-text'] {
+	@apply flex-1 text-base font-medium text-foreground select-none;
+}
+
+[data-scope='radio-group'][data-part='item-hidden-input'] {
+	@apply sr-only;
+}
+
+[data-scope='radio-group'][data-part='item-control'] {
+	@apply flex items-center justify-center w-5 h-5 bg-background border-2 border-border rounded-full transition-colors;
+}
+
+[data-scope='radio-group'][data-part='item-control']:hover {
+	@apply border-primary/50;
+}
+
+[data-scope='radio-group'][data-part='item'][data-state='checked'] [data-part='item-control'] {
+	@apply bg-primary border-primary text-primary-foreground;
+}
+
+[data-scope='radio-group'][data-part='item'][data-disabled] {
+	@apply opacity-50 cursor-not-allowed;
+}
+
+[data-scope='radio-group'][data-part='item'][data-disabled] [data-part='item-text'] {
+	@apply text-muted-foreground;
+}
+
+[data-scope='radio-group'][data-part='item-control'] svg {
+	@apply w-3 h-3;
+}
+
+/* Focus styling via peer */
+[data-scope='radio-group'] input[data-peer]:focus + [data-part='item-control'] {
+	@apply ring-2 ring-ring ring-offset-2 ring-offset-background;
+}
