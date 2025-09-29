@@ -222,12 +222,12 @@ export const components = [
     icon: "signature",
     description: "Capture digital signatures with touch or mouse input.",
   },
-  // {
-  //   label: "Slider",
-  //   id: "slider",
-  //   icon: "slider",
-  //   description: "Select numeric values from a continuous range.",
-  // },
+  {
+    label: "Slider",
+    id: "slider",
+    icon: "slider",
+    description: "Select numeric values from a continuous range.",
+  },
   // {
   //   label: "Splitter",
   //   id: "splitter",

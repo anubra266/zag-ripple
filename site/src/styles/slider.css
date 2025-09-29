@@ -1,0 +1,59 @@
+/* Inherit most styles from range-slider, but simplified for single thumb */
+[data-scope='slider'][data-part='root'] {
+	@apply flex flex-col gap-3 w-full max-w-md mx-auto;
+}
+
+[data-scope='slider'][data-part='root'] > div:first-child {
+	@apply flex justify-between items-center;
+}
+
+[data-scope='slider'][data-part='label'] {
+	@apply text-sm font-medium text-foreground;
+}
+
+[data-scope='slider'][data-part='value-text'] {
+	@apply text-sm font-medium text-muted-foreground;
+}
+
+[data-scope='slider'][data-part='value-text'] b {
+	@apply font-semibold text-foreground;
+}
+
+[data-scope='slider'][data-part='control'] {
+	--slider-thumb-size: 20px;
+	--slider-track-height: 6px;
+	@apply flex items-center justify-center relative h-5;
+}
+
+[data-scope='slider'][data-part='track'] {
+	@apply bg-muted rounded-full;
+	height: var(--slider-track-height);
+	width: 100%;
+}
+
+[data-scope='slider'][data-part='range'] {
+	@apply bg-primary rounded-full;
+	height: 100%;
+}
+
+[data-scope='slider'][data-part='thumb'] {
+	@apply flex items-center justify-center bg-background border-2 border-primary rounded-full shadow-md transition-colors;
+	width: var(--slider-thumb-size);
+	height: var(--slider-thumb-size);
+}
+
+[data-scope='slider'][data-part='thumb']:hover {
+	@apply scale-105;
+}
+
+[data-scope='slider'][data-part='thumb']:focus-visible {
+	@apply ring-2 ring-ring ring-offset-2 ring-offset-background;
+}
+
+[data-scope='slider'][data-part='thumb'][data-disabled] {
+	@apply bg-muted border-muted cursor-not-allowed;
+}
+
+[data-scope='slider'][data-part='hidden-input'] {
+	@apply sr-only;
+}

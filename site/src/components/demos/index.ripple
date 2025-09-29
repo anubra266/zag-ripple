@@ -33,3 +33,4 @@ export { ScrollArea as scrollArea } from "./scroll-area.ripple";
 export { SegmentedControl as segmentedControl } from "./segmented-control.ripple";
 export { Select as select } from "./select.ripple";
 export { SignaturePad as signaturePad } from "./signature-pad.ripple";
+export { Slider as slider } from "./slider.ripple";
