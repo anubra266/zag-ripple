@@ -40,3 +40,4 @@ export { Switch as switch } from "./switch.ripple";
 export { Tabs as tabs } from "./tabs.ripple";
 export { TagsInput as tagsInput } from "./tags-input.ripple";
 export { Timer as timer } from "./timer.ripple";
+export { ToastGroup as toast } from "./toast.ripple";

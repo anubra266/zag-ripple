@@ -264,12 +264,12 @@ export const components = [
     icon: "timer",
     description: "Record elapsed time since zero or given time",
   },
-  // {
-  //   label: "Toast",
-  //   id: "toast",
-  //   icon: "toast",
-  //   description: "Brief notification messages that appear temporarily.",
-  // },
+  {
+    label: "Toast",
+    id: "toast",
+    icon: "toast",
+    description: "Brief notification messages that appear temporarily.",
+  },
   // {
   //   label: "Toggle Group",
   //   id: "toggle-group",

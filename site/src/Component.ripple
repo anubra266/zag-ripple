@@ -75,12 +75,9 @@ export component Component({ params }: any) {
                 <div class="flex flex-wrap gap-3 justify-center">
                     <OpenInStackblitz id={componentId} />
 
-                <Link
+                
+                <Button
                     href={`https://zagjs.com/components/react/${componentId}`}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                >
-                    <Button
                     variant="outline"
                     size="sm"
                     class="h-9 text-xs bg-blue-50 hover:bg-blue-100 border-blue-200 text-blue-700 hover:text-blue-700 dark:bg-blue-950 dark:hover:bg-blue-900 dark:border-blue-800 dark:text-blue-300"
@@ -89,14 +86,10 @@ export component Component({ params }: any) {
                         {"Zag.js Docs"}
                         <ExternalLink class="h-3 w-3 ml-1.5" />
                     </Button>
-                </Link>
 
-                <Link
+                
+                <Button
                     href={`https://github.com/chakra-ui/zag/blob/main/packages/machines/${componentId}/src/${componentId}.machine.ts`}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                >
-                    <Button
                     variant="outline"
                     size="sm"
                     class="h-9 text-xs bg-gray-50 hover:bg-gray-100 border-gray-200 text-gray-700 hover:text-gray-700 dark:bg-gray-950 dark:hover:bg-gray-900 dark:border-gray-800 dark:text-gray-300"
@@ -105,7 +98,6 @@ export component Component({ params }: any) {
                         {"View Source"}
                         <ExternalLink class="h-3 w-3 ml-1.5" />
                     </Button>
-                </Link>
                 </div>
                 <ComponentDemo id={componentId} />
             </div>

@@ -46,6 +46,7 @@ export component Button({
     if (href) {
             <a
                 href={href}
+                rel="noopener noreferrer"
                 class={cn(buttonVariants({ variant, size }), className)}
                 {...props}
             >

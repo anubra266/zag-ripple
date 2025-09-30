@@ -1,0 +1,165 @@
+import * as toast from '@zag-js/toast';
+import { normalizeProps, useMachine, Portal } from 'zag-ripple';
+import { track } from 'ripple';
+import { X, Info, Check, TriangleAlert, CircleAlert, Loader } from 'lucide-ripple';
+
+const toaster = toast.createStore({
+	overlap: true,
+	placement: "bottom-end",
+	offsets: "24px",
+	gap: 24,
+});
+
+component Toast({actor, index, parent}) {
+	let composedProps = { ...actor, index, parent };
+	let service = useMachine(toast.machine, composedProps);
+	let api = track(() => toast.connect(@service, normalizeProps));
+
+
+	<div {...@api.getRootProps()}>
+		<span {...@api.getGhostBeforeProps()} />
+		<div data-scope="toast" data-part="progressbar" />
+		
+		<div data-scope="toast" data-part="content">
+			<div data-scope="toast" data-part="icon">
+				if (@api.type === "success") {
+					<Check size={20} />
+				}
+				else if (@api.type === "warning") {
+					<TriangleAlert size={20} />
+				}
+				else if (@api.type === "error") {
+					<CircleAlert size={20} />
+				}
+				else if (@api.type === "loading") {
+					<Loader size={20} data-scope="toast" data-part="loading-icon" />
+				}
+				else {
+					<Info size={20} />
+				}
+			</div>
+			
+			<div data-scope="toast" data-part="text">
+				<div {...@api.getTitleProps()}>
+					{@api.title}
+				</div>
+				if (@api.description) {
+					<div {...@api.getDescriptionProps()}>
+						{@api.description}
+					</div>
+				}
+			</div>
+		</div>
+
+		<button {...@api.getCloseTriggerProps()}>
+			<X size={16} />
+		</button>
+		<span {...@api.getGhostAfterProps()} />
+	</div>
+}
+
+export component ToastGroup() {
+	let service = useMachine(toast.group.machine, {
+		id: 'toast-group',
+		store: toaster,
+	});
+	let api = track(() => toast.group.connect(@service, normalizeProps));
+
+	<div>
+		<div data-scope="toast" data-part="trigger-group">
+			<button
+				data-scope="toast"
+				data-part="trigger"
+				data-variant="info"
+				onClick={() => {
+					toaster.create({
+						title: "New message received",
+						description: "You have a new notification in your inbox.",
+						type: "info",
+					});
+				}}
+			>
+				<Info size={16} />
+				{"Info"}
+			</button>
+
+			<button
+				data-scope="toast"
+				data-part="trigger"
+				data-variant="success"
+				onClick={() => {
+					toaster.create({
+						title: "Success!",
+						description: "Your changes have been saved successfully.",
+						type: "success",
+					});
+				}}
+			>
+				<Check size={16} />
+				{"Success"}
+			</button>
+
+			<button
+				data-scope="toast"
+				data-part="trigger"
+				data-variant="warning"
+				onClick={() => {
+					toaster.create({
+						title: "Warning",
+						description: "Please review your input before proceeding.",
+						type: "warning",
+					});
+				}}
+			>
+				<TriangleAlert size={16} />
+				{"Warning"}
+			</button>
+
+			<button
+				data-scope="toast"
+				data-part="trigger"
+				data-variant="error"
+				onClick={() => {
+					toaster.create({
+						title: "Error occurred",
+						description: "Unable to complete the request. Please try again.",
+						type: "error",
+					});
+				}}
+			>
+				<CircleAlert size={16} />
+				{"Error"}
+			</button>
+
+			<button
+				data-scope="toast"
+				data-part="trigger"
+				data-variant="loading"
+				onClick={() => {
+					toaster.create({
+						title: "Processing...",
+						description: "Please wait while we process your request.",
+						type: "loading",
+					});
+				}}
+			>
+				<Loader size={16} />
+				{"Loading"}
+			</button>
+		</div>
+
+		<Portal>
+			<div {...@api.getGroupProps()}>
+				let toastIndex = 0;
+				for (const toastItem of @api.getToasts()) {
+					<Toast
+						actor={toastItem}
+						index={toastIndex}
+						parent={@service}
+					/>
+					toastIndex++;
+				}
+			</div>
+		</Portal>
+	</div>
+}
