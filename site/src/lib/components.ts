@@ -270,12 +270,12 @@ export const components = [
     icon: "toast",
     description: "Brief notification messages that appear temporarily.",
   },
-  // {
-  //   label: "Toggle Group",
-  //   id: "toggle-group",
-  //   icon: "toggle",
-  //   description: "Group of toggleable buttons for multiple selections.",
-  // },
+  {
+    label: "Toggle Group",
+    id: "toggle-group",
+    icon: "toggle",
+    description: "Group of toggleable buttons for multiple selections.",
+  },
   // {
   //   label: "Tooltip",
   //   id: "tooltip",

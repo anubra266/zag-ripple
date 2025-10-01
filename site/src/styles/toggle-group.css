@@ -1,0 +1,19 @@
+[data-scope='toggle-group'][data-part='root'] {
+	@apply inline-flex rounded-md shadow-sm border border-border bg-background mx-auto;
+}
+
+[data-scope='toggle-group'][data-part='item'] {
+	@apply inline-flex items-center justify-center px-3 py-2 text-sm font-medium text-muted-foreground bg-transparent border-r border-border last:border-r-0 first:rounded-l-md last:rounded-r-md hover:bg-muted hover:text-accent-foreground transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 focus:ring-offset-background;
+}
+
+[data-scope='toggle-group'][data-part='item'][data-state='on'] {
+	@apply bg-primary text-primary-foreground shadow-sm;
+}
+
+[data-scope='toggle-group'][data-part='item'][data-state='on']:hover {
+	@apply bg-primary/90;
+}
+
+[data-scope='toggle-group'][data-part='item']:disabled {
+	@apply pointer-events-none opacity-50;
+}
