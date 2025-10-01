@@ -6,7 +6,7 @@ export component Collapsible() {
 	let service = useMachine(collapsible.machine, {
 		id: 'collapsible',
 	});
-	let api = track(() => collapsible.connect(@service, normalizeProps));
+	let api = track(() => collapsible.connect(service, normalizeProps));
 
     <div {...@api.getRootProps()}>
         <button {...@api.getTriggerProps()}>{"Ripple JS Info"}</button>

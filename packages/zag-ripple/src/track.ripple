@@ -1,10 +1,10 @@
-import { isEqual, isFunction } from "@zag-js/utils";
-import { effect, track } from "ripple";
+import { isEqual } from "@zag-js/utils";
+import { effect } from "ripple";
 
-const access = (v) => {
-  if (isFunction(v)) return v()
-  return v;
-};
+const access = (value: any) => {
+  if (typeof value === "function") return value()
+  return value
+}
 
 export const createTrack = (deps: any[], effectCallback: VoidFunction   ) => {
   let prevDeps: any[] = [];

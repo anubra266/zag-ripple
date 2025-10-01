@@ -13,7 +13,7 @@ export component Accordion() {
 		id: 'accordion-1',
 		defaultValue: 'contact',
 	});
-	let api = track(() => accordion.connect(@service, normalizeProps));
+	let api = track(() => accordion.connect(service, normalizeProps));
 
     <div {...@api.getRootProps()}>
         for (const item of data) {

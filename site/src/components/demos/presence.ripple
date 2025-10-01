@@ -8,7 +8,7 @@ export component Presence() {
     let service = useMachine(presence.machine, {
         present,
     })
-    let api = track(() => presence.connect(@service, normalizeProps))
+    let api = track(() => presence.connect(service, normalizeProps))
 
     const divRef = (node) => {
         @api.setNode(node)

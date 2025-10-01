@@ -1,9 +1,9 @@
 import * as combobox from '@zag-js/combobox';
 import { createFilter } from "@zag-js/i18n-utils"
-import { normalizeProps, useMachine, Portal, mergeProps } from 'zag-ripple';
+import { normalizeProps, useMachine, Portal } from 'zag-ripple';
 import { track } from 'ripple';
 import { components } from '../lib/components';
-import { Search, Github } from "lucide-ripple";
+import { Search } from "lucide-ripple";
 
 // TODO utiity cmd+k zag hotkeys will also handle cmd/ctrl+k
 export component SearchDocs() {

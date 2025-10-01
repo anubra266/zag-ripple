@@ -8,7 +8,7 @@ export component Steps() {
 		count: stepsData.length,
         orientation: 'horizontal',
 	});
-	let api = track(() => steps.connect(@service, normalizeProps));
+	let api = track(() => steps.connect(service, normalizeProps));
 
 	<div {...@api.getRootProps()}>
 		<div {...@api.getListProps()}>

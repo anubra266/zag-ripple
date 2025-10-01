@@ -7,7 +7,7 @@ export component RangeSlider() {
 		id: 'range-slider',
 		defaultValue: [10, 60],
 	});
-	let api = track(() => slider.connect(@service, normalizeProps));
+	let api = track(() => slider.connect(service, normalizeProps));
 
 	<div {...@api.getRootProps()}>
 		<div>

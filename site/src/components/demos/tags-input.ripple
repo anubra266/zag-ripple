@@ -8,7 +8,7 @@ export component TagsInput() {
 		id: 'tags-input',
 		defaultValue: ["Ripple JS", "Svelte"],
 	});
-	let api = track(() => tagsInput.connect(@service, normalizeProps));
+	let api = track(() => tagsInput.connect(service, normalizeProps));
 
 	<div {...@api.getRootProps()}>
 		<label {...@api.getLabelProps()}>{"Enter frameworks:"}</label>

@@ -9,7 +9,7 @@ export component DatePicker() {
         locale: "en-US",
         selectionMode: "single",
 	});
-	let api = track(() => datePicker.connect(@service, normalizeProps));
+	let api = track(() => datePicker.connect(service, normalizeProps));
 
     <div {...@api.getControlProps()}>
         <input {...@api.getInputProps()} />

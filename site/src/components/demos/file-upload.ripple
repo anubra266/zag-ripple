@@ -8,7 +8,7 @@ export component FileUpload() {
     id: 'file-upload',
     accept: 'image/*',
   });
-  let api = track(() => fileUpload.connect(@service, normalizeProps));
+  let api = track(() => fileUpload.connect(service, normalizeProps));
 
   <div {...@api.getRootProps()}>
     <div {...@api.getDropzoneProps()}>

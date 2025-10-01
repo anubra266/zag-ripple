@@ -6,7 +6,7 @@ export component ContextMenu() {
 	let service = useMachine(menu.machine, {
 		id: 'context-menu',
 	});
-	let api = track(() => menu.connect(@service, normalizeProps));
+	let api = track(() => menu.connect(service, normalizeProps));
 
 	<div {...@api.getContextTriggerProps()}>
 		<div>{"Open context menu"}</div>

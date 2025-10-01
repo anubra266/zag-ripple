@@ -8,7 +8,7 @@ export component Clipboard() {
 		id: 'clipboard',
         value: 'https://www.ripplejs.com/',
 	});
-	let api = track(() => clipboard.connect(@service, normalizeProps));
+	let api = track(() => clipboard.connect(service, normalizeProps));
 
     <div {...@api.getRootProps()}>
         <label {...@api.getLabelProps()}>{"Copy this link"}</label>

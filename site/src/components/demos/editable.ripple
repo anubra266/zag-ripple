@@ -8,7 +8,7 @@ export component Editable() {
 		placeholder: 'Enter your text...',
         submitMode: 'enter',
 	});
-	let api = track(() => editable.connect(@service, normalizeProps));
+	let api = track(() => editable.connect(service, normalizeProps));
 
     <div {...@api.getRootProps()}>
         <div {...@api.getAreaProps()}>

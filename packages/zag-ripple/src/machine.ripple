@@ -11,10 +11,10 @@ import type {
   Service,
 } from "@zag-js/core"
 import { createScope, INIT_STATE, MachineStatus } from "@zag-js/core"
-import {  ensure, isFunction, isPlainObject, isString, toArray, warn } from "@zag-js/utils"
-import { track, trackSplit, untrack, effect, flushSync } from "ripple"
-import { createBindable } from "./bindable.ripple"
-import { createRefs } from "./refs.ripple"
+import { ensure, isFunction, isPlainObject, isString, toArray, warn } from "@zag-js/utils"
+import { track, trackSplit, effect, flushSync } from "ripple"
+import { bindable } from "./bindable.ripple"
+import { useRefs } from "./refs.ripple"
 import { createTrack } from "./track.ripple"
 
 function access(userProps) {
@@ -29,10 +29,10 @@ function compact(obj) {
   for (const key of keys) {
     const value = (obj)[key]
     if (@value !== undefined) {
-      filtered[key as keyof T] = compact(@value)
+      filtered[key] = compact(@value)
     }
   }
-  return filtered as T
+  return filtered
 }
 
 export function useMachine(
@@ -43,6 +43,7 @@ export function useMachine(
   let scope = track(() => {
     return createScope({ id: @id, ids: @ids, getRootNode: @getRootNode })
   })
+
   const debug = (...args: any[]) => {
     if (machine.debug) console.log(...args)
   }
@@ -56,7 +57,7 @@ export function useMachine(
 
   const context = machine.context?.({
     prop,
-    bindable: createBindable,
+    bindable: bindable,
     get scope() {
       return @scope
     },
@@ -109,51 +110,18 @@ export function useMachine(
 
   const getState = () => ({
     ...state,
-    matches(...values) {
-      const current = state.get()
-      return values.includes(current)
-    },
     hasTag(tag) {
-      const current = state.get()
-      return !!machine.states[current]?.tags?.includes(tag)
+      const currentState = state.get()
+      return !!machine.states[currentState]?.tags?.includes(tag)
+    },
+    matches(...values) {
+      const currentState = state.get()
+      return values.includes(currentState)
     },
   })
 
-  const refs = createRefs(machine.refs?.({ prop, context: ctx }) ?? {})
+  const refs = useRefs(machine.refs?.({ prop, context: ctx }) ?? {})
 
-  const send = (event) => {
-    if (status !== MachineStatus.Started) return
-
-    previousEventRef.current = eventRef.current
-    eventRef.current = event
-
-    let currentState = state.get()
-
-    const transitions = 
-      machine.states[currentState]?.on?.[event.type] ?? 
-      machine.on?.[event.type]
-
-    const transition = choose(transitions)
-    if (!transition) return
-
-    // save current transition
-    transitionRef.current = transition
-    const target = transition.target ?? currentState
-
-    debug("transition", event.type, transition.target || currentState, `(${transition.actions})`)
-
-    const changed = target !== currentState
-    if (changed) {
-      state.set(target)
-    } else if (transition.reenter && !changed) {
-      // reenter will re-invoke the current state
-      state.invoke?.(currentState, currentState)
-    } else {
-      // call transition actions
-      action(transition.actions ?? [])
-    }
-  }
-  
   const getParams = () => ({
     state: getState(),
     context: ctx,
@@ -226,7 +194,7 @@ export function useMachine(
     })
   }
 
-  const state = createBindable(() => ({
+  const state = bindable(() => ({
     defaultValue: machine.initialState({ prop }),
     onChange(nextState: string, prevState: string | undefined) {
       // compute effects: exit -> transition -> enter
@@ -239,14 +207,12 @@ export function useMachine(
       }
 
       // exit actions
-      if (prevState && prevState !== INIT_STATE) {
+      if (prevState) {
         action(machine.states[prevState]?.exit)
       }
 
       // transition actions
-      if (transitionRef.current?.actions) {
-        action(transitionRef.current.actions)
-      }
+      action(transitionRef.current?.actions)
 
       // enter effects
       const cleanup = effectFn( machine.states[nextState]?.effects)
@@ -277,15 +243,50 @@ export function useMachine(
     return () => {
       debug("unmounting...")
       status = MachineStatus.Stopped
+
       effects.forEach((fn) => fn?.())
       effects = new Map()
       transitionRef.current = null
+      
       queueMicrotask(() => {
         action(machine.exit)
       })
     }
   })
 
+
+  const send = (event) => {
+    if (status !== MachineStatus.Started) return
+
+    previousEventRef.current = eventRef.current
+    eventRef.current = event
+
+    let currentState = state.get()
+
+    const transitions = machine.states[currentState].on?.[event.type] ?? machine.on?.[event.type]
+
+    const transition = choose(transitions)
+    if (!transition) return
+
+    // save current transition
+    transitionRef.current = transition
+    const target = transition.target ?? currentState
+
+    debug("transition", event.type, transition.target || currentState, `(${transition.actions})`)
+
+    const changed = target !== currentState
+    if (changed) {
+      // state change is high priority
+      state.set(target)
+    } else if (transition.reenter && !changed) {
+      // reenter will re-invoke the current state
+      state.invoke?.(currentState, currentState)
+    } else {
+      // call transition actions
+      action(transition.actions ?? [])
+    }
+  }
+  
 
   machine.watch?.(getParams())
 

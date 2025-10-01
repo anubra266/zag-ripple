@@ -1,6 +1,4 @@
-import { track } from "ripple";
-
-export function createRefs(refs) {
+export function useRefs(refs) {
   const ref = { current: refs }
   return {
     get(key) {

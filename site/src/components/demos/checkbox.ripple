@@ -6,7 +6,7 @@ export component Checkbox() {
 	let service = useMachine(checkbox.machine, {
 		id: 'checkbox',
 	});
-	let api = track(() => checkbox.connect(@service, normalizeProps));
+	let api = track(() => checkbox.connect(service, normalizeProps));
 
     <label {...@api.getRootProps()}>
         <span {...@api.getLabelProps()}>{"Select Ripple JS"}</span>

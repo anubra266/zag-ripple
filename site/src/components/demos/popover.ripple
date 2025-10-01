@@ -8,7 +8,7 @@ export component Popover() {
 		id: 'popover',
 		portalled: true,
 	});
-	let api = track(() => popover.connect(@service, normalizeProps));
+	let api = track(() => popover.connect(service, normalizeProps));
 
 	<button {...@api.getTriggerProps()}>{"Click me"}</button>
 	<Portal>

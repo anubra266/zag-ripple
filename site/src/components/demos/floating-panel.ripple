@@ -7,7 +7,7 @@ export component FloatingPanel() {
   let service = useMachine(floatingPanel.machine, {
     id: 'floating-panel',
   });
-  let api = track(() => floatingPanel.connect(@service, normalizeProps));
+  let api = track(() => floatingPanel.connect(service, normalizeProps));
 
   <button {...@api.getTriggerProps()}>{"Open Panel"}</button>
   if (@api.open) {

@@ -8,7 +8,7 @@ export component Splitter() {
 		panels: [{ id: "a" }, { id: "b" }],
 		defaultSize: [50, 50],
 	});
-	let api = track(() => splitter.connect(@service, normalizeProps));
+	let api = track(() => splitter.connect(service, normalizeProps));
 
 	<div {...@api.getRootProps()}>
 		<div {...@api.getPanelProps({ id: "a" })}>

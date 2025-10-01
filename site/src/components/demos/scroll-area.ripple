@@ -6,7 +6,7 @@ export component ScrollArea() {
 	let service = useMachine(scrollArea.machine, {
 		id: 'scroll-area',
 	});
-	let api = track(() => scrollArea.connect(@service, normalizeProps));
+	let api = track(() => scrollArea.connect(service, normalizeProps));
 
 	<div {...@api.getRootProps()}>
 		<div {...@api.getViewportProps()}>

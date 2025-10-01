@@ -8,7 +8,7 @@ export component SegmentedControl() {
 		defaultValue: 'ripplejs',
         orientation: 'horizontal',
 	});
-	let api = track(() => radio.connect(@service, normalizeProps));
+	let api = track(() => radio.connect(service, normalizeProps));
 
 	<div {...@api.getRootProps()}>
 		<div {...@api.getIndicatorProps()} />

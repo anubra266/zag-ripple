@@ -7,7 +7,7 @@ export component SignaturePad() {
 	let service = useMachine(signaturePad.machine, {
 		id: 'signature-pad',
 	});
-	let api = track(() => signaturePad.connect(@service, normalizeProps));
+	let api = track(() => signaturePad.connect(service, normalizeProps));
 
 	<div {...@api.getRootProps()}>
 		<label {...@api.getLabelProps()}>{"Sign here"}</label>

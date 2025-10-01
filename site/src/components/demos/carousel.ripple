@@ -15,7 +15,7 @@ export component Carousel() {
 		id: 'carousel',
         slideCount: items.length,
 	});
-	let api = track(() => carousel.connect(@service, normalizeProps));
+	let api = track(() => carousel.connect(service, normalizeProps));
 
     <div {...@api.getRootProps()}>
         <div {...@api.getItemGroupProps()}>

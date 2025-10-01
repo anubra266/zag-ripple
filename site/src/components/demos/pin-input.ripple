@@ -8,7 +8,7 @@ export component PinInput() {
 		placeholder: "○",
         count: 4,
 	});
-	let api = track(() => pinInput.connect(@service, normalizeProps));
+	let api = track(() => pinInput.connect(service, normalizeProps));
 
 	<div {...@api.getRootProps()}>
         <label {...@api.getLabelProps()}>{"Enter code:"}</label>

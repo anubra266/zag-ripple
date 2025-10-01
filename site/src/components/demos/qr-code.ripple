@@ -8,7 +8,7 @@ export component QrCode() {
 		value: 'https://www.ripplejs.com',
 		encoding: { ecc: "H" },
 	});
-	let api = track(() => qrCode.connect(@service, normalizeProps));
+	let api = track(() => qrCode.connect(service, normalizeProps));
 
 	<div {...@api.getRootProps()}>
 		<svg {...@api.getFrameProps()}>

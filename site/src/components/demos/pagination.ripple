@@ -8,7 +8,7 @@ export component Pagination() {
 		id: 'pagination',
 		count: 1000,
 	});
-	let api = track(() => pagination.connect(@service, normalizeProps));
+	let api = track(() => pagination.connect(service, normalizeProps));
 
 	if (@api.totalPages > 1) {
 		let pageIndex = 0;

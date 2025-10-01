@@ -7,7 +7,7 @@ export component NumberInput() {
 	let service = useMachine(numberInput.machine, {
 		id: 'number-input',
 	});
-	let api = track(() => numberInput.connect(@service, normalizeProps));
+	let api = track(() => numberInput.connect(service, normalizeProps));
 
 	<div {...@api.getRootProps()}>
 		<label {...@api.getLabelProps()}>{"Enter number:"}</label>

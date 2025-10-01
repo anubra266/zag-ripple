@@ -6,7 +6,7 @@ export component AngleSlider() {
 	let service = useMachine(angleSlider.machine, {
 		id: 'angle-slider',
 	});
-	let api = track(() => angleSlider.connect(@service, normalizeProps));
+	let api = track(() => angleSlider.connect(service, normalizeProps));
 
     <div {...@api.getRootProps()}>
         <label {...@api.getLabelProps()}>{'Wind direction'}</label>

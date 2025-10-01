@@ -7,7 +7,7 @@ export component Dialog() {
 	let service = useMachine(dialog.machine, {
 		id: 'dialog',
 	});
-	let api = track(() => dialog.connect(@service, normalizeProps));
+	let api = track(() => dialog.connect(service, normalizeProps));
 
     <button {...@api.getTriggerProps()}>
         {"Open Dialog"}

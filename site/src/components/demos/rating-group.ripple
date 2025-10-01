@@ -8,7 +8,7 @@ export component RatingGroup() {
 		defaultValue: 2.5,
         allowHalf: true,
 	});
-	let api = track(() => rating.connect(@service, normalizeProps));
+	let api = track(() => rating.connect(service, normalizeProps));
 
     <div {...@api.getRootProps()}>
         <label {...@api.getLabelProps()}>{"Rate Us:"}</label>

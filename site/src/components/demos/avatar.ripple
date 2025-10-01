@@ -9,7 +9,7 @@ export component Avatar() {
 	let service = useMachine(avatar.machine, {
 		id: 'avatar',
 	});
-	let api = track(() => avatar.connect(@service, normalizeProps));
+	let api = track(() => avatar.connect(service, normalizeProps));
 
     const initial = name
         .split(" ")

@@ -9,7 +9,7 @@ export component Slider() {
 		max: 50,
 		defaultValue: [20],
 	});
-	let api = track(() => slider.connect(@service, normalizeProps));
+	let api = track(() => slider.connect(service, normalizeProps));
 
 	<div {...@api.getRootProps()}>
 		<div>

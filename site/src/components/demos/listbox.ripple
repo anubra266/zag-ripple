@@ -15,7 +15,7 @@ export component Listbox() {
 		id: 'listbox',
 		collection,
 	});
-	let api = track(() => listbox.connect(@service, normalizeProps));
+	let api = track(() => listbox.connect(service, normalizeProps));
 
     const groups = collection.group();
 

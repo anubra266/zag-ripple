@@ -7,7 +7,7 @@ export component Menu() {
 	let service = useMachine(menu.machine, {
 		id: 'menu',
 	});
-	let api = track(() => menu.connect(@service, normalizeProps));
+	let api = track(() => menu.connect(service, normalizeProps));
 
     <button {...@api.getTriggerProps()}>
         {"Actions"} <span {...@api.getIndicatorProps()}><ChevronDown /></span>

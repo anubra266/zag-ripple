@@ -56,8 +56,7 @@
 }
 
 [data-scope='toast'][data-part='title'] {
-	@apply text-sm font-medium leading-none;
-	@apply font-weight-600;
+	@apply text-sm font-medium leading-none font-bold;
 	@apply leading-none;
 	@apply mt-0;
 }

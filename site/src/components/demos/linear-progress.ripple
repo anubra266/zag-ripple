@@ -7,7 +7,7 @@ export component LinearProgress() {
 		id: 'linear-progress',
 		defaultValue: 60,
 	});
-	let api = track(() => progress.connect(@service, normalizeProps));
+	let api = track(() => progress.connect(service, normalizeProps));
 
 	<div>
 		<div {...@api.getRootProps()}>

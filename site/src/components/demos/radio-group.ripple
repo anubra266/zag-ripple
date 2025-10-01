@@ -7,7 +7,7 @@ export component RadioGroup() {
 		id: 'radio-group',
 		defaultValue: 'apple',
 	});
-	let api = track(() => radioGroup.connect(@service, normalizeProps));
+	let api = track(() => radioGroup.connect(service, normalizeProps));
 
 	<div {...@api.getRootProps()}>
 		<h2 {...@api.getLabelProps()}>{"Fruits"}</h2>

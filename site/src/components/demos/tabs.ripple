@@ -7,7 +7,7 @@ export component Tabs() {
 		id: 'tabs',
 		defaultValue: 'overview',
 	});
-	let api = track(() => tabs.connect(@service, normalizeProps));
+	let api = track(() => tabs.connect(service, normalizeProps));
 
 	<div {...@api.getRootProps()}>
 		<div {...@api.getListProps()}>

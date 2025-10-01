@@ -6,7 +6,7 @@ export component HoverCard() {
 	let service = useMachine(hoverCard.machine, {
 		id: 'hover-card',
 	});
-	let api = track(() => hoverCard.connect(@service, normalizeProps));
+	let api = track(() => hoverCard.connect(service, normalizeProps));
 
     <a
         href="https://x.com/ripple__js"

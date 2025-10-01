@@ -15,7 +15,7 @@ export component Select() {
 		collection,
 		placeholder: "Select option",
 	});
-	let api = track(() => select.connect(@service, normalizeProps));
+	let api = track(() => select.connect(service, normalizeProps));
 
 	<div {...@api.getRootProps()}>
 		<label {...@api.getLabelProps()}>{"Label"}</label>
