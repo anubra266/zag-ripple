@@ -276,12 +276,12 @@ export const components = [
     icon: "toggle",
     description: "Group of toggleable buttons for multiple selections.",
   },
-  // {
-  //   label: "Tooltip",
-  //   id: "tooltip",
-  //   icon: "tooltip",
-  //   description: "Contextual information that appears on hover or focus.",
-  // },
+  {
+    label: "Tooltip",
+    id: "tooltip",
+    icon: "tooltip",
+    description: "Contextual information that appears on hover or focus.",
+  },
   // {
   //   label: "Tour",
   //   id: "tour",

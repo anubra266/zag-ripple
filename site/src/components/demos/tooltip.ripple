@@ -1,0 +1,24 @@
+import * as tooltip from '@zag-js/tooltip';
+import { normalizeProps, useMachine, Portal } from 'zag-ripple';
+import { track } from 'ripple';
+
+export component Tooltip() {
+	let service = useMachine(tooltip.machine, {
+		id: 'tooltip',
+	});
+	let api = track(() => tooltip.connect(@service, normalizeProps));
+
+    <button {...@api.getTriggerProps()}>{"Hover me"}</button>
+    <Portal>
+        if (@api.open) {
+            <div {...@api.getPositionerProps()}>
+                <div {...@api.getContentProps()}>
+                    <div {...@api.getArrowProps()}>
+                        <div {...@api.getArrowTipProps()} />
+                    </div>
+                    {"Tooltip"}
+                </div>
+            </div>
+        }
+    </Portal>
+}
