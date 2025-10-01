@@ -12,12 +12,14 @@ export default defineConfig({
 	},
 	resolve: {
 		// for local development
-		// alias: {
-		// 	'ripple/internal/client':
-		// 		'/Users/anubra266/Developer/oss/ripple/ripple/packages/ripple/src/runtime/internal/client/index.js',
-		// 	'ripple/internal/server':
-		// 		'/Users/anubra266/Developer/oss/ripple/ripple/packages/ripple/src/runtime/internal/server/index.js',
-		// 	ripple: '/Users/anubra266/Developer/oss/ripple/ripple/packages/ripple',
-		// },
+		alias: {
+			// '@zag-js/toast': '/Users/anubra266/Developer/oss/chakra-ui/zag/packages/machines/toast',
+
+			// 'ripple/internal/client':
+			// 	'/Users/anubra266/Developer/oss/ripple/ripple/packages/ripple/src/runtime/internal/client/index.js',
+			// 'ripple/internal/server':
+			// 	'/Users/anubra266/Developer/oss/ripple/ripple/packages/ripple/src/runtime/internal/server/index.js',
+			// ripple: '/Users/anubra266/Developer/oss/ripple/ripple/packages/ripple',
+		},
 	},
 });
