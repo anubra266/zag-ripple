@@ -1,0 +1,131 @@
+import * as tour from '@zag-js/tour';
+import { normalizeProps, useMachine, Portal } from 'zag-ripple';
+import { track } from 'ripple';
+import { X } from 'lucide-ripple';
+
+export component Tour() {
+	let service = useMachine(tour.machine, () => ({
+		id: 'tour',
+		steps: steps,
+	}));
+	let api = track(() => tour.connect(@service, normalizeProps));
+
+    <button 
+        data-scope="tour" 
+        data-part="trigger"
+        onClick={() => @api.start()}
+    >
+        {"Start Tour"}
+    </button>
+    
+    if (@api.step && @api.open) {
+        <Portal>
+            if (@api.step.backdrop) {
+                <div {...@api.getBackdropProps()} />
+            }
+            <div {...@api.getSpotlightProps()} />
+            <div {...@api.getPositionerProps()}>
+                <div {...@api.getContentProps()}>
+                    if (@api.step.arrow) {
+                        <div {...@api.getArrowProps()}>
+                            <div {...@api.getArrowTipProps()} />
+                        </div>
+                    }
+
+                    <div {...@api.getProgressTextProps()}>
+                        {@api.getProgressText()}
+                    </div>
+
+                    <p {...@api.getTitleProps()}>{@api.step.title}</p>
+                    <div {...@api.getDescriptionProps()}>{@api.step.description}</div>
+
+                    if (@api.step.actions) {
+                        <div data-scope="tour" data-part="actions">
+                            for (const action of @api.step.actions; index actionIndex) {
+                                <button {...@api.getActionTriggerProps({ action })}>
+                                    {action.label}
+                                </button>
+                            }
+                        </div>
+                    }
+
+                    <button {...@api.getCloseTriggerProps()}>
+                        <X size={16} />
+                    </button>
+                </div>
+            </div>
+        </Portal>
+    }
+}
+
+const steps = [
+	{
+		type: "dialog",
+		id: "start",
+		title: "Welcome to ZagRipple!",
+		description: "Let's take a quick tour of the documentation to help you get started with ZagRipple components.",
+		actions: [{ label: "Let's go!", action: "next" }],
+	},
+	{
+		id: "stackblitz",
+		title: "Try it Live",
+		description: "Click 'Open in Stackblitz' to experiment with this component in a live coding environment.",
+		target: () => document.querySelector("[data-id=stackblitz]"),
+		placement: "bottom",
+		actions: [
+			{ label: "Prev", action: "prev" },
+			{ label: "Next", action: "next" },
+		],
+	},
+	{
+		id: "zag-docs",
+		title: "Official Zag.js Documentation",
+		description: "Visit the official Zag.js docs to dive deeper into the machine logic and API details.",
+		target: () => document.querySelector("[data-id=zag-docs]"),
+		placement: "bottom",
+		actions: [
+			{ label: "Prev", action: "prev" },
+			{ label: "Next", action: "next" },
+		],
+	},
+	{
+		id: "view-source",
+		title: "View Source Code",
+		description: "Check out the complete source code on GitHub to understand the implementation details.",
+		target: () => document.querySelector("[data-id=view-source]"),
+		placement: "bottom",
+		actions: [
+			{ label: "Prev", action: "prev" },
+			{ label: "Next", action: "next" },
+		],
+	},
+	{
+		id: "installation",
+		title: "Installation Guide",
+		description: "Here's how to install ZagRipple and the component packages you need for your project.",
+		target: () => document.querySelector("[data-id=installation]"),
+		placement: "top",
+		actions: [
+			{ label: "Prev", action: "prev" },
+			{ label: "Next", action: "next" },
+		],
+	},
+	{
+		id: "usage",
+		title: "Usage Examples",
+		description: "Learn how to use the component with practical code examples and best practices.",
+		target: () => document.querySelector("[data-id=usage]"),
+		placement: "top",
+		actions: [
+			{ label: "Prev", action: "prev" },
+			{ label: "Next", action: "next" },
+		],
+	},
+	{
+		type: "dialog",
+		id: "end",
+		title: "You're all set!",
+		description: "Now you know how to navigate the ZagRipple docs. Start building amazing components with Ripple!",
+		actions: [{ label: "Finish", action: "dismiss" }],
+	},
+];

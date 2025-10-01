@@ -43,3 +43,4 @@ export { Timer as timer } from "./timer.ripple";
 export { ToastGroup as toast } from "./toast.ripple";
 export { ToggleGroup as toggleGroup } from "./toggle-group.ripple";
 export { Tooltip as tooltip } from "./tooltip.ripple";
+export { Tour as tour } from "./tour.ripple";

@@ -282,12 +282,12 @@ export const components = [
     icon: "tooltip",
     description: "Contextual information that appears on hover or focus.",
   },
-  // {
-  //   label: "Tour",
-  //   id: "tour",
-  //   icon: "tour",
-  //   description: "Guided walkthrough highlighting interface elements.",
-  // },
+  {
+    label: "Tour",
+    id: "tour",
+    icon: "tour",
+    description: "Guided walkthrough highlighting interface elements.",
+  },
   // {
   //   label: "Tree View",
   //   id: "tree-view",
