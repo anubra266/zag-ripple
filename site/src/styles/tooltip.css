@@ -18,6 +18,6 @@
 }
 
 [data-scope='tooltip'][data-part='arrow-tip'] {
-    z-index: 60;
+	z-index: 60;
 	@apply rounded-xs;
 }
