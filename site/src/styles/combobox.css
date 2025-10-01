@@ -42,7 +42,7 @@
 }
 
 [data-scope='combobox'][data-part='item'][data-highlighted] {
-	@apply bg-accent text-accent-foreground;
+	@apply bg-primary text-primary-foreground;
 }
 
 [data-scope='combobox'][data-part='item'][data-selected] {
