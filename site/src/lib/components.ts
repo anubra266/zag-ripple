@@ -288,10 +288,10 @@ export const components = [
     icon: "tour",
     description: "Guided walkthrough highlighting interface elements.",
   },
-  // {
-  //   label: "Tree View",
-  //   id: "tree-view",
-  //   icon: "tree",
-  //   description: "Hierarchical data display with expandable branches.",
-  // },
+  {
+    label: "Tree View",
+    id: "tree-view",
+    icon: "tree",
+    description: "Hierarchical data display with expandable branches.",
+  },
 ];

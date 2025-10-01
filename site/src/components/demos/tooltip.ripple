@@ -6,7 +6,7 @@ export component Tooltip() {
 	let service = useMachine(tooltip.machine, {
 		id: 'tooltip',
 	});
-	let api = track(() => tooltip.connect(@service, normalizeProps));
+	let api = track(() => tooltip.connect(service, normalizeProps));
 
     <button {...@api.getTriggerProps()}>{"Hover me"}</button>
     <Portal>

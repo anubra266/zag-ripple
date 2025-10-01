@@ -8,7 +8,7 @@ export component Tour() {
 		id: 'tour',
 		steps: steps,
 	}));
-	let api = track(() => tour.connect(@service, normalizeProps));
+	let api = track(() => tour.connect(service, normalizeProps));
 
     <button 
         data-scope="tour" 

@@ -1,0 +1,100 @@
+[data-scope='tree-view'][data-part='root'] {
+	@apply w-full max-w-md mx-auto;
+}
+
+[data-scope='tree-view'][data-part='label'] {
+	@apply text-lg font-semibold text-foreground mb-4;
+}
+
+[data-scope='tree-view'][data-part='controls'] {
+	@apply flex gap-2 mb-4;
+}
+
+[data-scope='tree-view'][data-part='trigger'] {
+	@apply px-3 py-1.5 text-sm font-medium rounded-md bg-secondary text-secondary-foreground hover:bg-secondary/80 transition-colors;
+}
+
+[data-scope='tree-view'][data-part='tree'] {
+	@apply border border-border rounded-lg bg-background p-2;
+}
+
+/* Branch styles */
+[data-scope='tree-view'][data-part='branch'] {
+	@apply w-full;
+}
+
+[data-scope='tree-view'][data-part='branch-control'] {
+	@apply flex items-center gap-2 px-2 py-1.5 text-sm rounded-md cursor-pointer transition-colors h-9 overflow-hidden border border-transparent;
+}
+
+[data-scope='tree-view'][data-part='branch-control']:hover {
+	@apply bg-muted/50;
+}
+
+[data-scope='tree-view'][data-part='branch-control'][data-state='open'] {
+	@apply text-foreground;
+}
+
+[data-scope='tree-view'][data-part='branch-control'][data-selected] {
+	@apply bg-primary/10 text-primary border-primary/20;
+}
+
+[data-scope='tree-view'][data-part='branch-control'][data-focused] {
+	@apply ring-2 ring-ring ring-offset-2 ring-offset-background;
+}
+
+[data-scope='tree-view'][data-part='branch-text'] {
+	@apply flex-1 font-medium truncate;
+}
+
+[data-scope='tree-view'][data-part='branch-indicator'] {
+	@apply transition-transform duration-200;
+}
+
+[data-scope='tree-view'][data-part='branch-indicator'][data-state='open'] {
+	@apply rotate-90;
+}
+
+[data-scope='tree-view'][data-part='branch-content'] {
+	@apply relative;
+}
+
+[data-scope='tree-view'][data-part='branch-content'][data-state='closed'] {
+	@apply hidden;
+}
+
+[data-scope='tree-view'][data-part='branch-indent-guide'] {
+	@apply absolute left-6 top-0 bottom-0 w-px bg-border;
+}
+
+/* Item (leaf) styles */
+[data-scope='tree-view'][data-part='item'] {
+	@apply flex items-center gap-2 px-2 py-1.5 text-sm rounded-md cursor-pointer transition-colors h-9 overflow-hidden;
+}
+
+[data-scope='tree-view'][data-part='item']:hover {
+	@apply bg-muted/50;
+}
+
+[data-scope='tree-view'][data-part='item'][data-selected] {
+	@apply bg-primary/10 text-primary border border-primary/20;
+}
+
+[data-scope='tree-view'][data-part='item'][data-focused] {
+	@apply ring-2 ring-ring ring-offset-2 ring-offset-background;
+}
+
+/* Nested indentation using padding instead of margin */
+[data-scope='tree-view'][data-part='branch-content'] {
+	@apply pl-6;
+}
+
+/* Nested items get right-only border radius */
+[data-scope='tree-view'][data-part='branch-content']
+	[data-scope='tree-view'][data-part='branch-control'] {
+	@apply rounded-l-none rounded-r-md;
+}
+
+[data-scope='tree-view'][data-part='branch-content'] [data-scope='tree-view'][data-part='item'] {
+	@apply rounded-l-none rounded-r-md;
+}

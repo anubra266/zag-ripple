@@ -44,3 +44,4 @@ export { ToastGroup as toast } from "./toast.ripple";
 export { ToggleGroup as toggleGroup } from "./toggle-group.ripple";
 export { Tooltip as tooltip } from "./tooltip.ripple";
 export { Tour as tour } from "./tour.ripple";
+export { TreeView as treeView } from "./tree-view.ripple";

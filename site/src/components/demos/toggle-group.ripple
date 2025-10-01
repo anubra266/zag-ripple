@@ -9,7 +9,7 @@ export component ToggleGroup() {
 		defaultValue: 'bold',
 		multiple: true,
 	});
-	let api = track(() => toggleGroup.connect(@service, normalizeProps));
+	let api = track(() => toggleGroup.connect(service, normalizeProps));
 
 	<div {...@api.getRootProps()}>
 		<button {...@api.getItemProps({ value: "bold" })}>
