@@ -1,5 +1,5 @@
 :root {
-    --tour-z-index: 100;
+	--tour-z-index: 100;
 }
 
 [data-scope='tour'][data-part='trigger'] {
@@ -8,12 +8,12 @@
 
 [data-scope='tour'][data-part='backdrop'] {
 	background-color: rgba(0, 0, 0, 0.5);
-    z-index: calc(var(--tour-layer) + var(--tour-z-index));
+	z-index: calc(var(--tour-layer) + var(--tour-z-index));
 }
 
 [data-scope='tour'][data-part='spotlight'] {
 	@apply border-2 border-border;
-    z-index: calc(var(--tour-layer) + var(--tour-z-index));
+	z-index: calc(var(--tour-layer) + var(--tour-z-index));
 }
 
 /* Positioner types */
@@ -41,13 +41,13 @@
 	@apply fixed inset-0 flex items-center justify-center;
 	width: 100%;
 	margin: auto;
-    z-index: calc(var(--tour-layer) + var(--tour-z-index));
+	z-index: calc(var(--tour-layer) + var(--tour-z-index));
 }
 
 /* Content types */
 [data-scope='tour'][data-part='content'] {
 	@apply relative rounded-lg shadow-lg bg-popover p-6 w-80;
-    z-index: calc(var(--tour-layer) + var(--tour-z-index));
+	z-index: calc(var(--tour-layer) + var(--tour-z-index));
 }
 
 [data-scope='tour'][data-part='content'][data-type='dialog'] {
