@@ -1,4 +1,3 @@
-import { Router, Route, Link } from 'ripple-router';
 
 import { Page } from './Page.ripple';
 import { Components } from './Components.ripple';
@@ -11,8 +10,4 @@ export component Layout() {
 	// <Components />
 	<Component params={{ id: 'toast' }} />
 
-	// <Router>
-	// 	<Route path='/' $element={Page} />
-	// 	<Route path='**' $element={NotFound} />
-	// </Router>
 }

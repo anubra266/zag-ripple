@@ -1,54 +1,41 @@
-import { identity, isFunction } from "@zag-js/utils"
-import { track, effect, flushSync, untrack } from "ripple"
+import { isFunction } from "@zag-js/utils"
+import { track, effect } from "ripple"
 
 export function bindable(props) {
   const initial = props().defaultValue ?? props().value
   const eq = props().isEqual ?? Object.is
 
-  let value = track(initial)
-  let controlled = track(() => props().value !== undefined)
-
-  let valueRef = { current: untrack(() => @value) }
-  let prevValue = { current: undefined }
-
-  effect(() => {
-    const v = @controlled ? props().value : @value
-    valueRef = { current: v }
-    prevValue = { current: v }
-  })
-
-  const setValueFn = (v) => {
-    const next = isFunction(v) ? v(valueRef.current) : v
-    const prev = prevValue.current
-    if (props().debug) {
-      console.log(`[bindable > ${props().debug}] setValue`, { next, prev })
-    }
-
-    if (!@controlled) @value = next;
-    if (!eq(next, prev)) {
-      props().onChange?.(next, prev)
-    }
-  }
-
-  function get() {
-    return @controlled ? props().value : @value
-  }
+  const v = track(initial)
+  const controlled = track(() => props().value !== undefined)
+  const valueRef = track(@controlled ? props().value : @v)
 
   return {
     initial,
     ref: valueRef,
-    get,
-    set(val) {
-      const exec = props().sync ? flushSync : identity
-      exec(() => setValueFn(val))
+    get() {
+      return (@controlled ? props().value : @v)
     },
-    invoke: (nextValue, prevValue) => {
+    set(val){
+      const prev = @controlled ? props().value : @v
+      const next = isFunction(val) ? val(prev) : val
+      if (props().debug) {
+        console.log(`[bindable > ${props().debug}] setValue`, { next, prev })
+      }
+      
+      if (!@controlled) @v = next
+      
+      if (!eq(next, prev)) {
+        props().onChange?.(next, prev)
+      }
+    },
+    invoke(nextValue, prevValue) {
       props().onChange?.(nextValue, prevValue)
     },
-    hash: (value) => {
+    hash(value) {
       return props().hash?.(value) ?? String(value)
     },
   }
+
 }
 
 bindable.cleanup = (fn: VoidFunction) => {

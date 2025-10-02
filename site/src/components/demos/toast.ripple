@@ -1,19 +1,14 @@
 import * as toast from '@zag-js/toast';
 import { normalizeProps, useMachine, Portal } from 'zag-ripple';
-import { track, trackSplit, keyed, effect } from 'ripple';
+import { track, trackSplit, effect } from 'ripple';
 import { X, Info, Check, TriangleAlert, CircleAlert, Loader } from 'lucide-ripple';
 
 const toaster = toast.createStore({
-	overlap: true,
+	overlap: false,
 	placement: "bottom-end",
 	offsets: "24px",
 	gap: 24,
     duration: 15000,
-});
-
-toaster.subscribe(state => {
-    // console.log("state", state);
-    // console.log("subscribeToStore", state.map(item => [item.id, item.stacked].join(":")).join(", "))
 });
 
 export component ToastGroup() {
@@ -23,13 +18,10 @@ export component ToastGroup() {
 	});
 	let api = track(() => toast.group.connect(service, normalizeProps));
 
-    effect(() => {
-        // console.log("api", @api.context.get("toasts"));
-    });
-
     <Portal>
         <div {...@api.getGroupProps()}>
-            for (const toastItem of keyed(@api.getToasts(), item => item.id); index index) {
+            // Fixed keyed loop
+            for (const toastItem of @api.getToasts(); index index; key [toastItem.id, toastItem.stacked].join(":")) {
                 <Toast
                     actor={toastItem}
                     index={index}
@@ -127,17 +119,11 @@ export component ToastGroup() {
 component Toast(props) {
     let [index, actor, parent] = trackSplit(props, ['index', 'actor', 'parent']);
 
-    effect(() => {
-        // console.log("actor", @actor);
-    });
-
 	let service = useMachine(toast.machine, {...@actor, index, parent});
 	let api = track(() => toast.connect(service, normalizeProps));
 
 	<div {...@api.getRootProps()}>
 		<span {...@api.getGhostBeforeProps()} />
-        // TODO: add progressbar
-		<div data-scope="toast" data-part="progressbar" />
 		
 		<div data-scope="toast" data-part="content">
 			<div data-scope="toast" data-part="icon">

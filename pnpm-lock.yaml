@@ -184,13 +184,10 @@ importers:
         version: 7.1.0
       lucide-ripple:
         specifier: ^0.0.4
-        version: 0.0.4(ripple@0.2.97)
+        version: 0.0.4(ripple@0.2.100)
       ripple:
-        specifier: ^0.2.97
-        version: 0.2.97
-      ripple-router:
-        specifier: ^0.4.4
-        version: 0.4.4(ripple@0.2.97)
+        specifier: ^0.2.100
+        version: 0.2.100
       tailwind-merge:
         specifier: ^2.5.5
         version: 2.6.0
@@ -1022,17 +1019,11 @@ packages:
     resolution: {integrity: sha512-w8nqGImo45dmMIfljjMwOGtbmC/mk4CMYhWIicdSflH91J9TyCyczcPFXJzrZ/ZXcgGRFeP6BU0BEJTw6tZdfQ==}
     engines: {node: '>=0.10.0'}
 
-  ripple-router@0.4.4:
-    resolution: {integrity: sha512-cpHpPvtli53siD36Xazvnpp63E39+vsUumLBVTg2ireAEC4MSS5xtaHtl/mHSppSDN810redcOXV5mrEHpKsUw==}
-    engines: {node: '>=20.0.0'}
-    peerDependencies:
-      ripple: ^0.2.70
+  ripple@0.2.100:
+    resolution: {integrity: sha512-tP3DkaRs5HGWGNxlocqslepAnv0AcH86kFxu17fmW7teLm3lAQOUA5Kk1+RpsZPBVCCCuIsWOv0Tg1h3sy24Cg==}
 
   ripple@0.2.85:
     resolution: {integrity: sha512-awWaaQyIY1+THMQu5U9/ns7HNv6iLA4KaQBXtBg7G57E7nyLDTiUt4YnyewaWqnVnffGCOfe2gEIa5+k1Lmj6g==}
-
-  ripple@0.2.97:
-    resolution: {integrity: sha512-SZSUCVUe1Dg/oVZZxKbHOnLrHUo5Y7tELKtMaLU6151QOAwp1CZC9KC/7hDDCfhAsKrwvvGnAVYZ7mavGs/Fbw==}
 
   rollup@4.52.2:
     resolution: {integrity: sha512-I25/2QgoROE1vYV+NQ1En9T9UFB9Cmfm2CJ83zZOlaDpvz29wGQSZXWKw7MiNXau7wYgB/T9fVIdIuEQ+KbiiA==}
@@ -2004,9 +1995,9 @@ snapshots:
       lightningcss-win32-arm64-msvc: 1.30.1
       lightningcss-win32-x64-msvc: 1.30.1
 
-  lucide-ripple@0.0.4(ripple@0.2.97):
+  lucide-ripple@0.0.4(ripple@0.2.100):
     dependencies:
-      ripple: 0.2.97
+      ripple: 0.2.100
 
   magic-string@0.30.19:
     dependencies:
@@ -2053,27 +2044,23 @@ snapshots:
 
   react@19.1.1: {}
 
-  ripple-router@0.4.4(ripple@0.2.97):
-    dependencies:
-      ripple: 0.2.97
-
-  ripple@0.2.85:
+  ripple@0.2.100:
     dependencies:
       '@jridgewell/sourcemap-codec': 1.5.5
       acorn: 8.15.0
       acorn-typescript: 1.4.13(acorn@8.15.0)
+      clsx: 2.1.1
       esrap: 2.1.0
       is-reference: 3.0.3
       magic-string: 0.30.19
       muggle-string: 0.4.1
       zimmerframe: 1.1.4
 
-  ripple@0.2.97:
+  ripple@0.2.85:
     dependencies:
       '@jridgewell/sourcemap-codec': 1.5.5
       acorn: 8.15.0
       acorn-typescript: 1.4.13(acorn@8.15.0)
-      clsx: 2.1.1
       esrap: 2.1.0
       is-reference: 3.0.3
       magic-string: 0.30.19

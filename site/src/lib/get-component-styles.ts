@@ -1,10 +1,8 @@
-// TODO: use tailwind and remove the zag git submodule
-
 const styles = import.meta.glob('./*.css', {
     query: '?raw',
     import: 'default',
     eager: true,
-    base: '../zag-shared/shared/src/css/',
+    base: '../styles/',
 })
 
 

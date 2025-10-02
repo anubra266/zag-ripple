@@ -264,6 +264,7 @@ export const components = [
     icon: "timer",
     description: "Record elapsed time since zero or given time",
   },
+  // TODO fix bugs
   {
     label: "Toast",
     id: "toast",

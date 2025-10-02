@@ -7,7 +7,7 @@ import { toPascalCase } from '../lib/get-component-code';
 import { getComponentStyles } from '../lib/get-component-styles';
 
 export component OpenInStackblitz({ id }: { id: string }) {
-	<Button data-id="stackblitz" onClick={() => openInStackblitz(id)} variant='outline' size='sm' class='h-9 text-xs bg-orange-50 hover:bg-orange-100 border-orange-200 text-orange-700 hover:text-orange-700 dark:bg-orange-950 dark:hover:bg-orange-900 dark:border-orange-800 dark:text-orange-300'>
+	<Button data-id='stackblitz' onClick={() => openInStackblitz(id)} variant='outline' size='sm' class='h-9 text-xs bg-orange-50 hover:bg-orange-100 border-orange-200 text-orange-700 hover:text-orange-700 dark:bg-orange-950 dark:hover:bg-orange-900 dark:border-orange-800 dark:text-orange-300'>
 		<Play class='h-3 w-3 mr-1.5' />
 		{'Open in StackBlitz'}
 		<ExternalLink class='h-3 w-3 ml-1.5' />
@@ -15,28 +15,37 @@ export component OpenInStackblitz({ id }: { id: string }) {
 }
 
 function openInStackblitz(id: string) {
-	const component = components.find((component) => component.id === id);
+	const component = components.find(component => component.id === id);
 	sdk.openProject({
 		title: 'Zag Ripple - ' + component.label,
 		description: component.description,
 		template: 'node',
 		files: {
-            [`src/${toPascalCase(id)}.ripple`]: getComponentCode(id),
-            "src/index.ts": getIndexTS(id),
-            'src/styles.css': getComponentStyles(component.package ?? id),
-            'index.html': indexHtml(component.label),
-            'package.json': packageJson(id),
-            'ripple.d.ts': `declare module '*.ripple';`,
-            'vite.config.js': viteConfig,
-            'tsconfig.json': JSON.stringify(tsConfig),
+			[`src/${toPascalCase(id)}.ripple`]: getComponentCode(id),
+			'src/index.ts': getIndexTS(id),
+			'src/styles.css': getStylesCSS(component.package ?? id),
+			'index.html': indexHtml(component.label),
+			'package.json': packageJson(id),
+			'ripple.d.ts': `declare module '*.ripple';`,
+			'vite.config.js': viteConfig,
+			'tsconfig.json': JSON.stringify(tsConfig),
 		},
-	}, 
-    {
+	}, {
 		openFile: `src/index.ts,src/${toPascalCase(id)}.ripple`,
 		showSidebar: false,
 		newWindow: true,
 	});
 }
+
+const getStylesCSS = (id: string) => {
+	const tw = `@import 'tailwindcss';
+@import 'tw-animate-css';
+@import './styles.css';`;
+
+	const theme = getComponentStyles('theme');
+	const componentStyles = getComponentStyles(id);
+	return `${tw}\n${theme}\n${componentStyles}`;
+};
 
 const getIndexTS = (id: string) => `import { mount } from 'ripple';
 import { ${toPascalCase(id)} } from './${toPascalCase(id)}.ripple';
@@ -44,11 +53,10 @@ import './styles.css';
 
 mount(${toPascalCase(id)}, {
 	target: document.getElementById('root'),
-});`
+});`;
 
-const indexHtml = (label: string) => { 
-    
-    return`<!doctype html>
+const indexHtml = (label: string) => {
+	return `<!doctype html>
 <html lang="en">
 	<head>
 		<meta charset="utf-8" />
@@ -63,66 +71,70 @@ const indexHtml = (label: string) => {
 		<script src="/src/index.ts" type="module"></script>
 	</body>
 </html>
-`}
+`;
+};
 
 const packageJson = (id: string) => JSON.stringify({
-	"name": `zag-ripple-${id}-demo`,
-	"version": "0.0.0",
-	"description": "",
-	"type": "module",
-	"engines": {
-		"node": ">=20.0.0"
+	'name': `zag-ripple-${id}-demo`,
+	'version': '0.0.0',
+	'description': '',
+	'type': 'module',
+	'engines': {
+		'node': '>=20.0.0',
 	},
-	"scripts": {
-		"start": "vite",
-		"dev": "vite",
-		"build": "vite build",
-		"serve": "vite preview",
-		"format": "prettier --write .",
-		"format:check": "prettier --check ."
+	'scripts': {
+		'start': 'vite',
+		'dev': 'vite',
+		'build': 'vite build',
+		'serve': 'vite preview',
+		'format': 'prettier --write .',
+		'format:check': 'prettier --check .',
 	},
-	"license": "MIT",
-	"devDependencies": {
-		"prettier": "latest",
-		"prettier-plugin-ripple": "latest",
-		"typescript": "^5.9.2",
-		"vite": "^7.1.4",
-		"vite-plugin-ripple": "latest"
+	'license': 'MIT',
+	'devDependencies': {
+		'prettier': 'latest',
+		'prettier-plugin-ripple': 'latest',
+		'typescript': '^5.9.2',
+		'vite': '^7.1.4',
+		'vite-plugin-ripple': 'latest',
 	},
-	"dependencies": {
-		[`@zag-js/${id}`]: "latest",
-		"@zag-js/i18n-utils": "latest",
-		"lucide-ripple": "latest",
-		"ripple": "latest",
-		"zag-ripple": "latest",
-	}
-})
-
+	'dependencies': {
+		[`@zag-js/${id}`]: 'latest',
+		'@zag-js/i18n-utils': 'latest',
+		'lucide-ripple': 'latest',
+		'ripple': 'latest',
+		'zag-ripple': 'latest',
+		'tailwindcss': '^4.1.9',
+		"tw-animate-css": "1.3.3",
+		"@tailwindcss/vite": "^4.1.13",
+	},
+});
 
 const tsConfig = {
-	"compilerOptions": {
-		"target": "ESNext",
-		"module": "ESNext",
-		"lib": ["ES2022", "DOM", "DOM.Iterable"],
-		"allowSyntheticDefaultImports": true,
-		"esModuleInterop": true,
-		"moduleResolution": "bundler",
-		"jsx": "preserve",
-		"jsxImportSource": "ripple",
-		"noEmit": true,
-		"isolatedModules": true
-	}
-}
+	'compilerOptions': {
+		'target': 'ESNext',
+		'module': 'ESNext',
+		'lib': ['ES2022', 'DOM', 'DOM.Iterable'],
+		'allowSyntheticDefaultImports': true,
+		'esModuleInterop': true,
+		'moduleResolution': 'bundler',
+		'jsx': 'preserve',
+		'jsxImportSource': 'ripple',
+		'noEmit': true,
+		'isolatedModules': true,
+	},
+};
 
 const viteConfig = `import { defineConfig } from 'vite';
 import { ripple } from 'vite-plugin-ripple';
+import tailwindcss from '@tailwindcss/vite';
 
 export default defineConfig({
-	plugins: [ripple()],
+	plugins: [ripple(), tailwindcss()],
 	server: {
 		port: 3000,
 	},
 	build: {
 		target: 'esnext',
 	},
-});`
+});`;
