@@ -1,14 +1,18 @@
 import * as demos from './demos/index.ripple';
+import { track } from 'ripple';
 
 function toCamelCase(str: string): string {
+    if(!str) throw new Error('Invalid Component');
     return str.replace(/-([a-z])/g, (_, letter) => letter.toUpperCase())
 }
 
-export component ComponentDemo({ id }:any) {
-    const Demo = demos[toCamelCase(id)];
+export component ComponentDemo({id}) {
+    const Demo = track(() => demos[toCamelCase(id)]);
+
+
     if (Demo) {
         <div class="flex items-center flex-wrap p-6 rounded-lg border border-border/50 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-            <Demo />
+            <@Demo />
         </div>
     }
 }

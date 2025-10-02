@@ -23,49 +23,46 @@ import {
 import { useCopy } from "./lib/use-copy.ripple";
 import apiJson from "@zag-js/docs"
 import * as demos from './components/demos/index.ripple';
+import { RouteContext } from "./lib/route-context";
+import { track } from "ripple";
 
-// TODO
-component Link({children, ...rest}){
-	<a {...rest}> <children /></a>
-}
-
-export component Component({ params }: any) {
-    let componentId = params.id
-
-    const currentIndex = components.findIndex((component) => component.id === componentId)
-    const component = components[currentIndex]
-    const prevComponent = currentIndex > 0 ? components[currentIndex - 1] : null
-    const nextComponent = currentIndex < components.length - 1 ? components[currentIndex + 1] : null
-
+export component Component() {
+    const router = RouteContext.get()
     
+    const componentId = track(() => @router.location.params.id)
+    const currentIndex = track(() => components.findIndex((component) => component.id === @componentId))
+    const component = track(() => components[@currentIndex])
+    const prevComponent = track(() => @currentIndex > 0 ? components[@currentIndex - 1] : null)
+    const nextComponent = track(() => @currentIndex < components.length - 1 ? components[@currentIndex + 1] : null)
+
     <div class="min-h-screen">
         <Navigation />
 
         <main class="container mx-auto px-4 py-12">
             {/* Breadcrumb */}
             <div class="flex items-center gap-2 text-sm text-muted-foreground mb-8">
-                <Link href="/components" class="hover:text-foreground">
+                <a {...@router.getLinkProps({ to: '/components' })} class="hover:text-foreground">
                     {'Components'}
-                </Link>
+                </a>
                 <span>{'/'}</span>
-                <span class="text-foreground">{component.label}</span>
+                <span class="text-foreground">{@component.label}</span>
             </div>
 
 
             {/* Header */}
             <div class="mb-12">
             <div class="flex items-center gap-4 mb-6">
-                <Link href="/components">
+                <a {...@router.getLinkProps({ to: '/components' })}>
                 <Button variant="ghost" size="sm">
                     <ArrowLeft class="h-4 w-4 mr-2" />
                     {"Back to Components"}
                 </Button>
-                </Link>
+                </a>
             </div>
 
-            <h1 class="text-4xl font-bold mb-4">{component.label}</h1>
+            <h1 class="text-4xl font-bold mb-4">{@component.label}</h1>
             <p class="text-xl text-muted-foreground mb-8">
-                {component.description}
+                {@component.description}
             </p>
 
             {/* Component Demo */}
@@ -73,11 +70,12 @@ export component Component({ params }: any) {
 
                 {/* Demo Badges */}
                 <div class="flex flex-wrap gap-3 justify-center">
-                    <OpenInStackblitz id={componentId} />
+                    <OpenInStackblitz id={@componentId} />
 
                 
                 <Button
-                    href={`https://zagjs.com/components/react/${componentId}`}
+                    href={`https://zagjs.com/components/react/${@componentId}`}
+                    target="_blank"
                     variant="outline"
                     size="sm"
                     data-id="zag-docs"
@@ -90,7 +88,7 @@ export component Component({ params }: any) {
 
                 
                 <Button
-                    href={`https://github.com/chakra-ui/zag/blob/main/packages/machines/${componentId}/src/${componentId}.machine.ts`}
+                    href={`https://github.com/chakra-ui/zag/blob/main/packages/machines/${@componentId}/src/${@componentId}.machine.ts`}
                     variant="outline"
                     size="sm"
                     data-id="view-source"
@@ -101,7 +99,7 @@ export component Component({ params }: any) {
                         <ExternalLink class="h-3 w-3 ml-1.5" />
                     </Button>
                 </div>
-                <ComponentDemo id={componentId} />
+                <ComponentDemo id={@componentId} />
             </div>
             </div>
 
@@ -111,9 +109,9 @@ export component Component({ params }: any) {
                 <Card class="p-4 bg-muted/50">
                     <div class="flex items-center justify-between">
                     let [copyInstall, copiedInstall] = useCopy()
-                    const code = `npm install zag-ripple @zag-js/${componentId}`
-                    <CodeBlock code={code} language="bash" />
-                    <Button variant="ghost" size="sm" onClick={() => copyInstall(code)}>
+                    const code = track(() => `npm install zag-ripple @zag-js/${@componentId}`)
+                    <CodeBlock code={@code} language="bash" />
+                    <Button variant="ghost" size="sm" onClick={() => copyInstall(@code)}>
                         if (@copiedInstall) {
                             <Check class="h-4 w-4" />
                         } else {
@@ -125,13 +123,13 @@ export component Component({ params }: any) {
             </section>
 
             {/* Usage */}
-            <Usage id={componentId} />
+            <Usage id={@componentId} />
 
-            if(componentId in apiJson) {
+            if(@componentId in apiJson) {
                 {/* Context */}
-                <ContextTable id={componentId} />
+                <ContextTable id={@componentId} />
                 {/* API */}
-                <ApiTable id={componentId} />
+                <ApiTable id={@componentId} />
             }
 
             {/* Accessibility */}
@@ -140,17 +138,17 @@ export component Component({ params }: any) {
 
                 <div class="space-y-6">
                      {/* Data Attributes */}
-                    <DataAttributes id={component.package || componentId} />
+                    <DataAttributes id={@component.package || @componentId} />
                      {/* Keyboard Interactions */}
-                    <KeyboardInteractions id={component.package || componentId} />
+                    <KeyboardInteractions id={@component.package || @componentId} />
                 </div>
             </section>
 
             {/* Navigation */}
             <section>
                 <div class="flex justify-between items-center">
-                    if (prevComponent) {
-                        <Link href={`/components/${prevComponent.id}`} class="mr-auto">
+                    if (@prevComponent) {
+                        <a {...@router.getLinkProps({ to: `/components/${@prevComponent.id}` })} class="mr-auto">
                             <Button
                                 variant="outline"
                                 size="lg"
@@ -159,13 +157,13 @@ export component Component({ params }: any) {
                                 <ChevronLeft class="h-5 w-5" />
                                 <div class="text-left">
                                 <div class="text-sm text-muted-foreground">{"Previous"}</div>
-                                <div class="font-semibold text-base">{prevComponent.label}</div>
+                                <div class="font-semibold text-base">{@prevComponent.label}</div>
                                 </div>
                             </Button>
-                        </Link>
+                        </a>
                     }
-                    if (nextComponent) {
-                        <Link href={`/components/${nextComponent.id}`} class="ml-auto">
+                    if (@nextComponent) {
+                        <a {...@router.getLinkProps({ to: `/components/${@nextComponent.id}` })} class="ml-auto">
                             <Button
                                 variant="outline"
                                 size="lg"
@@ -173,11 +171,11 @@ export component Component({ params }: any) {
                             >
                                 <div class="text-right">
                                 <div class="text-sm text-muted-foreground">{"Next"}</div>
-                                <div class="font-semibold text-base">{nextComponent.label}</div>
+                                <div class="font-semibold text-base">{@nextComponent.label}</div>
                                 </div>
                                 <ChevronRight class="h-5 w-5" />
                             </Button>
-                        </Link>
+                        </a>
                     }
                 </div>
             </section>

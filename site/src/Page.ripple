@@ -3,7 +3,7 @@ import { HeroSection } from './components/hero-section.ripple';
 
 export component Page() {
 	<div className='min-h-screen'>
-		<Navigation />
+		<Navigation noSearch />
 		<main>
 			<HeroSection />
 		</main>

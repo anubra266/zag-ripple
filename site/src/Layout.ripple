@@ -3,11 +3,37 @@ import { Page } from './Page.ripple';
 import { Components } from './Components.ripple';
 import { Component } from './Component.ripple';
 import { NotFound } from './NotFound.ripple';
+import * as routing from "routing-machine"
+import { useMachine, normalizeProps } from "zag-ripple"
+import { track } from "ripple"
+import { RouteContext } from "./lib/route-context"
+import { Navigation } from "./components/navigation.ripple";
 
 export component Layout() {
+	const service = useMachine(routing.machine,{
+		id: "router",
+		routes: [
+			{ path: "/", name: "home" },
+			{ path: "/components", name: "components" },
+			{ path: "/components/:id", name: "component" },
+		],
+	})
+	const router = track(() => routing.connect(service, normalizeProps))
+
+	RouteContext.set(router)
+
 	<div class="fixed inset-0 grid-pattern opacity-50 -z-10" />
-	// <Page />
-	// <Components />
-	<Component params={{ id: 'toast' }} />
+
+	if(@router.currentRouteName === "home") {
+		<Page />
+	} 
+	
+	if(@router.currentRouteName === "components") {
+		<Components />
+	} 
+
+	if(@router.currentRouteName === "component") {
+		<Component />
+	}
 
 }

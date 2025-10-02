@@ -4,11 +4,12 @@ import { normalizeProps, useMachine, Portal } from 'zag-ripple';
 import { track } from 'ripple';
 import { components } from '../lib/components';
 import { Search } from "lucide-ripple";
+import { RouteContext } from "../lib/route-context";
 
 // TODO utiity cmd+k zag hotkeys will also handle cmd/ctrl+k
 export component SearchDocs() {
     let options = track(components)
-
+    const router = RouteContext.get()
     const filter = createFilter({ sensitivity: "base" })
 
     const collection = track(() => combobox.collection({
@@ -30,9 +31,8 @@ export component SearchDocs() {
         selectionBehavior: 'clear',
         inputBehavior: 'autohighlight',
         openOnClick: true,
-        // TODO
         onSelect({ itemValue}) {
-            // navigateToComponent(itemValue)
+            @router.navigate(`/components/${itemValue}`)
         },
 	});
 	let api = track(() => combobox.connect(service, normalizeProps));

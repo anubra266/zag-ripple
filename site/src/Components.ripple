@@ -6,13 +6,10 @@ import { components } from './lib/components';
 import * as icons from "./components/icons.ripple";
 import { useSearch } from "./lib/use-search.ripple";
 import { track } from "ripple";
-
-// TODO
-component Link({children, class: className}){
-	<a class={className}> <children /></a>
-}
+import { RouteContext } from "./lib/route-context";
 
 export component Components() {
+    const router = RouteContext.get()
     let searchTerm = track("")
     const results = useSearch(searchTerm, components,
         [
@@ -51,7 +48,7 @@ export component Components() {
         {/* Components Grid */}
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
             for (const component of @results) {
-                <Link href={`/components/${component.id}`}>
+                <a {...@router.getLinkProps({ to: `/components/${component.id}` })}>
                     <Card class="p-6 bg-card/50 border-border/50 hover:bg-card/80 transition-all duration-300 hover:scale-[1.02] hover:border-primary/30 group cursor-pointer relative overflow-hidden">
                 {/* Background gradient */}
                 <div class="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
@@ -103,7 +100,7 @@ export component Components() {
                   </div>
                 </div>
               </Card>
-            </Link>
+            </a>
             }
         </div>
 

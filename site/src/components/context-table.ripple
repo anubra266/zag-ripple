@@ -1,10 +1,11 @@
 
 import { Card } from './/ui/card.ripple';
 import apiJson from "@zag-js/docs"
+import { track } from 'ripple';
 
 export component ContextTable({id}:any) {
-    const data = apiJson[id]["context"]
-    const entries = Object.entries(data)
+    const data = track(() => apiJson[id]["context"])
+    const entries = track(() => Object.entries(@data))
 
     <section class="mb-12">
         <h2 class="text-2xl font-bold mb-4">{"Context"}</h2>
@@ -19,7 +20,7 @@ export component ContextTable({id}:any) {
                     </tr>
                 </thead>
                 <tbody>
-                    for (const item of entries) {
+                    for (const item of @entries) {
                         let [name, prop] = item
                             <tr
                                 class='not-last:border-b border-border/50'

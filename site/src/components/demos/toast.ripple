@@ -4,7 +4,6 @@ import { track, trackSplit, effect } from 'ripple';
 import { X, Info, Check, TriangleAlert, CircleAlert, Loader } from 'lucide-ripple';
 
 const toaster = toast.createStore({
-	overlap: false,
 	placement: "bottom-end",
 	offsets: "24px",
 	gap: 24,

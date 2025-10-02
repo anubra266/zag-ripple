@@ -13,6 +13,7 @@ export default defineConfig({
 	resolve: {
 		// for local development
 		alias: {
+			// "routing-machine": "/Users/anubra266/Developer/oss/anubra266/route-machine/packages/route-machine/",
 			// '@zag-js/toast': '/Users/anubra266/Developer/oss/chakra-ui/zag/packages/machines/toast',
 
 			// 'ripple/internal/client':

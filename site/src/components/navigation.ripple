@@ -2,28 +2,29 @@ import { Button } from "./ui/button.ripple";
 import { Github } from "lucide-ripple";
 import { ThemeToggle } from "./theme-toggle.ripple";
 import { SearchDocs } from "./search-docs.ripple";
+import { RouteContext } from "../lib/route-context";
+import { track } from "ripple";
+import { cn } from "../lib/utils";
 
-// TODO
-component Link({children, class: className}){
-	<a class={className}> <children /></a>
-}
-
-export component Navigation() {
+export component Navigation({ noSearch }: { noSearch?: boolean }) {
+	const showSearch = track(() => !noSearch)
+	const router = RouteContext.get()
+	
 	<nav class="sticky top-0 z-40 border-b border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
 	<div class="container mx-auto px-4">
         <div class="flex h-16 items-center justify-between">
-		<Link href='/' class='flex items-center'>
+		<a class='flex items-center' {...@router.getLinkProps({ to: '/' })}>
 			<img src='https://cdn.jsdelivr.net/gh/anubra266/zag-ripple@main/site/src/assets/logo.svg' alt='logo' class='size-16 rounded-lg' />
 			<span class='font-bold text-xl'>{'ZagRipple'}</span>
-		</Link>
+		</a>
 
-		<div class="hidden md:flex items-center gap-1">
+		<div class={cn("hidden md:flex items-center gap-1", !@showSearch && "[&_[data-scope='combobox']]:hidden")}>
 			<SearchDocs />
             <ThemeToggle />
             <Button variant="ghost" size="sm">
-			<Link href="https://github.com/anubra266/zag-ripple" target="_blank">
+			<a href="https://github.com/anubra266/zag-ripple" target="_blank">
                 <Github class="h-4 w-4" />
-			</Link>
+			</a>
             </Button>
 		</div>
         </div>
