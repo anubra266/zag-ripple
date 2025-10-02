@@ -8,7 +8,6 @@ const toaster = toast.createStore({
 	placement: "bottom-end",
 	offsets: "24px",
 	gap: 24,
-    duration: 15000,
 });
 
 export component ToastGroup() {
