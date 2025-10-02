@@ -25,6 +25,7 @@
 	"dependencies": {
 		"@stackblitz/sdk": "^1.11.0",
 		"@tailwindcss/vite": "^4.1.13",
+		"@vercel/analytics": "^1.5.0",
 		"@zag-js/accordion": "^1.24.2",
 		"@zag-js/angle-slider": "^1.24.2",
 		"@zag-js/avatar": "^1.24.2",
