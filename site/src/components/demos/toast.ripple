@@ -22,7 +22,7 @@ export component ToastGroup() {
         <div {...@api.getGroupProps()}>
             // Fixed keyed loop
             for (const toastItem of @api.getToasts(); index index; key [toastItem.id, toastItem.stacked].join(":")) {
-                <Toast
+                <ToastItem
                     actor={toastItem}
                     index={index}
                     parent={service}
@@ -116,7 +116,7 @@ export component ToastGroup() {
 
 
 
-component Toast(props) {
+component ToastItem(props) {
     let [index, actor, parent] = trackSplit(props, ['index', 'actor', 'parent']);
 
 	let service = useMachine(toast.machine, {...@actor, index, parent});

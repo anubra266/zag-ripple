@@ -21,7 +21,7 @@ function openInStackblitz(id: string) {
 		description: component.description,
 		template: 'node',
 		files: {
-			`src/${toPascalCase(id)}.ripple`: getComponentCode(id),
+			[`src/${toPascalCase(id)}.ripple`]: getComponentCode(id),
 			'src/index.ts': getIndexTS(id),
 			'src/styles.css': getStylesCSS(component.package ?? id),
 			'index.html': indexHtml(component.label),
@@ -39,12 +39,10 @@ function openInStackblitz(id: string) {
 
 const getStylesCSS = (id: string) => {
 	const tw = `@import 'tailwindcss';
-@import 'tw-animate-css';
-@import './styles.css';`;
+@import 'tw-animate-css';`;
 
 	const theme = getComponentStyles('theme');
 	const componentStyles = getComponentStyles(id);
-
 	return `${tw}\n${theme}\n${componentStyles}`;
 };
 
@@ -100,14 +98,14 @@ const packageJson = (id: string) => JSON.stringify({
 		'vite-plugin-ripple': 'latest',
 	},
 	'dependencies': {
-		`@zag-js/${id}`: 'latest',
+		[`@zag-js/${id}`]: 'latest',
 		'@zag-js/i18n-utils': 'latest',
 		'lucide-ripple': 'latest',
 		'ripple': 'latest',
 		'zag-ripple': 'latest',
 		'tailwindcss': '^4.1.9',
-		'tw-animate-css': '1.3.3',
-		'@tailwindcss/vite': '^4.1.13',
+		"tw-animate-css": "1.3.3",
+		"@tailwindcss/vite": "^4.1.13",
 	},
 }, null, 2);
 
