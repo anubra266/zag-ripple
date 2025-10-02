@@ -98,7 +98,7 @@
 }
 
 [data-scope='toast'][data-part='trigger'] {
-	@apply h-9 w-24 text-xs px-3 has-[>svg]:px-2.5 inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md font-medium transition-all [&_svg:]:size-4 shrink-0 [&_svg]:shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] border shadow-xs;
+	@apply h-9 w-24 text-xs px-3 has-[>svg]:px-2.5 inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md font-medium transition-all [&_svg]:size-4 shrink-0 [&_svg]:shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] border shadow-xs;
 }
 
 [data-scope='toast'][data-part='trigger'][data-type='info'] {
