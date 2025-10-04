@@ -1,17 +1,17 @@
 import { Card } from './/ui/card.ripple';
 import { } from "@zag-js/docs"
 import { Keyboard } from "lucide-ripple";
-import { getDataAttrDoc } from "@zag-js/docs"
+import { getCssVarDoc } from "@zag-js/docs"
 import { Kbd } from './ui/kbd.ripple';
 import { track } from 'ripple';
 
-export component DataAttributes({id}:any) {
+export component CSSVariables({id}:any) {
     <Card class="p-6 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-        <h3 class="text-lg font-semibold mb-4">{'Data Attributes'}</h3>
+        <h3 class="text-lg font-semibold mb-4">{'CSS Variables'}</h3>
         <div class="space-y-6">
        try {
-         const data = track(() => getDataAttrDoc(id))
-         for(const [part, attributes] of Object.entries(@data)) {
+         const data = track(() => getCssVarDoc(id))
+         for(const [part, vars] of Object.entries(@data)) {
             <div>
                 <h4 class="font-semibold mb-3 text-sm">{part}</h4>
                 <div class="overflow-x-auto">
@@ -19,7 +19,7 @@ export component DataAttributes({id}:any) {
                          <thead>
                             <tr class="border-b border-border">
                               <th class="text-left py-2 font-semibold w-48">
-                                {"Attribute"}
+                                {"Variable"}
                               </th>
                               <th class="text-left py-2 font-semibold">
                                 {"Description"}
@@ -27,7 +27,7 @@ export component DataAttributes({id}:any) {
                             </tr>
                           </thead>
                           <tbody>
-                            for(const [key, value] of Object.entries(attributes).filter(([_key, value]) => value !== "")) {
+                            for(const [key, value] of Object.entries(vars).filter(([_key, value]) => value !== "")) {
                                 <tr class="not-last:border-b border-border/50">
                                     <td class="py-2 font-mono w-48"><Kbd>{key}</Kbd></td>
                                     <td class="py-2">{value}</td>

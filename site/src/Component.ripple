@@ -6,6 +6,7 @@ import { ContextTable } from './components/context-table.ripple';
 import { ApiTable } from './components/api-table.ripple';
 import { KeyboardInteractions } from './components/keyboard-interactions.ripple';
 import { DataAttributes } from './components/data-attributes.ripple';
+import { CSSVariables } from './components/css-variables.ripple';
 import { ComponentDemo } from './components/component-demo.ripple';
 import { Button } from './components/ui/button.ripple';
 import { Card } from './components/ui/card.ripple';
@@ -139,6 +140,10 @@ export component Component() {
                 <div class="space-y-6">
                      {/* Data Attributes */}
                     <DataAttributes id={@component.package || @componentId} />
+
+                     {/* CSS Variables */}
+                    <CSSVariables id={@component.package || @componentId} />
+
                      {/* Keyboard Interactions */}
                     <KeyboardInteractions id={@component.package || @componentId} />
                 </div>
