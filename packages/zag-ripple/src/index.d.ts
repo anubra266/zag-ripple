@@ -4,7 +4,8 @@ import { Component } from "ripple";
 export { mergeProps } from "@zag-js/core";
 
 // From normalize-props.ripple
-export declare const normalizeProps: <T>(props: T) => T;
+import { NormalizeProps, PropTypes } from "@zag-js/types";
+export declare const normalizeProps: NormalizeProps<PropTypes>;
 
 // From machine.ripple  
 export interface MachineApi<TContext = Record<string, any>, TState extends string = string> {

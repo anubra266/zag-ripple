@@ -211,8 +211,8 @@ importers:
         specifier: ^3.6.2
         version: 3.6.2
       prettier-plugin-ripple:
-        specifier: ^0.2.29
-        version: 0.2.102(prettier@3.6.2)
+        specifier: ^0.2.105
+        version: 0.2.105(prettier@3.6.2)
       typescript:
         specifier: ^5.9.2
         version: 5.9.3
@@ -220,8 +220,8 @@ importers:
         specifier: ^7.1.4
         version: 7.1.8(jiti@2.6.1)(lightningcss@1.30.1)
       vite-plugin-ripple:
-        specifier: ^0.2.29
-        version: 0.2.102
+        specifier: ^0.2.105
+        version: 0.2.105
 
 packages:
 
@@ -1026,8 +1026,8 @@ packages:
     resolution: {integrity: sha512-3Ybi1tAuwAP9s0r1UQ2J4n5Y0G05bJkpUIO0/bI9MhwmD70S5aTWbXGBwxHrelT+XM1k6dM0pk+SwNkpTRN7Pg==}
     engines: {node: ^10 || ^12 || >=14}
 
-  prettier-plugin-ripple@0.2.102:
-    resolution: {integrity: sha512-i+8dSuXXZEjF7TdNiMRLYS3JhjOZOW1cQfAcI/zuIgAMcjHOLXwMKo43YeiNmSaJJsGp1gTWUm66ZUBzPfF7+Q==}
+  prettier-plugin-ripple@0.2.105:
+    resolution: {integrity: sha512-xC60B5fYlDTEXfSWCpYXMh+YVcB5qPezTFwpPgFVwvqMARwLM+6n0ffemd7zYQ+ow2wSSzbEKNLf+QZSVo+5qQ==}
     peerDependencies:
       prettier: '>=2.0.0'
 
@@ -1106,8 +1106,8 @@ packages:
   uqr@0.1.2:
     resolution: {integrity: sha512-MJu7ypHq6QasgF5YRTjqscSzQp/W11zoUk6kvmlH+fmWEs63Y0Eib13hYFwAzagRJcVY8WVnlV+eBDUGMJ5IbA==}
 
-  vite-plugin-ripple@0.2.102:
-    resolution: {integrity: sha512-/V7s2Kn5lNpRFGMZRaRKiRF1MjpgNQaLaepL6fuwjGoR2PrsodEC2Z2eu7yjn5Mk0RO+T61fYXusvrCfdbjz+A==}
+  vite-plugin-ripple@0.2.105:
+    resolution: {integrity: sha512-7H9MYkQ707lN6n3NdYDgqqE1WC/hy4D6toQhBWlMyLv6vjpLSoISSUqO080adMGSvnmlnCAfyY0P6JaOXam2wA==}
 
   vite@7.1.8:
     resolution: {integrity: sha512-oBXvfSHEOL8jF+R9Am7h59Up07kVVGH1NrFGFoEG6bPDZP3tGpQhvkBpy5x7U6+E6wZCu9OihsWgJqDbQIm8LQ==}
@@ -2063,7 +2063,7 @@ snapshots:
       picocolors: 1.1.1
       source-map-js: 1.2.1
 
-  prettier-plugin-ripple@0.2.102(prettier@3.6.2):
+  prettier-plugin-ripple@0.2.105(prettier@3.6.2):
     dependencies:
       prettier: 3.6.2
 
@@ -2163,7 +2163,7 @@ snapshots:
 
   uqr@0.1.2: {}
 
-  vite-plugin-ripple@0.2.102: {}
+  vite-plugin-ripple@0.2.105: {}
 
   vite@7.1.8(jiti@2.6.1)(lightningcss@1.30.1):
     dependencies:

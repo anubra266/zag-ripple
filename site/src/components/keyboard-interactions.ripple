@@ -8,6 +8,7 @@ export component KeyboardInteractions({id}:any) {
   
   try {
     const data = track(() => getAccessibilityDoc(id))
+    if(@data.keyboard) {
     <Card class="p-6 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div class="flex items-center gap-2 mb-4">
         <Keyboard class="h-4 w-4 text-primary" />
@@ -40,6 +41,7 @@ export component KeyboardInteractions({id}:any) {
         </table>
         </div>
       </Card>
+    }
   } catch  {
     
   }
