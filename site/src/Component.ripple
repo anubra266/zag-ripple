@@ -90,6 +90,7 @@ export component Component() {
                 
                 <Button
                     href={`https://github.com/chakra-ui/zag/blob/main/packages/machines/${@componentId}/src/${@componentId}.machine.ts`}
+                    target="_blank"
                     variant="outline"
                     size="sm"
                     data-id="view-source"
