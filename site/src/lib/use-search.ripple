@@ -1,4 +1,4 @@
-import { effect,track } from "ripple";
+import { track } from "ripple";
 import Fuse from 'fuse.js';
 
 
