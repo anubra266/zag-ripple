@@ -110,8 +110,8 @@ export component Component() {
                 <h2 class="text-2xl font-bold mb-4">{"Installation"}</h2>
                 <Card class="p-4 bg-muted/50">
                     <div class="flex items-center justify-between">
-                    let [copyInstall, copiedInstall] = useCopy()
-                    const code = track(() => `npm install zag-ripple @zag-js/${@componentId}`)
+                    let [copyInstall, copiedInstall] = useCopy();
+                    const code = track(() => `npm install zag-ripple @zag-js/${@componentId}`);
                     <CodeBlock code={@code} language="bash" />
                     <Button variant="ghost" size="sm" onClick={() => copyInstall(@code)}>
                         if (@copiedInstall) {

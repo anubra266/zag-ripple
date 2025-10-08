@@ -21,7 +21,7 @@ export component ApiTable({id}:any) {
                 </thead>
                 <tbody>
                     for (const item of @entries) {
-                        let [name, prop] = item
+                        let [name, prop] = item;
                             <tr
                                 class='not-last:border-b border-border/50'
                             >
