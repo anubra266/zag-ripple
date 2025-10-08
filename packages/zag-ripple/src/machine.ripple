@@ -12,15 +12,10 @@ import type {
 } from "@zag-js/core"
 import { createScope, INIT_STATE, MachineStatus } from "@zag-js/core"
 import { ensure, isFunction, isPlainObject, isString, toArray, warn } from "@zag-js/utils"
-import { track, trackSplit, effect, flushSync } from "ripple"
+import { track, effect, flushSync } from "ripple"
 import { bindable } from "./bindable.ripple"
 import { useRefs } from "./refs.ripple"
 import { createTrack } from "./track.ripple"
-
-function access(userProps) {
-  if (isFunction(userProps)) return userProps()
-  return userProps
-}
 
 function compact(obj) {
   if (!isPlainObject(obj) || obj === undefined) return obj
@@ -39,9 +34,9 @@ export function useMachine(
   machine,
   _userProps,
 ) {
-  let [id, ids, getRootNode, rest]= trackSplit(access(_userProps), ['id', 'ids', 'getRootNode'])
+  const userProps = track(() => @_userProps)
   let scope = track(() => {
-    return createScope({ id: @id, ids: @ids, getRootNode: @getRootNode })
+    return createScope({ id: @userProps.id, ids: @userProps.ids, getRootNode: @userProps.getRootNode })
   })
 
   const debug = (...args: any[]) => {
@@ -49,8 +44,7 @@ export function useMachine(
   }
 
   let props = track(() => {
-    const p = { ...@rest, id: @id, ids: @ids, getRootNode: @getRootNode }
-    return machine.props?.({ props: compact(p), scope: @scope }) ?? p
+    return machine.props?.({ props: compact(@userProps), scope: @scope }) ?? @userProps
   })
   
   const prop = useProp(() => @props)

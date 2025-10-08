@@ -117,7 +117,8 @@ export component ToastGroup() {
 component ToastItem(props) {
     let [index, actor, parent] = trackSplit(props, ['index', 'actor', 'parent']);
 
-	let service = useMachine(toast.machine, {...@actor, index, parent});
+    let composedProps = track(() => ({...@actor, index, parent}));
+	let service = useMachine(toast.machine, composedProps);
 	let api = track(() => toast.connect(service, normalizeProps));
 
 	<div {...@api.getRootProps()}>
