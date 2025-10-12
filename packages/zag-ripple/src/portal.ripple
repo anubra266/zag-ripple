@@ -1,6 +1,15 @@
 import { Portal as RipplePortal } from 'ripple';
 
-export component Portal({ disabled, getRootNode, container, children }:any) {
+type RootNode = ShadowRoot | Document | Node
+type GetRootNode = () => RootNode
+
+export interface PortalActionProps {
+    disabled?: boolean | undefined
+    container?: HTMLElement | undefined
+    getRootNode?: GetRootNode | undefined
+}
+
+export component Portal({ disabled, getRootNode, container, children }: PortalProps) {
     const isServer = typeof window === "undefined"
     
     if(isServer || disabled){

@@ -1,6 +1,5 @@
 import { Card } from './/ui/card.ripple';
 import { } from "@zag-js/docs"
-import { Keyboard } from "lucide-ripple";
 import { getDataAttrDoc } from "@zag-js/docs"
 import { Kbd } from './ui/kbd.ripple';
 import { track } from 'ripple';

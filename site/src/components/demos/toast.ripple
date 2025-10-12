@@ -1,6 +1,6 @@
 import * as toast from '@zag-js/toast';
 import { normalizeProps, useMachine, Portal } from 'zag-ripple';
-import { track, trackSplit, effect } from 'ripple';
+import { track, trackSplit } from 'ripple';
 import { X, Info, Check, TriangleAlert, CircleAlert, Loader } from 'lucide-ripple';
 
 const toaster = toast.createStore({

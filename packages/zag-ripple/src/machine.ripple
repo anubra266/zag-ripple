@@ -17,7 +17,7 @@ import { bindable } from "./bindable.ripple"
 import { useRefs } from "./refs.ripple"
 import { createTrack } from "./track.ripple"
 
-function compact(obj) {
+function compact<T extends Record<string, unknown> | undefined>(obj: T): T {
   if (!isPlainObject(obj) || obj === undefined) return obj
   const keys = Reflect.ownKeys(obj).filter((key) => typeof key === "string")
   const filtered = {}
@@ -30,13 +30,12 @@ function compact(obj) {
   return filtered
 }
 
-export function useMachine(
-  machine,
-  _userProps,
-) {
-  const userProps = track(() => @_userProps)
+export function useMachine<T extends MachineSchema>(
+  machine: Machine<T>,
+  userProps: Partial<T["props"]> = {},
+): Service<T> {
   let scope = track(() => {
-    return createScope({ id: @userProps.id, ids: @userProps.ids, getRootNode: @userProps.getRootNode })
+    return createScope({ id: @userProps.@id, ids: @userProps.@ids, getRootNode: @userProps.@getRootNode })
   })
 
   const debug = (...args: any[]) => {
@@ -70,7 +69,7 @@ export function useMachine(
     },
   })
 
-  const ctx = {
+  const ctx: BindableContext<T> = {
     get(key) {
       return context?.[key]?.get()
     },
@@ -116,7 +115,7 @@ export function useMachine(
 
   const refs = useRefs(machine.refs?.({ prop, context: ctx }) ?? {})
 
-  const getParams = () => ({
+  const getParams = (): Params<T> => ({
     state: getState(),
     context: ctx,
     event: getEvent(),
@@ -132,7 +131,7 @@ export function useMachine(
     choose,
   })
 
-  const action = (keys) => {
+  const action = (keys: ActionsOrFn<T> | undefined) => {
     const strs = isFunction(keys) ? keys(getParams()) : keys
     if (!strs) return
     const fns = strs.map((s) => {
@@ -145,12 +144,12 @@ export function useMachine(
     }
   }
 
-  const guard = (str) => {
+  const guard = (str: T["guard"] | GuardFn<T>) => {
     if (isFunction(str)) return str(getParams())
     return machine.implementations?.guards?.[str](getParams())
   }
 
-  const effectFn = (keys) => {
+  const effectFn = (keys: EffectsOrFn<T> | undefined) => {
     const strs = isFunction(keys) ? keys(getParams()) : keys
     if (!strs) return
     const fns = strs.map((s) => {
@@ -166,7 +165,7 @@ export function useMachine(
     return () => cleanups.forEach((fn) => fn?.())
   }
 
-  const choose = (transitions) => {
+  const choose: ChooseFn<T> = (transitions) => {
     return toArray(transitions).find((t) => {
       let result = !t.guard
       if (isString(t.guard)) result = !!guard(t.guard)
@@ -175,7 +174,7 @@ export function useMachine(
     })
   }
 
-  const computed = (key) => {
+  const computed: ComputedFn<T> = (key) => {
     ensure(machine.computed, () => `[zag-js] No computed object found on machine`)
     const fn = machine.computed[key]
     return fn({

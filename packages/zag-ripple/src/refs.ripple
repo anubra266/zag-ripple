@@ -1,10 +1,10 @@
-export function useRefs(refs) {
+export function useRefs<T>(refs: T) {
   const ref = { current: refs }
   return {
-    get(key) {
+    get<K extends keyof T>(key: K): T[K] {
       return ref.current[key]
     },
-    set(key, value) {
+    set<K extends keyof T>(key: K, value: T[K]) {
       ref.current[key] = value
     },
   }

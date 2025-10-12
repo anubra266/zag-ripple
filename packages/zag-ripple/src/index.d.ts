@@ -1,64 +1,65 @@
-import type { Machine, Scope } from "@zag-js/core";
-import { Component } from "ripple";
+import type {
+    Bindable,
+    BindableParams,
+    Machine,
+    MachineSchema,
+    Service,
+} from "@zag-js/core";
+import type { Component } from "ripple";
 
+// Re-export from @zag-js/core
 export { mergeProps } from "@zag-js/core";
 
-// From normalize-props.ripple
-import { NormalizeProps, PropTypes } from "@zag-js/types";
-export declare const normalizeProps: NormalizeProps<PropTypes>;
-
-// From machine.ripple  
-export interface MachineApi<TContext = Record<string, any>, TState extends string = string> {
-    state: {
-        value: TState;
-        matches(...values: TState[]): boolean;
-        hasTag(tag: string): boolean;
-        get(): TState;
-    };
-    send: (event: { type: string;[key: string]: any }) => void;
-    context: {
-        get(key: keyof TContext): any;
-        set(key: keyof TContext, value: any): void;
-        initial(key: keyof TContext): any;
-        hash(key: keyof TContext): string;
-    };
-    prop: (key: string) => any;
-    scope: Scope;
-    refs: Record<string, { current: any }>;
-    computed: (key: string) => any;
-    event: {
-        type: string;
-        current(): any;
-        previous(): any;
-        [key: string]: any;
-    };
-    getStatus: () => "started" | "stopped" | "not_started";
+// Bindable function and related types
+export declare function bindable<T>(props: () => BindableParams<T>): Bindable<T>;
+export declare namespace bindable {
+    function cleanup(fn: VoidFunction): void;
+    function ref<T>(defaultValue: T): { get(): T; set(next: T): void };
 }
 
-export interface MachineOptions {
-    id?: string;
-    ids?: Record<string, string>;
-    getRootNode?: () => Document | ShadowRoot | Node;
+// Machine hook
+export declare function useMachine<T extends MachineSchema>(
+    machine: Machine<T>,
+    userProps?: Partial<T["props"]>
+): Service<T>;
+
+// Normalize props functionality
+export declare function normalizeProps<T extends Record<string, any>>(
+    props: T
+): T;
+
+export declare function toStyleString(style: Record<string, number | string>): string;
+
+// Portal component and types
+type RootNode = ShadowRoot | Document | Node;
+type GetRootNode = () => RootNode;
+
+export interface PortalActionProps {
+    disabled?: boolean | undefined;
+    container?: HTMLElement | undefined;
+    getRootNode?: GetRootNode | undefined;
 }
 
-export declare function useMachine<
-    TContext = Record<string, any>,
-    TState extends string = string
->(
-    machine: Machine<TContext>,
-    options?: MachineOptions | (() => MachineOptions)
-): MachineApi<TContext, TState>;
-
-
-
-
-export interface PortalProps {
-    disabled?: boolean | undefined
-    container?: HTMLElement | undefined
-    getRootNode?: (() => ShadowRoot | Document | Node) | undefined
-    children: Component
+export interface PortalProps extends PortalActionProps {
+    children?: Component;
 }
 
-export declare const Portal: Component<PortalProps>;
-// export declare function Portal(props: PortalProps): Component;
+export declare function Portal(props: PortalProps): void;
+
+// Refs hook
+export declare function useRefs<T>(refs: T): {
+    get<K extends keyof T>(key: K): T[K];
+    set<K extends keyof T>(key: K, value: T[K]): void;
+};
+
+// Track utility
+export declare function createTrack(
+    deps: any[],
+    effectCallback: VoidFunction
+): void;
+
+
+
+
+
 
