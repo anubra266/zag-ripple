@@ -2,10 +2,8 @@ import { Navigation } from './components/navigation.ripple';
 import { HeroSection } from './components/hero-section.ripple';
 
 export component Page() {
-	<div className='min-h-screen'>
-		<Navigation noSearch />
-		<main>
-			<HeroSection />
-		</main>
-	</div>
+	<Navigation noSearch />
+	<main>
+		<HeroSection />
+	</main>
 }

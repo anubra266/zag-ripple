@@ -10,12 +10,13 @@ import { RouteContext } from "./lib/route-context"
 import { Navigation } from "./components/navigation.ripple";
 
 export component Layout() {
-	const service = useMachine(routing.machine,{
+	const service = useMachine(routing.machine, {
 		id: "router",
 		routes: [
 			{ path: "/", name: "home" },
 			{ path: "/components", name: "components" },
 			{ path: "/components/:id", name: "component" },
+			{ path: "*", name: "not-found" },
 		],
 	})
 	const router = track(() => routing.connect(service, normalizeProps))
@@ -23,17 +24,23 @@ export component Layout() {
 	RouteContext.set(router)
 
 	<div class="fixed inset-0 grid-pattern opacity-50 -z-10" />
+	<div class="min-h-screen">
 
-	if(@router.currentRouteName === "home") {
-		<Page />
-	} 
-	
-	if(@router.currentRouteName === "components") {
-		<Components />
-	} 
+		if(@router.currentRouteName === "home") {
+			<Page />
+		} 
+		
+		if(@router.currentRouteName === "components") {
+			<Components />
+		} 
 
-	if(@router.currentRouteName === "component") {
-		<Component />
-	}
+		if(@router.currentRouteName === "component") {
+			<Component />
+		}
 
+		if(@router.currentRouteName === "not-found") {
+			<Navigation />
+			<NotFound />
+		}
+	</div>
 }

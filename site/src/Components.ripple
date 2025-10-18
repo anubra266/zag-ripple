@@ -18,113 +18,111 @@ export component Components() {
         ]
     )
 
-    <div class="min-h-screen">
-      <Navigation noSearch />
+  <Navigation noSearch />
 
-      <main class="container mx-auto px-4 py-12">
-        {/* Header */}
-        <div class="text-center mb-12">
-          <h1 class="text-4xl md:text-5xl font-bold mb-6">
-            <span class="text-primary">{"Components"}</span>
-          </h1>
-          <p class="text-xl text-muted-foreground max-w-3xl mx-auto mb-8">
-            {`Explore our comprehensive collection of accessible, customizable
-            components built with Zag.js for Ripple JS.`}
-          </p>
+  <main class="container mx-auto px-4 py-12">
+    {/* Header */}
+    <div class="text-center mb-12">
+      <h1 class="text-4xl md:text-5xl font-bold mb-6">
+        <span class="text-primary">{"Components"}</span>
+      </h1>
+      <p class="text-xl text-muted-foreground max-w-3xl mx-auto mb-8">
+        {`Explore our comprehensive collection of accessible, customizable
+        components built with Zag.js for Ripple JS.`}
+      </p>
 
-          {/* Search */}
-          <div class="relative max-w-md mx-auto">
-            <Search class="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-muted-foreground" />
-            <input
-              type="text"
-              value={@searchTerm}
-            onInput={(e) => @searchTerm = (e.target as HTMLInputElement).value}
-              placeholder="Search components..."
-              class="w-full pl-10 pr-4 py-3 bg-muted/50 border border-border rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-ring"
-            />
-          </div>
-        </div>
+      {/* Search */}
+      <div class="relative max-w-md mx-auto">
+        <Search class="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-muted-foreground" />
+        <input
+          type="text"
+          value={@searchTerm}
+        onInput={(e) => @searchTerm = (e.target as HTMLInputElement).value}
+          placeholder="Search components..."
+          class="w-full pl-10 pr-4 py-3 bg-muted/50 border border-border rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-ring"
+        />
+      </div>
+    </div>
 
-        {/* Components Grid */}
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-            for (const component of @results) {
-                <a {...@router.getLinkProps({ to: `/components/${component.id}` })}>
-                    <Card class="p-6 bg-card/50 border-border/50 hover:bg-card/80 transition-all duration-300 hover:scale-[1.02] hover:border-primary/30 group cursor-pointer relative overflow-hidden">
-                {/* Background gradient */}
-                <div class="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+    {/* Components Grid */}
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+        for (const component of @results) {
+            <a {...@router.getLinkProps({ to: `/components/${component.id}` })}>
+                <Card class="p-6 bg-card/50 border-border/50 hover:bg-card/80 transition-all duration-300 hover:scale-[1.02] hover:border-primary/30 group cursor-pointer relative overflow-hidden">
+            {/* Background gradient */}
+            <div class="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
 
-                {/* Content */}
-                <div class="relative">
-                  {/* Icon */}
-                  <div class="mb-4 p-3 bg-primary/10 rounded-lg w-fit group-hover:bg-primary/20 transition-colors duration-300">
-                  let Icon = icons[component.icon] || icons.defaultIcon;
-                  <Icon class="w-6 h-6 text-primary" />
-                  </div>
-
-                  {/* Header */}
-                  <div class="flex items-center justify-between mb-3">
-                    <h3 class="font-semibold text-base group-hover:text-primary transition-colors duration-300">
-                      {component.label}
-                    </h3>
-                    if (component.beta) {
-                      <Badge
-                        variant="secondary"
-                        class="text-xs bg-accent/20 text-accent border-accent/30"
-                      >
-                        {'Beta'}
-                      </Badge>
-                    }
-                  </div>
-
-                  {/* Description */}
-                  <p class="text-sm text-muted-foreground leading-relaxed">
-                    {component.description}
-                  </p>
-
-                  {/* Arrow indicator */}
-                  <div class="mt-4 flex items-center text-xs text-muted-foreground group-hover:text-primary transition-colors duration-300">
-                    <span>{'View docs'}</span>
-                    <svg
-                      class="w-3 h-3 ml-1 transform group-hover:translate-x-1 transition-transform duration-300"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M9 5l7 7-7 7"
-                      />
-                    </svg>
-                  </div>
-                </div>
-              </Card>
-            </a>
-            }
-        </div>
-
-        {/* Stats */}
-        <div class="mt-16 text-center">
-          <div class="inline-flex items-center gap-8 px-6 py-4 bg-muted/30 rounded-lg border border-border/50">
-            <div>
-              <div class="text-2xl font-bold text-primary">
-                {components.length}
+            {/* Content */}
+            <div class="relative">
+              {/* Icon */}
+              <div class="mb-4 p-3 bg-primary/10 rounded-lg w-fit group-hover:bg-primary/20 transition-colors duration-300">
+              let Icon = icons[component.icon] || icons.defaultIcon;
+              <Icon class="w-6 h-6 text-primary" />
               </div>
-              <div class="text-sm text-muted-foreground">{'Components'}</div>
+
+              {/* Header */}
+              <div class="flex items-center justify-between mb-3">
+                <h3 class="font-semibold text-base group-hover:text-primary transition-colors duration-300">
+                  {component.label}
+                </h3>
+                if (component.beta) {
+                  <Badge
+                    variant="secondary"
+                    class="text-xs bg-accent/20 text-accent border-accent/30"
+                  >
+                    {'Beta'}
+                  </Badge>
+                }
+              </div>
+
+              {/* Description */}
+              <p class="text-sm text-muted-foreground leading-relaxed">
+                {component.description}
+              </p>
+
+              {/* Arrow indicator */}
+              <div class="mt-4 flex items-center text-xs text-muted-foreground group-hover:text-primary transition-colors duration-300">
+                <span>{'View docs'}</span>
+                <svg
+                  class="w-3 h-3 ml-1 transform group-hover:translate-x-1 transition-transform duration-300"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M9 5l7 7-7 7"
+                  />
+                </svg>
+              </div>
             </div>
-            <div class="w-px h-8 bg-border" />
-            <div>
-              <div class="text-2xl font-bold text-primary">{'100%'}</div>
-              <div class="text-sm text-muted-foreground">{'Accessible'}</div>
-            </div>
-            <div class="w-px h-8 bg-border" />
-            <div>
-              <div class="text-2xl font-bold text-primary">{'TypeScript'}</div>
-              <div class="text-sm text-muted-foreground">{'First-class'}</div>
-            </div>
+          </Card>
+        </a>
+        }
+    </div>
+
+    {/* Stats */}
+    <div class="mt-16 text-center">
+      <div class="inline-flex items-center gap-8 px-6 py-4 bg-muted/30 rounded-lg border border-border/50">
+        <div>
+          <div class="text-2xl font-bold text-primary">
+            {components.length}
           </div>
+          <div class="text-sm text-muted-foreground">{'Components'}</div>
         </div>
-      </main>
-	</div>
+        <div class="w-px h-8 bg-border" />
+        <div>
+          <div class="text-2xl font-bold text-primary">{'100%'}</div>
+          <div class="text-sm text-muted-foreground">{'Accessible'}</div>
+        </div>
+        <div class="w-px h-8 bg-border" />
+        <div>
+          <div class="text-2xl font-bold text-primary">{'TypeScript'}</div>
+          <div class="text-sm text-muted-foreground">{'First-class'}</div>
+        </div>
+      </div>
+    </div>
+  </main>
 }

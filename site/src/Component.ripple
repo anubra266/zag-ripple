@@ -36,156 +36,154 @@ export component Component() {
     const prevComponent = track(() => @currentIndex > 0 ? components[@currentIndex - 1] : null)
     const nextComponent = track(() => @currentIndex < components.length - 1 ? components[@currentIndex + 1] : null)
 
-    <div class="min-h-screen">
-        <Navigation />
+    <Navigation />
 
-        <main class="container mx-auto px-4 py-12">
-            {/* Breadcrumb */}
-            <div class="flex items-center gap-2 text-sm text-muted-foreground mb-8">
-                <a {...@router.getLinkProps({ to: '/components' })} class="hover:text-foreground">
-                    {'Components'}
-                </a>
-                <span>{'/'}</span>
-                <span class="text-foreground">{@component.label}</span>
-            </div>
+    <main class="container mx-auto px-4 py-12">
+        {/* Breadcrumb */}
+        <div class="flex items-center gap-2 text-sm text-muted-foreground mb-8">
+            <a {...@router.getLinkProps({ to: '/components' })} class="hover:text-foreground">
+                {'Components'}
+            </a>
+            <span>{'/'}</span>
+            <span class="text-foreground">{@component.label}</span>
+        </div>
 
 
-            {/* Header */}
-            <div class="mb-12">
-            <div class="flex items-center gap-4 mb-6">
-                <a {...@router.getLinkProps({ to: '/components' })}>
-                <Button variant="ghost" size="sm">
-                    <ArrowLeft class="h-4 w-4 mr-2" />
-                    {"Back to Components"}
+        {/* Header */}
+        <div class="mb-12">
+        <div class="flex items-center gap-4 mb-6">
+            <a {...@router.getLinkProps({ to: '/components' })}>
+            <Button variant="ghost" size="sm">
+                <ArrowLeft class="h-4 w-4 mr-2" />
+                {"Back to Components"}
+            </Button>
+            </a>
+        </div>
+
+        <h1 class="text-4xl font-bold mb-4">{@component.label}</h1>
+        <p class="text-xl text-muted-foreground mb-8">
+            {@component.description}
+        </p>
+
+        {/* Component Demo */}
+        <div class="space-y-6 mb-8">
+
+            {/* Demo Badges */}
+            <div class="flex flex-wrap gap-3 justify-center">
+                <OpenInStackblitz id={@componentId} />
+
+            
+            <Button
+                href={`https://zagjs.com/components/react/${@componentId}`}
+                target="_blank"
+                variant="outline"
+                size="sm"
+                data-id="zag-docs"
+                class="h-9 text-xs bg-blue-50 hover:bg-blue-100 border-blue-200 text-blue-700 hover:text-blue-700 dark:bg-blue-950 dark:hover:bg-blue-900 dark:border-blue-800 dark:text-blue-300"
+                >
+                    <FileText class="h-3 w-3 mr-1.5" />
+                    {"Zag.js Docs"}
+                    <ExternalLink class="h-3 w-3 ml-1.5" />
                 </Button>
-                </a>
+
+            
+            <Button
+                href={`https://github.com/chakra-ui/zag/blob/main/packages/machines/${@componentId}/src/${@componentId}.machine.ts`}
+                target="_blank"
+                variant="outline"
+                size="sm"
+                data-id="view-source"
+                class="h-9 text-xs bg-gray-50 hover:bg-gray-100 border-gray-200 text-gray-700 hover:text-gray-700 dark:bg-gray-950 dark:hover:bg-gray-900 dark:border-gray-800 dark:text-gray-300"
+                >
+                    <Code class="h-3 w-3 mr-1.5" />
+                    {"View Source"}
+                    <ExternalLink class="h-3 w-3 ml-1.5" />
+                </Button>
             </div>
+            <ComponentDemo id={@componentId} />
+        </div>
+        </div>
 
-            <h1 class="text-4xl font-bold mb-4">{@component.label}</h1>
-            <p class="text-xl text-muted-foreground mb-8">
-                {@component.description}
-            </p>
-
-            {/* Component Demo */}
-            <div class="space-y-6 mb-8">
-
-                {/* Demo Badges */}
-                <div class="flex flex-wrap gap-3 justify-center">
-                    <OpenInStackblitz id={@componentId} />
-
-                
-                <Button
-                    href={`https://zagjs.com/components/react/${@componentId}`}
-                    target="_blank"
-                    variant="outline"
-                    size="sm"
-                    data-id="zag-docs"
-                    class="h-9 text-xs bg-blue-50 hover:bg-blue-100 border-blue-200 text-blue-700 hover:text-blue-700 dark:bg-blue-950 dark:hover:bg-blue-900 dark:border-blue-800 dark:text-blue-300"
-                    >
-                        <FileText class="h-3 w-3 mr-1.5" />
-                        {"Zag.js Docs"}
-                        <ExternalLink class="h-3 w-3 ml-1.5" />
-                    </Button>
-
-                
-                <Button
-                    href={`https://github.com/chakra-ui/zag/blob/main/packages/machines/${@componentId}/src/${@componentId}.machine.ts`}
-                    target="_blank"
-                    variant="outline"
-                    size="sm"
-                    data-id="view-source"
-                    class="h-9 text-xs bg-gray-50 hover:bg-gray-100 border-gray-200 text-gray-700 hover:text-gray-700 dark:bg-gray-950 dark:hover:bg-gray-900 dark:border-gray-800 dark:text-gray-300"
-                    >
-                        <Code class="h-3 w-3 mr-1.5" />
-                        {"View Source"}
-                        <ExternalLink class="h-3 w-3 ml-1.5" />
-                    </Button>
-                </div>
-                <ComponentDemo id={@componentId} />
-            </div>
-            </div>
-
-            {/* Installation */}
-            <section class="mb-12" data-id="installation">
-                <h2 class="text-2xl font-bold mb-4">{"Installation"}</h2>
-                <Card class="p-4 bg-muted/50">
-                    <div class="flex items-center justify-between">
-                    let [copyInstall, copiedInstall] = useCopy();
-                    const code = track(() => `npm install zag-ripple @zag-js/${@componentId}`);
-                    <CodeBlock code={@code} language="bash" />
-                    <Button variant="ghost" size="sm" onClick={() => copyInstall(@code)}>
-                        if (@copiedInstall) {
-                            <Check class="h-4 w-4" />
-                        } else {
-                            <Copy class="h-4 w-4" />
-                        }
-                    </Button>
-                    </div>
-                </Card>
-            </section>
-
-            {/* Usage */}
-            <Usage id={@componentId} />
-
-            if(@componentId in apiJson) {
-                {/* Context */}
-                <ContextTable id={@componentId} />
-                {/* API */}
-                <ApiTable id={@componentId} />
-            }
-
-            {/* Accessibility */}
-            <section class="mb-12">
-                <h2 class="text-2xl font-bold mb-4">{'Accessibility'}</h2>
-
-                <div class="space-y-6">
-                     {/* Data Attributes */}
-                    <DataAttributes id={@component.package || @componentId} />
-
-                     {/* CSS Variables */}
-                    <CSSVariables id={@component.package || @componentId} />
-
-                     {/* Keyboard Interactions */}
-                    <KeyboardInteractions id={@component.package || @componentId} />
-                </div>
-            </section>
-
-            {/* Navigation */}
-            <section>
-                <div class="flex justify-between items-center">
-                    if (@prevComponent) {
-                        <a {...@router.getLinkProps({ to: `/components/${@prevComponent.id}` })} class="mr-auto">
-                            <Button
-                                variant="outline"
-                                size="lg"
-                                class="flex items-center gap-3 px-6 py-4 h-auto cursor-pointer"
-                            >
-                                <ChevronLeft class="h-5 w-5" />
-                                <div class="text-left">
-                                <div class="text-sm text-muted-foreground">{"Previous"}</div>
-                                <div class="font-semibold text-base">{@prevComponent.label}</div>
-                                </div>
-                            </Button>
-                        </a>
+        {/* Installation */}
+        <section class="mb-12" data-id="installation">
+            <h2 class="text-2xl font-bold mb-4">{"Installation"}</h2>
+            <Card class="p-4 bg-muted/50">
+                <div class="flex items-center justify-between">
+                let [copyInstall, copiedInstall] = useCopy();
+                const code = track(() => `npm install zag-ripple @zag-js/${@componentId}`);
+                <CodeBlock code={@code} language="bash" />
+                <Button variant="ghost" size="sm" onClick={() => copyInstall(@code)}>
+                    if (@copiedInstall) {
+                        <Check class="h-4 w-4" />
+                    } else {
+                        <Copy class="h-4 w-4" />
                     }
-                    if (@nextComponent) {
-                        <a {...@router.getLinkProps({ to: `/components/${@nextComponent.id}` })} class="ml-auto">
-                            <Button
-                                variant="outline"
-                                size="lg"
-                                class="flex items-center gap-3 px-6 py-4 h-auto cursor-pointer"
-                            >
-                                <div class="text-right">
-                                <div class="text-sm text-muted-foreground">{"Next"}</div>
-                                <div class="font-semibold text-base">{@nextComponent.label}</div>
-                                </div>
-                                <ChevronRight class="h-5 w-5" />
-                            </Button>
-                        </a>
-                    }
+                </Button>
                 </div>
-            </section>
+            </Card>
+        </section>
 
-        </main> 
-    </div>
+        {/* Usage */}
+        <Usage id={@componentId} />
+
+        if(@componentId in apiJson) {
+            {/* Context */}
+            <ContextTable id={@componentId} />
+            {/* API */}
+            <ApiTable id={@componentId} />
+        }
+
+        {/* Accessibility */}
+        <section class="mb-12">
+            <h2 class="text-2xl font-bold mb-4">{'Accessibility'}</h2>
+
+            <div class="space-y-6">
+                    {/* Data Attributes */}
+                <DataAttributes id={@component.package || @componentId} />
+
+                    {/* CSS Variables */}
+                <CSSVariables id={@component.package || @componentId} />
+
+                    {/* Keyboard Interactions */}
+                <KeyboardInteractions id={@component.package || @componentId} />
+            </div>
+        </section>
+
+        {/* Navigation */}
+        <section>
+            <div class="flex justify-between items-center">
+                if (@prevComponent) {
+                    <a {...@router.getLinkProps({ to: `/components/${@prevComponent.id}` })} class="mr-auto">
+                        <Button
+                            variant="outline"
+                            size="lg"
+                            class="flex items-center gap-3 px-6 py-4 h-auto cursor-pointer"
+                        >
+                            <ChevronLeft class="h-5 w-5" />
+                            <div class="text-left">
+                            <div class="text-sm text-muted-foreground">{"Previous"}</div>
+                            <div class="font-semibold text-base">{@prevComponent.label}</div>
+                            </div>
+                        </Button>
+                    </a>
+                }
+                if (@nextComponent) {
+                    <a {...@router.getLinkProps({ to: `/components/${@nextComponent.id}` })} class="ml-auto">
+                        <Button
+                            variant="outline"
+                            size="lg"
+                            class="flex items-center gap-3 px-6 py-4 h-auto cursor-pointer"
+                        >
+                            <div class="text-right">
+                            <div class="text-sm text-muted-foreground">{"Next"}</div>
+                            <div class="font-semibold text-base">{@nextComponent.label}</div>
+                            </div>
+                            <ChevronRight class="h-5 w-5" />
+                        </Button>
+                    </a>
+                }
+            </div>
+        </section>
+
+    </main> 
 }
