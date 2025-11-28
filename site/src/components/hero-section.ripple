@@ -23,7 +23,7 @@ export component HeroSection() {
 
         {/* Subtitle */}
         <p class="text-xl md:text-2xl text-muted-foreground mb-8 max-w-3xl mx-auto text-balance">
-          {`Beautiful, accessible, and performant UI components for Ripple JS.
+          {`Beautiful, accessible, and performant UI components for Ripple TS.
           Built with Zag.js for maximum flexibility and developer experience.`}
         </p>
 
