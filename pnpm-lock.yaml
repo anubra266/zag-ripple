@@ -34,7 +34,7 @@ importers:
         version: 1.11.0
       '@tailwindcss/vite':
         specifier: ^4.1.13
-        version: 4.1.14(vite@7.1.10(jiti@2.6.1)(lightningcss@1.30.1))
+        version: 4.1.14(vite@7.1.11(jiti@2.6.1)(lightningcss@1.30.1))
       '@vercel/analytics':
         specifier: ^1.5.0
         version: 1.5.0(react@19.2.0)
@@ -227,7 +227,7 @@ importers:
         version: 5.9.3
       vite:
         specifier: ^7.1.4
-        version: 7.1.10(jiti@2.6.1)(lightningcss@1.30.1)
+        version: 7.1.11(jiti@2.6.1)(lightningcss@1.30.1)
       vite-plugin-ripple:
         specifier: ^0.2.134
         version: 0.2.134
@@ -1464,8 +1464,8 @@ packages:
   vite-plugin-ripple@0.2.134:
     resolution: {integrity: sha512-p+1SNRJlgN6H3DBvcWaSDh9crYVrokmU2Ul9CI5MBmV5+t+ttYD4+MwvHlBcubeOuaet+KlRHlhkew19dW+rgQ==}
 
-  vite@7.1.10:
-    resolution: {integrity: sha512-CmuvUBzVJ/e3HGxhg6cYk88NGgTnBoOo7ogtfJJ0fefUWAxN/WDSUa50o+oVBxuIhO8FoEZW0j2eW7sfjs5EtA==}
+  vite@7.1.11:
+    resolution: {integrity: sha512-uzcxnSDVjAopEUjljkWh8EIrg6tlzrjFUfMcR1EVsRDGwf/ccef0qQPRyOrROwhrTDaApueq+ja+KLPlzR/zdg==}
     engines: {node: ^20.19.0 || >=22.12.0}
     hasBin: true
     peerDependencies:
@@ -1843,12 +1843,12 @@ snapshots:
       '@tailwindcss/oxide-win32-arm64-msvc': 4.1.14
       '@tailwindcss/oxide-win32-x64-msvc': 4.1.14
 
-  '@tailwindcss/vite@4.1.14(vite@7.1.10(jiti@2.6.1)(lightningcss@1.30.1))':
+  '@tailwindcss/vite@4.1.14(vite@7.1.11(jiti@2.6.1)(lightningcss@1.30.1))':
     dependencies:
       '@tailwindcss/node': 4.1.14
       '@tailwindcss/oxide': 4.1.14
       tailwindcss: 4.1.14
-      vite: 7.1.10(jiti@2.6.1)(lightningcss@1.30.1)
+      vite: 7.1.11(jiti@2.6.1)(lightningcss@1.30.1)
 
   '@types/estree@1.0.8': {}
 
@@ -2869,7 +2869,7 @@ snapshots:
 
   vite-plugin-ripple@0.2.134: {}
 
-  vite@7.1.10(jiti@2.6.1)(lightningcss@1.30.1):
+  vite@7.1.11(jiti@2.6.1)(lightningcss@1.30.1):
     dependencies:
       esbuild: 0.25.11
       fdir: 6.5.0(picomatch@4.0.3)
