@@ -18,13 +18,13 @@
 	"license": "MIT",
 	"devDependencies": {
 		"eslint": "^9.0.0",
-		"eslint-parser-ripple": "^0.2.134",
-		"eslint-plugin-ripple": "^0.2.134",
+		"eslint-parser-ripple": "^0.2.152",
+		"eslint-plugin-ripple": "^0.2.152",
 		"prettier": "^3.6.2",
-		"prettier-plugin-ripple": "^0.2.134",
+		"prettier-plugin-ripple": "^0.2.152",
 		"typescript": "^5.9.2",
 		"vite": "^7.1.4",
-		"vite-plugin-ripple": "^0.2.134"
+		"vite-plugin-ripple": "^0.2.152"
 	},
 	"dependencies": {
 		"@stackblitz/sdk": "^1.11.0",
@@ -48,6 +48,7 @@
 		"@zag-js/floating-panel": "^1.24.2",
 		"@zag-js/hover-card": "^1.24.2",
 		"@zag-js/i18n-utils": "^1.24.2",
+		"@zag-js/image-cropper": "^1.31.1",
 		"@zag-js/listbox": "^1.24.2",
 		"@zag-js/menu": "^1.24.2",
 		"@zag-js/number-input": "^1.24.2",
@@ -80,7 +81,7 @@
 		"clsx": "^2.1.1",
 		"fuse.js": "^7.1.0",
 		"lucide-ripple": "^0.0.6",
-		"ripple": "^0.2.134",
+		"ripple": "^0.2.188",
 		"routing-machine": "^0.0.5",
 		"tailwind-merge": "^2.5.5",
 		"tailwindcss": "^4.1.9",

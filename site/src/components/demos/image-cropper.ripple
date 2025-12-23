@@ -1,0 +1,30 @@
+import * as imageCropper from '@zag-js/image-cropper';
+import { normalizeProps, useMachine } from 'zag-ripple';
+import { track } from 'ripple';
+
+export component ImageCropper() {
+	let service = useMachine(imageCropper.machine, {
+		id: 'image-cropper',
+	});
+	let api = track(() => imageCropper.connect(service, normalizeProps));
+
+    <div {...@api.getRootProps()}>
+        <div {...@api.getViewportProps()}>
+            <img
+                src="https://picsum.photos/seed/crop/640/400"
+                crossOrigin="anonymous"
+                {...@api.getImageProps()}
+            />
+
+            <div {...@api.getSelectionProps()}>
+                for(const position of imageCropper.handles) {
+                    <div key={position} {...@api.getHandleProps({ position })}>
+                        <span />
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+}
+
+

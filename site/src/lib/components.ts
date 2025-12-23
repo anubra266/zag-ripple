@@ -96,6 +96,13 @@ export const components = [
     description: "Preview content that appears when hovering over triggers.",
   },
   {
+    label: "Image Cropper",
+    id: "image-cropper",
+    beta: true,
+    icon: "crop",
+    description: "Crop and resize images with interactive handles.",
+  },
+  {
     label: "Listbox",
     id: "listbox",
     icon: "list",
@@ -264,7 +271,6 @@ export const components = [
     icon: "timer",
     description: "Record elapsed time since zero or given time",
   },
-  // TODO fix bugs
   {
     label: "Toast",
     id: "toast",
