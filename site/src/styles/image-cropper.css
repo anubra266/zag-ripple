@@ -1,0 +1,123 @@
+[data-scope="image-cropper"][data-part="wrapper"] {
+	@apply flex flex-col gap-6;
+}
+
+[data-scope="image-cropper"][data-part="root"] {
+	@apply relative w-full max-w-2xl mx-auto;
+}
+
+[data-scope="image-cropper"][data-part="viewport"] {
+	@apply relative overflow-hidden rounded-lg bg-gray-100 dark:bg-gray-900;
+	@apply select-none touch-none;
+	min-height: 400px;
+}
+
+[data-scope="image-cropper"][data-part="image"] {
+	@apply w-full h-auto block;
+	@apply select-none pointer-events-none;
+}
+
+[data-scope="image-cropper"][data-part="selection"] {
+	@apply absolute;
+	@apply border-2 border-blue-500;
+	box-shadow: 0 0 0 9999px rgba(0, 0, 0, 0.5);
+}
+
+[data-scope="image-cropper"][data-part="selection"][data-shape="circle"] {
+	@apply rounded-full;
+}
+
+[data-scope="image-cropper"][data-part="grid"] {
+	@apply absolute bg-white/30;
+}
+
+[data-scope="image-cropper"][data-part="grid"][data-axis="horizontal"] {
+	@apply h-px left-0 right-0;
+	top: 33.33%;
+}
+
+[data-scope="image-cropper"][data-part="grid"][data-axis="horizontal"]:last-of-type {
+	top: 66.66%;
+}
+
+[data-scope="image-cropper"][data-part="grid"][data-axis="vertical"] {
+	@apply w-px top-0 bottom-0;
+	left: 33.33%;
+}
+
+[data-scope="image-cropper"][data-part="grid"][data-axis="vertical"]:last-of-type {
+	left: 66.66%;
+}
+
+[data-scope="image-cropper"][data-part="handle"] {
+	@apply absolute w-5 h-5;
+	@apply z-10;
+}
+
+[data-scope="image-cropper"][data-part="handle"] > span {
+	@apply block w-full h-full;
+	@apply bg-blue-500 border-2 border-white;
+	@apply rounded-full shadow-lg;
+	@apply cursor-grab active:cursor-grabbing;
+	@apply transition-transform hover:scale-110;
+}
+
+[data-scope="image-cropper"][data-part="handle"][data-position="nw"] {
+	@apply -top-2.5 -left-2.5 cursor-nwse-resize;
+}
+
+[data-scope="image-cropper"][data-part="handle"][data-position="n"] {
+	@apply -top-2.5 left-1/2 -translate-x-1/2 cursor-ns-resize;
+}
+
+[data-scope="image-cropper"][data-part="handle"][data-position="ne"] {
+	@apply -top-2.5 -right-2.5 cursor-nesw-resize;
+}
+
+[data-scope="image-cropper"][data-part="handle"][data-position="e"] {
+	@apply top-1/2 -translate-y-1/2 -right-2.5 cursor-ew-resize;
+}
+
+[data-scope="image-cropper"][data-part="handle"][data-position="se"] {
+	@apply -bottom-2.5 -right-2.5 cursor-nwse-resize;
+}
+
+[data-scope="image-cropper"][data-part="handle"][data-position="s"] {
+	@apply -bottom-2.5 left-1/2 -translate-x-1/2 cursor-ns-resize;
+}
+
+[data-scope="image-cropper"][data-part="handle"][data-position="sw"] {
+	@apply -bottom-2.5 -left-2.5 cursor-nesw-resize;
+}
+
+[data-scope="image-cropper"][data-part="handle"][data-position="w"] {
+	@apply top-1/2 -translate-y-1/2 -left-2.5 cursor-ew-resize;
+}
+
+[data-scope="image-cropper"][data-part="controls"] {
+	@apply flex gap-4 items-start;
+}
+
+[data-scope="image-cropper"][data-part="controls-section"] {
+	@apply flex-1;
+}
+
+[data-scope="image-cropper"][data-part="preview-button"] {
+	@apply px-4 py-2 bg-blue-600 text-white rounded-lg;
+	@apply hover:bg-blue-700 transition-colors;
+	@apply cursor-pointer;
+}
+
+[data-scope="image-cropper"][data-part="preview-label"] {
+	@apply text-sm font-medium mb-2;
+}
+
+[data-scope="image-cropper"][data-part="preview-container"] {
+	@apply border-2 border-gray-300 dark:border-gray-600;
+	@apply rounded-lg p-2 bg-gray-50 dark:bg-gray-800;
+}
+
+[data-scope="image-cropper"][data-part="preview-image"] {
+	@apply max-w-full h-auto rounded;
+}
+

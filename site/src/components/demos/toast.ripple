@@ -35,7 +35,6 @@ export component ToastGroup() {
             data-part="trigger"
             data-type="info"
             onClick={() => {
-                console.log("info", toaster);
                 toaster.create({
                     title: "New message received",
                     description: "You have a new notification in your inbox.",
