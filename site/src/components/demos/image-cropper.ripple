@@ -11,7 +11,13 @@ export component ImageCropper() {
     let previewUrl = track("");
 
     async function updatePreview() {
-        console.log("updatePreview");
+        // const dataUrl = await @api.getCroppedImage({
+        //     output: "dataUrl",
+        //     type: "image/png",
+        // });
+        // if (dataUrl) {
+        //     previewUrl = dataUrl;
+        // }
     }
 
     <div data-scope="image-cropper" data-part="wrapper">
