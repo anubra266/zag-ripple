@@ -46,8 +46,8 @@ export component Components() {
 
     {/* Components Grid */}
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-        for (const component of @results) {
-            <a {...@router.getLinkProps({ to: `/components/${component.id}` })}>
+        for (const comp of @results) {
+            <a {...@router.getLinkProps({ to: `/components/${comp.id}` })}>
                 <Card class="p-6 bg-card/50 border-border/50 hover:bg-card/80 transition-all duration-300 hover:scale-[1.02] hover:border-primary/30 group cursor-pointer relative overflow-hidden">
             {/* Background gradient */}
             <div class="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
@@ -56,16 +56,16 @@ export component Components() {
             <div class="relative">
               {/* Icon */}
               <div class="mb-4 p-3 bg-primary/10 rounded-lg w-fit group-hover:bg-primary/20 transition-colors duration-300">
-              let Icon = icons[component.icon] || icons.defaultIcon;
+              let Icon = icons[comp.icon] || icons.defaultIcon;
               <Icon class="w-6 h-6 text-primary" />
               </div>
 
               {/* Header */}
               <div class="flex items-center justify-between mb-3">
                 <h3 class="font-semibold text-base group-hover:text-primary transition-colors duration-300">
-                  {component.label}
+                  {comp.label}
                 </h3>
-                if (component.beta) {
+                if (comp.beta) {
                   <Badge
                     variant="secondary"
                     class="text-xs bg-accent/20 text-accent border-accent/30"
@@ -77,7 +77,7 @@ export component Components() {
 
               {/* Description */}
               <p class="text-sm text-muted-foreground leading-relaxed">
-                {component.description}
+                {comp.description}
               </p>
 
               {/* Arrow indicator */}
