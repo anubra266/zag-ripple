@@ -189,11 +189,11 @@ importers:
         specifier: ^7.1.0
         version: 7.1.0
       lucide-ripple:
-        specifier: ^0.0.6
-        version: 0.0.6(ripple@0.2.188)
+        specifier: ^0.0.7
+        version: 0.0.7(ripple@0.2.189)
       ripple:
-        specifier: ^0.2.188
-        version: 0.2.188
+        specifier: ^0.2.189
+        version: 0.2.189
       routing-machine:
         specifier: ^0.0.5
         version: 0.0.5
@@ -215,16 +215,16 @@ importers:
         version: 9.38.0(jiti@2.6.1)
       eslint-parser-ripple:
         specifier: ^0.2.152
-        version: 0.2.152(eslint@9.38.0(jiti@2.6.1))(ripple@0.2.188)
+        version: 0.2.152(eslint@9.38.0(jiti@2.6.1))(ripple@0.2.189)
       eslint-plugin-ripple:
         specifier: ^0.2.152
-        version: 0.2.152(eslint-parser-ripple@0.2.152(eslint@9.38.0(jiti@2.6.1))(ripple@0.2.188))(eslint@9.38.0(jiti@2.6.1))
+        version: 0.2.152(eslint-parser-ripple@0.2.152(eslint@9.38.0(jiti@2.6.1))(ripple@0.2.189))(eslint@9.38.0(jiti@2.6.1))
       prettier:
         specifier: ^3.6.2
         version: 3.6.2
       prettier-plugin-ripple:
         specifier: ^0.2.152
-        version: 0.2.152(prettier@3.6.2)(ripple@0.2.188)
+        version: 0.2.152(prettier@3.6.2)(ripple@0.2.189)
       typescript:
         specifier: ^5.9.2
         version: 5.9.3
@@ -1296,8 +1296,8 @@ packages:
   lodash.merge@4.6.2:
     resolution: {integrity: sha512-0KpjqXRVvrYyCsX1swR/XTK0va6VQkQM6MNo7PqW77ByjAhoARA8EfrP1N4+KlKj8YS0ZUCtRT/YUuhyYDujIQ==}
 
-  lucide-ripple@0.0.6:
-    resolution: {integrity: sha512-jZ+m71SmoJ0TMExInMJ1BpFL3Yi61td+o0HglvsmQbGFXnesp0V/EGgJA/THbbujhIJ+NbLl2qr8rKVhrsuwhQ==}
+  lucide-ripple@0.0.7:
+    resolution: {integrity: sha512-mjFos4I9mD2v7q+gUdNfo3IsbUFXkTdVCkCVijFWv9GP/N/AakttGpAuCcCzLowDsD6HpAVskpBmU18t9PmZaw==}
     peerDependencies:
       ripple: '>=0.2.0'
 
@@ -1410,10 +1410,10 @@ packages:
     peerDependencies:
       ripple: 0.2.134
 
-  ripple@0.2.188:
-    resolution: {integrity: sha512-030SsvcPADZWelOxfw5c+H7u55xiL3sEcTQ8jOd5xIz3IHBHVnzurKPmkuFNoscNyOc0VP7Im3Z+hPvbmJSdQw==}
+  ripple@0.2.189:
+    resolution: {integrity: sha512-LXBWz+EPQ5tT0amXzy4swd8CXAyrYieDtEFi1ruJskxIX5TRX5M0iJzdK9rF8i4apYamFwa7XwXWuDmSPd4utQ==}
     peerDependencies:
-      ripple: 0.2.188
+      ripple: 0.2.189
 
   rollup@4.52.5:
     resolution: {integrity: sha512-3GuObel8h7Kqdjt0gxkEzaifHTqLVW56Y/bjN7PSQtkKr0w3V/QYSdt6QWYtd7A1xUtYQigtdUfgj1RvWVtorw==}
@@ -2509,18 +2509,18 @@ snapshots:
 
   escape-string-regexp@4.0.0: {}
 
-  eslint-parser-ripple@0.2.152(eslint@9.38.0(jiti@2.6.1))(ripple@0.2.188):
+  eslint-parser-ripple@0.2.152(eslint@9.38.0(jiti@2.6.1))(ripple@0.2.189):
     dependencies:
       acorn: 8.15.0
       acorn-typescript: 1.4.13(acorn@8.15.0)
       eslint: 9.38.0(jiti@2.6.1)
-      ripple: 0.2.188
+      ripple: 0.2.189
 
-  eslint-plugin-ripple@0.2.152(eslint-parser-ripple@0.2.152(eslint@9.38.0(jiti@2.6.1))(ripple@0.2.188))(eslint@9.38.0(jiti@2.6.1)):
+  eslint-plugin-ripple@0.2.152(eslint-parser-ripple@0.2.152(eslint@9.38.0(jiti@2.6.1))(ripple@0.2.189))(eslint@9.38.0(jiti@2.6.1)):
     dependencies:
       eslint: 9.38.0(jiti@2.6.1)
     optionalDependencies:
-      eslint-parser-ripple: 0.2.152(eslint@9.38.0(jiti@2.6.1))(ripple@0.2.188)
+      eslint-parser-ripple: 0.2.152(eslint@9.38.0(jiti@2.6.1))(ripple@0.2.189)
 
   eslint-scope@8.4.0:
     dependencies:
@@ -2730,9 +2730,9 @@ snapshots:
 
   lodash.merge@4.6.2: {}
 
-  lucide-ripple@0.0.6(ripple@0.2.188):
+  lucide-ripple@0.0.7(ripple@0.2.189):
     dependencies:
-      ripple: 0.2.188
+      ripple: 0.2.189
 
   magic-string@0.30.19:
     dependencies:
@@ -2795,10 +2795,10 @@ snapshots:
 
   prelude-ls@1.2.1: {}
 
-  prettier-plugin-ripple@0.2.152(prettier@3.6.2)(ripple@0.2.188):
+  prettier-plugin-ripple@0.2.152(prettier@3.6.2)(ripple@0.2.189):
     dependencies:
       prettier: 3.6.2
-      ripple: 0.2.188
+      ripple: 0.2.189
 
   prettier@3.6.2: {}
 
@@ -2834,7 +2834,7 @@ snapshots:
       ripple: 0.2.134
       zimmerframe: 1.1.4
 
-  ripple@0.2.188:
+  ripple@0.2.189:
     dependencies:
       '@jridgewell/sourcemap-codec': 1.5.5
       '@sveltejs/acorn-typescript': 1.0.6(acorn@8.15.0)
@@ -2846,7 +2846,7 @@ snapshots:
       is-reference: 3.0.3
       magic-string: 0.30.19
       muggle-string: 0.4.1
-      ripple: 0.2.188
+      ripple: 0.2.189
       zimmerframe: 1.1.4
 
   rollup@4.52.5:

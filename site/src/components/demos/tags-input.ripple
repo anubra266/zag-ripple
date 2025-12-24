@@ -10,11 +10,11 @@ export component TagsInput() {
 	});
 	let api = track(() => tagsInput.connect(service, normalizeProps));
 
-	<div {...@api.getRootProps()}>
-		<label {...@api.getLabelProps()}>{"Enter frameworks:"}</label>
-		<div {...@api.getControlProps()}>
+	<fieldset {...@api.getRootProps()}>
+		<legend {...@api.getLabelProps()}>{"Enter frameworks:"}</legend>
+		<ul {...@api.getControlProps()}>
 			for (const value of @api.value; index index) {
-				<span {...@api.getItemProps({ index, value })}>
+				<li {...@api.getItemProps({ index, value })}>
 					<div {...@api.getItemPreviewProps({ index, value })}>
 						<span>{value}</span>
 						<button {...@api.getItemDeleteTriggerProps({ index, value })}>
@@ -22,9 +22,9 @@ export component TagsInput() {
 						</button>
 					</div>
 					<input {...@api.getItemInputProps({ index, value })} />
-				</span>
+				</li>
 			}
 			<input placeholder="Add tag..." {...@api.getInputProps()} />
-		</div>
-	</div>
+		</ul>
+	</fieldset>
 }

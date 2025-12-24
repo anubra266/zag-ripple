@@ -15,16 +15,16 @@ export component OpenInStackblitz({ id }: { id: string }) {
 }
 
 function openInStackblitz(id: string) {
-	const component = components.find(component => component.id === id);
+	const comp = components.find(comp => comp.id === id);
 	sdk.openProject({
-		title: 'Zag Ripple - ' + component.label,
-		description: component.description,
+		title: 'Zag Ripple - ' + comp.label,
+		description: comp.description,
 		template: 'node',
 		files: {
 			[`src/${toPascalCase(id)}.ripple`]: getComponentCode(id),
 			'src/index.ts': getIndexTS(id),
-			'src/styles.css': getStylesCSS(component.package ?? id),
-			'index.html': indexHtml(component.label),
+			'src/styles.css': getStylesCSS(comp.package ?? id),
+			'index.html': indexHtml(comp.label),
 			'package.json': packageJson(id),
 			'ripple.d.ts': `declare module '*.ripple';`,
 			'vite.config.js': viteConfig,
