@@ -36,6 +36,10 @@ export component Component() {
     const prevComponent = track(() => @currentIndex > 0 ? components[@currentIndex - 1] : null)
     const nextComponent = track(() => @currentIndex < components.length - 1 ? components[@currentIndex + 1] : null)
 
+    <head>
+        <title>{`${@comp.label} | ZagRipple`}</title>
+    </head>
+
     <Navigation />
 
     <main class="container mx-auto px-4 py-12">

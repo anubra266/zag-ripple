@@ -2,6 +2,10 @@ import { Navigation } from './components/navigation.ripple';
 import { HeroSection } from './components/hero-section.ripple';
 
 export component Page() {
+	<head>
+		<title>{"ZagRipple - Zag.js for Ripple"}</title>
+	</head>
+
 	<Navigation noSearch />
 	<main>
 		<HeroSection />
