@@ -39,17 +39,17 @@ export component Component() {
     <Navigation />
 
     <main class="container mx-auto px-4 py-12">
-        {/* Breadcrumb */}
+        // Breadcrumb
         <div class="flex items-center gap-2 text-sm text-muted-foreground mb-8">
             <a {...@router.getLinkProps({ to: '/components' })} class="hover:text-foreground">
                 {'Components'}
             </a>
             <span>{'/'}</span>
-            <span class="text-foreground">{@component.label}</span>
+            <span class="text-foreground">{@comp.label}</span>
         </div>
 
 
-        {/* Header */}
+        // Header
         <div class="mb-12">
         <div class="flex items-center gap-4 mb-6">
             <a {...@router.getLinkProps({ to: '/components' })}>
@@ -60,15 +60,15 @@ export component Component() {
             </a>
         </div>
 
-        <h1 class="text-4xl font-bold mb-4">{@component.label}</h1>
+        <h1 class="text-4xl font-bold mb-4">{@comp.label}</h1>
         <p class="text-xl text-muted-foreground mb-8">
-            {@component.description}
+            {@comp.description}
         </p>
 
-        {/* Component Demo */}
+        // Component Demo
         <div class="space-y-6 mb-8">
 
-            {/* Demo Badges */}
+            // Demo Badges
             <div class="flex flex-wrap gap-3 justify-center">
                 <OpenInStackblitz id={@componentId} />
 
@@ -104,7 +104,7 @@ export component Component() {
         </div>
         </div>
 
-        {/* Installation */}
+        // Installation
         <section class="mb-12" data-id="installation">
             <h2 class="text-2xl font-bold mb-4">{"Installation"}</h2>
             <Card class="p-4 bg-muted/50">
@@ -123,33 +123,33 @@ export component Component() {
             </Card>
         </section>
 
-        {/* Usage */}
+        // Usage
         <Usage id={@componentId} />
 
         if(@componentId in apiJson) {
-            {/* Context */}
+            // Context
             <ContextTable id={@componentId} />
-            {/* API */}
+            // API
             <ApiTable id={@componentId} />
         }
 
-        {/* Accessibility */}
+        // Accessibility
         <section class="mb-12">
             <h2 class="text-2xl font-bold mb-4">{'Accessibility'}</h2>
 
             <div class="space-y-6">
-                    {/* Data Attributes */}
-                <DataAttributes id={@component.package || @componentId} />
+                    // Data Attributes
+                <DataAttributes id={@comp.package || @componentId} />
 
-                    {/* CSS Variables */}
-                <CSSVariables id={@component.package || @componentId} />
+                    // CSS Variables
+                <CSSVariables id={@comp.package || @componentId} />
 
-                    {/* Keyboard Interactions */}
-                <KeyboardInteractions id={@component.package || @componentId} />
+                    // Keyboard Interactions
+                <KeyboardInteractions id={@comp.package || @componentId} />
             </div>
         </section>
 
-        {/* Navigation */}
+        // Navigation
         <section>
             <div class="flex justify-between items-center">
                 if (@prevComponent) {

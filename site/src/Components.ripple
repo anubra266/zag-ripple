@@ -21,7 +21,7 @@ export component Components() {
   <Navigation noSearch />
 
   <main class="container mx-auto px-4 py-12">
-    {/* Header */}
+    // Header
     <div class="text-center mb-12">
       <h1 class="text-4xl md:text-5xl font-bold mb-6">
         <span class="text-primary">{"Components"}</span>
@@ -31,7 +31,7 @@ export component Components() {
         components built with Zag.js for TS.`}
       </p>
 
-      {/* Search */}
+      // Search
       <div class="relative max-w-md mx-auto">
         <Search class="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-muted-foreground" />
         <input
@@ -44,23 +44,23 @@ export component Components() {
       </div>
     </div>
 
-    {/* Components Grid */}
+    // Components Grid
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
         for (const comp of @results) {
             <a {...@router.getLinkProps({ to: `/components/${comp.id}` })}>
                 <Card class="p-6 bg-card/50 border-border/50 hover:bg-card/80 transition-all duration-300 hover:scale-[1.02] hover:border-primary/30 group cursor-pointer relative overflow-hidden">
-            {/* Background gradient */}
+            // Background gradient
             <div class="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
 
-            {/* Content */}
+            // Content
             <div class="relative">
-              {/* Icon */}
+              // Icon
               <div class="mb-4 p-3 bg-primary/10 rounded-lg w-fit group-hover:bg-primary/20 transition-colors duration-300">
               let Icon = icons[comp.icon] || icons.defaultIcon;
               <Icon class="w-6 h-6 text-primary" />
               </div>
 
-              {/* Header */}
+              // Header
               <div class="flex items-center justify-between mb-3">
                 <h3 class="font-semibold text-base group-hover:text-primary transition-colors duration-300">
                   {comp.label}
@@ -75,12 +75,12 @@ export component Components() {
                 }
               </div>
 
-              {/* Description */}
+              // Description
               <p class="text-sm text-muted-foreground leading-relaxed">
                 {comp.description}
               </p>
 
-              {/* Arrow indicator */}
+              // Arrow indicator
               <div class="mt-4 flex items-center text-xs text-muted-foreground group-hover:text-primary transition-colors duration-300">
                 <span>{'View docs'}</span>
                 <svg
@@ -103,7 +103,7 @@ export component Components() {
         }
     </div>
 
-    {/* Stats */}
+    // Stats
     <div class="mt-16 text-center">
       <div class="inline-flex items-center gap-8 px-6 py-4 bg-muted/30 rounded-lg border border-border/50">
         <div>
