@@ -12,10 +12,16 @@ import type {
 } from "@zag-js/core"
 import { createScope, INIT_STATE, MachineStatus } from "@zag-js/core"
 import { ensure, isFunction, isPlainObject, isString, toArray, warn } from "@zag-js/utils"
-import { track, effect, flushSync } from "ripple"
+import { track, effect, flushSync, untrack } from "ripple"
 import { bindable } from "./bindable.ripple"
 import { useRefs } from "./refs.ripple"
 import { createTrack } from "./track.ripple"
+
+function onMount(mount) {
+  effect(() => {
+    return untrack(mount);
+  });
+}
 
 function compact<T extends Record<string, unknown> | undefined>(obj: T): T {
   if (!isPlainObject(obj) || obj === undefined) return obj
@@ -225,13 +231,11 @@ export function useMachine<T extends MachineSchema>(
 
   let status = MachineStatus.NotStarted
 
-  effect(() => {
-    queueMicrotask(() => {
-      const started = status === MachineStatus.Started
-      status = MachineStatus.Started
-      debug(started ? "rehydrating..." : "initializing...")
-      state.invoke(state.initial, INIT_STATE)
-    })
+  onMount(() => {
+    const started = status === MachineStatus.Started
+    status = MachineStatus.Started
+    debug(started ? "rehydrating..." : "initializing...")
+    state.invoke(state.initial, INIT_STATE)
 
     return () => {
       debug("unmounting...")
@@ -241,9 +245,7 @@ export function useMachine<T extends MachineSchema>(
       effects = new Map()
       transitionRef.current = null
       
-      queueMicrotask(() => {
-        action(machine.exit)
-      })
+      action(machine.exit)
     }
   })
 

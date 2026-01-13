@@ -92,3 +92,30 @@
 [data-scope='image-cropper'][data-part='controls-section'] {
 	@apply flex-1;
 }
+
+[data-scope='image-cropper'][data-part='br'] {
+	@apply h-0 basis-full;
+}
+
+[data-scope='image-cropper'][data-part='preview'] {
+	@apply flex gap-4 mx-auto mt-4;
+}
+
+[data-scope='image-cropper'][data-part='preview-button'] {
+	@apply px-4 py-2 bg-blue-600 text-white rounded-lg;
+	@apply hover:bg-blue-700 transition-colors;
+	@apply cursor-pointer;
+}
+
+[data-scope='image-cropper'][data-part='preview-label'] {
+	@apply text-sm font-medium mb-2;
+}
+
+[data-scope='image-cropper'][data-part='preview-container'] {
+	@apply border-2 border-gray-300 dark:border-gray-600;
+	@apply rounded-lg p-2 bg-gray-50 dark:bg-gray-800;
+}
+
+[data-scope='image-cropper'][data-part='preview-image'] {
+	@apply max-w-full h-auto rounded;
+}

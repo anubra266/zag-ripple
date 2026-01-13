@@ -11,6 +11,16 @@ export component ImageCropper() {
 
 	let previewUrl = track('');
 
+    async function updatePreview() {
+        const dataUrl = await @api.getCroppedImage({
+            output: "dataUrl",
+            type: "image/png",
+        });
+        if (dataUrl) {
+            previewUrl = dataUrl;
+        }
+    }
+
 	<div {...@api.getRootProps()}>
 		<div {...@api.getViewportProps()}>
 			<img
@@ -28,4 +38,30 @@ export component ImageCropper() {
 			</div>
 		</div>
 	</div>
+
+    <div data-scope="image-cropper" data-part="br" />
+
+    <div data-scope="image-cropper" data-part="preview">
+        <div data-scope="image-cropper" data-part="controls">
+            <div data-scope="image-cropper" data-part="controls-section">
+                <button onClick={updatePreview} data-scope="image-cropper" data-part="preview-button">
+                    {'Update Preview'}
+                </button>
+            </div>
+        </div>
+
+        if(@previewUrl) {
+            <div data-scope="image-cropper" data-part="controls-section">
+                <div data-scope="image-cropper" data-part="preview-label">{"Crop Preview:"}</div>
+                <div data-scope="image-cropper" data-part="preview-container">
+                    <img 
+                        src={previewUrl} 
+                        alt="Cropped preview" 
+                        data-scope="image-cropper"
+                        data-part="preview-image"
+                    />
+                </div>
+            </div>
+        }
+    </div>
 }
