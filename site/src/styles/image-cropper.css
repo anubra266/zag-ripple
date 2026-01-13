@@ -17,32 +17,33 @@
 	@apply absolute;
 	@apply border-1 border-blue-50;
 	box-shadow: 0 0 0 9999px rgba(0, 0, 0, 0.5);
+	background:
+		linear-gradient(
+			to bottom,
+			transparent calc(33.33% - 0.5px),
+			rgba(255, 255, 255, 0.3) calc(33.33% - 0.5px),
+			rgba(255, 255, 255, 0.3) calc(33.33% + 0.5px),
+			transparent calc(33.33% + 0.5px),
+			transparent calc(66.66% - 0.5px),
+			rgba(255, 255, 255, 0.3) calc(66.66% - 0.5px),
+			rgba(255, 255, 255, 0.3) calc(66.66% + 0.5px),
+			transparent calc(66.66% + 0.5px)
+		),
+		linear-gradient(
+			to right,
+			transparent calc(33.33% - 0.5px),
+			rgba(255, 255, 255, 0.3) calc(33.33% - 0.5px),
+			rgba(255, 255, 255, 0.3) calc(33.33% + 0.5px),
+			transparent calc(33.33% + 0.5px),
+			transparent calc(66.66% - 0.5px),
+			rgba(255, 255, 255, 0.3) calc(66.66% - 0.5px),
+			rgba(255, 255, 255, 0.3) calc(66.66% + 0.5px),
+			transparent calc(66.66% + 0.5px)
+		);
 }
 
 [data-scope='image-cropper'][data-part='selection'][data-shape='circle'] {
 	@apply rounded-full;
-}
-
-[data-scope='image-cropper'][data-part='grid'] {
-	@apply absolute bg-white/30;
-}
-
-[data-scope='image-cropper'][data-part='grid'][data-axis='horizontal'] {
-	@apply h-px left-0 right-0;
-	top: 33.33%;
-}
-
-[data-scope='image-cropper'][data-part='grid'][data-axis='horizontal']:last-of-type {
-	top: 66.66%;
-}
-
-[data-scope='image-cropper'][data-part='grid'][data-axis='vertical'] {
-	@apply w-px top-0 bottom-0;
-	left: 33.33%;
-}
-
-[data-scope='image-cropper'][data-part='grid'][data-axis='vertical']:last-of-type {
-	left: 66.66%;
 }
 
 [data-scope='image-cropper'][data-part='handle'] {
@@ -89,26 +90,18 @@
 	@apply flex gap-4 items-start;
 }
 
-[data-scope='image-cropper'][data-part='controls-section'] {
-	@apply flex-1;
-}
-
 [data-scope='image-cropper'][data-part='br'] {
 	@apply h-0 basis-full;
 }
 
 [data-scope='image-cropper'][data-part='preview'] {
-	@apply flex gap-4 mx-auto mt-4;
+	@apply flex flex-col items-center gap-4 mx-auto mt-4;
 }
 
 [data-scope='image-cropper'][data-part='preview-button'] {
 	@apply px-4 py-2 bg-blue-600 text-white rounded-lg;
 	@apply hover:bg-blue-700 transition-colors;
 	@apply cursor-pointer;
-}
-
-[data-scope='image-cropper'][data-part='preview-label'] {
-	@apply text-sm font-medium mb-2;
 }
 
 [data-scope='image-cropper'][data-part='preview-container'] {
