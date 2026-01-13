@@ -9,13 +9,14 @@ export default defineConfig({
 	},
 	build: {
 		target: 'esnext',
+		minify: false,
+		sourcemap: true,
 	},
 	resolve: {
 		// for local development
 		alias: {
 			// "routing-machine": "/Users/anubra266/Developer/oss/anubra266/route-machine/packages/route-machine/",
 			// '@zag-js/toast': '/Users/anubra266/Developer/oss/chakra-ui/zag/packages/machines/toast',
-
 			// 'ripple/internal/client':
 			// 	'/Users/anubra266/Developer/oss/ripple/ripple/packages/ripple/src/runtime/internal/client/index.js',
 			// 'ripple/internal/server':
