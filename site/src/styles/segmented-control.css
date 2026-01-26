@@ -1,4 +1,4 @@
-[data-scope='radio-group'][data-part='root'] {
+[data-scope='radio-group'][data-part='root']#radio-group:segmented-control {
 	@apply relative flex w-fit mx-auto p-1 bg-muted rounded-lg data-[orientation=horizontal]:flex-row data-[orientation=vertical]:flex-col;
 }
 

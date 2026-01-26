@@ -1,13 +1,13 @@
-[data-scope='radio-group'][data-part='root'] {
-	@apply flex flex-col gap-3 w-full max-w-xs mx-auto;
-}
-
-[data-scope='radio-group'][data-part='label'] {
-	@apply text-lg font-semibold text-foreground mb-2;
+[data-scope='radio-group'][data-part='root']#radio-group:radio-group {
+	@apply flex flex-col gap-3 w-full max-w-md mx-auto;
 }
 
 [data-scope='radio-group'][data-part='root'] > div {
 	@apply space-y-3;
+}
+
+[data-scope='radio-group'][data-part='label'] {
+	@apply text-lg font-semibold text-foreground mb-2;
 }
 
 [data-scope='radio-group'][data-part='item'] {
