@@ -1,5 +1,5 @@
-[data-scope='radio-group'][data-part='root']#radio-group:radio-group {
-	@apply flex flex-col gap-3 w-full max-w-md mx-auto;
+[data-scope='radio-group'][data-part='root'][id$=':radio-group'] {
+	@apply flex flex-col gap-3 w-full max-w-xs mx-auto;
 }
 
 [data-scope='radio-group'][data-part='root'] > div {
