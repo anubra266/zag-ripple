@@ -11,14 +11,14 @@ importers:
   packages/zag-ripple:
     dependencies:
       '@zag-js/core':
-        specifier: ^1.24.2
-        version: 1.33.0
+        specifier: ^1.34.1
+        version: 1.34.1
       '@zag-js/types':
-        specifier: ^1.24.2
-        version: 1.33.0
+        specifier: ^1.34.1
+        version: 1.34.1
       '@zag-js/utils':
-        specifier: ^1.24.2
-        version: 1.33.0
+        specifier: ^1.34.1
+        version: 1.34.1
       ripple:
         specifier: '>=0.2.0'
         version: 0.2.198
