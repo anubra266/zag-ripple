@@ -195,7 +195,7 @@ importers:
         specifier: ^0.0.7
         version: 0.0.7(ripple@0.2.212)
       ripple:
-        specifier: ^0.2.189
+        specifier: ^0.2.212
         version: 0.2.212
       routing-machine:
         specifier: ^0.0.5
