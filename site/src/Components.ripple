@@ -32,7 +32,7 @@ export component Components() {
       </h1>
       <p class="text-xl text-muted-foreground max-w-3xl mx-auto mb-8">
         {`Explore our comprehensive collection of accessible, customizable
-        components built with Zag.js for TS.`}
+        components built with Zag.js for Ripple TS.`}
       </p>
 
       // Search

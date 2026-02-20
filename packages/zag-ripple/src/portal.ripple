@@ -9,7 +9,7 @@ export interface PortalActionProps {
     getRootNode?: GetRootNode | undefined
 }
 
-export component Portal({ disabled, getRootNode, container, children }: PortalProps) {
+export component Portal({ disabled, getRootNode, container, children }: PortalActionProps) {
     const isServer = typeof window === "undefined"
     
     if(isServer || disabled){

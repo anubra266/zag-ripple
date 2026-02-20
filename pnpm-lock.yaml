@@ -190,10 +190,10 @@ importers:
         version: 7.1.0
       lucide-ripple:
         specifier: ^0.0.7
-        version: 0.0.7(ripple@0.2.198)
+        version: 0.0.7(ripple@0.2.212)
       ripple:
-        specifier: ^0.2.194
-        version: 0.2.198
+        specifier: ^0.2.212
+        version: 0.2.212
       routing-machine:
         specifier: ^0.0.5
         version: 0.0.5
@@ -215,16 +215,16 @@ importers:
         version: 9.39.2(jiti@2.6.1)
       eslint-parser-ripple:
         specifier: ^0.2.152
-        version: 0.2.152(eslint@9.39.2(jiti@2.6.1))(ripple@0.2.198)
+        version: 0.2.152(eslint@9.39.2(jiti@2.6.1))(ripple@0.2.212)
       eslint-plugin-ripple:
         specifier: ^0.2.152
-        version: 0.2.152(eslint-parser-ripple@0.2.152(eslint@9.39.2(jiti@2.6.1))(ripple@0.2.198))(eslint@9.39.2(jiti@2.6.1))
+        version: 0.2.152(eslint-parser-ripple@0.2.152(eslint@9.39.2(jiti@2.6.1))(ripple@0.2.212))(eslint@9.39.2(jiti@2.6.1))
       prettier:
         specifier: ^3.6.2
         version: 3.8.1
       prettier-plugin-ripple:
         specifier: ^0.2.152
-        version: 0.2.152(prettier@3.8.1)(ripple@0.2.198)
+        version: 0.2.152(prettier@3.8.1)(ripple@0.2.212)
       typescript:
         specifier: ^5.9.2
         version: 5.9.3
@@ -611,6 +611,11 @@ packages:
     peerDependencies:
       acorn: ^8.9.0
 
+  '@sveltejs/acorn-typescript@1.0.9':
+    resolution: {integrity: sha512-lVJX6qEgs/4DOcRTpo56tmKzVPtoWAaVbL4hfO7t7NVwl9AAXzQR6cihesW1BmNMPl+bK6dreu2sOKBP2Q9CIA==}
+    peerDependencies:
+      acorn: ^8.9.0
+
   '@swc/helpers@0.5.18':
     resolution: {integrity: sha512-TXTnIcNJQEKwThMMqBXsZ4VGAza6bvN4pa41Rkqoio6QBKMvo+5lexeTMScGCIxtzgQJzElcvIltani+adC5PQ==}
 
@@ -742,6 +747,9 @@ packages:
   '@zag-js/anatomy@1.33.0':
     resolution: {integrity: sha512-i38mQd4pb5EhvTDHzGe63cu2vWnBBIVW/4x9Jfxg4Xk4YxLlgje6K5ZLufZJft1IMnsaPV5iS8+bem0ouJC52w==}
 
+  '@zag-js/anatomy@1.34.0':
+    resolution: {integrity: sha512-c13dPCG7Sa8Xqhz25AoZFWvMkhw5RlNgTOPD0Z6ZXpURNauLn1r5C9a/H0SAdO66yOsPHJoK8LZxoL4BiGE8KQ==}
+
   '@zag-js/angle-slider@1.33.0':
     resolution: {integrity: sha512-UkUs0+r68o6G2RlpGHFFPSv8E4xBQhMQ7kvOdYSh8ssw05xwSzEQbXwKL/VT4wiwq971UZfsp6DRu2Y0L5mjCA==}
 
@@ -781,6 +789,9 @@ packages:
   '@zag-js/core@1.33.0':
     resolution: {integrity: sha512-ItPsDRoVb1iRtNzIWgjqfH8x4rLDEAgKIa8KZvUnlf4XUmRZwhhooQdPZ74fcrTl8KHlGKrBzL5m98bKpGCe/g==}
 
+  '@zag-js/core@1.34.0':
+    resolution: {integrity: sha512-+w6zQ5PiBNbUd2xu91FUQruIAHcTYsueUNlXz3biAEAcU7pzre3Es4ApTepkbijYjcsiXzI/QwTtujot53eVyA==}
+
   '@zag-js/date-picker@1.33.0':
     resolution: {integrity: sha512-RorzUyFcRtx8pQv/5vqZo0vMeizVrPUSWXIYxbnXueg4jsEcszAXyqbGc/8ZaHk1G7/ljChQH5vFf4oH4t/gSQ==}
     peerDependencies:
@@ -802,6 +813,9 @@ packages:
 
   '@zag-js/dom-query@1.33.0':
     resolution: {integrity: sha512-NbPTGsINC0ZxZ5eQXdLdLLYEUgqsPlpX/OhFA+AfaaLXJmRsShzufH12+SfQosJrE2ZiBHNA8+3uReD0dLuY8w==}
+
+  '@zag-js/dom-query@1.34.0':
+    resolution: {integrity: sha512-bK3rEAsY130SPrRsWn+M4Dim2Ne92Sq+RsRQ4I9UTOa98OeSPVc8F77zPdoc4aKS+XAWWpzNASTfDjYhAy1gKQ==}
 
   '@zag-js/editable@1.33.0':
     resolution: {integrity: sha512-2XmRZof9Fcb3TmSWV06X2x7BJLcklxX5FYLWb1TSCOfuFKOMhE+bi2rVmOb6pAPhSWmQ/f5flu9M+uj64FQQCg==}
@@ -941,8 +955,14 @@ packages:
   '@zag-js/types@1.33.0':
     resolution: {integrity: sha512-Xgq//mL1ZGEY7FEiZj4q5T5Syunihn/MX60GOcaSaSUshEyXnGXDocundAChJVy1zT7vhm0VGjdvbya+Cgd2TA==}
 
+  '@zag-js/types@1.34.0':
+    resolution: {integrity: sha512-0DRMFFfq77ofAQIXQrqieGAOvFezKx6VDrdgMsV7zhQRbTPBXxA7VjDdd0mSSk8sHFiA1AL7Jxzc5zFrQcOpow==}
+
   '@zag-js/utils@1.33.0':
     resolution: {integrity: sha512-zQBCSy3coBWa9XvR8542RwaavZBc0ROFe6zIN8fzeEbOkNfBohcm4BgeHtq7kf6xbFKiWu919XgpqGVRGcQogg==}
+
+  '@zag-js/utils@1.34.0':
+    resolution: {integrity: sha512-rdk7T3M8Rj+Wew7jtQuaWzxT/htbk2PCoLuF2yj3ldef+4txVE2uVQWodeM5mp7vArvMJxXvipnJJtkTXEPNkw==}
 
   acorn-jsx@5.3.2:
     resolution: {integrity: sha512-rq9s+JNhf0IChjtDXxllJ7g41oZk5SlXtp0LHwyA5cejwn7vKmKp4pPri6YEePv2PU65sAsegbXtIinmDFDXgQ==}
@@ -1397,6 +1417,11 @@ packages:
     peerDependencies:
       ripple: 0.2.198
 
+  ripple@0.2.212:
+    resolution: {integrity: sha512-uympB5lNfCkH7+ITqkgqgW7o8MXLFb3jMQQdN8t+E86pwmBpkKtoit1aTjoPVM7aOpcM7vvHS/abrF1DU+/9AA==}
+    peerDependencies:
+      ripple: 0.2.212
+
   rollup@4.56.0:
     resolution: {integrity: sha512-9FwVqlgUHzbXtDg9RCMgodF3Ua4Na6Gau+Sdt9vyCN4RhHfVKX2DCHy3BjMLTDd47ITDhYAnTwGulWTblJSDLg==}
     engines: {node: '>=18.0.0', npm: '>=8.0.0'}
@@ -1783,6 +1808,10 @@ snapshots:
     dependencies:
       acorn: 8.15.0
 
+  '@sveltejs/acorn-typescript@1.0.9(acorn@8.15.0)':
+    dependencies:
+      acorn: 8.15.0
+
   '@swc/helpers@0.5.18':
     dependencies:
       tslib: 2.8.1
@@ -1872,6 +1901,8 @@ snapshots:
       '@zag-js/utils': 1.33.0
 
   '@zag-js/anatomy@1.33.0': {}
+
+  '@zag-js/anatomy@1.34.0': {}
 
   '@zag-js/angle-slider@1.33.0':
     dependencies:
@@ -1968,6 +1999,11 @@ snapshots:
       '@zag-js/dom-query': 1.33.0
       '@zag-js/utils': 1.33.0
 
+  '@zag-js/core@1.34.0':
+    dependencies:
+      '@zag-js/dom-query': 1.34.0
+      '@zag-js/utils': 1.34.0
+
   '@zag-js/date-picker@1.33.0(@internationalized/date@3.10.1)':
     dependencies:
       '@internationalized/date': 3.10.1
@@ -2008,6 +2044,10 @@ snapshots:
   '@zag-js/dom-query@1.33.0':
     dependencies:
       '@zag-js/types': 1.33.0
+
+  '@zag-js/dom-query@1.34.0':
+    dependencies:
+      '@zag-js/types': 1.34.0
 
   '@zag-js/editable@1.33.0':
     dependencies:
@@ -2357,7 +2397,13 @@ snapshots:
     dependencies:
       csstype: 3.2.3
 
+  '@zag-js/types@1.34.0':
+    dependencies:
+      csstype: 3.2.3
+
   '@zag-js/utils@1.33.0': {}
+
+  '@zag-js/utils@1.34.0': {}
 
   acorn-jsx@5.3.2(acorn@8.15.0):
     dependencies:
@@ -2464,18 +2510,18 @@ snapshots:
 
   escape-string-regexp@4.0.0: {}
 
-  eslint-parser-ripple@0.2.152(eslint@9.39.2(jiti@2.6.1))(ripple@0.2.198):
+  eslint-parser-ripple@0.2.152(eslint@9.39.2(jiti@2.6.1))(ripple@0.2.212):
     dependencies:
       acorn: 8.15.0
       acorn-typescript: 1.4.13(acorn@8.15.0)
       eslint: 9.39.2(jiti@2.6.1)
-      ripple: 0.2.198
+      ripple: 0.2.212
 
-  eslint-plugin-ripple@0.2.152(eslint-parser-ripple@0.2.152(eslint@9.39.2(jiti@2.6.1))(ripple@0.2.198))(eslint@9.39.2(jiti@2.6.1)):
+  eslint-plugin-ripple@0.2.152(eslint-parser-ripple@0.2.152(eslint@9.39.2(jiti@2.6.1))(ripple@0.2.212))(eslint@9.39.2(jiti@2.6.1)):
     dependencies:
       eslint: 9.39.2(jiti@2.6.1)
     optionalDependencies:
-      eslint-parser-ripple: 0.2.152(eslint@9.39.2(jiti@2.6.1))(ripple@0.2.198)
+      eslint-parser-ripple: 0.2.152(eslint@9.39.2(jiti@2.6.1))(ripple@0.2.212)
 
   eslint-scope@8.4.0:
     dependencies:
@@ -2689,9 +2735,9 @@ snapshots:
 
   lodash.merge@4.6.2: {}
 
-  lucide-ripple@0.0.7(ripple@0.2.198):
+  lucide-ripple@0.0.7(ripple@0.2.212):
     dependencies:
-      ripple: 0.2.198
+      ripple: 0.2.212
 
   magic-string@0.30.21:
     dependencies:
@@ -2748,10 +2794,10 @@ snapshots:
 
   prelude-ls@1.2.1: {}
 
-  prettier-plugin-ripple@0.2.152(prettier@3.8.1)(ripple@0.2.198):
+  prettier-plugin-ripple@0.2.152(prettier@3.8.1)(ripple@0.2.212):
     dependencies:
       prettier: 3.8.1
-      ripple: 0.2.198
+      ripple: 0.2.212
 
   prettier@3.8.1: {}
 
@@ -2787,6 +2833,21 @@ snapshots:
       ripple: 0.2.198
       zimmerframe: 1.1.4
 
+  ripple@0.2.212:
+    dependencies:
+      '@jridgewell/sourcemap-codec': 1.5.5
+      '@sveltejs/acorn-typescript': 1.0.9(acorn@8.15.0)
+      acorn: 8.15.0
+      clsx: 2.1.1
+      devalue: 5.6.2
+      esm-env: 1.2.2
+      esrap: 2.2.2
+      is-reference: 3.0.3
+      magic-string: 0.30.21
+      muggle-string: 0.4.1
+      ripple: 0.2.212
+      zimmerframe: 1.1.4
+
   rollup@4.56.0:
     dependencies:
       '@types/estree': 1.0.8
@@ -2820,11 +2881,11 @@ snapshots:
 
   routing-machine@0.0.5:
     dependencies:
-      '@zag-js/anatomy': 1.33.0
-      '@zag-js/core': 1.33.0
-      '@zag-js/dom-query': 1.33.0
-      '@zag-js/types': 1.33.0
-      '@zag-js/utils': 1.33.0
+      '@zag-js/anatomy': 1.34.0
+      '@zag-js/core': 1.34.0
+      '@zag-js/dom-query': 1.34.0
+      '@zag-js/types': 1.34.0
+      '@zag-js/utils': 1.34.0
 
   scheduler@0.27.0: {}
 
