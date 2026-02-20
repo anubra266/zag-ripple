@@ -1,0 +1,118 @@
+import * as cascadeSelect from '@zag-js/cascade-select';
+import { normalizeProps, useMachine, Portal } from 'zag-ripple';
+import { track, trackSplit } from 'ripple';
+import { ChevronDown, ChevronRight, Check, X } from 'lucide-ripple';
+
+export component CascadeSelect() {
+	let service = useMachine(cascadeSelect.machine, {
+		id: 'cascade-select',
+		collection,
+	});
+	let api = track(() => cascadeSelect.connect(service, normalizeProps));
+
+	<div {...@api.getRootProps()}>
+		<label {...@api.getLabelProps()}>{"Location"}</label>
+		<div {...@api.getControlProps()}>
+			<button {...@api.getTriggerProps()}>
+				<span>{@api.valueAsString || "Select location"}</span>
+				<ChevronDown size={16} />
+			</button>
+			<button {...@api.getClearTriggerProps()}>
+				<X size={14} />
+			</button>
+		</div>
+		<Portal>
+			<div {...@api.getPositionerProps()}>
+				<div {...@api.getContentProps()}>
+					<TreeNode
+						node={collection.rootNode}
+						indexPath={[]}
+						value={[]}
+						api={api}
+					/>
+				</div>
+			</div>
+		</Portal>
+	</div>
+}
+
+component TreeNode(props) {
+	let [indexPath, value, node, api] = trackSplit(props, ['indexPath', 'value', 'node', 'api']);
+	let nodeProps = track(() => ({ indexPath: @indexPath, value: @value, item: @node }));
+	let nodeState = track(() => @api.getItemState(@nodeProps));
+	let children = track(() => collection.getNodeChildren(@node) || []);
+
+	<ul {...@api.getListProps(@nodeProps)}>
+		for (const item of @children; index i) {
+			let itemIndexPath = [...@indexPath, i];
+			let itemValue = [...@value, collection.getNodeValue(item)];
+			<CascadeItem
+				item={item}
+				indexPath={itemIndexPath}
+				value={itemValue}
+				api={api}
+			/>
+		}
+	</ul>
+	if (@nodeState.highlightedChild && collection.isBranchNode(@nodeState.highlightedChild)) {
+		let highlightedIndexPath = [...@indexPath, @nodeState.highlightedIndex];
+		let highlightedValue = [...@value, collection.getNodeValue(@nodeState.highlightedChild)];
+		<TreeNode
+			node={@nodeState.highlightedChild}
+			indexPath={highlightedIndexPath}
+			value={highlightedValue}
+			api={api}
+		/>
+	}
+}
+
+component CascadeItem(props) {
+	let [item, indexPath, value, api] = trackSplit(props, ['item', 'indexPath', 'value', 'api']);
+	let itemProps = track(() => ({ indexPath: @indexPath, value: @value, item: @item }));
+	let itemState = track(() => @api.getItemState(@itemProps));
+
+	<li {...@api.getItemProps(@itemProps)}>
+		<span {...@api.getItemTextProps(@itemProps)}>{@item.label}</span>
+		if (@itemState.hasChildren) {
+			<ChevronRight size={14} />
+		}
+		<span {...@api.getItemIndicatorProps(@itemProps)}>
+			<Check size={12} />
+		</span>
+	</li>
+}
+
+const collection = cascadeSelect.collection({
+	nodeToValue: (node) => node.value,
+	nodeToString: (node) => node.label,
+	nodeToChildren: (node) => node.children,
+	rootNode: {
+		label: "ROOT",
+		value: "ROOT",
+		children: [
+			{
+				label: "North America",
+				value: "north-america",
+				children: [
+					{
+						label: "United States",
+						value: "us",
+						children: [
+							{ label: "New York", value: "ny" },
+							{ label: "California", value: "ca" },
+						],
+					},
+					{ label: "Canada", value: "canada" },
+				],
+			},
+			{
+				label: "Africa",
+				value: "africa",
+				children: [
+					{ label: "Nigeria", value: "ng" },
+					{ label: "Kenya", value: "ke" },
+				],
+			},
+		],
+	},
+});

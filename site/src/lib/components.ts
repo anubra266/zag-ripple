@@ -21,6 +21,13 @@ export const components = [
       "Displays user profile pictures with fallback initials or placeholder.",
   },
   {
+    label: "Cascade Select",
+    id: "cascade-select",
+    icon: "select",
+    description:
+      "Hierarchical dropdown for selecting values across multiple levels.",
+  },
+  {
     label: "Carousel",
     id: "carousel",
     beta: true,
