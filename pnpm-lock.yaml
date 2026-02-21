@@ -193,10 +193,10 @@ importers:
         version: 7.1.0
       lucide-ripple:
         specifier: ^0.0.7
-        version: 0.0.7(ripple@https://pkg.pr.new/ripple@c5d7ba2)
+        version: 0.0.7(ripple@https://pkg.pr.new/ripple@722)
       ripple:
-        specifier: https://pkg.pr.new/ripple@c5d7ba2
-        version: https://pkg.pr.new/ripple@c5d7ba2
+        specifier: https://pkg.pr.new/ripple@722
+        version: https://pkg.pr.new/ripple@722
       routing-machine:
         specifier: ^0.0.5
         version: 0.0.5
@@ -214,23 +214,23 @@ importers:
         version: link:../packages/zag-ripple
     devDependencies:
       '@ripple-ts/vite-plugin':
-        specifier: https://pkg.pr.new/@ripple-ts/vite-plugin@c5d7ba2
-        version: https://pkg.pr.new/@ripple-ts/vite-plugin@c5d7ba2
+        specifier: https://pkg.pr.new/@ripple-ts/vite-plugin@722
+        version: https://pkg.pr.new/@ripple-ts/vite-plugin@722
       eslint:
         specifier: ^9.0.0
         version: 9.39.3(jiti@2.6.1)
       eslint-parser-ripple:
         specifier: ^0.2.152
-        version: 0.2.152(eslint@9.39.3(jiti@2.6.1))(ripple@https://pkg.pr.new/ripple@c5d7ba2)
+        version: 0.2.152(eslint@9.39.3(jiti@2.6.1))(ripple@https://pkg.pr.new/ripple@722)
       eslint-plugin-ripple:
         specifier: ^0.2.152
-        version: 0.2.152(eslint-parser-ripple@0.2.152(eslint@9.39.3(jiti@2.6.1))(ripple@https://pkg.pr.new/ripple@c5d7ba2))(eslint@9.39.3(jiti@2.6.1))
+        version: 0.2.152(eslint-parser-ripple@0.2.152(eslint@9.39.3(jiti@2.6.1))(ripple@https://pkg.pr.new/ripple@722))(eslint@9.39.3(jiti@2.6.1))
       prettier:
         specifier: ^3.6.2
         version: 3.8.1
       prettier-plugin-ripple:
         specifier: ^0.2.152
-        version: 0.2.152(prettier@3.8.1)(ripple@https://pkg.pr.new/ripple@c5d7ba2)
+        version: 0.2.152(prettier@3.8.1)(ripple@https://pkg.pr.new/ripple@722)
       typescript:
         specifier: ^5.9.2
         version: 5.9.3
@@ -481,12 +481,12 @@ packages:
   '@jridgewell/trace-mapping@0.3.31':
     resolution: {integrity: sha512-zzNR+SdQSDJzc8joaeP8QQoCQr8NuYx2dIIytl1QeBEZHJ9uW6hebsrYgbz8hJwUQao3TWCMtmfV8Nu1twOLAw==}
 
-  '@ripple-ts/adapter@https://pkg.pr.new/Ripple-TS/ripple/@ripple-ts/adapter@c5d7ba2':
-    resolution: {tarball: https://pkg.pr.new/Ripple-TS/ripple/@ripple-ts/adapter@c5d7ba2}
+  '@ripple-ts/adapter@https://pkg.pr.new/Ripple-TS/ripple/@ripple-ts/adapter@c2c5136':
+    resolution: {tarball: https://pkg.pr.new/Ripple-TS/ripple/@ripple-ts/adapter@c2c5136}
     version: 0.2.213
 
-  '@ripple-ts/vite-plugin@https://pkg.pr.new/@ripple-ts/vite-plugin@c5d7ba2':
-    resolution: {tarball: https://pkg.pr.new/@ripple-ts/vite-plugin@c5d7ba2}
+  '@ripple-ts/vite-plugin@https://pkg.pr.new/@ripple-ts/vite-plugin@722':
+    resolution: {tarball: https://pkg.pr.new/@ripple-ts/vite-plugin@722}
     version: 0.2.213
     hasBin: true
 
@@ -1416,8 +1416,8 @@ packages:
     peerDependencies:
       ripple: 0.2.213
 
-  ripple@https://pkg.pr.new/ripple@c5d7ba2:
-    resolution: {tarball: https://pkg.pr.new/ripple@c5d7ba2}
+  ripple@https://pkg.pr.new/ripple@722:
+    resolution: {tarball: https://pkg.pr.new/ripple@722}
     version: 0.2.213
     peerDependencies:
       ripple: 0.2.213
@@ -1724,11 +1724,11 @@ snapshots:
       '@jridgewell/resolve-uri': 3.1.2
       '@jridgewell/sourcemap-codec': 1.5.5
 
-  '@ripple-ts/adapter@https://pkg.pr.new/Ripple-TS/ripple/@ripple-ts/adapter@c5d7ba2': {}
+  '@ripple-ts/adapter@https://pkg.pr.new/Ripple-TS/ripple/@ripple-ts/adapter@c2c5136': {}
 
-  '@ripple-ts/vite-plugin@https://pkg.pr.new/@ripple-ts/vite-plugin@c5d7ba2':
+  '@ripple-ts/vite-plugin@https://pkg.pr.new/@ripple-ts/vite-plugin@722':
     dependencies:
-      '@ripple-ts/adapter': https://pkg.pr.new/Ripple-TS/ripple/@ripple-ts/adapter@c5d7ba2
+      '@ripple-ts/adapter': https://pkg.pr.new/Ripple-TS/ripple/@ripple-ts/adapter@c2c5136
 
   '@rollup/rollup-android-arm-eabi@4.58.0':
     optional: true
@@ -2508,18 +2508,18 @@ snapshots:
 
   escape-string-regexp@4.0.0: {}
 
-  eslint-parser-ripple@0.2.152(eslint@9.39.3(jiti@2.6.1))(ripple@https://pkg.pr.new/ripple@c5d7ba2):
+  eslint-parser-ripple@0.2.152(eslint@9.39.3(jiti@2.6.1))(ripple@https://pkg.pr.new/ripple@722):
     dependencies:
       acorn: 8.16.0
       acorn-typescript: 1.4.13(acorn@8.16.0)
       eslint: 9.39.3(jiti@2.6.1)
-      ripple: https://pkg.pr.new/ripple@c5d7ba2
+      ripple: https://pkg.pr.new/ripple@722
 
-  eslint-plugin-ripple@0.2.152(eslint-parser-ripple@0.2.152(eslint@9.39.3(jiti@2.6.1))(ripple@https://pkg.pr.new/ripple@c5d7ba2))(eslint@9.39.3(jiti@2.6.1)):
+  eslint-plugin-ripple@0.2.152(eslint-parser-ripple@0.2.152(eslint@9.39.3(jiti@2.6.1))(ripple@https://pkg.pr.new/ripple@722))(eslint@9.39.3(jiti@2.6.1)):
     dependencies:
       eslint: 9.39.3(jiti@2.6.1)
     optionalDependencies:
-      eslint-parser-ripple: 0.2.152(eslint@9.39.3(jiti@2.6.1))(ripple@https://pkg.pr.new/ripple@c5d7ba2)
+      eslint-parser-ripple: 0.2.152(eslint@9.39.3(jiti@2.6.1))(ripple@https://pkg.pr.new/ripple@722)
 
   eslint-scope@8.4.0:
     dependencies:
@@ -2733,9 +2733,9 @@ snapshots:
 
   lodash.merge@4.6.2: {}
 
-  lucide-ripple@0.0.7(ripple@https://pkg.pr.new/ripple@c5d7ba2):
+  lucide-ripple@0.0.7(ripple@https://pkg.pr.new/ripple@722):
     dependencies:
-      ripple: https://pkg.pr.new/ripple@c5d7ba2
+      ripple: https://pkg.pr.new/ripple@722
 
   magic-string@0.30.21:
     dependencies:
@@ -2792,10 +2792,10 @@ snapshots:
 
   prelude-ls@1.2.1: {}
 
-  prettier-plugin-ripple@0.2.152(prettier@3.8.1)(ripple@https://pkg.pr.new/ripple@c5d7ba2):
+  prettier-plugin-ripple@0.2.152(prettier@3.8.1)(ripple@https://pkg.pr.new/ripple@722):
     dependencies:
       prettier: 3.8.1
-      ripple: https://pkg.pr.new/ripple@c5d7ba2
+      ripple: https://pkg.pr.new/ripple@722
 
   prettier@3.8.1: {}
 
@@ -2831,7 +2831,7 @@ snapshots:
       ripple: 0.2.213
       zimmerframe: 1.1.4
 
-  ripple@https://pkg.pr.new/ripple@c5d7ba2:
+  ripple@https://pkg.pr.new/ripple@722:
     dependencies:
       '@jridgewell/sourcemap-codec': 1.5.5
       '@sveltejs/acorn-typescript': 1.0.9(acorn@8.16.0)
@@ -2843,7 +2843,7 @@ snapshots:
       is-reference: 3.0.3
       magic-string: 0.30.21
       muggle-string: 0.4.1
-      ripple: https://pkg.pr.new/ripple@c5d7ba2
+      ripple: https://pkg.pr.new/ripple@722
       zimmerframe: 1.1.4
 
   rollup@4.58.0:
