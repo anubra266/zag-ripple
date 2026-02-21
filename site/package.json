@@ -17,14 +17,14 @@
 	},
 	"license": "MIT",
 	"devDependencies": {
+		"@ripple-ts/vite-plugin": "^0.2.213",
 		"eslint": "^9.0.0",
 		"eslint-parser-ripple": "^0.2.152",
 		"eslint-plugin-ripple": "^0.2.152",
 		"prettier": "^3.6.2",
 		"prettier-plugin-ripple": "^0.2.152",
 		"typescript": "^5.9.2",
-		"vite": "^7.1.4",
-		"vite-plugin-ripple": "^0.2.152"
+		"vite": "^7.1.4"
 	},
 	"dependencies": {
 		"@stackblitz/sdk": "^1.11.0",
