@@ -17,7 +17,7 @@
 	},
 	"license": "MIT",
 	"devDependencies": {
-		"@ripple-ts/vite-plugin": "^0.2.213",
+		"@ripple-ts/vite-plugin": "https://pkg.pr.new/@ripple-ts/vite-plugin@c5d7ba2",
 		"eslint": "^9.0.0",
 		"eslint-parser-ripple": "^0.2.152",
 		"eslint-plugin-ripple": "^0.2.152",

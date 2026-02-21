@@ -214,8 +214,8 @@ importers:
         version: link:../packages/zag-ripple
     devDependencies:
       '@ripple-ts/vite-plugin':
-        specifier: ^0.2.213
-        version: 0.2.213
+        specifier: https://pkg.pr.new/@ripple-ts/vite-plugin@c5d7ba2
+        version: https://pkg.pr.new/@ripple-ts/vite-plugin@c5d7ba2
       eslint:
         specifier: ^9.0.0
         version: 9.39.3(jiti@2.6.1)
@@ -481,8 +481,14 @@ packages:
   '@jridgewell/trace-mapping@0.3.31':
     resolution: {integrity: sha512-zzNR+SdQSDJzc8joaeP8QQoCQr8NuYx2dIIytl1QeBEZHJ9uW6hebsrYgbz8hJwUQao3TWCMtmfV8Nu1twOLAw==}
 
-  '@ripple-ts/vite-plugin@0.2.213':
-    resolution: {integrity: sha512-DTGmsQF5TXsaavUhkJ3rag/bdyqqWQfqfctvmZ3p1Jg7JPK9AxDslLh4+QZIuS41015sBhzthz9lcLVQwPvkxw==}
+  '@ripple-ts/adapter@https://pkg.pr.new/Ripple-TS/ripple/@ripple-ts/adapter@c5d7ba2':
+    resolution: {tarball: https://pkg.pr.new/Ripple-TS/ripple/@ripple-ts/adapter@c5d7ba2}
+    version: 0.2.213
+
+  '@ripple-ts/vite-plugin@https://pkg.pr.new/@ripple-ts/vite-plugin@c5d7ba2':
+    resolution: {tarball: https://pkg.pr.new/@ripple-ts/vite-plugin@c5d7ba2}
+    version: 0.2.213
+    hasBin: true
 
   '@rollup/rollup-android-arm-eabi@4.58.0':
     resolution: {integrity: sha512-mr0tmS/4FoVk1cnaeN244A/wjvGDNItZKR8hRhnmCzygyRXYtKF5jVDSIILR1U97CTzAYmbgIj/Dukg62ggG5w==}
@@ -1718,7 +1724,11 @@ snapshots:
       '@jridgewell/resolve-uri': 3.1.2
       '@jridgewell/sourcemap-codec': 1.5.5
 
-  '@ripple-ts/vite-plugin@0.2.213': {}
+  '@ripple-ts/adapter@https://pkg.pr.new/Ripple-TS/ripple/@ripple-ts/adapter@c5d7ba2': {}
+
+  '@ripple-ts/vite-plugin@https://pkg.pr.new/@ripple-ts/vite-plugin@c5d7ba2':
+    dependencies:
+      '@ripple-ts/adapter': https://pkg.pr.new/Ripple-TS/ripple/@ripple-ts/adapter@c5d7ba2
 
   '@rollup/rollup-android-arm-eabi@4.58.0':
     optional: true
