@@ -23,6 +23,7 @@ export const components = [
   {
     label: "Cascade Select",
     id: "cascade-select",
+    beta: true,
     icon: "select",
     description:
       "Hierarchical dropdown for selecting values across multiple levels.",

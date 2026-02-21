@@ -82,7 +82,7 @@
 		"clsx": "^2.1.1",
 		"fuse.js": "^7.1.0",
 		"lucide-ripple": "^0.0.7",
-		"ripple": "^0.2.212",
+		"ripple": "https://pkg.pr.new/ripple@c5d7ba2",
 		"routing-machine": "^0.0.5",
 		"tailwind-merge": "^2.5.5",
 		"tailwindcss": "^4.1.9",
