@@ -9,5 +9,10 @@
   "keywords": [],
   "author": "anubra266",
   "license": "ISC",
-  "packageManager": "pnpm@9.15.0"
+  "packageManager": "pnpm@9.15.0",
+  "pnpm": {
+    "overrides": {
+      "ripple": "https://pkg.pr.new/ripple@722"
+    }
+  }
 }
