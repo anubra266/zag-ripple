@@ -26,7 +26,7 @@ export function bindable<T>(props: () => BindableParams<T>): Bindable<T> {
       if (!@controlled) @v = next
       
       if (!eq(next, prev)) {
-        props().onChange?.(next, prev)
+        queueMicrotask(() => props().onChange?.(next, prev))
       }
     },
     invoke(nextValue, prevValue) {
