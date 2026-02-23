@@ -1,6 +1,7 @@
 export * from "./normalize-props.ripple"
 export * from "./machine.ripple"
 export * from "./portal.ripple"
+export * from "./utils.ripple"
 
 export function mergeProps<T extends Record<string, any>>(...args: T[]): T {
     let result: any = {}
