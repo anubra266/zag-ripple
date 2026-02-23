@@ -58,6 +58,8 @@ export declare function createTrack(
     effectCallback: VoidFunction
 ): void;
 
+// Utils
+export declare function onMount(mount: () => void): void;
 
 
 
