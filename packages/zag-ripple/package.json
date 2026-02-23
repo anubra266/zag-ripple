@@ -16,6 +16,9 @@
   "homepage": "https://github.com/anubra266/zag-ripple#readme",
   "license": "MIT",
   "main": "src/index.ripple",
+  "files": [
+    "src"
+  ],
   "exports": {
     ".": {
       "import": "./src/index.ripple",
