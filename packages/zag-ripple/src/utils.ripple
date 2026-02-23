@@ -1,0 +1,7 @@
+import { effect, untrack } from "ripple"
+
+export function onMount(mount) {
+    effect(() => {
+      return untrack(mount);
+    });
+  }

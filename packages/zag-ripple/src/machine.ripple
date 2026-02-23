@@ -12,16 +12,11 @@ import type {
 } from "@zag-js/core"
 import { createScope, INIT_STATE, MachineStatus } from "@zag-js/core"
 import { ensure, isFunction, isPlainObject, isString, toArray, warn } from "@zag-js/utils"
-import { track, effect, flushSync, untrack } from "ripple"
+import { track, flushSync } from "ripple"
 import { bindable } from "./bindable.ripple"
 import { useRefs } from "./refs.ripple"
 import { createTrack } from "./track.ripple"
-
-function onMount(mount) {
-  effect(() => {
-    return untrack(mount);
-  });
-}
+import { onMount } from "./utils.ripple"
 
 function compact<T extends Record<string, unknown> | undefined>(obj: T): T {
   if (!isPlainObject(obj) || obj === undefined) return obj
