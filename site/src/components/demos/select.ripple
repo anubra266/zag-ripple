@@ -28,7 +28,7 @@ export component Select() {
 		<Portal>
 			<div {...@api.getPositionerProps()}>
 				<ul {...@api.getContentProps()}>
-					for (const item of data) {
+					for (const item of collection.items) {
 						<li {...@api.getItemProps({ item })}>
 							<span {...@api.getItemTextProps({ item })}>{item.label}</span>
 							<span {...@api.getItemIndicatorProps({ item })}>
