@@ -1,14 +1,14 @@
 import type {
   ActionsOrFn,
-  BindableContext,
-  ChooseFn,
-  ComputedFn,
-  EffectsOrFn,
   GuardFn,
   Machine,
   MachineSchema,
-  Params,
   Service,
+  ChooseFn,
+  ComputedFn,
+  EffectsOrFn,
+  BindableContext,
+  Params,
 } from "@zag-js/core"
 import {
   createScope,
@@ -20,59 +20,83 @@ import {
   matchesState,
   resolveStateValue,
 } from "@zag-js/core"
-import { ensure, isFunction, isPlainObject, isString, toArray, warn } from "@zag-js/utils"
-import { track, flushSync } from "ripple"
-import { bindable } from "./bindable.ripple"
-import { useRefs } from "./refs.ripple"
-import { createTrack } from "./track.ripple"
-import { onMount } from "./utils.ripple"
+import { isFunction, isString, toArray, warn, ensure } from "@zag-js/utils"
+import { track, get, untrack, effect } from "ripple"
+import { createBindable } from "./bindable"
+import { isTracked } from "./is-tracked"
+import { createRefs } from "./refs"
+import { createTrack } from "./track"
 
-function compact<T extends Record<string, unknown> | undefined>(obj: T): T {
-  if (!isPlainObject(obj) || obj === undefined) return obj
-  const keys = Reflect.ownKeys(obj).filter((key) => typeof key === "string")
-  const filtered = {}
-  for (const key of keys) {
-    const value = (obj)[key]
-    if (@value !== undefined) {
-      filtered[key] = compact(@value)
-    }
-  }
-  return filtered
+function access<T>(value: any): T {
+  if (isTracked(value)) return get(value) as T
+  if (isFunction(value)) return value()
+  return value as T
 }
 
+/**
+ * Unwrap tracked values and strip undefined — replaces `compact(access(v))`.
+ * Ripple Tracked objects are plain `{}` literals with circular block refs,
+ * so the generic `compact` from @zag-js/utils recurses infinitely into them.
+ * This function unwraps at the top level AND per-property level.
+ */
+function compactProps(raw: any): any {
+  const obj = access<any>(raw)
+  if (obj == null || typeof obj !== "object") return obj
+  const result: any = {}
+  for (const key of Object.keys(obj)) {
+    let v = obj[key]
+    if (v === undefined) continue
+    // Unwrap individual tracked prop values
+    if (isTracked(v)) v = get(v)
+    result[key] = v
+  }
+  return result
+}
+
+/*
+* UseMachine hook for Ripple JS
+* @param machine - The machine to use
+* @param userProps - The user props to use
+* @returns The service
+*/
 export function useMachine<T extends MachineSchema>(
   machine: Machine<T>,
   userProps: Partial<T["props"]> = {},
 ): Service<T> {
-  let scope = track(() => {
-    return createScope({ id: @userProps.@id, ids: @userProps.@ids, getRootNode: @userProps.@getRootNode })
+  const scope = track(() => {
+    const { id, ids, getRootNode } = access<any>(userProps)
+    return createScope({ id, ids, getRootNode })
   })
 
   const debug = (...args: any[]) => {
     if (machine.debug) console.log(...args)
   }
 
-  let props = track(() => {
-    return machine.props?.({ props: compact(@userProps), scope: @scope }) ?? @userProps
-  })
-  
-  const prop = useProp(() => @props)
+  const props: any = track(
+    () =>
+      machine.props?.({
+        props: compactProps(userProps),
+        scope: get(scope),
+      }) ?? access(userProps),
+  )
 
-  const context = machine.context?.({
+  const prop: any = createProp(() => get(props))
+
+  const context: any = machine.context?.({
     prop,
-    bindable: bindable,
+    bindable: createBindable,
     get scope() {
-      return @scope
+      return get(scope)
     },
-    flush: flush,
+    flush,
     getContext() {
-      return ctx
+      return ctx as any
     },
     getComputed() {
-      return computed
+      return computed as any
     },
     getRefs() {
-      return refs
+      return refs as any
     },
     getEvent() {
       return getEvent()
@@ -81,27 +105,27 @@ export function useMachine<T extends MachineSchema>(
 
   const ctx: BindableContext<T> = {
     get(key) {
-      return context?.[key]?.get()
+      return context?.[key].get()
     },
     set(key, value) {
-      context?.[key]?.set(value)
+      context?.[key].set(value)
     },
     initial(key) {
-      return context?.[key]?.initial
+      return context?.[key].initial
     },
     hash(key) {
-      const current = context?.[key]?.get()
-      return context?.[key]?.hash(current)
+      const current = context?.[key].get()
+      return context?.[key].hash(current)
     },
   }
 
-  let effects = new Map()
-  let transitionRef = { current: null }
+  const effects = { current: new Map<string, VoidFunction>() }
+  const transitionRef: { current: any } = { current: null }
 
-  let previousEventRef = { current: null }
-  let eventRef = { current: { type: "" } }
+  const previousEventRef: { current: any } = { current: null }
+  const eventRef: { current: any } = { current: { type: "" } }
 
-  const getEvent = () => ({
+  const getEvent = (): any => ({
     ...eventRef.current,
     current() {
       return eventRef.current
@@ -113,15 +137,17 @@ export function useMachine<T extends MachineSchema>(
 
   const getState = () => ({
     ...state,
-    matches(...values) {
-      return values.some((value) => matchesState(state.get(), value))
+    matches(...values: T["state"][]) {
+      const current = state.get()
+      return values.some((value) => matchesState(current as string, value as string))
     },
-    hasTag(tag) {
-      return hasTag(machine, state.get(), tag)
+    hasTag(tag: T["tag"]) {
+      const current = state.get()
+      return hasTag(machine, current, tag)
     },
   })
 
-  const refs = useRefs(machine.refs?.({ prop, context: ctx }) ?? {})
+  const refs = createRefs(machine.refs?.({ prop, context: ctx }) ?? {})
 
   const getParams = (): Params<T> => ({
     state: getState(),
@@ -135,7 +161,9 @@ export function useMachine<T extends MachineSchema>(
     refs,
     computed,
     flush,
-    scope: @scope,
+    get scope() {
+      return get(scope)
+    },
     choose,
   })
 
@@ -165,7 +193,7 @@ export function useMachine<T extends MachineSchema>(
       if (!fn) warn(`[zag-js] No implementation found for effect "${JSON.stringify(s)}"`)
       return fn
     })
-    const cleanups = []
+    const cleanups: VoidFunction[] = []
     for (const fn of fns) {
       const cleanup = fn?.(getParams())
       if (cleanup) cleanups.push(cleanup)
@@ -187,23 +215,23 @@ export function useMachine<T extends MachineSchema>(
     const fn = machine.computed[key]
     return fn({
       context: ctx,
-      event: getEvent(),
+      event: eventRef.current,
       prop,
       refs,
-      scope: @scope,
+      scope: get(scope),
       computed: computed,
     })
   }
 
-  const state = bindable(() => ({
+  const state = createBindable(() => ({
     defaultValue: resolveStateValue(machine, machine.initialState({ prop })),
-    onChange(nextState: string, prevState: string | undefined) {
+    onChange(nextState, prevState) {
       const { exiting, entering } = getExitEnterStates(machine, prevState, nextState, transitionRef.current?.reenter)
 
       exiting.forEach((item) => {
-        const exitEffects = effects.get(item.path)
+        const exitEffects = effects.current.get(item.path)
         exitEffects?.()
-        effects.delete(item.path)
+        effects.current.delete(item.path)
       })
 
       exiting.forEach((item) => {
@@ -214,13 +242,13 @@ export function useMachine<T extends MachineSchema>(
 
       entering.forEach((item) => {
         const cleanup = effectFn(item.state?.effects)
-        if (cleanup) effects.set(item.path, cleanup)
+        if (cleanup) effects.current.set(item.path, cleanup)
       })
 
       if (prevState === INIT_STATE) {
         action(machine.entry)
         const cleanup = effectFn(machine.effects)
-        if (cleanup) effects.set(INIT_STATE, cleanup)
+        if (cleanup) effects.current.set(INIT_STATE, cleanup)
       }
 
       entering.forEach((item) => {
@@ -231,35 +259,38 @@ export function useMachine<T extends MachineSchema>(
 
   let status = MachineStatus.NotStarted
 
-  onMount(() => {
-    const started = status === MachineStatus.Started
-    status = MachineStatus.Started
-    debug(started ? "rehydrating..." : "initializing...")
-    state.invoke(state.initial, INIT_STATE)
+  // Mount: initialize the machine
+  effect(() => {
+    return untrack(() => {
+      const started = status === MachineStatus.Started
+      status = MachineStatus.Started
+      debug(started ? "rehydrating..." : "initializing...")
+      state.invoke(state.initial!, INIT_STATE)
 
-    return () => {
-      debug("unmounting...")
-      status = MachineStatus.Stopped
+      // Cleanup: teardown the machine
+      return () => {
+        debug("unmounting...")
+        status = MachineStatus.Stopped
 
-      effects.forEach((fn) => fn?.())
-      effects = new Map()
-      transitionRef.current = null
-      
-      action(machine.exit)
-    }
+        const fns = effects.current
+        fns.forEach((fn) => fn?.())
+        effects.current = new Map()
+        transitionRef.current = null
+
+        action(machine.exit)
+      }
+    })
   })
 
-
-  const send = (event) => {
+  const send = (event: any) => {
     if (status !== MachineStatus.Started) return
 
     previousEventRef.current = eventRef.current
     eventRef.current = event
 
-    let currentState = state.get()
+    let currentState = untrack(() => state.get())
 
-    const { transitions, source } = findTransition(machine, currentState, event.type)
-
+    const { transitions, source } = findTransition(machine, currentState, event.type as string)
     const transition = choose(transitions)
     if (!transition) return
 
@@ -275,13 +306,12 @@ export function useMachine<T extends MachineSchema>(
       state.set(target)
     } else if (transition.reenter) {
       // reenter will re-invoke the current state
-      state.invoke?.(currentState, currentState)
+      state.invoke(currentState, currentState)
     } else {
       // call transition actions
-      action(transition.actions ?? [])
+      action(transition.actions)
     }
   }
-  
 
   machine.watch?.(getParams())
 
@@ -293,7 +323,7 @@ export function useMachine<T extends MachineSchema>(
     context: ctx,
     prop,
     get scope() {
-      return @scope
+      return get(scope)
     },
     refs,
     computed,
@@ -301,18 +331,15 @@ export function useMachine<T extends MachineSchema>(
       return getEvent()
     },
     getStatus: () => status,
-  } 
-}
-
-function useProp(value) {
-  return function get(key) {
-    const v = value()[key]
-    return @v
-  }
+  } as Service<T>
 }
 
 function flush(fn: VoidFunction) {
-  flushSync(() => {
-    queueMicrotask(() => fn())
-  })
+  fn()
+}
+
+function createProp<T>(value: () => T) {
+  return function get<K extends keyof T>(key: K): T[K] {
+    return value()[key]
+  }
 }

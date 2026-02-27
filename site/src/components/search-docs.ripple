@@ -1,7 +1,7 @@
 import * as combobox from '@zag-js/combobox';
 import { createFilter } from "@zag-js/i18n-utils"
-import { normalizeProps, useMachine, Portal } from 'zag-ripple';
-import { track } from 'ripple';
+import { normalizeProps, useMachine } from 'zag-ripple';
+import { track, Portal } from 'ripple';
 import { components } from '../lib/components';
 import { Search } from "lucide-ripple";
 import { RouteContext } from "../lib/route-context";
@@ -49,7 +49,7 @@ export component SearchDocs() {
 			</kbd>
         </div>
     </div>
-    <Portal>
+    <Portal target={document.body}>
         <div {...@api.getPositionerProps()}>
             if(@options.length > 0) {
                 <ul {...@api.getContentProps()}>
