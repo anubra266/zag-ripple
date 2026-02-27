@@ -1,0 +1,6 @@
+import { useMachine } from "../dist/index.mjs"
+
+export default component DistHarness({ machine, machineProps, onReady }: any) {
+    const service = useMachine(machine, machineProps ?? {})
+    onReady(service)
+}

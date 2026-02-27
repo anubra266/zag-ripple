@@ -1,0 +1,6 @@
+import { useMachine } from "../src"
+
+export default component MachineHarness({ machine, machineProps, onReady }: any) {
+    const service = useMachine(machine, machineProps ?? {})
+    onReady(service)
+}
