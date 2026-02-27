@@ -38,9 +38,9 @@
     "test": "echo \"No test specified\""
   },
   "dependencies": {
-    "@zag-js/core": "^1.35.0",
-    "@zag-js/types": "^1.35.0",
-    "@zag-js/utils": "^1.35.0"
+    "@zag-js/core": "^1.35.2",
+    "@zag-js/types": "^1.35.2",
+    "@zag-js/utils": "^1.35.2"
   },
   "peerDependencies": {
     "ripple": ">=0.2.0"
