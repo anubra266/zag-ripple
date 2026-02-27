@@ -1,31 +1,33 @@
 import * as select from '@zag-js/select';
-import { normalizeProps, useMachine, Portal } from 'zag-ripple';
-import { track } from 'ripple';
+import { normalizeProps, useMachine } from 'zag-ripple';
+import { track, Portal } from 'ripple';
 import { ChevronDown, Check } from 'lucide-ripple';
 
 export component Select() {
-	const collection = select.collection({
-		items: data,
-		itemToValue: (item) => item.value,
-		itemToString: (item) => item.label,
-	});
+	const collection = select.collection(
+		{
+			items: data,
+			itemToValue: (item) => item.value,
+			itemToString: (item) => item.label,
+		},
+	);
 
 	let service = useMachine(select.machine, {
 		id: 'select',
 		collection,
-		placeholder: "Select option",
+		placeholder: 'Select option',
 	});
 	let api = track(() => select.connect(service, normalizeProps));
 
 	<div {...@api.getRootProps()}>
-		<label {...@api.getLabelProps()}>{"Label"}</label>
+		<label {...@api.getLabelProps()}>{'Label'}</label>
 		<div {...@api.getControlProps()}>
 			<button {...@api.getTriggerProps()}>
-				<span>{@api.valueAsString || "Select option"}</span>
+				<span>{@api.valueAsString || 'Select option'}</span>
 				<ChevronDown />
 			</button>
 		</div>
-		<Portal>
+		<Portal target={document.body}>
 			<div {...@api.getPositionerProps()}>
 				<ul {...@api.getContentProps()}>
 					for (const item of collection.items) {

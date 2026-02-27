@@ -1,126 +1,122 @@
 import * as datePicker from '@zag-js/date-picker';
-import { normalizeProps, useMachine, Portal } from 'zag-ripple';
-import { track } from 'ripple';
+import { normalizeProps, useMachine } from 'zag-ripple';
+import { track, Portal } from 'ripple';
 import { CalendarDays, ChevronLeft, ChevronRight } from 'lucide-ripple';
 
 export component DatePicker() {
 	let service = useMachine(datePicker.machine, {
 		id: 'date-picker',
-        locale: "en-US",
-        selectionMode: "single",
+		locale: 'en-US',
+		selectionMode: 'single',
 	});
 	let api = track(() => datePicker.connect(service, normalizeProps));
 
-    <div {...@api.getControlProps()}>
-        <input {...@api.getInputProps()} />
-        <button {...@api.getTriggerProps()}>
-            <CalendarDays />
-        </button>
-    </div>
-    <Portal>
-        <div {...@api.getPositionerProps()}>
-            <div {...@api.getContentProps()}>
-                <div hidden={@api.view !== "day"}>
-                    <div {...@api.getViewControlProps({ view: "year" })}>
-                        <button {...@api.getPrevTriggerProps()}>
-                            <ChevronLeft />
-                        </button>
-                        <button {...@api.getViewTriggerProps()}>
-                            {@api.visibleRangeText.start}
-                        </button>
-                        <button {...@api.getNextTriggerProps()}>
-                            <ChevronRight />
-                        </button>
-                    </div>
+	<div {...@api.getControlProps()}>
+		<input {...@api.getInputProps()} />
+		<button {...@api.getTriggerProps()}>
+			<CalendarDays />
+		</button>
+	</div>
+	<Portal target={document.body}>
+		<div {...@api.getPositionerProps()}>
+			<div {...@api.getContentProps()}>
+				<div hidden={@api.view !== 'day'}>
+					<div {...@api.getViewControlProps({ view: 'year' })}>
+						<button {...@api.getPrevTriggerProps()}>
+							<ChevronLeft />
+						</button>
+						<button {...@api.getViewTriggerProps()}>{@api.visibleRangeText.start}</button>
+						<button {...@api.getNextTriggerProps()}>
+							<ChevronRight />
+						</button>
+					</div>
 
-                    <table {...@api.getTableProps({ view: "day" })}>
-                        <thead {...@api.getTableHeaderProps({ view: "day" })}>
-                        <tr {...@api.getTableRowProps({ view: "day" })}>
-                            for(let day of @api.weekDays) {
-                                <th scope="col" aria-label={day.long}>
-                                    {day.narrow}
-                                </th>
-                            }
-                        </tr>
-                        </thead>
-                        <tbody {...@api.getTableBodyProps({ view: "day" })}>
-                            for(let week of @api.weeks) {
-                                <tr {...@api.getTableRowProps({ view: "day" })}>
-                                for(let value of week) {
-                                    <td {...@api.getDayTableCellProps({ value })}>
-                                        <div {...@api.getDayTableCellTriggerProps({ value })}>
-                                            {value.day}
-                                        </div>
-                                    </td>
-                                }
-                                </tr>
-                            }
-                        </tbody>
-                    </table>
-                </div>
+					<table {...@api.getTableProps({ view: 'day' })}>
+						<thead {...@api.getTableHeaderProps({ view: 'day' })}>
+							<tr {...@api.getTableRowProps({ view: 'day' })}>
+								for (let day of @api.weekDays) {
+									<th scope="col" aria-label={day.long}>{day.narrow}</th>
+								}
+							</tr>
+						</thead>
+						<tbody {...@api.getTableBodyProps({ view: 'day' })}>
+							for (let week of @api.weeks) {
+								<tr {...@api.getTableRowProps({ view: 'day' })}>
+									for (let value of week) {
+										<td {...@api.getDayTableCellProps({ value })}>
+											<div {...@api.getDayTableCellTriggerProps({ value })}>{value.day}</div>
+										</td>
+									}
+								</tr>
+							}
+						</tbody>
+					</table>
+				</div>
 
-                <div style={{ display: "flex", gap: "40px" }}>
-                    <div hidden={@api.view !== "month"} style={{ width: "100%" }}>
-                        <div {...@api.getViewControlProps({ view: "month" })}>
-                            <button {...@api.getPrevTriggerProps({ view: "month" })}>
-                                <ChevronLeft />
-                            </button>
-                            <button {...@api.getViewTriggerProps({ view: "month" })}>
-                                {@api.visibleRange.start.year}
-                            </button>
-                            <button {...@api.getNextTriggerProps({ view: "month" })}>
-                                <ChevronRight />
-                            </button>
-                        </div>
+				<div style={{display: 'flex', gap: '40px'}}>
+					<div hidden={@api.view !== 'month'} style={{width: '100%'}}>
+						<div {...@api.getViewControlProps({ view: 'month' })}>
+							<button {...@api.getPrevTriggerProps({ view: 'month' })}>
+								<ChevronLeft />
+							</button>
+							<button {...@api.getViewTriggerProps({ view: 'month' })}>
+								{@api.visibleRange.start.year}
+							</button>
+							<button {...@api.getNextTriggerProps({ view: 'month' })}>
+								<ChevronRight />
+							</button>
+						</div>
 
-                        <table {...@api.getTableProps({ view: "month", columns: 4 })}>
-                            <tbody {...@api.getTableBodyProps({ view: "month" })}>
-                                for(let months of @api.getMonthsGrid({ columns: 4, format: "short" })) {
-                                    <tr {...@api.getTableRowProps()}>
-                                    for(let month of months) {
-                                        <td {...@api.getMonthTableCellProps({ ...month, columns: 4 })}>
-                                            <div {...@api.getMonthTableCellTriggerProps({ ...month, columns: 4 })}> 
-                                                {month.label}
-                                            </div>
-                                        </td>
-                                    }
-                                    </tr>
-                                }
-                            </tbody>
-                        </table>
-                    </div>
+						<table {...@api.getTableProps({ view: 'month', columns: 4 })}>
+							<tbody {...@api.getTableBodyProps({ view: 'month' })}>
+								for (let months of @api.getMonthsGrid({ columns: 4, format: 'short' })) {
+									<tr {...@api.getTableRowProps()}>
+										for (let month of months) {
+											<td {...@api.getMonthTableCellProps({ ...month, columns: 4 })}>
+												<div {...@api.getMonthTableCellTriggerProps({ ...month, columns: 4 })}>
+													{month.label}
+												</div>
+											</td>
+										}
+									</tr>
+								}
+							</tbody>
+						</table>
+					</div>
 
-                    <div hidden={@api.view !== "year"} style={{ width: "100%" }}>
-                        <div {...@api.getViewControlProps({ view: "year" })}>
-                        <button {...@api.getPrevTriggerProps({ view: "year" })}>
-                            <ChevronLeft />
-                        </button>
-                        <span>
-                            {@api.getDecade().start}{' - '}{@api.getDecade().end}
-                        </span>
-                        <button {...@api.getNextTriggerProps({ view: "year" })}>
-                            <ChevronRight />
-                        </button>
-                        </div>
+					<div hidden={@api.view !== 'year'} style={{width: '100%'}}>
+						<div {...@api.getViewControlProps({ view: 'year' })}>
+							<button {...@api.getPrevTriggerProps({ view: 'year' })}>
+								<ChevronLeft />
+							</button>
+							<span>
+								{@api.getDecade().start}
+								{' - '}
+								{@api.getDecade().end}
+							</span>
+							<button {...@api.getNextTriggerProps({ view: 'year' })}>
+								<ChevronRight />
+							</button>
+						</div>
 
-                        <table {...@api.getTableProps({ view: "year", columns: 4 })}>
-                        <tbody {...@api.getTableBodyProps()}>
-                            for(let years of @api.getYearsGrid({ columns: 4 })) {
-                                <tr {...@api.getTableRowProps({ view: "year" })}>
-                                    for(let year of years) {
-                                    <td {...@api.getYearTableCellProps({ ...year, columns: 4 })}>
-                                        <div {...@api.getYearTableCellTriggerProps({ ...year, columns: 4 })}>
-                                            {year.label}
-                                        </div>
-                                    </td>
-                                    }
-                                </tr>
-                            }
-                        </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </Portal>
+						<table {...@api.getTableProps({ view: 'year', columns: 4 })}>
+							<tbody {...@api.getTableBodyProps()}>
+								for (let years of @api.getYearsGrid({ columns: 4 })) {
+									<tr {...@api.getTableRowProps({ view: 'year' })}>
+										for (let year of years) {
+											<td {...@api.getYearTableCellProps({ ...year, columns: 4 })}>
+												<div {...@api.getYearTableCellTriggerProps({ ...year, columns: 4 })}>
+													{year.label}
+												</div>
+											</td>
+										}
+									</tr>
+								}
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+	</Portal>
 }

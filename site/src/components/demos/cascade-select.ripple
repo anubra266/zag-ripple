@@ -1,6 +1,6 @@
 import * as cascadeSelect from '@zag-js/cascade-select';
-import { normalizeProps, useMachine, Portal } from 'zag-ripple';
-import { track, trackSplit } from 'ripple';
+import { normalizeProps, useMachine } from 'zag-ripple';
+import { track, trackSplit, Portal } from 'ripple';
 import { ChevronDown, ChevronRight, Check, X } from 'lucide-ripple';
 
 export component CascadeSelect() {
@@ -23,7 +23,7 @@ export component CascadeSelect() {
 				<X size={14} />
 			</button>
 		</div>
-		<Portal>
+		<Portal target={document.body}>
 			<div {...@api.getPositionerProps()}>
 				<div {...@api.getContentProps()}>
 					<TreeNode node={collection.rootNode} indexPath={[]} value={[]} {api} />
@@ -48,8 +48,8 @@ component TreeNode(props) {
 
 	let highlightedChild = track(() => @nodeState.highlightedChild);
 	let highlightedIndexPath = track(() => [...@indexPath, @nodeState.highlightedIndex]);
-	let highlightedValue = track(() =>
-		@nodeState.highlightedChild
+	let highlightedValue = track(
+		() => @nodeState.highlightedChild
 			? [...@value, collection.getNodeValue(@nodeState.highlightedChild)]
 			: @value,
 	);

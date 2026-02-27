@@ -1,137 +1,138 @@
 import * as colorPicker from '@zag-js/color-picker';
-import { normalizeProps, useMachine, Portal } from 'zag-ripple';
+import { normalizeProps, useMachine } from 'zag-ripple';
+import { track, Portal } from 'ripple';
 import { Pipette } from 'lucide-ripple';
-import { track } from 'ripple';
 
 export component ColorPicker() {
 	let service = useMachine(colorPicker.machine, {
 		id: 'color-picker',
-        defaultValue: colorPicker.parse("#38a169").toFormat("hsla"),
-        format: "hsla",
+		defaultValue: colorPicker.parse('#38a169').toFormat('hsla'),
+		format: 'hsla',
 	});
 	let api = track(() => colorPicker.connect(service, normalizeProps));
 
-    <div {...@api.getRootProps()}>
-        <label {...@api.getLabelProps()}>
-            <span>{"Color:"}</span> {@api.value.toString("hex")}
-        </label>
+	<div {...@api.getRootProps()}>
+		<label {...@api.getLabelProps()}>
+			<span>{'Color:'}</span>
+			{@api.value.toString('hex')}
+		</label>
 
-        <div {...@api.getControlProps()}>
-            <button {...@api.getTriggerProps()}>
-                <div {...@api.getTransparencyGridProps({ size: "8px" })} />
-                <div {...@api.getSwatchProps({ value: @api.value })} />
-            </button>
-            <input {...@api.getChannelInputProps({ channel: "hex" })} />
-            <input {...@api.getChannelInputProps({ channel: "alpha" })} />
-        </div>
+		<div {...@api.getControlProps()}>
+			<button {...@api.getTriggerProps()}>
+				<div {...@api.getTransparencyGridProps({ size: '8px' })} />
+				<div {...@api.getSwatchProps({ value: @api.value })} />
+			</button>
+			<input {...@api.getChannelInputProps({ channel: 'hex' })} />
+			<input {...@api.getChannelInputProps({ channel: 'alpha' })} />
+		</div>
 
-        <Portal>
-            <div {...@api.getPositionerProps()}>
-                <div {...@api.getContentProps()}>
-                    <div>
-                        <div {...@api.getAreaProps()}>
-                            <div {...@api.getAreaBackgroundProps()} />
-                            <div {...@api.getAreaThumbProps()} />
-                        </div>
+		<Portal target={document.body}>
+			<div {...@api.getPositionerProps()}>
+				<div {...@api.getContentProps()}>
+					<div>
+						<div {...@api.getAreaProps()}>
+							<div {...@api.getAreaBackgroundProps()} />
+							<div {...@api.getAreaThumbProps()} />
+						</div>
 
-                        <div>
-                            <div>
-                            <div {...@api.getChannelSliderProps({ channel: "hue" })}>
-                                <div {...@api.getChannelSliderTrackProps({ channel: "hue" })} />
-                                <div {...@api.getChannelSliderThumbProps({ channel: "hue" })} />
-                            </div>
+						<div>
+							<div>
+								<div {...@api.getChannelSliderProps({ channel: 'hue' })}>
+									<div {...@api.getChannelSliderTrackProps({ channel: 'hue' })} />
+									<div {...@api.getChannelSliderThumbProps({ channel: 'hue' })} />
+								</div>
 
-                            <div {...@api.getChannelSliderProps({ channel: "alpha" })}>
-                                <div {...@api.getTransparencyGridProps({ size: "12px" })} />
-                                <div  {...@api.getChannelSliderTrackProps({ channel: "alpha" })}/>
-                                <div {...@api.getChannelSliderThumbProps({ channel: "alpha" })} />
-                            </div>
-                            </div>
-                            <button {...@api.getEyeDropperTriggerProps()}>
-                            <Pipette />
-                            </button>
-                        </div>
+								<div {...@api.getChannelSliderProps({ channel: 'alpha' })}>
+									<div {...@api.getTransparencyGridProps({ size: '12px' })} />
+									<div {...@api.getChannelSliderTrackProps({ channel: 'alpha' })} />
+									<div {...@api.getChannelSliderThumbProps({ channel: 'alpha' })} />
+								</div>
+							</div>
+							<button {...@api.getEyeDropperTriggerProps()}>
+								<Pipette />
+							</button>
+						</div>
 
-                        if(@api.format.startsWith("hsl")) {
-                            <div>
-                            <div>
-                                <input {...@api.getChannelInputProps({ channel: "hue" })} />
-                                <span>{"H"}</span>
-                            </div>
-                            <div>
-                                <input {...@api.getChannelInputProps({ channel: "saturation" })} />
-                                <span>{"S"}</span>
-                            </div>
-                            <div>
-                                <input {...@api.getChannelInputProps({ channel: "lightness" })} />
-                                <span>{"L"}</span>
-                            </div>
-                            <div>
-                                <input {...@api.getChannelInputProps({ channel: "alpha" })} />
-                                <span>{"A"}</span>
-                            </div>
-                            </div>
-                        }
+						if (@api.format.startsWith('hsl')) {
+							<div>
+								<div>
+									<input {...@api.getChannelInputProps({ channel: 'hue' })} />
+									<span>{'H'}</span>
+								</div>
+								<div>
+									<input {...@api.getChannelInputProps({ channel: 'saturation' })} />
+									<span>{'S'}</span>
+								</div>
+								<div>
+									<input {...@api.getChannelInputProps({ channel: 'lightness' })} />
+									<span>{'L'}</span>
+								</div>
+								<div>
+									<input {...@api.getChannelInputProps({ channel: 'alpha' })} />
+									<span>{'A'}</span>
+								</div>
+							</div>
+						}
 
-                        if(@api.format.startsWith("rgb")) {
-                            <div>
-                            <div>
-                                <input {...@api.getChannelInputProps({ channel: "red" })} />
-                                <span>{"R"}</span>
-                            </div>
-                            <div>
-                                <input {...@api.getChannelInputProps({ channel: "green" })} />
-                                <span>{"G"}</span>
-                            </div>
-                            <div>
-                                <input {...@api.getChannelInputProps({ channel: "blue" })} />
-                                <span>{"B"}</span>
-                            </div>
-                            <div>
-                                <input {...@api.getChannelInputProps({ channel: "alpha" })} />
-                                <span>{"A"}</span>
-                            </div>
-                            </div>
-                        }
+						if (@api.format.startsWith('rgb')) {
+							<div>
+								<div>
+									<input {...@api.getChannelInputProps({ channel: 'red' })} />
+									<span>{'R'}</span>
+								</div>
+								<div>
+									<input {...@api.getChannelInputProps({ channel: 'green' })} />
+									<span>{'G'}</span>
+								</div>
+								<div>
+									<input {...@api.getChannelInputProps({ channel: 'blue' })} />
+									<span>{'B'}</span>
+								</div>
+								<div>
+									<input {...@api.getChannelInputProps({ channel: 'alpha' })} />
+									<span>{'A'}</span>
+								</div>
+							</div>
+						}
 
-                        if(@api.format.startsWith("hsb")) {
-                            <div>
-                            <div>
-                                <input {...@api.getChannelInputProps({ channel: "hue" })} />
-                                <span>{"H"}</span>
-                            </div>
-                            <div>
-                                <input {...@api.getChannelInputProps({ channel: "saturation" })} />
-                                <span>{"S"}</span>
-                            </div>
-                            <div>
-                                <input {...@api.getChannelInputProps({ channel: "brightness" })} />
-                                <span>{"B"}</span>
-                            </div>
-                            <div>
-                                <input {...@api.getChannelInputProps({ channel: "alpha" })} />
-                                <span>{"A"}</span>
-                            </div>
-                            </div>
-                        }
+						if (@api.format.startsWith('hsb')) {
+							<div>
+								<div>
+									<input {...@api.getChannelInputProps({ channel: 'hue' })} />
+									<span>{'H'}</span>
+								</div>
+								<div>
+									<input {...@api.getChannelInputProps({ channel: 'saturation' })} />
+									<span>{'S'}</span>
+								</div>
+								<div>
+									<input {...@api.getChannelInputProps({ channel: 'brightness' })} />
+									<span>{'B'}</span>
+								</div>
+								<div>
+									<input {...@api.getChannelInputProps({ channel: 'alpha' })} />
+									<span>{'A'}</span>
+								</div>
+							</div>
+						}
 
-                        <hr />
+						<hr />
 
-                        <div {...@api.getSwatchGroupProps()}>
-                            <p>{"Swatches"}</p>
-                            let presets = ["#f47373", "#697689", "#38a169", "#3182ce"]
-                            for(let preset of presets) {
-                                <button {...@api.getSwatchTriggerProps({ value: preset })}>
-                                <div>
-                                <div {...@api.getTransparencyGridProps({ size: "4px" })} />
-                                <div {...@api.getSwatchProps({ value: preset })} />
-                                </div>
-                            </button>
-                            }
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </Portal>
-    </div>
+						<div {...@api.getSwatchGroupProps()}>
+							<p>{'Swatches'}</p>
+							let presets = ['#f47373', '#697689', '#38a169', '#3182ce'];
+							for (let preset of presets) {
+								<button {...@api.getSwatchTriggerProps({ value: preset })}>
+									<div>
+										<div {...@api.getTransparencyGridProps({ size: '4px' })} />
+										<div {...@api.getSwatchProps({ value: preset })} />
+									</div>
+								</button>
+							}
+						</div>
+					</div>
+				</div>
+			</div>
+		</Portal>
+	</div>
 }

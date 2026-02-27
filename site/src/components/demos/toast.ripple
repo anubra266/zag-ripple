@@ -1,14 +1,16 @@
 import * as toast from '@zag-js/toast';
-import { normalizeProps, useMachine, Portal } from 'zag-ripple';
-import { track, trackSplit } from 'ripple';
+import { normalizeProps, useMachine } from 'zag-ripple';
+import { track, trackSplit, Portal } from 'ripple';
 import { X, Info, Check, TriangleAlert, CircleAlert, Loader } from 'lucide-ripple';
 
-const toaster = toast.createStore({
-	overlap: true,
-	placement: "bottom-end",
-	offsets: "24px",
-	gap: 24,
-});
+const toaster = toast.createStore(
+	{
+		overlap: true,
+		placement: 'bottom-end',
+		offsets: '24px',
+		gap: 24,
+	},
+);
 
 export component ToastGroup() {
 	let service = useMachine(toast.group.machine, {
@@ -17,140 +19,136 @@ export component ToastGroup() {
 	});
 	let api = track(() => toast.group.connect(service, normalizeProps));
 
-    <Portal>
-        <div {...@api.getGroupProps()}>
-            for (const toastItem of @api.getToasts(); index index; key toastItem.id) {
-                <ToastItem
-                    actor={toastItem}
-                    index={index}
-                    parent={service}
-                />
-            }
-        </div>
-    </Portal>
+	<Portal target={document.body}>
+		<div {...@api.getGroupProps()}>
+			for (const toastItem of @api.getToasts(); index index; key toastItem.id) {
+				<ToastItem actor={toastItem} {index} parent={service} />
+			}
+		</div>
+	</Portal>
 
-    <div data-scope="toast" data-part="trigger-group">
-        <button
-            data-scope="toast"
-            data-part="trigger"
-            data-type="info"
-            onClick={() => {
-                toaster.create({
-                    title: "New message received",
-                    description: "You have a new notification in your inbox.",
-                    type: "info",
-                });
-            }}
-        >
-            <Info size={16} />
-            {"Info"}
-        </button>
+	<div data-scope="toast" data-part="trigger-group">
+		<button
+			data-scope="toast"
+			data-part="trigger"
+			data-type="info"
+			onClick={() => {
+				toaster.create(
+					{
+						title: 'New message received',
+						description: 'You have a new notification in your inbox.',
+						type: 'info',
+					},
+				);
+			}}
+		>
+			<Info size={16} />
+			{'Info'}
+		</button>
 
-        <button
-            data-scope="toast"
-            data-part="trigger"
-            data-type="success"
-            onClick={() => {
-                toaster.create({
-                    title: "Success!",
-                    description: "Your changes have been saved successfully.",
-                    type: "success",
-                });
-            }}
-        >
-            <Check size={16} />
-            {"Success"}
-        </button>
+		<button
+			data-scope="toast"
+			data-part="trigger"
+			data-type="success"
+			onClick={() => {
+				toaster.create(
+					{
+						title: 'Success!',
+						description: 'Your changes have been saved successfully.',
+						type: 'success',
+					},
+				);
+			}}
+		>
+			<Check size={16} />
+			{'Success'}
+		</button>
 
-        <button
-            data-scope="toast"
-            data-part="trigger"
-            data-type="warning"
-            onClick={() => {
-                toaster.create({
-                    title: "Warning",
-                    description: "Please review your input before proceeding.",
-                    type: "warning",
-                });
-            }}
-        >
-            <TriangleAlert size={16} />
-            {"Warning"}
-        </button>
+		<button
+			data-scope="toast"
+			data-part="trigger"
+			data-type="warning"
+			onClick={() => {
+				toaster.create(
+					{
+						title: 'Warning',
+						description: 'Please review your input before proceeding.',
+						type: 'warning',
+					},
+				);
+			}}
+		>
+			<TriangleAlert size={16} />
+			{'Warning'}
+		</button>
 
-        <button
-            data-scope="toast"
-            data-part="trigger"
-            data-type="error"
-            onClick={() => {
-                toaster.create({
-                    title: "Error occurred",
-                    description: "Unable to complete the request. Please try again.",
-                    type: "error",
-                });
-            }}
-        >
-            <CircleAlert size={16} />
-            {"Error"}
-        </button>
+		<button
+			data-scope="toast"
+			data-part="trigger"
+			data-type="error"
+			onClick={() => {
+				toaster.create(
+					{
+						title: 'Error occurred',
+						description: 'Unable to complete the request. Please try again.',
+						type: 'error',
+					},
+				);
+			}}
+		>
+			<CircleAlert size={16} />
+			{'Error'}
+		</button>
 
-        <button
-            data-scope="toast"
-            data-part="trigger"
-            data-type="loading"
-            onClick={() => {
-                toaster.create({
-                    title: "Processing...",
-                    description: "Please wait while we process your request.",
-                    type: "loading",
-                });
-            }}
-        >
-            <Loader size={16} />
-            {"Loading"}
-        </button>
-    </div>
+		<button
+			data-scope="toast"
+			data-part="trigger"
+			data-type="loading"
+			onClick={() => {
+				toaster.create(
+					{
+						title: 'Processing...',
+						description: 'Please wait while we process your request.',
+						type: 'loading',
+					},
+				);
+			}}
+		>
+			<Loader size={16} />
+			{'Loading'}
+		</button>
+	</div>
 }
 
-
-
 component ToastItem(props) {
-    let [index, actor, parent] = trackSplit(props, ['index', 'actor', 'parent']);
+	let [index, actor, parent] = trackSplit(props, ['index', 'actor', 'parent']);
 
-    let composedProps = track(() => ({...@actor, index, parent}));
+	let composedProps = track(() => ({ ...@actor, index, parent }));
 	let service = useMachine(toast.machine, composedProps);
 	let api = track(() => toast.connect(service, normalizeProps));
 
 	<div {...@api.getRootProps()}>
 		<span {...@api.getGhostBeforeProps()} />
-		
+
 		<div data-scope="toast" data-part="content">
 			<div data-scope="toast" data-part="icon">
-				if (@api.type === "success") {
+				if (@api.type === 'success') {
 					<Check size={20} />
-				}
-				else if (@api.type === "warning") {
+				} else if (@api.type === 'warning') {
 					<TriangleAlert size={20} />
-				}
-				else if (@api.type === "error") {
+				} else if (@api.type === 'error') {
 					<CircleAlert size={20} />
-				}
-				else if (@api.type === "loading") {
+				} else if (@api.type === 'loading') {
 					<Loader size={20} />
-				}
-				else {
-					<Info size={20}  />
+				} else {
+					<Info size={20} />
 				}
 			</div>
-			
+
 			<div data-scope="toast" data-part="text">
-				<div {...@api.getTitleProps()}>
-					{@api.title}
-				</div>
+				<div {...@api.getTitleProps()}>{@api.title}</div>
 				if (@api.description) {
-					<div {...@api.getDescriptionProps()}>
-						{@api.description}
-					</div>
+					<div {...@api.getDescriptionProps()}>{@api.description}</div>
 				}
 			</div>
 		</div>
