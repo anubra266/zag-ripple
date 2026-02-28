@@ -35,7 +35,7 @@ jobs:
         with:
           publish: pnpm release
           commit: "ci(changesets): version packages"
-          setupGitUser: false
+          createGithubReleases: true
         env:
           NPM_CONFIG_PROVENANCE: true
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
