@@ -33,16 +33,9 @@ jobs:
         id: changesets
         uses: changesets/action@v1
         with:
-          publish: pnpm release
+          publish: pnpm release && git push --follow-tags
           commit: "ci(changesets): version packages"
           createGithubReleases: true
-        env:
-          NPM_CONFIG_PROVENANCE: true
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: Release to dev tag
-        if: steps.changesets.outputs.published != 'true'
-        run: pnpm release-dev
         env:
           NPM_CONFIG_PROVENANCE: true
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

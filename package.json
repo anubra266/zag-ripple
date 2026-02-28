@@ -8,8 +8,7 @@
     "build": "pnpm --filter=./packages/* build",
     "changeset": "changeset",
     "version": "changeset version",
-    "release": "changeset publish",
-    "release-dev": "changeset version --snapshot dev && changeset publish --tag dev"
+    "release": "changeset publish"
   },
   "keywords": [],
   "author": "anubra266",
