@@ -5,11 +5,11 @@
   "scripts": {
     "test": "echo \"No test specified\"",
     "site": "pnpm --filter=./site",
+    "build": "pnpm --filter=./packages/* build",
     "changeset": "changeset",
     "version": "changeset version",
-    "build": "pnpm --filter=./packages/* build",
-    "release": "pnpm --filter=./packages/* release",
-    "release-dev": "pnpm --filter=./packages/* release-dev"
+    "release": "changeset publish",
+    "release-dev": "changeset version --snapshot dev && changeset publish --tag dev"
   },
   "keywords": [],
   "author": "anubra266",
