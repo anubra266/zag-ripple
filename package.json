@@ -4,7 +4,10 @@
   "description": "RippleJS Adapter for Zag JS",
   "scripts": {
     "test": "echo \"No test specified\"",
-    "site": "pnpm --filter=./site"
+    "site": "pnpm --filter=./site",
+    "changeset": "changeset",
+    "version": "changeset version",
+    "release": "pnpm --filter=./packages/* build && changeset publish"
   },
   "keywords": [],
   "author": "anubra266",
@@ -14,5 +17,8 @@
     "overrides": {
       "ripple": "https://pkg.pr.new/ripple@722"
     }
+  },
+  "devDependencies": {
+    "@changesets/cli": "^2.29.8"
   }
 }
