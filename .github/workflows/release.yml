@@ -33,9 +33,12 @@ jobs:
         id: changesets
         uses: changesets/action@v1
         with:
-          publish: pnpm release && git push --follow-tags
+          publish: pnpm release
           commit: "ci(changesets): version packages"
           createGithubReleases: true
         env:
           NPM_CONFIG_PROVENANCE: true
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Push tags
+        run: git push --follow-tags
