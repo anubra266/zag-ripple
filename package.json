@@ -7,7 +7,9 @@
     "site": "pnpm --filter=./site",
     "changeset": "changeset",
     "version": "changeset version",
-    "release": "pnpm --filter=./packages/* build && changeset publish"
+    "build": "pnpm --filter=./packages/* build",
+    "release": "pnpm --filter=./packages/* release",
+    "release-dev": "pnpm --filter=./packages/* release-dev"
   },
   "keywords": [],
   "author": "anubra266",
