@@ -1,5 +1,11 @@
 # zag-ripple
 
+## 0.1.1
+
+### Patch Changes
+
+- [`267f463`](https://github.com/anubra266/zag-ripple/commit/267f46317a05a21e8f2a65fd5abc68c209f09ce0) Thanks [@anubra266](https://github.com/anubra266)! - Bump
+
 ## 0.1.0
 
 ### Minor Changes
