@@ -1244,3 +1244,176 @@ describe("uniform coverage", () => {
     expect(seen).toEqual(["GO_B", "GO_C"])
   })
 })
+
+describe("controlled state", () => {
+  test("watch reacts to tracked prop changes (controlled open pattern)", async () => {
+    const watchSpy = vi.fn()
+
+    const machine = createMachine<any>({
+      initialState({ prop }) {
+        return prop("open") ? "open" : "closed"
+      },
+      watch({ track, prop, action }) {
+        track([() => prop("open")], () => {
+          action(["toggleVisibility"])
+        })
+      },
+      states: {
+        closed: {
+          on: {
+            "controlled.open": { target: "open" },
+          },
+        },
+        open: {
+          on: {
+            "controlled.close": { target: "closed" },
+          },
+        },
+      },
+      implementations: {
+        actions: {
+          toggleVisibility({ prop, send }) {
+            watchSpy(prop("open"))
+            send({ type: prop("open") ? "controlled.open" : "controlled.close" })
+          },
+        },
+      },
+    })
+
+    // Use the controlled harness that manages tracked values inside a component
+    const { mount, tick } = await import("ripple")
+    const { default: ControlledHarness } = await import("./ControlledHarness.ripple")
+
+    let ctrl: any
+    const target = document.createElement("div")
+    document.body.appendChild(target)
+
+    mount(ControlledHarness, {
+      target,
+      props: {
+        machine,
+        initialOpen: false,
+        onReady(api: any) {
+          ctrl = api
+        },
+      },
+    })
+    await tick()
+
+    // Initially closed
+    expect(ctrl.service.state.get()).toBe("closed")
+
+    // Toggle open via tracked prop
+    ctrl.setOpen(true)
+    await tick()
+    await Promise.resolve()
+
+    expect(watchSpy).toHaveBeenCalledWith(true)
+    expect(ctrl.service.state.get()).toBe("open")
+
+    // Toggle closed via tracked prop
+    ctrl.setOpen(false)
+    await tick()
+    await Promise.resolve()
+
+    expect(watchSpy).toHaveBeenCalledWith(false)
+    expect(ctrl.service.state.get()).toBe("closed")
+
+    target.remove()
+  })
+})
+
+describe("re-entrant send (keyboard nav pattern)", () => {
+  test("focusedValue updates when action triggers re-entrant blur/focus sends", async () => {
+    // This mimics the accordion keyboard navigation pattern:
+    // ArrowDown → GOTO.NEXT action → calls .focus() on next element
+    // → blur fires on current → send(TRIGGER.BLUR) mid-action
+    // → focus fires on next → send(TRIGGER.FOCUS) mid-action
+    // The machine must correctly process all three events.
+
+    const log: string[] = []
+
+    const machine = createMachine<any>({
+      initialState() {
+        return "idle"
+      },
+      context({ bindable }) {
+        return {
+          focusedValue: bindable(() => ({ defaultValue: null as string | null })),
+        }
+      },
+      states: {
+        idle: {
+          on: {
+            "TRIGGER.FOCUS": {
+              target: "focused",
+              actions: ["setFocusedValue"],
+            },
+          },
+        },
+        focused: {
+          on: {
+            "GOTO.NEXT": {
+              actions: ["focusNext"],
+            },
+            "TRIGGER.FOCUS": {
+              actions: ["setFocusedValue"],
+            },
+            "TRIGGER.BLUR": {
+              target: "idle",
+              actions: ["clearFocusedValue"],
+            },
+          },
+        },
+      },
+      implementations: {
+        actions: {
+          setFocusedValue({ context, event }) {
+            log.push(`setFocusedValue: ${event.value}`)
+            context.set("focusedValue", event.value)
+          },
+          clearFocusedValue({ context }) {
+            log.push(`clearFocusedValue`)
+            context.set("focusedValue", null)
+          },
+          focusNext({ context, send }) {
+            const current = context.get("focusedValue")
+            log.push(`focusNext: current=${current}`)
+            const items = ["home", "about", "contact"]
+            const idx = items.indexOf(current!)
+            const next = items[(idx + 1) % items.length]
+            log.push(`focusNext: next=${next}`)
+
+            // Simulate what .focus() does: triggers blur on current, then focus on next
+            // These sends are RE-ENTRANT (called during an action)
+            send({ type: "TRIGGER.BLUR" })
+            send({ type: "TRIGGER.FOCUS", value: next })
+          },
+        },
+      },
+    })
+
+    const { result, send } = await renderMachine(machine)
+
+    // 1) Focus "home"
+    await send({ type: "TRIGGER.FOCUS", value: "home" })
+    expect(result.state.get()).toBe("focused")
+    expect(result.context.get("focusedValue")).toBe("home")
+    log.push("---")
+
+    // 2) ArrowDown: GOTO.NEXT should move focus from "home" → "about"
+    await send({ type: "GOTO.NEXT" })
+    log.push(`after GOTO.NEXT #1: state=${result.state.get()}, focused=${result.context.get("focusedValue")}`)
+    log.push("---")
+
+    // 3) ArrowDown: GOTO.NEXT should move focus from "about" → "contact"
+    await send({ type: "GOTO.NEXT" })
+    log.push(`after GOTO.NEXT #2: state=${result.state.get()}, focused=${result.context.get("focusedValue")}`)
+
+    console.log("REENTRANT SEND LOG:", JSON.stringify(log, null, 2))
+
+    // Verify the final state
+    expect(result.context.get("focusedValue")).toBe("contact")
+    expect(result.state.get()).toBe("focused")
+  })
+})

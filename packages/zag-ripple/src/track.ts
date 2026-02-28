@@ -1,12 +1,6 @@
-import { isEqual, isFunction } from "@zag-js/utils"
-import { effect, get } from "ripple"
-import { isTracked } from "./is-tracked"
-
-function access<T>(v: T | (() => T)): T {
-  if (isFunction(v)) return v()
-  if (isTracked(v)) return get(v as any) as T
-  return v
-}
+import { isEqual } from "@zag-js/utils"
+import { effect } from "ripple"
+import { access } from "./utils"
 
 export const createTrack = (deps: any[], fn: VoidFunction) => {
   let prevDeps: any[] = []

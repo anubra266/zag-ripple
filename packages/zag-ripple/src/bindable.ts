@@ -32,6 +32,14 @@ export function createBindable<T>(props: () => BindableParams<T>): Bindable<T> {
     }
 
     if (!get(controlledSignal)) set(valueSignal, next)
+
+    // Synchronously update refs so re-entrant calls (e.g. focus/blur
+    // events triggered by .focus() inside an action) see the correct
+    // previous value. The async effect also syncs these, but it is
+    // batched and won't flush between re-entrant send() calls.
+    valueRef.current = next
+    prevValue.current = next
+
     if (!eq(next, prev)) {
       props().onChange?.(next, prev)
     }

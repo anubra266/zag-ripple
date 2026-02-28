@@ -21,39 +21,17 @@ import {
   resolveStateValue,
 } from "@zag-js/core"
 import { isFunction, isString, toArray, warn, ensure } from "@zag-js/utils"
-import { track, get, untrack, effect } from "ripple"
+import { track, get, untrack, effect, type Tracked } from "ripple"
 import { createBindable } from "./bindable"
-import { isTracked } from "./is-tracked"
 import { createRefs } from "./refs"
 import { createTrack } from "./track"
+import { access, compact } from "./utils"
 
-function access<T>(value: any): T {
-  if (isTracked(value)) return get(value) as T
-  if (isFunction(value)) return value()
-  return value as T
+type MaybeTracked<T> = {
+  [K in keyof T]?: T[K] | Tracked<T[K]>
 }
 
 /**
- * Unwrap tracked values and strip undefined — replaces `compact(access(v))`.
- * Ripple Tracked objects are plain `{}` literals with circular block refs,
- * so the generic `compact` from @zag-js/utils recurses infinitely into them.
- * This function unwraps at the top level AND per-property level.
- */
-function compactProps(raw: any): any {
-  const obj = access<any>(raw)
-  if (obj == null || typeof obj !== "object") return obj
-  const result: any = {}
-  for (const key of Object.keys(obj)) {
-    let v = obj[key]
-    if (v === undefined) continue
-    // Unwrap individual tracked prop values
-    if (isTracked(v)) v = get(v)
-    result[key] = v
-  }
-  return result
-}
-
-/*
 * UseMachine hook for Ripple JS
 * @param machine - The machine to use
 * @param userProps - The user props to use
@@ -61,7 +39,7 @@ function compactProps(raw: any): any {
 */
 export function useMachine<T extends MachineSchema>(
   machine: Machine<T>,
-  userProps: Partial<T["props"]> = {},
+  userProps: MaybeTracked<T["props"]> = {},
 ): Service<T> {
   const scope = track(() => {
     const { id, ids, getRootNode } = access<any>(userProps)
@@ -73,11 +51,13 @@ export function useMachine<T extends MachineSchema>(
   }
 
   const props: any = track(
-    () =>
-      machine.props?.({
-        props: compactProps(userProps),
+    () => {
+      const unwrapped = compact(access(userProps))
+      return machine.props?.({
+        props: unwrapped,
         scope: get(scope),
-      }) ?? access(userProps),
+      }) ?? unwrapped
+    },
   )
 
   const prop: any = createProp(() => get(props))

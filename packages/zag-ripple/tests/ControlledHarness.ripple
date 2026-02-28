@@ -1,0 +1,18 @@
+import { useMachine } from "../src"
+import { track } from "ripple"
+
+export default component ControlledHarness({ machine, initialOpen, onReady }: any) {
+    let open = track(initialOpen ?? false)
+
+    const service = useMachine(machine, { id: "test", open })
+
+    onReady({
+        service,
+        setOpen(value: boolean) {
+            @open = value
+        },
+        getOpen() {
+            return @open
+        },
+    })
+}
