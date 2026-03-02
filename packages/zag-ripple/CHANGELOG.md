@@ -1,5 +1,11 @@
 # zag-ripple
 
+## 0.1.2
+
+### Patch Changes
+
+- [`867e85f`](https://github.com/anubra266/zag-ripple/commit/867e85f68cc40d2164d6e2c751b5b82495f209f2) Thanks [@anubra266](https://github.com/anubra266)! - Export proptypes
+
 ## 0.1.1
 
 ### Patch Changes
