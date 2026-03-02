@@ -1,8 +1,11 @@
 import { createNormalizer } from "@zag-js/types"
 import { isNumber, isObject, isString } from "@zag-js/utils"
 
-
-type PropTypes<T = Dict> = Record<"button" | "label" | "input" | "textarea" | "img" | "output" | "element" | "select" | "rect" | "style" | "circle" | "svg" | "path", T>;
+type HTMLAttributes = JSX.IntrinsicElements['head'];
+export type PropTypes = JSX.IntrinsicElements & {
+  element: HTMLAttributes;
+  style: Record<string, any>;
+};
 
 const eventMap: Record<string, string> = {
   onFocus: "onFocusIn",
