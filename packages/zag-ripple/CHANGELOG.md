@@ -1,5 +1,11 @@
 # zag-ripple
 
+## 0.1.3
+
+### Patch Changes
+
+- [`e6fd1bc`](https://github.com/anubra266/zag-ripple/commit/e6fd1bc5da35fb983bf00469f60be890dd6a14d2) Thanks [@anubra266](https://github.com/anubra266)! - Enhance createBindable function to support synchronous updates with flushSync
+
 ## 0.1.2
 
 ### Patch Changes
