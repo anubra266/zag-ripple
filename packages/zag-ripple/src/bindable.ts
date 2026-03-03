@@ -1,6 +1,6 @@
 import type { Bindable, BindableParams } from "@zag-js/core"
-import { isFunction } from "@zag-js/utils"
-import { track, get, set, effect, untrack } from "ripple"
+import { isFunction, identity } from "@zag-js/utils"
+import { track, get, set, effect, untrack, flushSync } from "ripple"
 
 export function createBindable<T>(props: () => BindableParams<T>): Bindable<T> {
   const initial = props().value ?? props().defaultValue
@@ -24,6 +24,11 @@ export function createBindable<T>(props: () => BindableParams<T>): Bindable<T> {
   })
 
   const setFn = (v: T | ((prev: T) => T)) => {
+    const exec = props().sync ? flushSync : identity
+    untrack(() => exec(() => setValueFn(v)))
+  }
+
+  const setValueFn = (v: T | ((prev: T) => T)) => {
     const prev = prevValue.current
     const next = isFunction(v) ? v(valueRef.current as T) : v
 
