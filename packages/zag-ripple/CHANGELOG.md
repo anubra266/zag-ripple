@@ -1,5 +1,11 @@
 # zag-ripple
 
+## 0.1.4
+
+### Patch Changes
+
+- [`732890e`](https://github.com/anubra266/zag-ripple/commit/732890ead872308cfd6943871443e7c12e219b27) Thanks [@anubra266](https://github.com/anubra266)! - Use core mergeprops
+
 ## 0.1.3
 
 ### Patch Changes
